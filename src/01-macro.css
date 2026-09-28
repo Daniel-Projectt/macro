@@ -148,4 +148,24 @@
 
 /* formulas set on their own line, in the serif */
 .formula{font-family:var(--serif);font-size:clamp(17px,2.6vw,21px);text-align:center;margin:14px 0;letter-spacing:.02em;line-height:1.5}
-.formula small{font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-top:4px}
+.formula small{font-family:var(--sans);font-size:12px;letter-spacing:.04em;color:var(--muted);display:block;margin-top:4px}
+
+/* the memorising tables fit a phone without sideways scrolling */
+.tbl.fit{min-width:0;table-layout:fixed}
+.tbl.fit th{white-space:normal;padding:10px 8px}
+.tbl.fit td{padding:10px 8px;overflow-wrap:break-word}
+.tbl.fit td.head{white-space:normal;letter-spacing:.1em}
+.tbl.fit.c4 th:nth-child(1){width:30%}
+.tbl.fit.c4 th:nth-child(2){width:26%}
+.tbl.fit.c4 th:nth-child(3){width:30%}
+.tbl.fit.c4 th:nth-child(4){width:14%}
+.tbl.fit.c2 th:nth-child(1){width:36%}
+.tbl.fit.c3 th:nth-child(1){width:36%}
+.tbl.fit.c3 th:nth-child(2){width:28%}
+/* a formula in a heading keeps its own letters: never capitals, so a delta stays a delta */
+.tbl td.head.f,.tbl th.f{text-transform:none;letter-spacing:.02em;white-space:normal}
+.tbl td.head.f{font-family:var(--serif);font-size:15px;color:var(--ink)}
+.tbl th.f{font-size:12px;line-height:1.5}
+
+/* one step per line in the recipes */
+.flow .step i{display:block;margin-top:4px;color:var(--ink-soft)}

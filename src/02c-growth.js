@@ -32,7 +32,7 @@ CH.growth = {n:2, title:"Long-Run Growth and the Solow Model", short:"Growth",
    '<div class="formula">K* = (sA &divide; &delta;)<sup>2</sup><small>then Y* = A&radic;K* and C* = (1 &minus; s) Y*</small></div>'+
    '<ul><li>At the steady state, adding capital cannot raise output for good; <b>technology or better institutions</b> are the only way up.</li></ul>'+
    '<h3 class="sub" id="gro-worked">Worked examples</h3>'+
-   '<div class="tblwrap"><table class="tbl"><thead><tr><th>Problem Set 2, Q1 &mdash; Y = A&radic;K, s = 10%, &delta; = 1%, A = 1, K = 80</th><th></th></tr></thead><tbody>'+
+   '<div class="tblwrap"><table class="tbl fit"><colgroup><col style="width:34%"><col></colgroup><thead><tr><th class="f" colspan="2">Problem Set 2, Q1 &mdash; Y = A&radic;K, s = 10%, &delta; = 1%, A = 1, K = 80</th></tr></thead><tbody>'+
    '<tr><td class="head">Output</td><td class="sm">Y = &radic;80 = <b>$8.94</b></td></tr>'+
    '<tr><td class="head">Investment</td><td class="sm">I = 0.10 &times; 8.94 = <b>$0.89</b></td></tr>'+
    '<tr><td class="head">Consumption</td><td class="sm">C = 8.94 &minus; 0.89 = <b>$8.05</b></td></tr>'+

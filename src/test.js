@@ -275,7 +275,7 @@ ok(html.includes('id="flourish"') && html.includes('id="emblem"') && html.includ
 ok(/M34 86C44 60 58 46 84 40/.test(html), 'the emblem is the production curve');
 ok(/\.formula\{/.test(html), 'formula style present');
 ok(html.includes('rel="manifest"') && html.includes('sw.js') && fs.existsSync(path.join(ROOT, 'sw.js')) && fs.existsSync(path.join(ROOT, 'manifest.webmanifest')), 'PWA pieces: manifest and service worker');
-ok(/"macro-v1"/.test(fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8')) && /Macroeconomics/.test(fs.readFileSync(path.join(ROOT, 'manifest.webmanifest'), 'utf8')), 'service worker and manifest are this page’s own');
+ok(/"macro-v\d+"/.test(fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8')) && /Macroeconomics/.test(fs.readFileSync(path.join(ROOT, 'manifest.webmanifest'), 'utf8')), 'service worker and manifest are this page’s own');
 ok(html.includes('og:image') && html.includes('/macro/preview.png'), 'link preview metadata');
 ok(!/Quizlet|"mgmt\.|"pom\.|Kotler/.test(src.replace(/\/\*[\s\S]*?\*\//g, '')), 'nothing left over from the earlier pages in the code');
 ok(!/The 50 |Another fifty|sixteen sections/.test(src), 'the exam button is the 38');

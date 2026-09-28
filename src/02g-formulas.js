@@ -7,7 +7,7 @@ CH.formulas = {n:6, title:"Formulas — What Divides by What", short:"Formulas",
   {id:"for-sheet", h:"Formula Sheet", body:
    '<div class="point"><b>The point</b><p>Every formula on the exam, in one place. Read it top to bottom once, then use the rest of this tab to drill it: what goes on top, what goes on the bottom, and the steps for each calculation.</p><p class="able"><b>Be able to</b> write each one from memory and say which numbers go where.</p></div>'+
    '<p class="knowline"><span class="know">All five topics</span></p>'+
-   '<div class="tblwrap"><table class="tbl"><thead><tr><th>Topic</th><th>Formula</th></tr></thead><tbody>'+
+   '<div class="tblwrap"><table class="tbl fit c2"><thead><tr><th>Topic</th><th>Formula</th></tr></thead><tbody>'+
    '<tr><td class="head">GDP</td><td class="sm">C + I + G + (X &minus; M)</td></tr>'+
    '<tr><td class="head">Real GDP</td><td class="sm">base-year prices &times; current quantities</td></tr>'+
    '<tr><td class="head">GDP per capita</td><td class="sm">real GDP &divide; population</td></tr>'+
@@ -30,26 +30,26 @@ CH.formulas = {n:6, title:"Formulas — What Divides by What", short:"Formulas",
   {id:"for-hooks", h:"Ways to Remember Them", body:
    '<div class="point"><b>The point</b><p>A formula you understand is a formula you can rebuild. Each hook below is either a <b>phrase</b> that tells you what goes where, or the <b>reason</b> the formula has to be that way. Say each one out loud once, then use the Memory hooks deck.</p><p class="able"><b>Be able to</b> give the hook for any formula, and rebuild the formula from it.</p></div>'+
    '<p class="knowline"><span class="know">One hook per formula</span></p>'+
-   '<div class="tblwrap"><table class="tbl"><thead><tr><th>Formula</th><th>How to remember it</th></tr></thead><tbody>'+
-   '<tr><td class="head">GDP = C + I + G + (X &minus; M)</td><td class="sm"><b>Who bought it?</b> Households (C), firms (I), the government (G), foreigners (X). Imports come off because they were counted inside C, I or G but <b>were not made here</b>.</td></tr>'+
-   '<tr><td class="head">Nominal vs real GDP</td><td class="sm"><b>N</b>ominal = <b>N</b>ow prices. <b>R</b>eal = <b>R</b>eference-year prices. The quantities are always this year&rsquo;s.</td></tr>'+
-   '<tr><td class="head">Any percent change</td><td class="sm"><b>Change over original.</b> (New &minus; Old) &divide; Old &mdash; &ldquo;N-O over O.&rdquo; You measure from where you started, so the start is the bottom.</td></tr>'+
-   '<tr><td class="head">Rule of 70</td><td class="sm"><b>70 over the rate</b>, and the rate stays a whole number: 70 &divide; 20, never 70 &divide; 0.20.</td></tr>'+
-   '<tr><td class="head">Unemployment rate = U &divide; LF</td><td class="sm">The unemployed <b>out of the people in the game</b>. If you are not looking for work you are not in the game, so you are not on the bottom.</td></tr>'+
-   '<tr><td class="head">LFPR and EPR</td><td class="sm"><b>&ldquo;Population&rdquo; in the name, population on the bottom.</b> Participation = who shows up, out of everyone who could.</td></tr>'+
-   '<tr><td class="head">Natural rate</td><td class="sm">The two kinds that <b>never go away</b>: <b>F</b>rictional and <b>S</b>tructural. Cyclical comes and goes with the cycle, so it is left off the top.</td></tr>'+
-   '<tr><td class="head">The four types</td><td class="sm"><b>F</b>rictional = <b>f</b>inding a job. <b>S</b>tructural = <b>s</b>kills do not fit. <b>C</b>yclical = the business <b>c</b>ycle. <b>S</b>easonal = the <b>s</b>eason.</td></tr>'+
-   '<tr><td class="head">CPI = basket now &divide; basket base &times; 100</td><td class="sm"><b>Base = basement = bottom.</b> The base year always sits underneath, and in the base year the index is 100.</td></tr>'+
-   '<tr><td class="head">Deflator = nominal &divide; real &times; 100</td><td class="sm"><b>N before R</b> in the alphabet: <b>N</b>ominal goes first, on top.</td></tr>'+
-   '<tr><td class="head">Converting dollars</td><td class="sm"><b>Want over have.</b> Multiply by the CPI of the year you <b>want</b>, divide by the CPI of the year you <b>have</b>.</td></tr>'+
-   '<tr><td class="head">The three -flations</td><td class="sm"><b>In</b>flation: prices up. <b>Dis</b>inflation: up, but at a <b>dis</b>count &mdash; slower. <b>De</b>flation: prices <b>de</b>crease.</td></tr>'+
-   '<tr><td class="head">I = sY and D = &delta;K</td><td class="sm"><b>You save out of income; machines wear out.</b> So s goes with Y (income), and &delta; goes with K (the machines).</td></tr>'+
-   '<tr><td class="head">K* = (sA &divide; &delta;)<sup>2</sup></td><td class="sm"><b>&ldquo;SAD, squared&rdquo;</b>: <b>s</b> times <b>A</b>, over <b>d</b>elta, squared. Or rebuild it: saved = worn out, sA&radic;K = &delta;K.</td></tr>'+
-   '<tr><td class="head">Catch-up vs innovative</td><td class="sm">Catch-up = <b>more</b> stuff. Innovative = <b>better</b> use of the same stuff.</td></tr>'+
-   '<tr><td class="head">S = Y &minus; C &minus; G</td><td class="sm"><b>What is left of the pie</b> after households and the government have eaten.</td></tr>'+
-   '<tr><td class="head">Private and public saving</td><td class="sm">Private: <b>my</b> income, minus taxes, minus what I spend. Public: the <b>government&rsquo;s</b> income (taxes) minus what it spends.</td></tr>'+
-   '<tr><td class="head">I = S + (M &minus; X)</td><td class="sm">If we invest more than we save, <b>foreigners lend the difference</b> &mdash; and it shows up as imports above exports.</td></tr>'+
-   '<tr><td class="head">Direct vs indirect</td><td class="sm">Direct: you hand the money <b>to the borrower</b> (a bond, an IPO). Indirect: <b>a bank in the middle</b>.</td></tr>'+
+   '<div class="tblwrap"><table class="tbl fit c2"><thead><tr><th>Formula</th><th>How to remember it</th></tr></thead><tbody>'+
+   '<tr><td class="head f">GDP = C + I + G + (X &minus; M)</td><td class="sm"><b>Who bought it?</b> Households (C), firms (I), the government (G), foreigners (X). Imports come off because they were counted inside C, I or G but <b>were not made here</b>.</td></tr>'+
+   '<tr><td class="head f">Nominal vs real GDP</td><td class="sm"><b>N</b>ominal = <b>N</b>ow prices. <b>R</b>eal = <b>R</b>eference-year prices. The quantities are always this year&rsquo;s.</td></tr>'+
+   '<tr><td class="head f">Any percent change</td><td class="sm"><b>Change over original.</b> (New &minus; Old) &divide; Old &mdash; &ldquo;N-O over O.&rdquo; You measure from where you started, so the start is the bottom.</td></tr>'+
+   '<tr><td class="head f">Rule of 70</td><td class="sm"><b>70 over the rate</b>, and the rate stays a whole number: 70 &divide; 20, never 70 &divide; 0.20.</td></tr>'+
+   '<tr><td class="head f">Unemployment rate = U &divide; LF</td><td class="sm">The unemployed <b>out of the people in the game</b>. If you are not looking for work you are not in the game, so you are not on the bottom.</td></tr>'+
+   '<tr><td class="head f">LFPR and EPR</td><td class="sm"><b>&ldquo;Population&rdquo; in the name, population on the bottom.</b> Participation = who shows up, out of everyone who could.</td></tr>'+
+   '<tr><td class="head f">Natural rate</td><td class="sm">The two kinds that <b>never go away</b>: <b>F</b>rictional and <b>S</b>tructural. Cyclical comes and goes with the cycle, so it is left off the top.</td></tr>'+
+   '<tr><td class="head f">The four types</td><td class="sm"><b>F</b>rictional = <b>f</b>inding a job. <b>S</b>tructural = <b>s</b>kills do not fit. <b>C</b>yclical = the business <b>c</b>ycle. <b>S</b>easonal = the <b>s</b>eason.</td></tr>'+
+   '<tr><td class="head f">CPI = basket now &divide; basket base &times; 100</td><td class="sm"><b>Base = basement = bottom.</b> The base year always sits underneath, and in the base year the index is 100.</td></tr>'+
+   '<tr><td class="head f">Deflator = nominal &divide; real &times; 100</td><td class="sm"><b>N before R</b> in the alphabet: <b>N</b>ominal goes first, on top.</td></tr>'+
+   '<tr><td class="head f">Converting dollars</td><td class="sm"><b>Want over have.</b> Multiply by the CPI of the year you <b>want</b>, divide by the CPI of the year you <b>have</b>.</td></tr>'+
+   '<tr><td class="head f">The three -flations</td><td class="sm"><b>In</b>flation: prices up. <b>Dis</b>inflation: up, but at a <b>dis</b>count &mdash; slower. <b>De</b>flation: prices <b>de</b>crease.</td></tr>'+
+   '<tr><td class="head f">I = sY and D = &delta;K</td><td class="sm"><b>You save out of income; machines wear out.</b> So s goes with Y (income), and &delta; goes with K (the machines).</td></tr>'+
+   '<tr><td class="head f">K* = (sA &divide; &delta;)<sup>2</sup></td><td class="sm"><b>&ldquo;SAD, squared&rdquo;</b>: <b>s</b> times <b>A</b>, over <b>d</b>elta, squared. Or rebuild it: saved = worn out, sA&radic;K = &delta;K.</td></tr>'+
+   '<tr><td class="head f">Catch-up vs innovative</td><td class="sm">Catch-up = <b>more</b> stuff. Innovative = <b>better</b> use of the same stuff.</td></tr>'+
+   '<tr><td class="head f">S = Y &minus; C &minus; G</td><td class="sm"><b>What is left of the pie</b> after households and the government have eaten.</td></tr>'+
+   '<tr><td class="head f">Private and public saving</td><td class="sm">Private: <b>my</b> income, minus taxes, minus what I spend. Public: the <b>government&rsquo;s</b> income (taxes) minus what it spends.</td></tr>'+
+   '<tr><td class="head f">I = S + (M &minus; X)</td><td class="sm">If we invest more than we save, <b>foreigners lend the difference</b> &mdash; and it shows up as imports above exports.</td></tr>'+
+   '<tr><td class="head f">Direct vs indirect</td><td class="sm">Direct: you hand the money <b>to the borrower</b> (a bond, an IPO). Indirect: <b>a bank in the middle</b>.</td></tr>'+
    '</tbody></table></div>'+
    '<h3 class="sub" id="for-h-curves">Which curve moves &mdash; read it off the equations</h3>'+
    '<p>You do not have to memorise the shift table. Ask <b>which equation the letter lives in</b>:</p>'+
@@ -61,7 +61,7 @@ CH.formulas = {n:6, title:"Formulas — What Divides by What", short:"Formulas",
   {id:"for-divide", h:"What Divides by What", body:
    '<div class="point"><b>The point</b><p>Most of the exam&rsquo;s calculations are one division, and the only way to get them wrong is to put the wrong number on the bottom. Learn each one as <b>top &divide; bottom</b>. Three rules cover nearly all of them.</p><p class="able"><b>Be able to</b> say, for every rate, what goes on top and what goes on the bottom &mdash; without looking.</p></div>'+
    '<p class="knowline"><span class="know">Memorise this table</span></p>'+
-   '<div class="tblwrap"><table class="tbl"><thead><tr><th>You want</th><th>Top</th><th>Bottom</th><th>Then</th></tr></thead><tbody>'+
+   '<div class="tblwrap"><table class="tbl fit c4"><thead><tr><th>You want</th><th>Top</th><th>Bottom</th><th>Then</th></tr></thead><tbody>'+
    '<tr><td class="head">Unemployment rate</td><td class="sm">unemployed</td><td class="sm"><b>labor force</b> (not the population)</td><td class="sm">&times; 100</td></tr>'+
    '<tr><td class="head">Participation rate (LFPR)</td><td class="sm">labor force</td><td class="sm"><b>adult population</b></td><td class="sm">&times; 100</td></tr>'+
    '<tr><td class="head">Employment-population ratio</td><td class="sm">employed</td><td class="sm"><b>adult population</b></td><td class="sm">&times; 100</td></tr>'+
@@ -84,7 +84,7 @@ CH.formulas = {n:6, title:"Formulas — What Divides by What", short:"Formulas",
   {id:"for-build", h:"What Multiplies, Adds and Subtracts", body:
    '<div class="point"><b>The point</b><p>The rest of the calculations are built by <b>adding</b> (GDP, the labor force, a basket), <b>multiplying</b> (real GDP, the Solow equations) or <b>subtracting</b> (consumption, saving). And when a question gives you a <b>rate</b> and asks for a <b>count</b>, you run the division backwards &mdash; you multiply.</p><p class="able"><b>Be able to</b> build each total from its parts, and go from a rate back to a number of people.</p></div>'+
    '<p class="knowline"><span class="know">Memorise this table</span></p>'+
-   '<div class="tblwrap"><table class="tbl"><thead><tr><th>You want</th><th>Do this</th></tr></thead><tbody>'+
+   '<div class="tblwrap"><table class="tbl fit c2"><thead><tr><th>You want</th><th>Do this</th></tr></thead><tbody>'+
    '<tr><td class="head">GDP</td><td class="sm"><b>Add</b> C + I + G, then add exports and <b>subtract</b> imports. Transfers never go in.</td></tr>'+
    '<tr><td class="head">Nominal GDP</td><td class="sm"><b>Multiply</b> each good&rsquo;s price this year by its quantity this year; add up.</td></tr>'+
    '<tr><td class="head">Real GDP</td><td class="sm"><b>Multiply</b> each good&rsquo;s <b>base-year</b> price by its quantity this year; add up.</td></tr>'+
@@ -99,7 +99,7 @@ CH.formulas = {n:6, title:"Formulas — What Divides by What", short:"Formulas",
    '<tr><td class="head">Foreign saving</td><td class="sm"><b>Subtract</b> national saving from investment: I &minus; S = M &minus; X.</td></tr>'+
    '</tbody></table></div>'+
    '<h3 class="sub" id="for-backwards">Going backwards from a rate</h3>'+
-   '<div class="tblwrap"><table class="tbl"><thead><tr><th>Given</th><th>You want</th><th>Do this</th></tr></thead><tbody>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>Given</th><th>You want</th><th>Do this</th></tr></thead><tbody>'+
    '<tr><td class="head">LFPR and population</td><td class="sm">labor force</td><td class="sm">LFPR &times; population</td></tr>'+
    '<tr><td class="head">Unemployment rate and LF</td><td class="sm">unemployed</td><td class="sm">rate &times; labor force</td></tr>'+
    '<tr><td class="head">LF and unemployed</td><td class="sm">employed</td><td class="sm">labor force &minus; unemployed</td></tr>'+
@@ -112,23 +112,23 @@ CH.formulas = {n:6, title:"Formulas — What Divides by What", short:"Formulas",
    '<div class="point"><b>The point</b><p>Every calculation on the exam is one of these recipes. Each is three to five steps, always in the same order. Work the example beside each one on paper, then cover it and do it again.</p><p class="able"><b>Be able to</b> do each recipe from a blank page with new numbers.</p></div>'+
    '<p class="knowline"><span class="know">Problem Sets 1&ndash;4, as methods</span></p>'+
    '<h3 class="sub" id="for-s-gdp">GDP</h3>'+
-   '<div class="flow"><div class="step"><b>GDP from its parts</b>1 &middot; Cross out transfers. 2 &middot; If I is a share of C, compute it. 3 &middot; Net exports = X &minus; M (it can be negative). 4 &middot; Add C + I + G + net exports. <i>Gondor: 4,000 + 1,200 + 1,200 &minus; 200 = $6,200.</i></div>'+
-   '<div class="step"><b>Nominal and real GDP</b>1 &middot; Nominal: each year&rsquo;s prices &times; that year&rsquo;s quantities. 2 &middot; Real: base-year prices &times; that year&rsquo;s quantities. 3 &middot; In the base year, copy nominal. <i>Real 2023 = 16.50 &times; 800 + 220 &times; 150 = $46,200.</i></div>'+
-   '<div class="step"><b>Per capita and growth</b>1 &middot; Real GDP &divide; population, for each year. 2 &middot; Growth = (new &minus; old) &divide; old &times; 100. 3 &middot; Doubling time = 70 &divide; growth %. <i>$5,000 &rarr; $3,000 is &minus;40%.</i></div></div>'+
+   '<div class="flow"><div class="step"><b>GDP from its parts</b>1 &middot; Cross out transfers.<br>2 &middot; If I is a share of C, compute it.<br>3 &middot; Net exports = X &minus; M (it can be negative).<br>4 &middot; Add C + I + G + net exports.<i>Gondor: 4,000 + 1,200 + 1,200 &minus; 200 = $6,200.</i></div>'+
+   '<div class="step"><b>Nominal and real GDP</b>1 &middot; Nominal: each year&rsquo;s prices &times; that year&rsquo;s quantities.<br>2 &middot; Real: base-year prices &times; that year&rsquo;s quantities.<br>3 &middot; In the base year, copy nominal.<i>Real 2023 = 16.50 &times; 800 + 220 &times; 150 = $46,200.</i></div>'+
+   '<div class="step"><b>Per capita and growth</b>1 &middot; Real GDP &divide; population, for each year.<br>2 &middot; Growth = (new &minus; old) &divide; old &times; 100.<br>3 &middot; Doubling time = 70 &divide; growth %.<i>$5,000 &rarr; $3,000 is &minus;40%.</i></div></div>'+
    '<h3 class="sub" id="for-s-solow">Solow</h3>'+
-   '<div class="flow"><div class="step"><b>At a given K</b>1 &middot; Y = A &times; &radic;K. 2 &middot; I = s &times; Y. 3 &middot; C = Y &minus; I. 4 &middot; D = &delta; &times; K. 5 &middot; If I &gt; D, capital grows. <i>K = 80: 8.94, 0.89, 8.05, 0.80 &mdash; grows.</i></div>'+
-   '<div class="step"><b>The steady state</b>1 &middot; Compute sA &divide; &delta;. 2 &middot; Square it: that is K*. 3 &middot; Y* = A &times; &radic;K*. 4 &middot; C* = (1 &minus; s) &times; Y*. <i>0.11 &divide; 0.01 = 11; K* = 121; Y* = 12.10; C* = 10.89.</i></div></div>'+
+   '<div class="flow"><div class="step"><b>At a given K</b>1 &middot; Y = A &times; &radic;K.<br>2 &middot; I = s &times; Y.<br>3 &middot; C = Y &minus; I.<br>4 &middot; D = &delta; &times; K.<br>5 &middot; If I &gt; D, capital grows.<i>K = 80: 8.94, 0.89, 8.05, 0.80 &mdash; grows.</i></div>'+
+   '<div class="step"><b>The steady state</b>1 &middot; Compute sA &divide; &delta;.<br>2 &middot; Square it: that is K*.<br>3 &middot; Y* = A &times; &radic;K*.<br>4 &middot; C* = (1 &minus; s) &times; Y*.<i>0.11 &divide; 0.01 = 11; K* = 121; Y* = 12.10; C* = 10.89.</i></div></div>'+
    '<h3 class="sub" id="for-s-labor">Labor</h3>'+
-   '<div class="flow"><div class="step"><b>From rates to counts</b>1 &middot; LF = LFPR &times; population. 2 &middot; U = rate &times; LF. 3 &middot; E = LF &minus; U. <i>Gondor: 45,000,000; 2,700,000; 42,300,000.</i></div>'+
-   '<div class="step"><b>From counts to rates</b>1 &middot; LF = E + U. 2 &middot; u = U &divide; LF. 3 &middot; LFPR = LF &divide; population; EPR = E &divide; population. <i>Dale: 5 &divide; 32.5 = 15.4%.</i></div>'+
-   '<div class="step"><b>The natural rate</b>1 &middot; Add frictional + structural. 2 &middot; LF = employed + <u>all</u> the unemployed. 3 &middot; Divide. <i>Osgiliath: 1 &divide; 50 = 2%.</i></div></div>'+
+   '<div class="flow"><div class="step"><b>From rates to counts</b>1 &middot; LF = LFPR &times; population.<br>2 &middot; U = rate &times; LF.<br>3 &middot; E = LF &minus; U.<i>Gondor: 45,000,000; 2,700,000; 42,300,000.</i></div>'+
+   '<div class="step"><b>From counts to rates</b>1 &middot; LF = E + U.<br>2 &middot; u = U &divide; LF.<br>3 &middot; LFPR = LF &divide; population; EPR = E &divide; population.<i>Dale: 5 &divide; 32.5 = 15.4%.</i></div>'+
+   '<div class="step"><b>The natural rate</b>1 &middot; Add frictional + structural.<br>2 &middot; LF = employed + <u>all</u> the unemployed.<br>3 &middot; Divide.<i>Osgiliath: 1 &divide; 50 = 2%.</i></div></div>'+
    '<h3 class="sub" id="for-s-prices">Prices</h3>'+
-   '<div class="flow"><div class="step"><b>CPI and inflation from a basket</b>1 &middot; Cost the basket in each year. 2 &middot; CPI = cost &divide; base-year cost &times; 100. 3 &middot; Inflation = (new CPI &minus; old CPI) &divide; old CPI &times; 100. <i>390 and 520; 75 and 100; 33.33%.</i></div>'+
-   '<div class="step"><b>Converting dollars</b>1 &middot; Name the year you want and the year you have. 2 &middot; $ &times; CPI want &divide; CPI have. <i>$30 &times; 100 &divide; 300 = $10.</i></div>'+
-   '<div class="step"><b>The deflator</b>1 &middot; Nominal &divide; real. 2 &middot; &times; 100. <i>22 &divide; 20 &times; 100 = 110.</i></div></div>'+
+   '<div class="flow"><div class="step"><b>CPI and inflation from a basket</b>1 &middot; Cost the basket in each year.<br>2 &middot; CPI = cost &divide; base-year cost &times; 100.<br>3 &middot; Inflation = (new CPI &minus; old CPI) &divide; old CPI &times; 100.<i>390 and 520; 75 and 100; 33.33%.</i></div>'+
+   '<div class="step"><b>Converting dollars</b>1 &middot; Name the year you want and the year you have.<br>2 &middot; $ &times; CPI want &divide; CPI have.<i>$30 &times; 100 &divide; 300 = $10.</i></div>'+
+   '<div class="step"><b>The deflator</b>1 &middot; Nominal &divide; real.<br>2 &middot; &times; 100.<i>22 &divide; 20 &times; 100 = 110.</i></div></div>'+
    '<h3 class="sub" id="for-s-saving">Saving</h3>'+
-   '<div class="flow"><div class="step"><b>The three savings</b>1 &middot; National = Y &minus; C &minus; G. 2 &middot; Private = Y &minus; T &minus; C. 3 &middot; Public = T &minus; G. 4 &middot; Check: private + public = national. <i>200 = 250 + (&minus;50).</i></div>'+
-   '<div class="step"><b>Foreign saving</b>1 &middot; I &minus; national saving. 2 &middot; If it is positive, the economy is open and imports exceed exports by that amount. <i>260 &minus; 200 = 60.</i></div></div>'},
+   '<div class="flow"><div class="step"><b>The three savings</b>1 &middot; National = Y &minus; C &minus; G.<br>2 &middot; Private = Y &minus; T &minus; C.<br>3 &middot; Public = T &minus; G.<br>4 &middot; Check: private + public = national.<i>200 = 250 + (&minus;50).</i></div>'+
+   '<div class="step"><b>Foreign saving</b>1 &middot; I &minus; national saving.<br>2 &middot; If it is positive, the economy is open and imports exceed exports by that amount.<i>260 &minus; 200 = 60.</i></div></div>'},
 
   {id:"for-traps", h:"The Traps", body:
    '<div class="point"><b>The point</b><p>The problem sets were lost on a handful of repeatable slips, not on hard ideas. Each one below has cost marks once already. Read the list before you start the exam, and again before you submit.</p><p class="able"><b>Be able to</b> name the trap in a wrong answer.</p></div>'+

@@ -9,7 +9,7 @@ CH.prices = {n:4, title:"Price Levels, CPI and Inflation", short:"Prices",
    '<div class="formula">CPI<sub>t</sub> = cost of basket<sub>t</sub> &divide; cost of basket<sub>base</sub> &times; 100 &nbsp;&nbsp;&middot;&nbsp;&nbsp; Deflator<sub>t</sub> = nominal GDP<sub>t</sub> &divide; real GDP<sub>t</sub> &times; 100</div>'+
    '<div class="formula">Inflation = (P<sub>new</sub> &minus; P<sub>old</sub>) &divide; P<sub>old</sub> &times; 100 &nbsp;&nbsp;&middot;&nbsp;&nbsp; $ in year A = $ in year B &times; CPI<sub>A</sub> &divide; CPI<sub>B</sub></div>'+
    '<h3 class="sub" id="pri-worked">Worked examples</h3>'+
-   '<div class="tblwrap"><table class="tbl"><thead><tr><th>Problem Set 4, Q2 &mdash; basket: 5 apples, 2 jackets, 1 TV &middot; base year 2025</th><th></th></tr></thead><tbody>'+
+   '<div class="tblwrap"><table class="tbl fit"><colgroup><col style="width:34%"><col></colgroup><thead><tr><th class="f" colspan="2">Problem Set 4, Q2 &mdash; basket: 5 apples, 2 jackets, 1 TV &middot; base year 2025</th></tr></thead><tbody>'+
    '<tr><td class="head">Basket in 2024</td><td class="sm">5 &times; $2 + 2 &times; $40 + $300 = <b>$390</b></td></tr>'+
    '<tr><td class="head">Basket in 2025</td><td class="sm">5 &times; $4 + 2 &times; $50 + $400 = <b>$520</b></td></tr>'+
    '<tr><td class="head">CPI 2024</td><td class="sm">390 &divide; 520 &times; 100 = <b>75</b></td></tr>'+

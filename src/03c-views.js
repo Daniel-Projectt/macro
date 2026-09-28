@@ -133,17 +133,20 @@ CHAPTERS.forEach(function(tp){
   renderNotes(tp);
 });
 renderGuide();
+/* Start Here: a static page and one short quiz */
+engines.start = makeQuiz($("#startQuiz"), function(){ return essentialQuestions(15); }, {showTopic:true, showTier:true, againLabel:"Another fifteen"});
+$("#startGo").addEventListener("click", function(){ showMode("start", "quiz"); window.scrollTo({top:$(".topics").offsetTop - 8, behavior:"smooth"}); });
 
-var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }};
-var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }};
+var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "start/quiz":function(){ engines.start.ensure(); }};
+var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "start/quiz":function(e){ return engines.start.keys(e); }};
 CHAPTERS.forEach(function(tp){
   ON_SHOW[tp+"/match"] = function(){ engines[tp+"Match"].ensure(); };
   ON_SHOW[tp+"/quiz"]  = function(){ engines[tp+"Quiz"].ensure(); };
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["guide","formulas","gdp","growth","labor","prices","saving","exam"];
-var currentTopic = "guide", currentMode = {guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
+var TOPICS = ["start","formulas","exam","gdp","growth","labor","prices","saving","guide"];
+var currentTopic = "start", currentMode = {start:"page", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });
@@ -179,8 +182,10 @@ document.addEventListener("keydown", function(e){
 /* ---- come back to where you were ---- */
 (function(){
   var t = store.get("topic");
+  /* the first visit after Start Here was added lands on it, whatever was open before */
+  if(!store.get("seenStart")){ t = "start"; store.set("seenStart", "1"); store.set("mode.start", "page"); }
   TOPICS.forEach(function(k){ var m = store.get("mode."+k); if(m && $('.seg[data-modes="'+k+'"] button[data-mode="'+m+'"]')) currentMode[k] = m; });
-  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "guide");
+  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "start");
 })();
 
 /* ---- offline copy: the service worker keeps the page on the phone ---- */

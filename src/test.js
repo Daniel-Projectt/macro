@@ -150,6 +150,25 @@ for (let r = 0; r < 60; r++) {
   ok(A.mockQuestions({ n: n, types: 'mc', focus: 'ps' }).every(q => q.kind !== 'tf' && q.hot === 1), 'the filters combine: multiple choice, problem-set style');
 }
 ok(seenTiers.size === 3, 'unfiltered exams draw on all three tiers', [...seenTiers].join(','));
+// the short quiz behind Start Here
+for (let r = 0; r < 60; r++) {
+  const e = A.essentialQuestions(15);
+  ok(e.length === 15, 'the short quiz is fifteen questions', e.length);
+  ok(new Set(e.map(q => q.key)).size === 15, 'no repeats in the short quiz');
+  ok(e.every(q => q.hot === 2 || /^g-for-(divide|build|hooks|traps)$/.test(q.sec)), 'the short quiz holds only misses and formula drills', e.map(q => q.sec).join(','));
+  ok(e.filter(q => q.hot === 2).length >= 5, 'the short quiz carries his misses', e.filter(q => q.hot === 2).length);
+  ok(e.filter(q => /^g-for-/.test(q.sec)).length >= 6, 'and the what-divides-by-what drills', e.filter(q => /^g-for-/.test(q.sec)).length);
+  const mn = e.map(q => A.meaningOf(q)); let clash = 0;
+  for (let x = 0; x < mn.length; x++) for (let y = x + 1; y < mn.length; y++) if (A.sameThing(mn[x], mn[y])) clash++;
+  ok(clash === 0, 'no two questions in the short quiz ask the same thing', clash);
+}
+// Start Here is short: four lists, and every miss is on it
+const startHtml = (html.match(/<section class="topic" id="topic-start">[\s\S]*?<\/section>/) || [''])[0];
+ok((startHtml.match(/class="note-sec"/g) || []).length === 4, 'Start Here is four lists', (startHtml.match(/class="note-sec"/g) || []).length);
+ok((startHtml.match(/<tr><td class="head">/g) || []).length === 11, 'eleven divisions to memorise', (startHtml.match(/<tr><td class="head">/g) || []).length);
+ok(((startHtml.match(/<ol>[\s\S]*?<\/ol>/) || [''])[0].match(/<li>/g) || []).length === 13, 'all thirteen misses, one line each');
+['$6,200', 'GDP unchanged', 'real GDP = nominal GDP', 'accounting tautology', 'larger', '<b>I</b>, not C', 'K* = 121, Y* = $12.10, C* = $10.89', 'not guaranteed', 'innovative', 'only the investment curve', '42,300,000', '2%', '33.33%'].forEach(v => ok(startHtml.includes(v), 'Start Here carries the miss: ' + v));
+ok(startHtml.replace(/<[^>]+>/g, ' ').split(/\s+/).length < 700, 'Start Here stays short', startHtml.replace(/<[^>]+>/g, ' ').split(/\s+/).length + ' words');
 // the 38
 const allSecs = A.GUIDE.sections.flatMap(s => s.items.map(i => i.id));
 for (let r = 0; r < 40; r++) {
@@ -262,9 +281,9 @@ panels.forEach(pn => {
   ok(html.includes('data-modes="' + t + '"'), 'panel ' + pn + ' has a mode switch');
   ok(new RegExp('data-modes="' + t + '"[\\s\\S]*?data-mode="' + mo + '"').test(html), 'panel ' + pn + ' has its mode button');
 });
-['guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
-ok((html.match(/class="topic-btn"/g) || []).length === 8, 'eight tabs');
-ok(/data-topic="guide"\s+aria-selected="true"/.test(html), 'Guide is the first, default tab');
+['start', 'guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
+ok((html.match(/class="topic-btn"/g) || []).length === 9, 'nine tabs');
+ok(/data-topic="start"\s+aria-selected="true"/.test(html) && html.indexOf('data-topic="start"') < html.indexOf('data-topic="formulas"'), 'Start Here is the first, default tab');
 ok((html.match(/<script>/g) || []).length === 1, 'a single script block');
 ['div', 'section', 'button', 'nav', 'main', 'header', 'footer', 'svg', 'symbol', 'table', 'g', 'ol', 'ul', 'h3', 'h4', 'thead', 'tbody', 'tr', 'span', 'sub', 'sup'].forEach(t => {
   const open = (html.match(new RegExp('<' + t + '[\\s>]', 'g')) || []).length;

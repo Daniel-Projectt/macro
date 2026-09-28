@@ -518,20 +518,95 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
   </header>
 
   <nav class="topics" role="tablist" aria-label="Topics">
-    <button class="topic-btn" role="tab" data-topic="guide"  aria-selected="true">Guide</button>
+    <button class="topic-btn" role="tab" data-topic="start"    aria-selected="true">Start Here</button>
     <button class="topic-btn" role="tab" data-topic="formulas" aria-selected="false">Formulas</button>
-    <button class="topic-btn" role="tab" data-topic="gdp"    aria-selected="false">GDP</button>
-    <button class="topic-btn" role="tab" data-topic="growth" aria-selected="false">Growth</button>
-    <button class="topic-btn" role="tab" data-topic="labor"  aria-selected="false">Labor</button>
-    <button class="topic-btn" role="tab" data-topic="prices" aria-selected="false">Prices</button>
-    <button class="topic-btn" role="tab" data-topic="saving" aria-selected="false">Saving</button>
-    <button class="topic-btn" role="tab" data-topic="exam"   aria-selected="false">Practice Exam</button>
+    <button class="topic-btn" role="tab" data-topic="exam"     aria-selected="false">Practice Exam</button>
+    <button class="topic-btn" role="tab" data-topic="gdp"      aria-selected="false">GDP</button>
+    <button class="topic-btn" role="tab" data-topic="growth"   aria-selected="false">Growth</button>
+    <button class="topic-btn" role="tab" data-topic="labor"    aria-selected="false">Labor</button>
+    <button class="topic-btn" role="tab" data-topic="prices"   aria-selected="false">Prices</button>
+    <button class="topic-btn" role="tab" data-topic="saving"   aria-selected="false">Saving</button>
+    <button class="topic-btn" role="tab" data-topic="guide"    aria-selected="false">Full List</button>
   </nav>
 
   <main>
 
+    <!-- ================= START HERE ================= -->
+    <section class="topic" id="topic-start">
+      <p class="intro">If you only study one page, study this one. Four short lists, then a 15-question quiz on exactly these. Everything else on the site is backup.</p>
+      <div class="modes"><div class="seg" data-modes="start">
+        <button type="button" data-mode="page" aria-pressed="true">Just this</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz me</button>
+      </div></div>
+      <div class="panel" data-panel="start/page">
+
+        <div class="note-sec" id="start-divide"><h2>1 &middot; What divides by what</h2><div class="divider"><span>&#9670;</span></div>
+          <div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>You want</th><th>Top &divide; bottom</th><th>Remember</th></tr></thead><tbody>
+          <tr><td class="head">Unemployment rate</td><td class="sm">unemployed &divide; <b>labor force</b></td><td class="sm">the people in the game</td></tr>
+          <tr><td class="head">Participation (LFPR)</td><td class="sm">labor force &divide; <b>population</b></td><td class="sm">&ldquo;population&rdquo; is in the meaning</td></tr>
+          <tr><td class="head">Employment-population</td><td class="sm">employed &divide; <b>population</b></td><td class="sm">&ldquo;population&rdquo; is in the name</td></tr>
+          <tr><td class="head">Natural rate</td><td class="sm">(frictional + structural) &divide; <b>labor force</b></td><td class="sm">F + S never go away</td></tr>
+          <tr><td class="head">GDP per capita</td><td class="sm">real GDP &divide; <b>population</b></td><td class="sm">per head</td></tr>
+          <tr><td class="head">Growth, inflation</td><td class="sm">(new &minus; old) &divide; <b>old</b></td><td class="sm">change over original</td></tr>
+          <tr><td class="head">CPI</td><td class="sm">basket now &divide; <b>basket in base year</b>, &times; 100</td><td class="sm">base = bottom</td></tr>
+          <tr><td class="head">Deflator</td><td class="sm">nominal &divide; <b>real</b>, &times; 100</td><td class="sm">N before R</td></tr>
+          <tr><td class="head">Years to double</td><td class="sm">70 &divide; <b>growth %</b></td><td class="sm">use 20, not 0.20</td></tr>
+          <tr><td class="head">Dollars in another year</td><td class="sm">$ &times; CPI want &divide; <b>CPI have</b></td><td class="sm">want over have</td></tr>
+          <tr><td class="head">Steady state K*</td><td class="sm">(s &times; A &divide; <b>&delta;</b>), squared</td><td class="sm">SAD, squared</td></tr>
+          </tbody></table></div>
+        </div>
+
+        <div class="note-sec" id="start-build"><h2>2 &middot; What adds and multiplies</h2><div class="divider"><span>&#9670;</span></div>
+          <ul>
+            <li><b>GDP</b> = C + I + G + (X &minus; M). Transfers never go in.</li>
+            <li><b>Real GDP</b> = base-year prices &times; this year&rsquo;s quantities. In the base year, real = nominal.</li>
+            <li><b>Solow</b>: Y = A&radic;K &nbsp;&middot;&nbsp; I = s &times; Y &nbsp;&middot;&nbsp; D = &delta; &times; K &nbsp;&middot;&nbsp; C = Y &minus; I. Steady state: I = D.</li>
+            <li><b>Rate to count</b>: LF = LFPR &times; population &rarr; U = rate &times; LF &rarr; E = LF &minus; U.</li>
+            <li><b>Saving</b>: S = Y &minus; C &minus; G &nbsp;&middot;&nbsp; private = Y &minus; T &minus; C &nbsp;&middot;&nbsp; public = T &minus; G.</li>
+            <li><b>Open economy</b>: I = S + (M &minus; X).</li>
+          </ul>
+        </div>
+
+        <div class="note-sec" id="start-misses"><h2>3 &middot; What you missed before</h2><div class="divider"><span>&#9670;</span></div>
+          <ol>
+            <li>Transfers are not in GDP. Gondor = <b>$6,200</b>.</li>
+            <li>An import cancels: I up, net exports down, <b>GDP unchanged</b>.</li>
+            <li>In the base year, <b>real GDP = nominal GDP</b> ($56,100).</li>
+            <li>The GDP identity is an <b>accounting tautology</b> &mdash; it proves no causation.</li>
+            <li>Total sales are <b>larger</b> than GDP (they include intermediate goods).</li>
+            <li>A firm buying machinery is <b>I</b>, not C.</li>
+            <li>Solow, K = 80: <b>$8.94, $0.89, $8.05, $0.80</b>, add capital. With A = 1.1: <b>K* = 121, Y* = $12.10, C* = $10.89</b>.</li>
+            <li>Long-run growth is <b>not guaranteed</b>.</li>
+            <li>A less wasteful production method is <b>innovative</b> growth, not catch-up.</li>
+            <li>A higher savings rate shifts <b>only the investment curve</b>.</li>
+            <li>Gondor employed = <b>42,300,000</b>. Check every digit.</li>
+            <li>Natural rate = (0.5 + 0.5) &divide; 50 = <b>2%</b>.</li>
+            <li>CPI 75 to 100 = <b>33.33%</b>. Divide by the earlier year.</li>
+          </ol>
+        </div>
+
+        <div class="note-sec" id="start-ideas"><h2>4 &middot; Ideas most likely to be asked</h2><div class="divider"><span>&#9670;</span></div>
+          <ul>
+            <li><b>Unemployed</b> = no job, wants one, searched in the last 4 weeks. Stopped searching = <b>not in the labor force</b>.</li>
+            <li><b>Frictional</b> = searching. <b>Structural</b> = skills do not fit. <b>Cyclical</b> = recession. <b>Seasonal</b> = time of year.</li>
+            <li><b>Catch-up</b> growth = more inputs. <b>Innovative</b> growth = better ideas, and it lasts.</li>
+            <li>Only <b>technology</b> raises output forever. Saving raises the level only.</li>
+            <li><b>Disinflation</b> = prices rise more slowly. <b>Deflation</b> = prices fall.</li>
+            <li>The CPI <b>overstates</b> inflation (quality, substitution, new goods).</li>
+            <li>GDP counts <b>final goods</b>, by <b>location</b>. Not home production, used goods, or stocks.</li>
+            <li><b>Fallacy of composition</b>: true for one is not always true for all.</li>
+            <li><b>Institutions</b> are permanent and broad; <b>policies</b> are narrow and easy to change.</li>
+            <li><b>Direct</b> financing = straight to the borrower. <b>Indirect</b> = through a bank.</li>
+          </ul>
+          <div class="toolbar" style="justify-content:center;margin-top:22px"><button class="btn primary" type="button" id="startGo">Quiz me on just this</button></div>
+        </div>
+
+      </div>
+      <div class="panel" data-panel="start/quiz" hidden><p class="hint">Fifteen questions: your misses and the what-divides-by-what drills. Nothing else.</p><div id="startQuiz"></div></div>
+    </section>
+
     <!-- ================= GUIDE ================= -->
-    <section class="topic" id="topic-guide">
+    <section class="topic" id="topic-guide" hidden>
       <p class="intro">Everything the First Exam covers, in the order the class did it: Problem Sets 1&ndash;4 and the two Solow documents, through September 24. Check a section off once you can explain it and do its calculation without looking; <b>Study it</b> jumps to the notes, the small buttons to each subsection. The last group, <b>Formulas</b>, drills what divides by what.</p>
       <div class="modes"><div class="seg" data-modes="guide">
         <button type="button" data-mode="overview" aria-pressed="true">The review list</button>
@@ -1917,6 +1992,20 @@ function finalFifty(n){
   return shuffle(out);
 }
 
+/* The short quiz behind Start Here: the problem-set misses and the
+   what-divides-by-what drills, and nothing else.                              */
+function essentialQuestions(n){
+  n = n || 15;
+  var miss = [], drill = [];
+  QB.forEach(function(b, i){
+    if(b.off) return;
+    if(b.m === 2) miss.push(fromBank(b, i));
+    else if(/^g-for-(divide|build|hooks|traps)$/.test(b.sec)) drill.push(fromBank(b, i));
+  });
+  var out = drawDistinct(shuffle(miss), Math.min(miss.length, Math.round(n * 0.4)));
+  return shuffle(drawDistinct(out.concat(shuffle(drill)), n));
+}
+
 /* ================================================================ decks and match */
 function deckFor(tp, id){
   var d = CH[tp].decks.filter(function(x){ return x.id === id; })[0] || CH[tp].decks[0];
@@ -1935,7 +2024,7 @@ function matchRound(tp, n){
 if(typeof window === "undefined"){
   module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
-    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, meaningOf:meaningOf, sameThing:sameThing,
+    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, essentialQuestions:essentialQuestions, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,
     deckFor:deckFor, matchRound:matchRound, verdictFor:verdictFor};
   return;
@@ -2271,17 +2360,20 @@ CHAPTERS.forEach(function(tp){
   renderNotes(tp);
 });
 renderGuide();
+/* Start Here: a static page and one short quiz */
+engines.start = makeQuiz($("#startQuiz"), function(){ return essentialQuestions(15); }, {showTopic:true, showTier:true, againLabel:"Another fifteen"});
+$("#startGo").addEventListener("click", function(){ showMode("start", "quiz"); window.scrollTo({top:$(".topics").offsetTop - 8, behavior:"smooth"}); });
 
-var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }};
-var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }};
+var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "start/quiz":function(){ engines.start.ensure(); }};
+var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "start/quiz":function(e){ return engines.start.keys(e); }};
 CHAPTERS.forEach(function(tp){
   ON_SHOW[tp+"/match"] = function(){ engines[tp+"Match"].ensure(); };
   ON_SHOW[tp+"/quiz"]  = function(){ engines[tp+"Quiz"].ensure(); };
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["guide","formulas","gdp","growth","labor","prices","saving","exam"];
-var currentTopic = "guide", currentMode = {guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
+var TOPICS = ["start","formulas","exam","gdp","growth","labor","prices","saving","guide"];
+var currentTopic = "start", currentMode = {start:"page", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });
@@ -2317,8 +2409,10 @@ document.addEventListener("keydown", function(e){
 /* ---- come back to where you were ---- */
 (function(){
   var t = store.get("topic");
+  /* the first visit after Start Here was added lands on it, whatever was open before */
+  if(!store.get("seenStart")){ t = "start"; store.set("seenStart", "1"); store.set("mode.start", "page"); }
   TOPICS.forEach(function(k){ var m = store.get("mode."+k); if(m && $('.seg[data-modes="'+k+'"] button[data-mode="'+m+'"]')) currentMode[k] = m; });
-  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "guide");
+  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "start");
 })();
 
 /* ---- offline copy: the service worker keeps the page on the phone ---- */

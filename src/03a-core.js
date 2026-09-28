@@ -221,6 +221,20 @@ function finalFifty(n){
   return shuffle(out);
 }
 
+/* The short quiz behind Start Here: the problem-set misses and the
+   what-divides-by-what drills, and nothing else.                              */
+function essentialQuestions(n){
+  n = n || 15;
+  var miss = [], drill = [];
+  QB.forEach(function(b, i){
+    if(b.off) return;
+    if(b.m === 2) miss.push(fromBank(b, i));
+    else if(/^g-for-(divide|build|hooks|traps)$/.test(b.sec)) drill.push(fromBank(b, i));
+  });
+  var out = drawDistinct(shuffle(miss), Math.min(miss.length, Math.round(n * 0.4)));
+  return shuffle(drawDistinct(out.concat(shuffle(drill)), n));
+}
+
 /* ================================================================ decks and match */
 function deckFor(tp, id){
   var d = CH[tp].decks.filter(function(x){ return x.id === id; })[0] || CH[tp].decks[0];

@@ -45,13 +45,15 @@ function answerQuiz(root, label) {
 
 head('landing');
 ok(errors.length === 0, 'no errors while loading', errors.join(' || '));
-ok(visible($('#topic-guide')) && !visible($('#topic-gdp')), 'opens on the Guide');
+ok(visible($('#topic-start')) && visible(panel('start/page')) && !visible($('#topic-guide')) && !visible($('#topic-gdp')), 'opens on Start Here');
+ok($$('#topic-start .note-sec').length === 4 && $$('#topic-start table tr').length === 12 && $$('#start-misses li').length === 13, 'Start Here: four short lists', $$('#topic-start .note-sec').length);
+ok(w.localStorage.getItem('macro.seenStart') === '1', 'the first visit is remembered');
 const items = $$('#guideRoot .gitem');
 ok(items.length === 24, 'guide shows the 24 sections', items.length);
 ok(/0 of 24/.test($('#gCount').textContent), 'progress starts at 0 of 24', $('#gCount').textContent);
 ok(!!$('#guideRoot .handout') && $$('#guideRoot .handout .hrules li').length === 4 && /September 29/.test($('#guideRoot .handout h2').textContent), 'the header card: the exam and its four instructions');
 ok(/38 questions/.test($('#guideRoot .handout').textContent), 'the exam at a glance');
-ok($$('.topic-btn').length === 8 && $$('.topic-btn')[1].getAttribute('data-topic') === 'formulas', 'eight tabs, Formulas right after the Guide');
+ok($$('.topic-btn').length === 9 && $$('.topic-btn')[0].getAttribute('data-topic') === 'start' && $$('.topic-btn')[1].getAttribute('data-topic') === 'formulas' && $$('.topic-btn')[2].getAttribute('data-topic') === 'exam', 'nine tabs: Start Here, Formulas, Practice Exam first');
 
 head('guide checkboxes and jumps');
 const cb = $('#guideRoot input[data-g="g-for-divide"]'); cb.checked = true; cb.dispatchEvent(new w.Event('change', { bubbles: true }));
@@ -73,7 +75,7 @@ ok(visible(panel('exam/mock')) && !!$('#mxStart'), 'the practice-exam button ope
 head('every tab and mode');
 const modes = {};
 $$('.seg[data-modes]').forEach(s => { modes[s.getAttribute('data-modes')] = Array.from(s.querySelectorAll('button[data-mode]')).map(b => b.getAttribute('data-mode')); });
-ok(Object.keys(modes).length === 8, 'eight sections with modes', Object.keys(modes).join(','));
+ok(Object.keys(modes).length === 9, 'nine sections with modes', Object.keys(modes).join(','));
 Object.keys(modes).forEach(t => {
   topic(t);
   ok(visible($('#topic-' + t)), 'tab opens: ' + t);
@@ -86,6 +88,15 @@ Object.keys(modes).forEach(t => {
   });
 });
 ok(errors.length === 0, 'no errors after visiting every mode', errors.join(' || '));
+
+head('start here: the short quiz');
+topic('start');
+click($('#startGo'));
+ok(visible(panel('start/quiz')) && $$('#startQuiz .dots i').length === 15, 'the button opens a fifteen-question quiz', $$('#startQuiz .dots i').length);
+ok(Array.from($$('#startQuiz .qtag.tier')).every(t => /missed|Problem-set/.test(t.textContent)), 'it asks misses and drills');
+const sres = answerQuiz($('#startQuiz'), 'start');
+ok(!!sres && /\d+\/15/.test(sres.querySelector('.big').textContent), 'and reaches a score out of fifteen', sres && sres.querySelector('.big').textContent);
+click(sres.querySelector('.again')); ok($$('#startQuiz .dots i').length === 15, 'another fifteen');
 
 head('notes');
 tps.forEach(t => { topic(t); mode(t, 'notes'); ok($$('#' + t + 'Notes .note-sec').length >= 2, t + ': note sections rendered'); ok($$('#' + t + 'Notes .secnav a').length >= 2, t + ': section nav rendered'); ok($$('#' + t + 'Notes h3.sub').length >= 1, t + ': subsection headings rendered'); ok($$('#' + t + 'Notes .know').length >= 2, t + ': every section names its source'); });

@@ -1,0 +1,159 @@
+<div class="wrap">
+
+  <header>
+    <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true"><use href="#emblem"/></svg>
+    <p class="eyebrow">Study Guide</p>
+    <h1>Principles of Macroeconomics</h1>
+    <p class="sub">First Exam &middot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment</p>
+    <svg class="orn" viewBox="0 0 320 44" aria-hidden="true"><use href="#flourish"/></svg>
+  </header>
+
+  <nav class="topics" role="tablist" aria-label="Topics">
+    <button class="topic-btn" role="tab" data-topic="guide"  aria-selected="true">Guide</button>
+    <button class="topic-btn" role="tab" data-topic="formulas" aria-selected="false">Formulas</button>
+    <button class="topic-btn" role="tab" data-topic="gdp"    aria-selected="false">GDP</button>
+    <button class="topic-btn" role="tab" data-topic="growth" aria-selected="false">Growth</button>
+    <button class="topic-btn" role="tab" data-topic="labor"  aria-selected="false">Labor</button>
+    <button class="topic-btn" role="tab" data-topic="prices" aria-selected="false">Prices</button>
+    <button class="topic-btn" role="tab" data-topic="saving" aria-selected="false">Saving</button>
+    <button class="topic-btn" role="tab" data-topic="exam"   aria-selected="false">Practice Exam</button>
+  </nav>
+
+  <main>
+
+    <!-- ================= GUIDE ================= -->
+    <section class="topic" id="topic-guide">
+      <p class="intro">Everything the First Exam covers, in the order the class did it: Problem Sets 1&ndash;4 and the two Solow documents, through September 24. Check a section off once you can explain it and do its calculation without looking; <b>Study it</b> jumps to the notes, the small buttons to each subsection. The last group, <b>Formulas</b>, drills what divides by what.</p>
+      <div class="modes"><div class="seg" data-modes="guide">
+        <button type="button" data-mode="overview" aria-pressed="true">The review list</button>
+      </div></div>
+      <div class="panel" data-panel="guide/overview"><div id="guideRoot"></div></div>
+    </section>
+
+    <!-- ================= GDP ================= -->
+    <section class="topic" id="topic-gdp" hidden>
+      <p class="intro">Intro to macro and GDP: what macro is, the definition of GDP and the expenditure approach, what counts and what is left out, the limits of GDP, and real versus nominal.</p>
+      <div class="modes"><div class="seg" data-modes="gdp">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="gdp/notes"><div id="gdpNotes"></div></div>
+      <div class="panel" data-panel="gdp/cards" hidden>
+        <p class="hint">Front: the term. Back: what it means. Space flips, arrows move.</p>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="gdp"></div><button class="btn" type="button" data-shuffle="gdp">Shuffle deck</button></div>
+        <div id="gdpCards"></div>
+      </div>
+      <div class="panel" data-panel="gdp/match" hidden><p class="hint">Tap a term, then the line that defines it.</p><div id="gdpMatch"></div></div>
+      <div class="panel" data-panel="gdp/quiz" hidden><p class="hint">Multiple choice, true/false and calculations. Keys <kbd>1</kbd>&ndash;<kbd>4</kbd> answer, <kbd>Enter</kbd> moves on.</p><div id="gdpQuiz"></div></div>
+    </section>
+
+    <!-- ================= GROWTH ================= -->
+    <section class="topic" id="topic-growth" hidden>
+      <p class="intro">Long-run growth and the Solow model: the growth facts and the rule of 70, catch-up versus innovative growth, the model and its steady state, what shifts which curve, and what policy and institutions can do.</p>
+      <div class="modes"><div class="seg" data-modes="growth">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="growth/notes"><div id="growthNotes"></div></div>
+      <div class="panel" data-panel="growth/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="growth"></div><button class="btn" type="button" data-shuffle="growth">Shuffle deck</button></div>
+        <div id="growthCards"></div>
+      </div>
+      <div class="panel" data-panel="growth/match" hidden><div id="growthMatch"></div></div>
+      <div class="panel" data-panel="growth/quiz" hidden><div id="growthQuiz"></div></div>
+    </section>
+
+    <!-- ================= LABOR ================= -->
+    <section class="topic" id="topic-labor" hidden>
+      <p class="intro">The labor market: who counts as employed, unemployed or out of the labor force, the four rates and their worked examples, the types of unemployment and the natural rate, and how the rates move together.</p>
+      <div class="modes"><div class="seg" data-modes="labor">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="labor/notes"><div id="laborNotes"></div></div>
+      <div class="panel" data-panel="labor/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="labor"></div><button class="btn" type="button" data-shuffle="labor">Shuffle deck</button></div>
+        <div id="laborCards"></div>
+      </div>
+      <div class="panel" data-panel="labor/match" hidden><div id="laborMatch"></div></div>
+      <div class="panel" data-panel="labor/quiz" hidden><div id="laborQuiz"></div></div>
+    </section>
+
+    <!-- ================= PRICES ================= -->
+    <section class="topic" id="topic-prices" hidden>
+      <p class="intro">Price levels, the CPI and inflation: the index formulas and the worked examples, converting dollars between years, and the difference between inflation, disinflation and deflation.</p>
+      <div class="modes"><div class="seg" data-modes="prices">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="prices/notes"><div id="pricesNotes"></div></div>
+      <div class="panel" data-panel="prices/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="prices"></div><button class="btn" type="button" data-shuffle="prices">Shuffle deck</button></div>
+        <div id="pricesCards"></div>
+      </div>
+      <div class="panel" data-panel="prices/match" hidden><div id="pricesMatch"></div></div>
+      <div class="panel" data-panel="prices/quiz" hidden><div id="pricesQuiz"></div></div>
+    </section>
+
+    <!-- ================= SAVING ================= -->
+    <section class="topic" id="topic-saving" hidden>
+      <p class="intro">Saving and investment: national, private and public saving, the closed and open economy identities, what investment means in macro, and direct versus indirect financing.</p>
+      <div class="modes"><div class="seg" data-modes="saving">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="saving/notes"><div id="savingNotes"></div></div>
+      <div class="panel" data-panel="saving/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="saving"></div><button class="btn" type="button" data-shuffle="saving">Shuffle deck</button></div>
+        <div id="savingCards"></div>
+      </div>
+      <div class="panel" data-panel="saving/match" hidden><div id="savingMatch"></div></div>
+      <div class="panel" data-panel="saving/quiz" hidden><div id="savingQuiz"></div></div>
+    </section>
+
+    <!-- ================= FORMULAS ================= -->
+    <section class="topic" id="topic-formulas" hidden>
+      <p class="intro">What to divide by what. Every rate as <b>top &divide; bottom</b>, what multiplies and what subtracts, and the steps of every calculation on the exam &mdash; then flashcards, match and a quiz to drill them until they are automatic.</p>
+      <div class="modes"><div class="seg" data-modes="formulas">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="formulas/notes"><div id="formulasNotes"></div></div>
+      <div class="panel" data-panel="formulas/cards" hidden>
+        <p class="hint">Front: what you want. Back: what goes on top and what goes on the bottom.</p>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="formulas"></div><button class="btn" type="button" data-shuffle="formulas">Shuffle deck</button></div>
+        <div id="formulasCards"></div>
+      </div>
+      <div class="panel" data-panel="formulas/match" hidden><p class="hint">Tap what you want, then the formula that gives it.</p><div id="formulasMatch"></div></div>
+      <div class="panel" data-panel="formulas/quiz" hidden><p class="hint">Which number goes on the bottom, and calculations with fresh numbers.</p><div id="formulasQuiz"></div></div>
+    </section>
+
+    <!-- ================= PRACTICE EXAM ================= -->
+    <section class="topic" id="topic-exam" hidden>
+      <p class="intro">Questions from every topic, formulas included, in the exam&rsquo;s two styles: calculations and concept questions. Every one is labelled by where it comes from &mdash; a problem-set question you missed, a problem-set-style question, or the readings &mdash; so you can drill your misses first. Reshuffled each run, with the working behind every answer.</p>
+      <div class="modes"><div class="seg" data-modes="exam">
+        <button type="button" data-mode="mock" aria-pressed="true">Practice exam</button>
+      </div></div>
+      <div class="panel" data-panel="exam/mock"><div id="mockExam"></div></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Built from the course&rsquo;s Problem Sets 1&ndash;4, <i>Brief Summary of the Solow Growth Model</i>, <i>Mathematical Example of the Solow Model</i>, <i>Pitfalls in GDP Accounting</i> and the <i>Comparing Dollar Figures</i> exercise. On the exam, type calculations exactly as asked &mdash; dollar signs, commas and percent signs.</p>
+    <span class="keys">Flashcards <kbd>&larr;</kbd> <kbd>&rarr;</kbd> <kbd>Space</kbd> &nbsp;&middot;&nbsp; Quizzes <kbd>1</kbd>&ndash;<kbd>4</kbd> <kbd>Enter</kbd></span>
+  </footer>
+
+</div>

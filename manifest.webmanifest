@@ -1,0 +1,13 @@
+{
+  "name": "Principles of Macroeconomics — Study Guide",
+  "short_name": "Macro",
+  "description": "GDP, growth and the Solow model, the labor market, prices and inflation, saving and investment: notes, flashcards, matching, quizzes and a practice exam.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f1e8",
+  "theme_color": "#f5f1e8",
+  "icons": [
+    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

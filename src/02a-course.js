@@ -9,7 +9,7 @@ var COURSE = {
   "Type calculations exactly as asked — dollar signs, commas and percent signs.",
   "Review your problem-set misses first — every question they touch is marked.",
   "Know the formulas cold: the Formulas tab drills what divides by what and the steps of every calculation.",
-  "Expect the problem-set styles: fill-in calculations plus concept multiple choice."],
+  "Bring a real calculator — phone calculators are banned. Expect fill-in calculations plus concept multiple choice."],
  about:"Each heading below is one section of the exam's material. Every question and flashcard is tagged with its section and with where it comes from — a problem-set question you missed, a problem-set-style question, or a concept from the readings."
 };
 

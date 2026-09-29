@@ -10,6 +10,7 @@
 
   <nav class="topics" role="tablist" aria-label="Topics">
     <button class="topic-btn" role="tab" data-topic="list"     aria-selected="true">My List</button>
+    <button class="topic-btn" role="tab" data-topic="practice" aria-selected="false">Math Practice</button>
     <button class="topic-btn" role="tab" data-topic="formulas" aria-selected="false">Formulas</button>
     <button class="topic-btn" role="tab" data-topic="exam"     aria-selected="false">Practice Exam</button>
     <button class="topic-btn" role="tab" data-topic="gdp"      aria-selected="false">GDP</button>
@@ -37,6 +38,15 @@
         <div id="listCards"></div>
       </div>
       <div class="panel" data-panel="list/quiz" hidden><p class="hint">24 questions, one for every line. After each answer you see the line again.</p><div id="listQuiz"></div></div>
+    </section>
+
+    <!-- ================= MATH PRACTICE ================= -->
+    <section class="topic" id="topic-practice" hidden>
+      <p class="intro">Every formula with new numbers every time, the Solow model included, plus the professor&rsquo;s class exercises and your problem sets. Type the answer or tap it. Miss one and you get the answer, the working and the reminder.</p>
+      <div class="modes"><div class="seg" data-modes="practice">
+        <button type="button" data-mode="run" aria-pressed="true">Practice</button>
+      </div></div>
+      <div class="panel" data-panel="practice/run"><div id="practiceRoot"></div></div>
     </section>
 
     <!-- ================= GUIDE ================= -->

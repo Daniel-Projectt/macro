@@ -166,16 +166,49 @@ $("#listShuffle").addEventListener("click", function(){ engines.listCards.load(s
 $("#listOrder").addEventListener("click", function(){ engines.listCards.load(listDeck()); });
 engines.list = makeQuiz($("#listQuiz"), listQuestions, {byList:true, againLabel:"Another round of 24"});
 
-var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }};
-var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }};
+/* Math Practice: the settings screen, then the practice screen */
+var practiceCfg = getJSON("practicecfg", {topic:"all", gen:"", format:"mixed", source:"mixed", n:10});
+function renderPracticeSetup(){
+  function seg(id, attr, val, list){
+    return '<div class="seg" id="'+id+'">'+list.map(function(o){ return '<button type="button" '+attr+'="'+o[0]+'" aria-pressed="'+(String(o[0]) === String(val))+'">'+o[1]+'</button>'; }).join("")+'</div>';
+  }
+  var gens = GENS.filter(function(g){ return practiceCfg.topic === "all" || g.topic === practiceCfg.topic; });
+  if(practiceCfg.gen && gens.indexOf(GEN_BY_ID[practiceCfg.gen]) < 0) practiceCfg.gen = "";
+  $("#practiceRoot").innerHTML = '<div class="quizWrap"><div class="qcard card-corners">'+CORNERS+
+    '<div class="qnum">Math practice</div><p class="qtext">New numbers every time, plus the class exercises and your problem sets. Miss one and you get the answer, the working and the reminder.</p>'+
+    '<div class="setup">'+
+      '<div class="row"><span class="label">Topic</span><br>'+seg("pxT","data-t",practiceCfg.topic,PRACTICE_TOPICS)+'</div>'+
+      '<div class="row"><span class="label">One formula only</span><br><select id="pxG" class="pxsel" aria-label="One formula only"><option value="">All of them</option>'+
+        gens.map(function(g){ return '<option value="'+g.id+'"'+(practiceCfg.gen === g.id ? ' selected' : '')+'>'+g.name+'</option>'; }).join("")+'</select></div>'+
+      '<div class="row"><span class="label">How you answer</span><br>'+seg("pxF","data-f",practiceCfg.format,[["mixed","Mixed"],["type","Type the answer"],["mc","Tap an answer"]])+'</div>'+
+      '<div class="row"><span class="label">Numbers</span><br>'+seg("pxS","data-s",practiceCfg.source,[["mixed","Mixed"],["fresh","New numbers"],["class","Class and problem-set problems"]])+'</div>'+
+      '<div class="row"><span class="label">How many</span><br>'+seg("pxN","data-n",practiceCfg.n,[[10,"10"],[20,"20"],[40,"40"]])+'</div>'+
+      '<div class="row" style="margin-top:22px"><button class="btn primary" type="button" id="pxStart">Start</button></div>'+
+    '</div></div></div>';
+  function saveCfg(){ store.set("practicecfg", JSON.stringify(practiceCfg)); }
+  segWire("#pxT","data-t",function(v){ practiceCfg.topic = v; practiceCfg.gen = ""; saveCfg(); renderPracticeSetup(); });
+  $("#pxG").addEventListener("change", function(){ practiceCfg.gen = this.value; saveCfg(); });
+  segWire("#pxF","data-f",function(v){ practiceCfg.format = v; saveCfg(); });
+  segWire("#pxS","data-s",function(v){ practiceCfg.source = v; saveCfg(); });
+  segWire("#pxN","data-n",function(v){ practiceCfg.n = parseInt(v,10); saveCfg(); });
+  $("#pxStart").addEventListener("click", startPractice);
+  engines.practice = null;
+}
+function startPractice(){
+  engines.practice = makePractice($("#practiceRoot"), {onSetup:renderPracticeSetup});
+  engines.practice.start({topic:practiceCfg.topic, gen:practiceCfg.gen || null, format:practiceCfg.format, source:practiceCfg.source, n:practiceCfg.n});
+}
+
+var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }, "practice/run":function(){ if(!engines.practice) renderPracticeSetup(); }};
+var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }};
 CHAPTERS.forEach(function(tp){
   ON_SHOW[tp+"/match"] = function(){ engines[tp+"Match"].ensure(); };
   ON_SHOW[tp+"/quiz"]  = function(){ engines[tp+"Quiz"].ensure(); };
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["list","formulas","exam","gdp","growth","labor","prices","saving","guide"];
-var currentTopic = "list", currentMode = {list:"page", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
+var TOPICS = ["list","practice","formulas","exam","gdp","growth","labor","prices","saving","guide"];
+var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });

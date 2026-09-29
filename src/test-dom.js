@@ -43,6 +43,22 @@ function answerQuiz(root, label) {
   return root.querySelector('.qbody .result');
 }
 
+function answerPractice(root, labels) {
+  let guard = 0;
+  while (guard++ < 120) {
+    const body = root.querySelector('.qbody');
+    if (!body || body.querySelector('.result')) break;
+    if (labels) { const t = body.querySelector('.qtag'); if (t) labels.add(t.textContent); }
+    const ins = body.querySelectorAll('.numin');
+    if (ins.length) { ins.forEach(i => { i.value = i.getAttribute('inputmode') === 'text' ? 'yes' : '12345.678'; }); click(body.querySelector('.check')); }
+    else { const opts = Array.from(body.querySelectorAll('.opt')); if (!opts.length) break; click(opts[Math.floor(Math.random() * opts.length)]); }
+    ok(/Correct|Not this one/.test(body.querySelector('.feedback').textContent), 'practice: every answer gets feedback');
+    const nb = body.querySelector('.next'); if (!nb || nb.hidden) break;
+    click(nb);
+  }
+  return root.querySelector('.qbody .result');
+}
+
 head('landing');
 ok(errors.length === 0, 'no errors while loading', errors.join(' || '));
 ok(visible($('#topic-list')) && visible(panel('list/page')) && !visible($('#topic-guide')) && !visible($('#topic-gdp')), 'opens on My List');
@@ -53,7 +69,7 @@ ok(items.length === 24, 'guide shows the 24 sections', items.length);
 ok(/0 of 24/.test($('#gCount').textContent), 'progress starts at 0 of 24', $('#gCount').textContent);
 ok(!!$('#guideRoot .handout') && $$('#guideRoot .handout .hrules li').length === 4 && /September 29/.test($('#guideRoot .handout h2').textContent), 'the header card: the exam and its four instructions');
 ok(/38 questions/.test($('#guideRoot .handout').textContent), 'the exam at a glance');
-ok($$('.topic-btn').length === 9 && $$('.topic-btn')[0].getAttribute('data-topic') === 'list' && $$('.topic-btn')[1].getAttribute('data-topic') === 'formulas' && $$('.topic-btn')[2].getAttribute('data-topic') === 'exam', 'nine tabs: My List, Formulas, Practice Exam first');
+ok($$('.topic-btn').length === 10 && ['list', 'practice', 'formulas', 'exam'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'ten tabs: My List, Math Practice, Formulas, Practice Exam first');
 
 head('guide checkboxes and jumps');
 const cb = $('#guideRoot input[data-g="g-for-divide"]'); cb.checked = true; cb.dispatchEvent(new w.Event('change', { bubbles: true }));
@@ -75,7 +91,7 @@ ok(visible(panel('exam/mock')) && !!$('#mxStart'), 'the practice-exam button ope
 head('every tab and mode');
 const modes = {};
 $$('.seg[data-modes]').forEach(s => { modes[s.getAttribute('data-modes')] = Array.from(s.querySelectorAll('button[data-mode]')).map(b => b.getAttribute('data-mode')); });
-ok(Object.keys(modes).length === 9, 'nine sections with modes', Object.keys(modes).join(','));
+ok(Object.keys(modes).length === 10, 'ten sections with modes', Object.keys(modes).join(','));
 Object.keys(modes).forEach(t => {
   topic(t);
   ok(visible($('#topic-' + t)), 'tab opens: ' + t);
@@ -122,6 +138,51 @@ if (lmiss) {
   answerQuiz($('#listQuiz'), 'list misses');
 }
 click($('#listQuiz .again')); ok($$('#listQuiz .dots i').length === 24, 'another round of 24');
+
+head('math practice');
+topic('practice');
+ok(visible(panel('practice/run')) && !!$('#pxStart'), 'the practice setup shows');
+click($('#pxT button[data-t="solow"]'));
+ok($$('#pxG option').length >= 4, 'the formula menu lists the Solow problems', $$('#pxG option').length);
+click($('#pxF button[data-f="type"]')); click($('#pxS button[data-s="fresh"]')); click($('#pxN button[data-n="10"]')); click($('#pxStart'));
+ok($$('#practiceRoot .dots i').length === 10, 'ten Solow problems', $$('#practiceRoot .dots i').length);
+const pb1 = $('#practiceRoot .qbody');
+ok(!!pb1.querySelector('.numin') && /Solow/.test(pb1.querySelector('.qnum').textContent), 'a typed Solow problem');
+click(pb1.querySelector('.check'));
+ok(/Type an answer/.test(pb1.querySelector('.feedback').textContent) && !pb1.querySelector('.numin').disabled, 'an empty box is not marked');
+pb1.querySelectorAll('.numin').forEach(i => { i.value = 'abc'; });
+click(pb1.querySelector('.check'));
+ok(/Type a number/.test(pb1.querySelector('.feedback').textContent) && !pb1.querySelector('.numin').disabled, 'letters are not marked either');
+pb1.querySelectorAll('.numin').forEach(i => { i.value = i.getAttribute('inputmode') === 'text' ? 'maybe' : '999999'; });
+click(pb1.querySelector('.check'));
+ok(/Not this one/.test(pb1.querySelector('.feedback').textContent) && /Remember:/.test(pb1.querySelector('.feedback').textContent), 'a wrong answer shows the answer, the working and the reminder');
+ok(Array.from(pb1.querySelectorAll('.numin')).every(i => i.disabled && i.classList.contains('wrong')), 'the boxes lock and turn red');
+click(pb1.querySelector('.next'));
+const pb2 = $('#practiceRoot .qbody'), ins2 = pb2.querySelectorAll('.numin');
+ins2.forEach(i => { i.value = '1'; });
+ins2[ins2.length - 1].dispatchEvent(new w.KeyboardEvent('keydown', {key: 'Enter', bubbles: true}));
+ok(ins2[0].disabled, 'Enter in the last box checks the answer');
+click(pb2.querySelector('.next'));
+const pres = answerPractice($('#practiceRoot'));
+ok(!!pres && /\d+\/10/.test(pres.querySelector('.big').textContent), 'the set ends with a score', pres && pres.querySelector('.big').textContent);
+ok(pres.querySelectorAll('.gres tr').length >= 1, 'with a line for each kind of problem');
+const pm = pres.querySelector('.missed');
+if (pm) {
+  const n = pres.querySelectorAll('.misslist > div').length;
+  click(pm);
+  ok($$('#practiceRoot .dots i').length === n, 'practice the misses: the same kinds again, new numbers', $$('#practiceRoot .dots i').length + ' vs ' + n);
+  answerPractice($('#practiceRoot'));
+}
+click($('#practiceRoot .setupbtn'));
+click($('#pxT button[data-t="all"]')); click($('#pxF button[data-f="mc"]')); click($('#pxS button[data-s="class"]')); click($('#pxN button[data-n="40"]')); click($('#pxStart'));
+const nClass = $$('#practiceRoot .dots i').length;
+ok(nClass >= 15 && nClass <= 40, 'the class and problem-set problems', nClass);
+ok(/Class|Problem Set|Course/.test(($('#practiceRoot .qtag.src') || {}).textContent || ''), 'each one says where it comes from');
+const plabels = new Set();
+answerPractice($('#practiceRoot'), plabels);
+ok(plabels.size >= 2, 'tapped answers come in more than one format', [...plabels].join(', '));
+ok(/"source":"class"/.test(w.localStorage.getItem('macro.practicecfg') || ''), 'practice settings are remembered');
+ok(/sol-/.test(w.localStorage.getItem('macro.pstats') || ''), 'results are remembered, so misses come back more often');
 
 head('notes');
 tps.forEach(t => { topic(t); mode(t, 'notes'); ok($$('#' + t + 'Notes .note-sec').length >= 2, t + ': note sections rendered'); ok($$('#' + t + 'Notes .secnav a').length >= 2, t + ': section nav rendered'); ok($$('#' + t + 'Notes h3.sub').length >= 1, t + ': subsection headings rendered'); ok($$('#' + t + 'Notes .know').length >= 2, t + ': every section names its source'); });

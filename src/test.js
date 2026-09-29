@@ -28,7 +28,7 @@ const anchorExists = id => tps.some(tp => A.CH[tp].notes.some(n => n.id === id))
 head('the outline');
 ok(A.COURSE.code === 'Principles of Macroeconomics' && A.COURSE.term === 'First Exam' && /September 29/.test(A.COURSE.exam), 'course, exam and date');
 ok(/38 questions, 60 points, 75 minutes/.test(A.COURSE.scope) && /Problem Sets 1–4/.test(A.COURSE.scope), 'scope line: the exam at a glance');
-ok(A.COURSE.rules.length === 4 && /exactly as asked/.test(A.COURSE.rules[0]) && /misses/.test(A.COURSE.rules[1]) && /Formulas tab/.test(A.COURSE.rules[2]) && /calculations/.test(A.COURSE.rules[3]), 'the four instructions');
+ok(A.COURSE.rules.length === 4 && /exactly as asked/.test(A.COURSE.rules[0]) && /misses/.test(A.COURSE.rules[1]) && /Formulas tab/.test(A.COURSE.rules[2]) && /calculations/.test(A.COURSE.rules[3]) && /calculator/.test(A.COURSE.rules[3]), 'the four instructions');
 const HEADS = ['Intro to Macro and GDP', 'Long-Run Growth and the Solow Model', 'The Labor Market', 'Price Levels, CPI and Inflation', 'Saving and Investment', 'Formulas — What Divides by What'];
 ok(A.GUIDE.sections.length === 6 && A.GUIDE.sections.every((s, i) => s.tp === tps[i] && s.h === HEADS[i]), 'five units in class order, then the formulas', A.GUIDE.sections.map(s => s.h).join(' | '));
 const OUTLINE = {
@@ -228,6 +228,116 @@ for (let r = 0; r < 40; r++) {
 }
 console.log('  tiers: missed=' + byTier[2].length + ' problem-set=' + byTier[1].length + ' readings=' + byTier[0].length);
 
+// ---------- math practice ----------
+head('math practice');
+const calc = s => {
+  const js = String(s).replace(/\$/g, '').replace(/(\d),(?=\d{3}\b)/g, '$1').replace(/−/g, '-').replace(/×/g, '*').replace(/÷/g, '/')
+    .replace(/√\(/g, 'Math.sqrt(').replace(/√([\d.]+)/g, 'Math.sqrt($1)').replace(/∛([\d.]+)/g, 'Math.cbrt($1)').replace(/²/g, '**2');
+  if (/[^0-9+\-*/(). Mathsqrcb]/.test(js)) return NaN;
+  try { return Function('"use strict"; return (' + js + ');')(); } catch (e) { return NaN; }
+};
+const numsIn = t => (String(t).replace(/\$/g, '').match(/−?\d[\d,]*\.?\d*/g) || []).map(x => parseFloat(x.replace(/,/g, '').replace('−', '-')));
+ok(A.GENS.length >= 20, 'enough kinds of problem', A.GENS.length);
+['gdp', 'growth', 'solow', 'labor', 'prices', 'saving'].forEach(t => ok(A.GENS.some(g => g.topic === t), 'practice covers ' + t));
+ok(A.GENS.every(g => g.name && g.remind && g.topic), 'every kind of problem has a name and a reminder');
+ok(A.GENS.filter(g => g.row).every(g => A.LIST_ROWS.some(r => r.id === g.row)), 'the reminders point at real lines of the list');
+[['$4,700', 4700], ['4700', 4700], ['33.33%', 33.33], ['−200', -200], ['-$200', -200], ['(200)', -200], ['2.7 million', 2700000], ['1.2 billion', 1200000000], ['.5', 0.5], ['$1,234.50', 1234.5], ['14 years', 14]]
+  .forEach(([s, v]) => ok(Math.abs(A.parseAnswer(s) - v) < 1e-6, 'reads a typed answer: ' + s, A.parseAnswer(s)));
+['', 'abc', '1.2.3', '   '].forEach(s => ok(A.parseAnswer(s) === null, 'rejects "' + s + '"'));
+const pc = {a: 33.33, d: 2, unit: '%'};
+ok(A.checkPart('33.33', pc).ok && A.checkPart('33.33%', pc).ok && !A.checkPart('33.3', pc).ok && !A.checkPart('25', pc).ok, 'a percent must be right to the second decimal');
+ok(A.checkPart('0.3333', pc).slip === 'decimal', 'a decimal typed for a percent is spotted');
+ok(A.checkPart('-33.33', pc).slip === 'sign', 'a wrong sign is spotted');
+ok(A.checkPart('', pc).blank, 'a blank box is not marked');
+const cnt = {a: 42300000, d: 0, unit: ''};
+ok(A.checkPart('42,300,000', cnt).ok && A.checkPart('42.3 million', cnt).ok && !A.checkPart('42,000,000', cnt).ok, 'a count must be exact — every digit');
+const yn = {kind: 'word', accept: ['yes', 'y']};
+ok(A.checkPart('yes', yn).ok && A.checkPart('Yes!', yn).ok && !A.checkPart('no', yn).ok && A.checkPart('', yn).blank, 'yes-or-no answers are read');
+// every generator, every variant, many times: the math has to check out
+let partsSeen = 0;
+const checkBase = (id, b) => {
+  ok(b && typeof b.text === 'string' && b.text.length > 20, id + ': a scenario');
+  if (b.choice && !(b.parts && b.parts.length)) {
+    ok(b.choice.opts.length >= 3 && b.choice.opts[b.choice.right] && b.choice.work && new Set(b.choice.opts).size === b.choice.opts.length, id + ': a complete choice question');
+    return;
+  }
+  ok(Array.isArray(b.parts) && b.parts.length >= 1, id + ': at least one thing to find');
+  b.parts.concat(b.multi || []).forEach(p => {
+    if (p.kind === 'word') { ok(p.accept && p.accept.length && p.shown && p.work && p.label, id + '/' + p.key + ': a complete yes-or-no part'); return; }
+    partsSeen++;
+    ok(p.key && p.name && typeof p.a === 'number' && isFinite(p.a) && typeof p.d === 'number' && p.work, id + '/' + p.key + ': a complete part', JSON.stringify(p).slice(0, 160));
+    ok(numsIn(p.work).some(n => Math.abs(n - p.a) <= (p.d ? Math.pow(10, -p.d) : 0.5) + 1e-9), id + '/' + p.key + ': the working reaches the answer', p.work + ' || ' + p.a);
+    ok(A.checkPart(A.shown(p), p).ok, id + '/' + p.key + ': typing the answer as shown counts as right', A.shown(p));
+    const w = A.wrongFor(p);
+    ok(w.length === 3 && new Set(w.map(x => A.show(x, p.unit, p.d))).size === 3 && w.every(x => A.show(x, p.unit, p.d) !== A.shown(p)), id + '/' + p.key + ': three different wrong answers', w.join(', ') + ' vs ' + A.shown(p));
+    ok(w.every(x => !A.checkPart(A.show(x, p.unit, p.d), p).ok), id + '/' + p.key + ': a wrong answer is never marked right');
+    if (!p.signed) ok(w.every(x => x >= 0), id + '/' + p.key + ': no negative distractor where the answer cannot be negative', w.join(', '));
+    if (p.setup) {
+      const rv = calc(p.setup.right);
+      ok(Math.abs(rv - p.a) <= Math.max(0.02, (p.d ? 0.5 * Math.pow(10, -p.d) : 0.5) + 1e-9, Math.abs(p.a) * 0.003), id + '/' + p.key + ': the right calculation gives the answer', p.setup.right + ' = ' + rv + ' vs ' + p.a);
+      ok(p.setup.wrong.length >= 3, id + '/' + p.key + ': three wrong calculations');
+      p.setup.wrong.forEach(x => ok(isFinite(calc(x)) && A.show(calc(x), p.unit, p.d) !== A.shown(p), id + '/' + p.key + ': a wrong calculation never gives the answer', x + ' = ' + calc(x)));
+    }
+  });
+};
+A.GENS.forEach(g => {
+  const vs = g.variants ? Array.from({length: g.variants}, (_, i) => i + 1) : [undefined];
+  vs.forEach(v => { for (let r = 0; r < 150; r++) checkBase(g.id + (v ? '/' + v : ''), g.make(v)); });
+});
+A.FIXED.forEach(f => checkBase(f.id, f.make()));
+console.log('  practice: ' + A.GENS.length + ' kinds of problem, ' + A.FIXED.length + ' class and problem-set problems, ' + partsSeen + ' parts checked');
+// the professor's own numbers
+const fx = id => A.FIXED_BY_ID[id].make();
+const part = (b, key) => b.parts.find(p => p.key === key).a;
+ok(['nom2023', 'nom2024', 'nom2025', 'real2023', 'real2024', 'real2025'].map(k => part(fx('class-gdp'), k)).join() === '200,600,1200,200,350,500', 'class exercise: nominal and real GDP (hot dogs and hamburgers)');
+ok(part(fx('class-growth'), 'mexico') === 2.46 && part(fx('class-growth'), 'china') === 5.31, 'class exercise: Mexico 2.46%, China 5.31%');
+ok(part(fx('class-labor'), 'LF') === 1800 && part(fx('class-labor'), 'u') === 11.11 && part(fx('class-labor'), 'lfpr') === 56.25 && part(fx('class-labor'), 'epr') === 50, 'class exercise: 1,800, 11.11%, 56.25%, 50%');
+ok(part(fx('class-cpi'), 'cost2024') === 89.75 && part(fx('class-cpi'), 'cost2025') === 93 && part(fx('class-cpi'), 'cpi2025') === 103.62 && part(fx('class-cpi'), 'inf') === 3.62, 'class exercise: $89.75, $93.00, 103.62, 3.62%');
+ok(['y2', 'y3', 'mp2', 'mp3', 'mp4'].map(k => part(fx('class-mpk'), k)).join() === '1.41,1.73,0.41,0.32,0.27', 'class table: diminishing returns');
+ok(part(fx('class-70'), 'yrs') === 35, 'class example: 70 ÷ 2 = 35 years');
+ok(part(fx('ps2-solow'), 'Y') === 8.94 && part(fx('ps2-steady'), 'K') === 121 && part(fx('ps2-steady'), 'C') === 10.89, 'problem set 2: the Solow numbers');
+ok(part(fx('ps3-gondor'), 'E') === 42300000 && part(fx('ps3-osgiliath'), 'nat') === 2 && part(fx('ps4-basket'), 'inf') === 33.33 && part(fx('ps1-gondor'), 'gdp') === 6200, 'the problem-set misses keep their numbers');
+// every problem can be asked every way
+const allowed = {mixed: ['type', 'multi', 'mc', 'tf', 'setup', 'choice'], type: ['type', 'multi', 'choice'], mc: ['mc', 'tf', 'setup', 'choice']};
+const checkQ = (label, q, fmt) => {
+  ok(allowed[fmt].includes(q.fmt), label + ' (' + fmt + '): an allowed format', q.fmt);
+  ok(q.text && q.name && q.remind && q.topicName, label + ': a complete question');
+  if (q.opts) {
+    ok(q.opts.filter(o => o.ok).length === 1, label + ': exactly one right option', q.opts.map(o => o.html).join(' | '));
+    ok(new Set(q.opts.map(o => o.html)).size === q.opts.length && q.opts.length >= (q.fmt === 'tf' ? 2 : 3), label + ': distinct options', q.opts.map(o => o.html).join(' | '));
+    if (q.fmt === 'mc') ok(q.opts.find(o => o.ok).html === A.shown(q.parts[0]), label + ': the right option is the answer');
+    if (q.fmt === 'tf') ok((A.show(q.claimed, q.parts[0].unit, q.parts[0].d) === A.shown(q.parts[0])) === q.opts[0].ok, label + ': true means the claim is the answer');
+    if (q.fmt === 'setup') q.opts.forEach(o => ok(o.ok === (A.show(calc(o.html), q.parts[0].unit, q.parts[0].d) === A.shown(q.parts[0])) || (o.ok && Math.abs(calc(o.html) - q.parts[0].a) <= Math.max(0.02, (q.parts[0].d ? 0.5 * Math.pow(10, -q.parts[0].d) : 0.5) + 1e-9, Math.abs(q.parts[0].a) * 0.003)), label + ': only the right calculation gives the answer', o.html));
+  } else {
+    ok(q.parts && q.parts.length >= 1, label + ': boxes to type in');
+    if (q.fmt === 'multi') ok(q.parts.length >= 2, label + ': several parts');
+  }
+};
+A.GENS.forEach(g => ['mixed', 'type', 'mc'].forEach(fmt => { for (let r = 0; r < 25; r++) checkQ(g.id, A.formatProblem(g, A.baseOf(g), fmt), fmt); }));
+A.FIXED.forEach(f => ['mixed', 'type', 'mc'].forEach(fmt => { for (let r = 0; r < 10; r++) checkQ(f.id, A.formatProblem(A.GEN_BY_ID[f.gen], A.baseOf(null, 0, f.id), fmt), fmt); }));
+// the practice sets
+for (let r = 0; r < 30; r++) {
+  [10, 20, 40].forEach(n => {
+    const qs = A.practiceQuestions({topic: 'all', format: 'mixed', source: 'mixed', n: n});
+    ok(qs.length === n && new Set(qs.map(q => q.key)).size === n, 'a set of ' + n + ', no repeats', qs.length);
+    if (n === 40) ok(new Set(qs.map(q => q.topic)).size === 6, 'forty problems reach all six topics', [...new Set(qs.map(q => q.topic))].join(','));
+  });
+  ['gdp', 'growth', 'solow', 'labor', 'prices', 'saving'].forEach(t => ok(A.practiceQuestions({topic: t, n: 10}).every(q => q.topic === t), 'only ' + t + ' when asked'));
+  ok(A.practiceQuestions({topic: 'all', format: 'type', n: 20}).every(q => q.fmt === 'type' || q.fmt === 'multi'), 'type-the-answer sets have only typed answers');
+  ok(A.practiceQuestions({topic: 'all', format: 'mc', n: 20}).every(q => ['mc', 'tf', 'setup', 'choice'].includes(q.fmt)), 'tap-an-answer sets have only tapped answers');
+  ok(A.practiceQuestions({topic: 'all', source: 'fresh', n: 20}).every(q => !q.fixed), 'new numbers only when asked');
+  const cls = A.practiceQuestions({topic: 'all', source: 'class', n: 40});
+  ok(cls.length === A.FIXED.length && cls.every(q => q.fixed && q.src), 'every class and problem-set problem, once each', cls.length);
+  const one = A.practiceQuestions({gen: 'sol-atk', n: 10});
+  ok(one.length === 10 && one.every(q => q.gen === 'sol-atk'), 'one formula only');
+}
+const firstSet = A.practiceQuestions({topic: 'all', n: 20});
+const again = A.practiceQuestions({again: firstSet.map(q => ({gen: q.gen, v: q.v, fixed: q.fixed, fmt: q.fmt, part: q.part}))});
+ok(again.length === 20 && again.every((q, i) => q.gen === firstSet[i].gen && (q.fmt === firstSet[i].fmt || (firstSet[i].fmt === 'setup' && q.fmt === 'type'))), 'practice the misses: the same kinds of problem again');
+ok(again.every((q, i) => !firstSet[i].fixed || q.fixed === firstSet[i].fixed), 'a missed class problem comes back as itself');
+const bag = A.bagOf(A.GENS.slice(0, 4), {[A.GENS[0].id]: [1, 0], [A.GENS[1].id]: [1, 1]});
+ok(bag.length === 5 && bag.filter(g => g === A.GENS[0]).length === 2, 'a recently missed kind of problem comes up twice as often');
+
 // ---------- 4. question bank ----------
 head('question bank');
 tps.forEach(tp => {
@@ -304,7 +414,7 @@ ok(/<b>Correct\.<\/b>/.test(src) && /<b>Not this one\.<\/b>/.test(src), 'answer 
 
 head('markup');
 const ids = [...new Set((src.match(/\$\("#([A-Za-z0-9_-]+)"/g) || []).map(s => s.slice(4, -1)))];
-const dynamic = ['gCount', 'gBar', 'gPrint', 'mxN', 'mxT', 'mxP', 'mxF', 'mxStart', 'mxFifty', 'mlCover', 'mlHint', 'mlTable', 'mlQuiz', 'mlCards'];
+const dynamic = ['gCount', 'gBar', 'gPrint', 'mxN', 'mxT', 'mxP', 'mxF', 'mxStart', 'mxFifty', 'mlCover', 'mlHint', 'mlTable', 'mlQuiz', 'mlCards', 'pxT', 'pxG', 'pxF', 'pxS', 'pxN', 'pxStart'];
 const missing = ids.filter(id => !html.includes('id="' + id + '"') && !dynamic.includes(id));
 ok(missing.length === 0, 'every element referenced by id exists', missing.join(', '));
 tps.forEach(tp => ['Notes', 'Cards', 'Match', 'Quiz'].forEach(s => ok(html.includes('id="' + tp + s + '"'), 'topic root exists: ' + tp + s)));
@@ -314,8 +424,8 @@ panels.forEach(pn => {
   ok(html.includes('data-modes="' + t + '"'), 'panel ' + pn + ' has a mode switch');
   ok(new RegExp('data-modes="' + t + '"[\\s\\S]*?data-mode="' + mo + '"').test(html), 'panel ' + pn + ' has its mode button');
 });
-['list', 'guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
-ok((html.match(/class="topic-btn"/g) || []).length === 9, 'nine tabs');
+['list', 'practice', 'guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
+ok((html.match(/class="topic-btn"/g) || []).length === 10, 'ten tabs');
 ok(/data-topic="list"\s+aria-selected="true"/.test(html) && html.indexOf('data-topic="list"') < html.indexOf('data-topic="formulas"') && /My List<\/button>/.test(html) && !/data-topic="start"/.test(html), 'My List is the first, default tab');
 ok((html.match(/<script>/g) || []).length === 1, 'a single script block');
 ['div', 'section', 'button', 'nav', 'main', 'header', 'footer', 'svg', 'symbol', 'table', 'g', 'ol', 'ul', 'h3', 'h4', 'thead', 'tbody', 'tr', 'span', 'sub', 'sup'].forEach(t => {

@@ -133,20 +133,49 @@ CHAPTERS.forEach(function(tp){
   renderNotes(tp);
 });
 renderGuide();
-/* Start Here: a static page and one short quiz */
-engines.start = makeQuiz($("#startQuiz"), function(){ return essentialQuestions(15); }, {showTopic:true, showTier:true, againLabel:"Another fifteen"});
-$("#startGo").addEventListener("click", function(){ showMode("start", "quiz"); window.scrollTo({top:$(".topics").offsetTop - 8, behavior:"smooth"}); });
+/* My List: the page with a cover over the answers, its flashcards, and the quiz */
+function renderList(){
+  var html = '<div class="mlbar"><button class="btn" type="button" id="mlCover" aria-pressed="false">Hide the answers</button><span class="mlhint" id="mlHint" hidden>Tap a line to check it</span></div>'+
+    '<div class="tblwrap"><table class="tbl fit c2 mylist" id="mlTable"><thead><tr><th>Cue</th><th>Say this</th></tr></thead><tbody>';
+  LIST.forEach(function(g){
+    html += '<tr class="chrow"><td colspan="2">'+g.ch+'</td></tr>';
+    g.rows.forEach(function(r){ html += '<tr class="mrow" data-row="'+r.id+'"><td class="head">'+r.cue+'</td><td class="sm ans">'+r.line+'</td></tr>'; });
+  });
+  html += '</tbody></table></div>'+
+    '<div class="toolbar" style="justify-content:center;margin-top:22px"><button class="btn primary" type="button" id="mlQuiz">Quiz me on all 24</button><button class="btn" type="button" id="mlCards">Flashcards</button></div>';
+  $("#listRoot").innerHTML = html;
+  var table = $("#mlTable"), cover = $("#mlCover");
+  cover.addEventListener("click", function(){
+    var on = !table.classList.contains("covered");
+    table.classList.toggle("covered", on);
+    $$("#mlTable tr.shown").forEach(function(tr){ tr.classList.remove("shown"); });
+    cover.setAttribute("aria-pressed", String(on));
+    cover.textContent = on ? "Show all the answers" : "Hide the answers";
+    $("#mlHint").hidden = !on;
+  });
+  $$("#mlTable tr.mrow").forEach(function(tr){
+    tr.addEventListener("click", function(){ if(table.classList.contains("covered")) tr.classList.toggle("shown"); });
+  });
+  function jump(mode){ showMode("list", mode); window.scrollTo({top:$(".topics").offsetTop - 8, behavior:"smooth"}); }
+  $("#mlQuiz").addEventListener("click", function(){ jump("quiz"); });
+  $("#mlCards").addEventListener("click", function(){ jump("cards"); });
+}
+renderList();
+engines.listCards = makeCards($("#listCards")); engines.listCards.load(listDeck());
+$("#listShuffle").addEventListener("click", function(){ engines.listCards.load(shuffle(listDeck())); });
+$("#listOrder").addEventListener("click", function(){ engines.listCards.load(listDeck()); });
+engines.list = makeQuiz($("#listQuiz"), listQuestions, {byList:true, againLabel:"Another round of 24"});
 
-var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "start/quiz":function(){ engines.start.ensure(); }};
-var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "start/quiz":function(e){ return engines.start.keys(e); }};
+var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }};
+var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }};
 CHAPTERS.forEach(function(tp){
   ON_SHOW[tp+"/match"] = function(){ engines[tp+"Match"].ensure(); };
   ON_SHOW[tp+"/quiz"]  = function(){ engines[tp+"Quiz"].ensure(); };
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["start","formulas","exam","gdp","growth","labor","prices","saving","guide"];
-var currentTopic = "start", currentMode = {start:"page", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
+var TOPICS = ["list","formulas","exam","gdp","growth","labor","prices","saving","guide"];
+var currentTopic = "list", currentMode = {list:"page", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });
@@ -182,10 +211,10 @@ document.addEventListener("keydown", function(e){
 /* ---- come back to where you were ---- */
 (function(){
   var t = store.get("topic");
-  /* the first visit after Start Here was added lands on it, whatever was open before */
-  if(!store.get("seenStart")){ t = "start"; store.set("seenStart", "1"); store.set("mode.start", "page"); }
+  /* the first visit after My List was added lands on it, whatever was open before */
+  if(!store.get("seenList")){ t = "list"; store.set("seenList", "1"); store.set("mode.list", "page"); }
   TOPICS.forEach(function(k){ var m = store.get("mode."+k); if(m && $('.seg[data-modes="'+k+'"] button[data-mode="'+m+'"]')) currentMode[k] = m; });
-  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "start");
+  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "list");
 })();
 
 /* ---- offline copy: the service worker keeps the page on the phone ---- */

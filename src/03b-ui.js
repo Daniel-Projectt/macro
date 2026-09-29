@@ -2,7 +2,7 @@
 if(typeof window === "undefined"){
   module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
-    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, essentialQuestions:essentialQuestions, meaningOf:meaningOf, sameThing:sameThing,
+    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,
     deckFor:deckFor, matchRound:matchRound, verdictFor:verdictFor};
   return;
@@ -112,7 +112,7 @@ function makeQuiz(root, gen, opts){
   }
   function tagFor(q){
     var t = q.ap ? "Application" : (q.kind === "tf" ? "True or false" : (q.kind === "id" ? "Identification" : "Multiple choice"));
-    return '<span class="qtag">'+t+'</span>' + (SEC_TITLES[q.sec] ? '<span class="qtag sec">'+SEC_TITLES[q.sec]+'</span>' : '')
+    return '<span class="qtag">'+t+'</span>' + (q.cue ? '<span class="qtag sec">'+q.cue+'</span>' : (SEC_TITLES[q.sec] ? '<span class="qtag sec">'+SEC_TITLES[q.sec]+'</span>' : ''))
       + (opts.showTier ? '<span class="qtag tier t'+(q.hot||0)+'">'+TIER_TITLES[q.hot||0]+'</span>' : '');
   }
   function render(){
@@ -121,7 +121,7 @@ function makeQuiz(root, gen, opts){
     var q = qs[qi]; answered = false;
     body.innerHTML =
       '<div class="qcard card-corners">'+CORNERS+
-        '<div class="qnum">Question '+(qi+1)+' of '+qs.length+(opts.showTopic ? ' &middot; '+TOPIC_NAMES[q.tp] : '')+'</div>'+
+        '<div class="qnum">Question '+(qi+1)+' of '+qs.length+(opts.showTopic ? ' &middot; '+TOPIC_NAMES[q.tp] : (q.ch ? ' &middot; '+q.ch : ''))+'</div>'+
         '<div style="text-align:center;margin-top:10px">'+tagFor(q)+'</div>'+
         '<p class="qtext">'+q.text+'</p>'+
         '<div class="opts'+(q.kind === "tf" ? " two" : "")+'"></div><p class="feedback"></p>'+
@@ -178,6 +178,16 @@ function makeQuiz(root, gen, opts){
         return '<tr><td class="sm"><b>'+t.t+'</b><span class="tsub">'+t.s+'</span></td><td class="num">'+ok+' / '+mine.length+'</td></tr>';
       }).join("");
       html += '<div class="tblwrap" style="max-width:600px;margin:22px auto 0"><table class="tbl n0"><tbody>'+trows+'</tbody></table></div>';
+    }
+    if(opts.byList){
+      /* one row per line of the list: which lines are solid and which need another pass */
+      var lrows = "";
+      LIST.forEach(function(g){ g.rows.forEach(function(r){
+        var mine = qs.filter(function(q){ return q.row === r.id; }); if(!mine.length) return;
+        var ok = mine.every(function(q){ return q.got; });
+        lrows += '<tr class="'+(ok ? 'lok' : 'lno')+'"><td class="sm"><span class="secch">'+g.ch+'</span>'+r.cue+'</td><td class="num">'+(ok ? '&#10003;' : '&#10007;')+'</td></tr>';
+      }); });
+      html += '<div class="tblwrap" style="max-width:600px;margin:22px auto 0"><table class="tbl n0 lres"><tbody>'+lrows+'</tbody></table></div>';
     }
     /* an identification miss already reads "term — meaning", so it gets no second line */
     if(missed.length){ html += '<div class="misslist">' + missed.map(function(q){ return '<div><span class="g">'+q.miss+'</span>'+(q.kind === "id" ? '' : '<span class="t">'+q.explain+'</span>')+'</div>'; }).join("") + '</div>'; }

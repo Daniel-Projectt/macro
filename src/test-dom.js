@@ -45,15 +45,15 @@ function answerQuiz(root, label) {
 
 head('landing');
 ok(errors.length === 0, 'no errors while loading', errors.join(' || '));
-ok(visible($('#topic-start')) && visible(panel('start/page')) && !visible($('#topic-guide')) && !visible($('#topic-gdp')), 'opens on Start Here');
-ok($$('#topic-start .note-sec').length === 4 && $$('#topic-start table tr').length === 12 && $$('#start-misses li').length === 13, 'Start Here: four short lists', $$('#topic-start .note-sec').length);
-ok(w.localStorage.getItem('macro.seenStart') === '1', 'the first visit is remembered');
+ok(visible($('#topic-list')) && visible(panel('list/page')) && !visible($('#topic-guide')) && !visible($('#topic-gdp')), 'opens on My List');
+ok($$('#mlTable tr.mrow').length === 24 && $$('#mlTable tr.chrow').length === 5, 'My List: 24 lines in five chapters', $$('#mlTable tr.mrow').length);
+ok(w.localStorage.getItem('macro.seenList') === '1', 'the first visit is remembered');
 const items = $$('#guideRoot .gitem');
 ok(items.length === 24, 'guide shows the 24 sections', items.length);
 ok(/0 of 24/.test($('#gCount').textContent), 'progress starts at 0 of 24', $('#gCount').textContent);
 ok(!!$('#guideRoot .handout') && $$('#guideRoot .handout .hrules li').length === 4 && /September 29/.test($('#guideRoot .handout h2').textContent), 'the header card: the exam and its four instructions');
 ok(/38 questions/.test($('#guideRoot .handout').textContent), 'the exam at a glance');
-ok($$('.topic-btn').length === 9 && $$('.topic-btn')[0].getAttribute('data-topic') === 'start' && $$('.topic-btn')[1].getAttribute('data-topic') === 'formulas' && $$('.topic-btn')[2].getAttribute('data-topic') === 'exam', 'nine tabs: Start Here, Formulas, Practice Exam first');
+ok($$('.topic-btn').length === 9 && $$('.topic-btn')[0].getAttribute('data-topic') === 'list' && $$('.topic-btn')[1].getAttribute('data-topic') === 'formulas' && $$('.topic-btn')[2].getAttribute('data-topic') === 'exam', 'nine tabs: My List, Formulas, Practice Exam first');
 
 head('guide checkboxes and jumps');
 const cb = $('#guideRoot input[data-g="g-for-divide"]'); cb.checked = true; cb.dispatchEvent(new w.Event('change', { bubbles: true }));
@@ -89,14 +89,39 @@ Object.keys(modes).forEach(t => {
 });
 ok(errors.length === 0, 'no errors after visiting every mode', errors.join(' || '));
 
-head('start here: the short quiz');
-topic('start');
-click($('#startGo'));
-ok(visible(panel('start/quiz')) && $$('#startQuiz .dots i').length === 15, 'the button opens a fifteen-question quiz', $$('#startQuiz .dots i').length);
-ok(Array.from($$('#startQuiz .qtag.tier')).every(t => /missed|Problem-set/.test(t.textContent)), 'it asks misses and drills');
-const sres = answerQuiz($('#startQuiz'), 'start');
-ok(!!sres && /\d+\/15/.test(sres.querySelector('.big').textContent), 'and reaches a score out of fifteen', sres && sres.querySelector('.big').textContent);
-click(sres.querySelector('.again')); ok($$('#startQuiz .dots i').length === 15, 'another fifteen');
+head('my list');
+topic('list');
+const mlt = $('#mlTable');
+click($('#mlCover'));
+ok(mlt.classList.contains('covered') && !$('#mlHint').hidden, 'Hide the answers covers the right column');
+const r0 = $$('#mlTable tr.mrow')[0];
+click(r0); ok(r0.classList.contains('shown'), 'tapping a line shows it');
+click(r0); ok(!r0.classList.contains('shown'), 'tapping it again hides it');
+click($('#mlCover')); ok(!mlt.classList.contains('covered') && $('#mlHint').hidden, 'Show all the answers uncovers them');
+click($('#mlCards'));
+const lcp = panel('list/cards');
+ok(visible(lcp) && /^1 of 24$/.test(lcp.querySelector('.counter').textContent), 'the flashcards are the 24 lines', lcp.querySelector('.counter').textContent);
+click(lcp.querySelector('.flip'));
+ok(lcp.querySelector('.flash').classList.contains('flipped') && /rowth/.test(lcp.querySelector('.face.back').textContent), 'the first card flips to its line');
+click($('#listShuffle')); ok(/^1 of 24$/.test(lcp.querySelector('.counter').textContent), 'shuffle keeps all 24');
+click($('#listOrder')); ok(/Macro goals/.test(lcp.querySelector('.face.front').textContent), 'in order starts from the first line');
+mode('list', 'page'); click($('#mlQuiz'));
+ok(visible(panel('list/quiz')) && $$('#listQuiz .dots i').length === 24, 'the quiz is 24 questions, one per line', $$('#listQuiz .dots i').length);
+ok(!!$('#listQuiz .qtag.sec') && /Question 1 of 24 · \d · /.test($('#listQuiz .qnum').textContent), 'each question names its line and chapter', $('#listQuiz .qnum').textContent);
+click($$('#listQuiz .qbody .opt')[0]);
+ok(/On your list/.test($('#listQuiz .qbody .feedback').textContent), 'after each answer the line is shown again');
+click($('#listQuiz .qbody .next'));
+const lres = answerQuiz($('#listQuiz'), 'list');
+ok(!!lres && /\d+\/24/.test(lres.querySelector('.big').textContent), 'the round ends with a score out of 24', lres && lres.querySelector('.big').textContent);
+ok(lres.querySelectorAll('.lres tr').length === 24, 'with a check or a cross for every line', lres.querySelectorAll('.lres tr').length);
+const lmiss = lres.querySelector('.missed');
+if (lmiss) {
+  const n = lres.querySelectorAll('.misslist > div').length;
+  click(lmiss);
+  ok($$('#listQuiz .dots i').length === n, 'practice the misses asks exactly the missed lines', $$('#listQuiz .dots i').length + ' vs ' + n);
+  answerQuiz($('#listQuiz'), 'list misses');
+}
+click($('#listQuiz .again')); ok($$('#listQuiz .dots i').length === 24, 'another round of 24');
 
 head('notes');
 tps.forEach(t => { topic(t); mode(t, 'notes'); ok($$('#' + t + 'Notes .note-sec').length >= 2, t + ': note sections rendered'); ok($$('#' + t + 'Notes .secnav a').length >= 2, t + ': section nav rendered'); ok($$('#' + t + 'Notes h3.sub').length >= 1, t + ': subsection headings rendered'); ok($$('#' + t + 'Notes .know').length >= 2, t + ': every section names its source'); });

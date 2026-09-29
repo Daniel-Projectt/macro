@@ -169,3 +169,16 @@
 
 /* one step per line in the recipes */
 .flow .step i{display:block;margin-top:4px;color:var(--ink-soft)}
+
+/* my list: chapter rows, and a cover that hides each answer until it is tapped */
+.mylist tr.chrow td{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink);background:var(--surface-2);padding:10px 12px}
+.mylist.covered tr.mrow{cursor:pointer}
+.mylist.covered tr.mrow td.ans,.mylist.covered tr.mrow td.ans b{color:transparent}
+.mylist.covered tr.mrow td.ans{background:repeating-linear-gradient(135deg,var(--surface-2) 0 6px,var(--surface) 6px 12px);user-select:none}
+.mylist.covered tr.mrow.shown td.ans,.mylist.covered tr.mrow.shown td.ans b{color:inherit}
+.mylist.covered tr.mrow.shown td.ans{background:none}
+.mlbar{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin:6px 0 14px}
+.mlhint{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.feedback .listline,.misslist .listline{display:block;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
+.lres tr.lno td{color:var(--bad)}
+.lres tr.lok td.num{color:var(--ok)}

@@ -150,25 +150,58 @@ for (let r = 0; r < 60; r++) {
   ok(A.mockQuestions({ n: n, types: 'mc', focus: 'ps' }).every(q => q.kind !== 'tf' && q.hot === 1), 'the filters combine: multiple choice, problem-set style');
 }
 ok(seenTiers.size === 3, 'unfiltered exams draw on all three tiers', [...seenTiers].join(','));
-// the short quiz behind Start Here
-for (let r = 0; r < 60; r++) {
-  const e = A.essentialQuestions(15);
-  ok(e.length === 15, 'the short quiz is fifteen questions', e.length);
-  ok(new Set(e.map(q => q.key)).size === 15, 'no repeats in the short quiz');
-  ok(e.every(q => q.hot === 2 || /^g-for-(divide|build|hooks|traps)$/.test(q.sec)), 'the short quiz holds only misses and formula drills', e.map(q => q.sec).join(','));
-  ok(e.filter(q => q.hot === 2).length >= 5, 'the short quiz carries his misses', e.filter(q => q.hot === 2).length);
-  ok(e.filter(q => /^g-for-/.test(q.sec)).length >= 6, 'and the what-divides-by-what drills', e.filter(q => /^g-for-/.test(q.sec)).length);
-  const mn = e.map(q => A.meaningOf(q)); let clash = 0;
-  for (let x = 0; x < mn.length; x++) for (let y = x + 1; y < mn.length; y++) if (A.sameThing(mn[x], mn[y])) clash++;
-  ok(clash === 0, 'no two questions in the short quiz ask the same thing', clash);
+// my list: 24 lines as written, their flashcards, and a quiz with one question per line
+const LR = A.LIST_ROWS;
+const llen = s => String(s).replace(/<[^>]+>/g, '').length;
+ok(A.LIST.length === 5 && A.LIST.map(g => g.rows.length).join() === '5,5,4,6,4' && LR.length === 24, 'the list: 24 lines in five chapters, as written', A.LIST.map(g => g.rows.length).join());
+ok(new Set(LR.map(r => r.id)).size === 24 && new Set(LR.map(r => r.cue)).size === 24, 'every line has its own id and cue');
+LR.forEach(r => ok(r.cue && r.line && A.SEC_CHAPTER[r.sec], 'line ' + r.id + ' has a cue, a line and a real section', r.sec));
+const plain = id => LR.find(r => r.id === id).line.replace(/<b>([A-Z])<\/b>/g, '$1');
+[['goals', /^Growth, Employment, Prices$/], ['gdp', /^C \+ I \+ G \+ \(X − M\)\. Transfers out\. Imports cancel\.$/], ['counts', /^New, Final, Here, Market$/],
+ ['gmisses', /^Leisure, Income, Environment, Sustainability, Home$/], ['real', /^Now prices vs Reference prices\. Same in the base year\.$/],
+ ['double', /^70 ÷ growth rate\. Growth is not guaranteed\.$/], ['rates', /^Unemployment rate ÷ <b>labor force<\/b>\. The other two ÷ <b>all adults<\/b>\.$/],
+ ['cpi', /Base = bottom/], ['infl', /^\(new − old\) ÷ <b>old<\/b>\. Divide by the earlier one\.$/], ['defl', /N before R/],
+ ['convert', /CPI <b>want<\/b> ÷ CPI <b>have<\/b>/], ['saving', /^National Y − C − G · Private Y − T − C · Public T − G$/],
+ ['finance', /hand to hand.*bank in the middle/]].forEach(([id, re]) => ok(re.test(plain(id)), 'the line reads as written: ' + id, plain(id)));
+const lByRow = {};
+A.LISTQ.forEach((b, i) => { (lByRow[b.row] = lByRow[b.row] || []).push(i); });
+LR.forEach(r => ok((lByRow[r.id] || []).length >= 2, 'line ' + r.id + ' has at least two questions', (lByRow[r.id] || []).length));
+ok(A.LISTQ.every(b => LR.some(r => r.id === b.row)), 'every list question belongs to a line');
+ok(new Set(A.LISTQ.map(b => b.q)).size === A.LISTQ.length, 'no two list questions are the same');
+A.LISTQ.forEach((b, i) => {
+  ok(b.q && b.e, 'list question #' + i + ' has a question and a reason');
+  if (b.t === 'mc') ok(b.w.length === 3 && !b.w.includes(b.a) && new Set([b.a].concat(b.w)).size === 4, 'list question #' + i + ' has four distinct options', b.q);
+  else ok(b.t === 'tf' && typeof b.a === 'boolean', 'list true/false #' + i + ' has a boolean answer');
+});
+A.LISTQ.filter(b => b.t === 'tf').forEach((b, i) => {
+  const rest = String(b.e).replace(/^(True|False)\s*[—-]\s*/, '');
+  const stem = new Set(b.q.toLowerCase().replace(/[^a-z ]/g, ' ').split(/\s+/).filter(x => x.length > 4));
+  const said = rest.toLowerCase().replace(/[^a-z ]/g, ' ').split(/\s+/).filter(x => x.length > 4);
+  ok(!said.length || said.filter(x => stem.has(x)).length / said.length < 0.75, 'list true/false #' + i + ' is not answered by its own wording', b.q);
+});
+const lmc = A.LISTQ.filter(b => b.t === 'mc');
+const lLongest = lmc.filter(b => llen(b.a) > Math.max(...b.w.map(llen))).length / lmc.length;
+const lRatio = lmc.reduce((t, b) => t + llen(b.a) / (b.w.reduce((u, x) => u + llen(x), 0) / b.w.length), 0) / lmc.length;
+ok(lLongest <= 0.30, 'on the list quiz the right answer is not the longest by habit', (lLongest * 100).toFixed(1) + '%');
+ok(lRatio <= 1.10, 'and not wordier than the wrong ones', lRatio.toFixed(2));
+console.log('  list quiz: ' + A.LISTQ.length + ' questions; right answer longest ' + (lLongest * 100).toFixed(1) + '%, length ratio ' + lRatio.toFixed(2));
+const seenListQ = new Set();
+for (let r = 0; r < 300; r++) {
+  const lq = A.listQuestions();
+  ok(lq.length === 24, 'a list quiz round is 24 questions', lq.length);
+  ok(new Set(lq.map(q => q.row)).size === 24, 'one question for every line');
+  ok(new Set(lq.map(q => q.key)).size === 24, 'no repeats in a round');
+  ok(lq.every(q => q.opts.filter(o => o.ok).length === 1 && q.opts.length === (q.kind === 'tf' ? 2 : 4)), 'every list question has exactly one right answer');
+  ok(lq.every(q => /On your list/.test(q.explain) && q.cue && q.ch && A.SEC_CHAPTER[q.sec] === q.tp), 'every answer shows the line again and names its cue');
+  lq.forEach(q => seenListQ.add(q.key));
 }
-// Start Here is short: four lists, and every miss is on it
-const startHtml = (html.match(/<section class="topic" id="topic-start">[\s\S]*?<\/section>/) || [''])[0];
-ok((startHtml.match(/class="note-sec"/g) || []).length === 4, 'Start Here is four lists', (startHtml.match(/class="note-sec"/g) || []).length);
-ok((startHtml.match(/<tr><td class="head">/g) || []).length === 11, 'eleven divisions to memorise', (startHtml.match(/<tr><td class="head">/g) || []).length);
-ok(((startHtml.match(/<ol>[\s\S]*?<\/ol>/) || [''])[0].match(/<li>/g) || []).length === 13, 'all thirteen misses, one line each');
-['$6,200', 'GDP unchanged', 'real GDP = nominal GDP', 'accounting tautology', 'larger', '<b>I</b>, not C', 'K* = 121, Y* = $12.10, C* = $10.89', 'not guaranteed', 'innovative', 'only the investment curve', '42,300,000', '2%', '33.33%'].forEach(v => ok(startHtml.includes(v), 'Start Here carries the miss: ' + v));
-ok(startHtml.replace(/<[^>]+>/g, ' ').split(/\s+/).length < 700, 'Start Here stays short', startHtml.replace(/<[^>]+>/g, ' ').split(/\s+/).length + ' words');
+ok(seenListQ.size === A.LISTQ.length, 'over a few rounds every list question comes up', seenListQ.size + ' of ' + A.LISTQ.length);
+const lkeys = A.listQuestions().map(q => q.key);
+const lback = A.questionsByKeys(lkeys);
+ok(lback.length === 24 && lback.every((q, i) => q.key === lkeys[i] && q.row), 'practice-the-misses rebuilds list questions');
+ok(A.questionsByKeys(['list:9999']).length === 0, 'a bad list key is ignored');
+const ldeck = A.listDeck();
+ok(ldeck.length === 24 && ldeck.every((c, i) => c.front.includes(LR[i].cue) && c.back.includes(LR[i].line)), 'the flashcards are the list, in order');
 // the 38
 const allSecs = A.GUIDE.sections.flatMap(s => s.items.map(i => i.id));
 for (let r = 0; r < 40; r++) {
@@ -271,7 +304,7 @@ ok(/<b>Correct\.<\/b>/.test(src) && /<b>Not this one\.<\/b>/.test(src), 'answer 
 
 head('markup');
 const ids = [...new Set((src.match(/\$\("#([A-Za-z0-9_-]+)"/g) || []).map(s => s.slice(4, -1)))];
-const dynamic = ['gCount', 'gBar', 'gPrint', 'mxN', 'mxT', 'mxP', 'mxF', 'mxStart', 'mxFifty'];
+const dynamic = ['gCount', 'gBar', 'gPrint', 'mxN', 'mxT', 'mxP', 'mxF', 'mxStart', 'mxFifty', 'mlCover', 'mlHint', 'mlTable', 'mlQuiz', 'mlCards'];
 const missing = ids.filter(id => !html.includes('id="' + id + '"') && !dynamic.includes(id));
 ok(missing.length === 0, 'every element referenced by id exists', missing.join(', '));
 tps.forEach(tp => ['Notes', 'Cards', 'Match', 'Quiz'].forEach(s => ok(html.includes('id="' + tp + s + '"'), 'topic root exists: ' + tp + s)));
@@ -281,9 +314,9 @@ panels.forEach(pn => {
   ok(html.includes('data-modes="' + t + '"'), 'panel ' + pn + ' has a mode switch');
   ok(new RegExp('data-modes="' + t + '"[\\s\\S]*?data-mode="' + mo + '"').test(html), 'panel ' + pn + ' has its mode button');
 });
-['start', 'guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
+['list', 'guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
 ok((html.match(/class="topic-btn"/g) || []).length === 9, 'nine tabs');
-ok(/data-topic="start"\s+aria-selected="true"/.test(html) && html.indexOf('data-topic="start"') < html.indexOf('data-topic="formulas"'), 'Start Here is the first, default tab');
+ok(/data-topic="list"\s+aria-selected="true"/.test(html) && html.indexOf('data-topic="list"') < html.indexOf('data-topic="formulas"') && /My List<\/button>/.test(html) && !/data-topic="start"/.test(html), 'My List is the first, default tab');
 ok((html.match(/<script>/g) || []).length === 1, 'a single script block');
 ['div', 'section', 'button', 'nav', 'main', 'header', 'footer', 'svg', 'symbol', 'table', 'g', 'ol', 'ul', 'h3', 'h4', 'thead', 'tbody', 'tr', 'span', 'sub', 'sup'].forEach(t => {
   const open = (html.match(new RegExp('<' + t + '[\\s>]', 'g')) || []).length;

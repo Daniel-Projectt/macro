@@ -144,6 +144,8 @@ function questionsByKeys(keys){
       var set = PAIRSETS[m[1]], i = parseInt(m[2],10);
       return (set && i < set.pairs.length) ? fromPair(m[1], i, m[3] === "r") : null;
     }
+    var l = /^list:(\d+)$/.exec(k);
+    if(l){ var li = parseInt(l[1],10); return LISTQ[li] ? fromList(LISTQ[li], li) : null; }
     var b = /^([a-z0-9]+):(\d+)$/.exec(k);
     if(!b) return null;
     var j = parseInt(b[2],10);
@@ -221,18 +223,34 @@ function finalFifty(n){
   return shuffle(out);
 }
 
-/* The short quiz behind Start Here: the problem-set misses and the
-   what-divides-by-what drills, and nothing else.                              */
-function essentialQuestions(n){
-  n = n || 15;
-  var miss = [], drill = [];
-  QB.forEach(function(b, i){
-    if(b.off) return;
-    if(b.m === 2) miss.push(fromBank(b, i));
-    else if(/^g-for-(divide|build|hooks|traps)$/.test(b.sec)) drill.push(fromBank(b, i));
+/* ================================================================ my list
+   The one-page list: its rows in order, its flashcards, and a quiz round with
+   one question for every line, drawn fresh each time.                        */
+var LIST_ROWS = [], LIST_BY_ID = {};
+LIST.forEach(function(g){ g.rows.forEach(function(r){ r.ch = g.ch; LIST_ROWS.push(r); LIST_BY_ID[r.id] = r; }); });
+function fromList(b, i){
+  var r = LIST_BY_ID[b.row];
+  var q = {key:"list:"+i, tp:SEC_CHAPTER[r.sec], sec:r.sec, row:r.id, cue:r.cue, ch:r.ch, hot:0, ap:false, kind:b.t, text:b.q,
+           explain:b.e+'<span class="listline">On your list &middot; <b>'+r.cue+'</b>: '+r.line+'</span>'};
+  if(b.t === "tf"){
+    q.opts = [{html:"True", ok:b.a === true, cls:"tf"}, {html:"False", ok:b.a === false, cls:"tf"}];
+    q.miss = strip(b.q) + " — <b>" + (b.a ? "True" : "False") + "</b>";
+  } else {
+    q.opts = shuffle([{html:b.a, ok:true}].concat(b.w.map(function(w){ return {html:w, ok:false}; })));
+    q.miss = strip(b.q) + " — <b>" + b.a + "</b>";
+  }
+  return q;
+}
+function listQuestions(){
+  var byRow = {};
+  LISTQ.forEach(function(b, i){ (byRow[b.row] = byRow[b.row] || []).push(i); });
+  return shuffle(LIST_ROWS.map(function(r){ var i = pick(byRow[r.id], 1)[0]; return fromList(LISTQ[i], i); }));
+}
+function listDeck(){
+  return LIST_ROWS.map(function(r){
+    return {front:'<div class="mid" style="font-family:var(--serif);letter-spacing:.01em;text-transform:none;font-size:clamp(20px,4.6vw,28px);line-height:1.35">'+r.cue+'</div>',
+            back:'<div class="bname">'+r.cue+'</div><div class="bsound" style="margin-top:12px">'+r.line+'</div><div class="btr" style="margin-top:12px">'+r.ch+'</div>'};
   });
-  var out = drawDistinct(shuffle(miss), Math.min(miss.length, Math.round(n * 0.4)));
-  return shuffle(drawDistinct(out.concat(shuffle(drill)), n));
 }
 
 /* ================================================================ decks and match */

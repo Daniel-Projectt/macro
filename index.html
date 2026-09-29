@@ -3678,12 +3678,22 @@ document.addEventListener("keydown", function(e){
   /* the first visit after My List was added lands on it, whatever was open before */
   if(!store.get("seenList")){ t = "list"; store.set("seenList", "1"); store.set("mode.list", "page"); }
   TOPICS.forEach(function(k){ var m = store.get("mode."+k); if(m && $('.seg[data-modes="'+k+'"] button[data-mode="'+m+'"]')) currentMode[k] = m; });
+  /* a link can open a tab directly: …/macro/#practice */
+  var h = (location.hash || "").replace("#", "");
+  if(h && TOPICS.indexOf(h) >= 0) t = h;
   showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "list");
 })();
 
+window.addEventListener("hashchange", function(){ var h = (location.hash || "").replace("#", ""); if(h && TOPICS.indexOf(h) >= 0) showTopic(h); });
+
 /* ---- offline copy: the service worker keeps the page on the phone ---- */
 if("serviceWorker" in navigator && /^https?:/.test(location.protocol)){
-  navigator.serviceWorker.register("sw.js").catch(function(){});
+  /* when a newer version of the page is published, switch to it: check on every
+     open and every return to the page, and reload once the new copy takes over */
+  var hadController = !!navigator.serviceWorker.controller, reloading = false, swReg = null;
+  navigator.serviceWorker.addEventListener("controllerchange", function(){ if(hadController && !reloading){ reloading = true; location.reload(); } });
+  navigator.serviceWorker.register("sw.js").then(function(reg){ swReg = reg; reg.update(); }).catch(function(){});
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible" && swReg) swReg.update().catch(function(){}); });
 }
 
 })();

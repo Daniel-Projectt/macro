@@ -296,6 +296,14 @@ ok(!!fRes, 'the thirty-eight reaches results');
 const fSec = fRes.querySelectorAll('.tbl')[0];
 ok(fSec && fSec.querySelectorAll('tr').length === 24, 'the results list all twenty-four sections', fSec && fSec.querySelectorAll('tr').length);
 
+head('opening a tab from a link');
+const dom2 = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true, url: 'https://example.test/?v=7#practice', virtualConsole: vc,
+  beforeParse(w2) { w2.scrollTo = () => {}; w2.Element.prototype.scrollIntoView = function () {}; } });
+const d2 = dom2.window.document;
+ok(!d2.getElementById('topic-practice').hidden && d2.getElementById('topic-list').hidden, 'a link ending in #practice opens Math Practice');
+ok(!!d2.getElementById('pxStart'), 'with the practice settings ready');
+dom2.window.close();
+
 head('errors');
 ok(errors.length === 0, 'no runtime errors anywhere', errors.join(' || '));
 console.log('\n' + (fails === 0 ? 'ALL ' + checks + ' DOM CHECKS PASSED' : fails + ' FAILURES out of ' + checks + ' DOM checks'));

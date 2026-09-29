@@ -140,7 +140,9 @@ function makePractice(root, opts){
       order.map(function(k){ var g = by[k]; return '<tr class="' + (g.ok === g.n ? 'lok' : 'lno') + '"><td class="sm">' + k + '</td><td class="num">' + g.ok + ' / ' + g.n + '</td></tr>'; }).join("") +
       '</tbody></table></div>';
     if(missed.length) html += '<div class="misslist">' + missed.map(function(q){
-      return '<div><span class="g">' + q.name + (q.src ? ' &middot; ' + q.src : '') + ' — <b>' + (q.fmt === "multi" ? q.parts.map(function(p){ return labelOf(p) + ' ' + shown(p); }).join(' &middot; ') : q.right) + '</b></span><span class="t">' + q.remind + '</span></div>';
+      var work = q.fmt === "multi" ? q.parts.map(function(p){ return '<span class="wline"><b>' + labelOf(p) + ':</b> ' + p.work + '</span>'; }).join("") : '<span class="wline">' + q.work + '</span>';
+      return '<div><span class="g">' + q.name + (q.src ? ' &middot; ' + q.src : '') + ' — <b>' + (q.fmt === "multi" ? q.parts.map(function(p){ return labelOf(p) + ' ' + shown(p); }).join(' &middot; ') : q.right) + '</b></span>' +
+        '<div class="mqtext">' + q.text + '</div><span class="t">How to get it:</span>' + work + '<span class="t rem">Remember: ' + q.remind + '</span></div>';
     }).join("") + '</div>';
     html += '<div class="toolbar" style="margin:26px 0 0"><button class="btn primary again" type="button">New set</button>' +
       (missed.length ? '<button class="btn missed" type="button">Practice the misses</button>' : '') + '<button class="btn setupbtn" type="button">Change settings</button></div></div>';

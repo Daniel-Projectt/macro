@@ -215,3 +215,8 @@
 .qtext .ask{display:block;margin-top:10px}
 .qtext .tblwrap{margin:12px 0 6px}
 .qtext .tbl td{font-size:14.5px}
+.misslist .mqtext{font-size:14.5px;color:var(--ink);margin:8px 0 4px;line-height:1.5}
+.misslist .mqtext .ask{display:block;margin-top:6px;font-weight:600}
+.misslist .mqtext .tblwrap{margin:8px 0}
+.misslist .wline{display:block;font-size:14px;color:var(--ink-soft);margin:3px 0 0 10px}
+.misslist .rem{margin-top:8px}

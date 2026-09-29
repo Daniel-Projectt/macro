@@ -167,6 +167,7 @@ click(pb2.querySelector('.next'));
 const pres = answerPractice($('#practiceRoot'));
 ok(!!pres && /\d+\/10/.test(pres.querySelector('.big').textContent), 'the set ends with a score', pres && pres.querySelector('.big').textContent);
 ok(pres.querySelectorAll('.gres tr').length >= 1, 'with a line for each kind of problem');
+if (pres.querySelector('.misslist > div')) ok(!!pres.querySelector('.misslist .mqtext') && !!pres.querySelector('.misslist .wline') && /How to get it/.test(pres.querySelector('.misslist').textContent), 'each miss shows the question and the working');
 const pm = pres.querySelector('.missed');
 if (pm) {
   const n = pres.querySelectorAll('.misslist > div').length;

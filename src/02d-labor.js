@@ -92,7 +92,7 @@ QB = QB.concat([
  {tp:"labor",sec:"g-lab-classify",m:1,t:"mc",q:"A retiree is classified as:",a:"not in the labor force",w:["unemployed","employed","frictionally unemployed"],e:"Not working and not seeking."},
  {tp:"labor",sec:"g-lab-classify",m:1,t:"mc",q:"A full-time student who is not seeking work is:",a:"not in the labor force",w:["unemployed","employed","structurally unemployed"],e:"Not seeking, so not in the labor force."},
  {tp:"labor",sec:"g-lab-classify",ap:true,t:"mc",q:"Marcus lost his job three months ago, applied for two positions last week, and is waiting to hear back. He is:",a:"unemployed — no job, wants one, searched within four weeks",w:["not in the labor force — he has had no job for three months","employed — he is waiting on an offer from an employer","a discouraged worker — he has been out of work too long"],e:"Active search keeps him in the labor force."},
- {tp:"labor",sec:"g-lab-classify",t:"tf",q:"The adult population is split into employed, unemployed, and not in the labor force.",a:true,e:"True — everything starts there."},
+ {tp:"labor",sec:"g-lab-classify",t:"tf",q:"The adult population is split into employed, unemployed, and not in the labor force.",a:true,e:"True — every adult is in exactly one of the three boxes: working, looking (in the last 4 weeks), or neither."},
  {tp:"labor",sec:"g-lab-classify",t:"tf",q:"Someone who wants a job but has not searched in the last four weeks is counted as unemployed.",a:false,e:"False — without a recent search, they are outside the labor force."},
 
  {tp:"labor",sec:"g-lab-rates",m:1,t:"mc",q:"The labor force equals:",a:"employed + unemployed",w:["employed + not in the labor force","the adult population − employed","the adult population − retirees"],e:"LF = E + U."},

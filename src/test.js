@@ -360,6 +360,7 @@ A.QB.forEach((q, i) => {
   } else ok(q.t === 'tf' && typeof q.a === 'boolean', 'true/false has a boolean answer #' + i);
 });
 ok(new Set(A.QB.map(q => q.q)).size === A.QB.length, 'no duplicate questions');
+A.QB.filter(q => q.t === 'tf').forEach(q => ok(String(q.e).replace(/^(True|False)[.\s—-]*/, '').length > 25, 'every true/false says why: ' + q.q.slice(0, 60), q.e));
 // questions are shuffled, so none may lean on another one's numbers
 const LEANS = /^(Same |In that )|again|same data|that (chain|economy|spreadsheet|model|basket|town)|^With 2025 as the base year/i;
 A.QB.concat(A.LISTQ).forEach((q, i) => ok(!LEANS.test(q.q), 'question stands on its own: ' + q.q.slice(0, 70)));

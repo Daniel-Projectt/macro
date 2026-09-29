@@ -212,3 +212,6 @@
 .ptbl td{font-size:14.5px}
 .ptbl td,.ptbl th{padding-left:4px;padding-right:4px}
 .ptbl th:first-child,.ptbl td:first-child{width:14%}
+.qtext .ask{display:block;margin-top:10px}
+.qtext .tblwrap{margin:12px 0 6px}
+.qtext .tbl td{font-size:14.5px}

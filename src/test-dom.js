@@ -138,6 +138,7 @@ if (lmiss) {
   answerQuiz($('#listQuiz'), 'list misses');
 }
 click($('#listQuiz .again')); ok($$('#listQuiz .dots i').length === 24, 'another round of 24');
+ok(JSON.parse(w.localStorage.getItem('macro.listseen') || '[]').length >= 1, 'recently asked questions are remembered, so the next rounds ask others');
 
 head('math practice');
 topic('practice');

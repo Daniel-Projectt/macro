@@ -185,20 +185,24 @@ const lRatio = lmc.reduce((t, b) => t + llen(b.a) / (b.w.reduce((u, x) => u + ll
 ok(lLongest <= 0.30, 'on the list quiz the right answer is not the longest by habit', (lLongest * 100).toFixed(1) + '%');
 ok(lRatio <= 1.10, 'and not wordier than the wrong ones', lRatio.toFixed(2));
 console.log('  list quiz: ' + A.LISTQ.length + ' questions; right answer longest ' + (lLongest * 100).toFixed(1) + '%, length ratio ' + lRatio.toFixed(2));
-const seenListQ = new Set();
+const seenListQ = new Set(), listKinds = new Set();
 for (let r = 0; r < 300; r++) {
   const lq = A.listQuestions();
   ok(lq.length === 24, 'a list quiz round is 24 questions', lq.length);
   ok(new Set(lq.map(q => q.row)).size === 24, 'one question for every line');
   ok(new Set(lq.map(q => q.key)).size === 24, 'no repeats in a round');
-  ok(lq.every(q => q.opts.filter(o => o.ok).length === 1 && q.opts.length === (q.kind === 'tf' ? 2 : 4)), 'every list question has exactly one right answer');
+  ok(lq.every(q => q.opts.filter(o => o.ok).length === 1 && q.opts.length >= (q.kind === 'tf' ? 2 : 3) && new Set(q.opts.map(o => o.html)).size === q.opts.length), 'every list question has exactly one right answer among distinct options');
   ok(lq.every(q => /On your list/.test(q.explain) && q.cue && q.ch && A.SEC_CHAPTER[q.sec] === q.tp), 'every answer shows the line again and names its cue');
-  lq.forEach(q => seenListQ.add(q.key));
+  lq.forEach(q => { if (/^list:/.test(q.key)) seenListQ.add(q.key); listKinds.add(q.key.split(':')[0]); });
 }
-ok(seenListQ.size === A.LISTQ.length, 'over a few rounds every list question comes up', seenListQ.size + ' of ' + A.LISTQ.length);
-const lkeys = A.listQuestions().map(q => q.key);
-const lback = A.questionsByKeys(lkeys);
-ok(lback.length === 24 && lback.every((q, i) => q.key === lkeys[i] && q.row), 'practice-the-misses rebuilds list questions');
+ok(seenListQ.size === A.LISTQ.length, 'over a few rounds every written question comes up', seenListQ.size + ' of ' + A.LISTQ.length);
+ok(['list', 'lgen', 'lid'].every(k => listKinds.has(k)), 'a round mixes written questions, new-number problems and picking the line', [...listKinds].join(','));
+['gdp', 'real', 'counts', 'defl', 'double', 'steady', 'rates', 'types', 'cpi', 'infl', 'convert', 'saving', 'open'].forEach(id => ok((A.LIST_GENS[id] || []).length >= 1, 'formula line ' + id + ' gets problems with new numbers'));
+for (let r = 0; r < 20; r++) {
+  const lq0 = A.listQuestions(), lkeys = lq0.map(q => q.key), lback = A.questionsByKeys(lkeys);
+  ok(lback.length === 24 && lback.every((q, i) => q.row === lq0[i].row && (q.key.split(':')[0] === lkeys[i].split(':')[0] || /^list:/.test(q.key))), 'practice-the-misses rebuilds the same kind of question for the same line');
+  ok(lback.every(q => /On your list/.test(q.explain) && q.opts.filter(o => o.ok).length === 1), 'rebuilt questions are complete');
+}
 ok(A.questionsByKeys(['list:9999']).length === 0, 'a bad list key is ignored');
 const ldeck = A.listDeck();
 ok(ldeck.length === 24 && ldeck.every((c, i) => c.front.includes(LR[i].cue) && c.back.includes(LR[i].line)), 'the flashcards are the list, in order');

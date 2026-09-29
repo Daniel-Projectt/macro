@@ -144,6 +144,10 @@ function questionsByKeys(keys){
       var set = PAIRSETS[m[1]], i = parseInt(m[2],10);
       return (set && i < set.pairs.length) ? fromPair(m[1], i, m[3] === "r") : null;
     }
+    var lg = /^lgen:([a-z0-9-]+):([a-z]+):([A-Za-z0-9]*):(\d+):\d+$/.exec(k);
+    if(lg){ var gg = GEN_BY_ID[lg[1]], rr = gg && LIST_BY_ID[gg.row]; return rr ? (listFromGen(rr, gg, lg[2], lg[3] || undefined, parseInt(lg[4], 10)) || listWritten(rr)) : null; }
+    var li = /^lid:([a-z]+):([01]):\d+$/.exec(k);
+    if(li){ return LIST_BY_ID[li[1]] ? listIdent(LIST_BY_ID[li[1]], li[2] === "1") : null; }
     var l = /^list:(\d+)$/.exec(k);
     if(l){ var li = parseInt(l[1],10); return LISTQ[li] ? fromList(LISTQ[li], li) : null; }
     var b = /^([a-z0-9]+):(\d+)$/.exec(k);
@@ -241,10 +245,60 @@ function fromList(b, i){
   }
   return q;
 }
+/* One question for every line of the list, different each round: a written
+   question not asked lately, a problem with new numbers for the lines that are
+   formulas, or the line itself to pick out from the others.                  */
+var LIST_GENS = {}, LIST_SEQ = 0;
+GENS.forEach(function(g){
+  if(!g.row) return;
+  var b = g.make();
+  if(b.choice && !(b.parts && b.parts.length)) return;      /* the tap-only problems stay in Math Practice */
+  (LIST_GENS[g.row] = LIST_GENS[g.row] || []).push(g);
+});
+function listLine(r){ return '<span class="listline">On your list &middot; <b>'+r.cue+'</b>: '+r.line+'</span>'; }
+function listWritten(r){ var ids = []; LISTQ.forEach(function(b, i){ if(b.row === r.id) ids.push(i); }); var i = rp(ids); return fromList(LISTQ[i], i); }
+function listFromGen(r, g, fmt, part, v){
+  var base = g.make(v || undefined);
+  if(base.choice && !(base.parts && base.parts.length)) return null;
+  var pq = formatProblem(g, base, "mc", fmt ? {fmt:fmt, part:part} : {});
+  if(!pq.opts) return null;
+  return {key:"lgen:"+g.id+":"+pq.fmt+":"+(pq.part || "")+":"+(pq.v || 0)+":"+(++LIST_SEQ), tp:SEC_CHAPTER[r.sec], sec:r.sec, row:r.id, cue:r.cue, ch:r.ch, hot:0, ap:true,
+    kind:pq.fmt === "tf" ? "tf" : "mc", text:pq.text, opts:pq.opts,
+    explain:"The answer is <b>"+pq.right+"</b>. "+pq.work+listLine(r), miss:strip(pq.text).slice(0, 160)+" — <b>"+pq.right+"</b>"};
+}
+function listIdent(r, rev){
+  var near = shuffle(LIST_ROWS.filter(function(o){ return o.id !== r.id && o.ch === r.ch; })), far = shuffle(LIST_ROWS.filter(function(o){ return o.ch !== r.ch; }));
+  var others = near.slice(0, 2).concat(far).slice(0, 3);
+  var q = {key:"lid:"+r.id+":"+(rev ? 1 : 0)+":"+(++LIST_SEQ), tp:SEC_CHAPTER[r.sec], sec:r.sec, row:r.id, cue:r.cue, ch:r.ch, hot:0, ap:false, kind:"mc", explain:listLine(r)};
+  if(rev){
+    q.text = 'Which cue goes with this line?<span class="ask">“'+r.line+'”</span>';
+    q.opts = shuffle([{html:r.cue, ok:true}].concat(others.map(function(o){ return {html:o.cue, ok:false}; })));
+    q.miss = strip(r.line)+" — <b>"+r.cue+"</b>";
+  } else {
+    q.text = "Which line goes with <b>"+r.cue+"</b>?";
+    q.opts = shuffle([{html:r.line, ok:true}].concat(others.map(function(o){ return {html:o.line, ok:false}; })));
+    q.miss = r.cue+" — <b>"+strip(r.line)+"</b>";
+  }
+  return q;
+}
+function listRecent(){ try { return JSON.parse(store.get("listseen") || "[]"); } catch(e){ return []; } }
 function listQuestions(){
-  var byRow = {};
+  var byRow = {}, recent = listRecent(), asked = [];
   LISTQ.forEach(function(b, i){ (byRow[b.row] = byRow[b.row] || []).push(i); });
-  return shuffle(LIST_ROWS.map(function(r){ var i = pick(byRow[r.id], 1)[0]; return fromList(LISTQ[i], i); }));
+  var out = LIST_ROWS.map(function(r){
+    var gens = LIST_GENS[r.id] || [], roll = Math.random(), q = null;
+    if(gens.length && roll < 0.4) q = listFromGen(r, rp(gens));
+    else if(roll > (gens.length ? 0.75 : 0.7)) q = listIdent(r, Math.random() < 0.4);
+    if(!q){
+      /* the written question asked longest ago — one never asked comes first */
+      var pool = shuffle(byRow[r.id]);
+      pool.sort(function(a, b){ return recent.lastIndexOf(a) - recent.lastIndexOf(b); });
+      var i = pool[0]; asked.push(i); q = fromList(LISTQ[i], i);
+    }
+    return q;
+  });
+  store.set("listseen", JSON.stringify(recent.concat(asked).slice(-80)));
+  return shuffle(out);
 }
 function listDeck(){
   return LIST_ROWS.map(function(r){

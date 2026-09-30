@@ -635,6 +635,11 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
     <button class="topic-btn" role="tab" data-topic="tvm" aria-selected="false">Time Value</button>
     <button class="topic-btn" role="tab" data-topic="bank" aria-selected="false">Banking</button>
     <button class="topic-btn" role="tab" data-topic="fed" aria-selected="false">The Fed</button>
+    <button class="topic-btn" role="tab" data-topic="qtm" aria-selected="false">Money &amp; Inflation</button>
+    <button class="topic-btn" role="tab" data-topic="infl" aria-selected="false">Inflation</button>
+    <button class="topic-btn" role="tab" data-topic="fiscal" aria-selected="false">Fiscal Policy</button>
+    <button class="topic-btn" role="tab" data-topic="phillips" aria-selected="false">Phillips Curve</button>
+    <button class="topic-btn" role="tab" data-topic="adas" aria-selected="false">AD&ndash;AS</button>
     <button class="topic-btn" role="tab" data-topic="guide"    aria-selected="false">Outline</button>
   </nav>
 
@@ -849,6 +854,91 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
       </div>
       <div class="panel" data-panel="fed/match" hidden><div id="fedMatch"></div></div>
       <div class="panel" data-panel="fed/quiz" hidden><div id="fedQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-qtm" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 29.</b> The value-of-money graph, the exchange equation M &times; V = P &times; Y, the quantity theory, money neutrality, the hot-potato adjustment, and money injections under scarce and abundant reserves.</p>
+      <div class="modes"><div class="seg" data-modes="qtm">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="qtm/notes"><div id="qtmNotes"></div></div>
+      <div class="panel" data-panel="qtm/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="qtm"></div><button class="btn" type="button" data-shuffle="qtm">Shuffle deck</button></div>
+        <div id="qtmCards"></div>
+      </div>
+      <div class="panel" data-panel="qtm/match" hidden><div id="qtmMatch"></div></div>
+      <div class="panel" data-panel="qtm/quiz" hidden><div id="qtmQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-infl" hidden>
+      <p class="intro"><b>Unit 2 &middot; Nov 5 &mdash; the last lecture before Exam 2.</b> The inflation fallacy, the seven costs, hyperinflation, the two benefits of low stable inflation, good vs bad deflation, expectations, and the tax-distortion exercise.</p>
+      <div class="modes"><div class="seg" data-modes="infl">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="infl/notes"><div id="inflNotes"></div></div>
+      <div class="panel" data-panel="infl/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="infl"></div><button class="btn" type="button" data-shuffle="infl">Shuffle deck</button></div>
+        <div id="inflCards"></div>
+      </div>
+      <div class="panel" data-panel="infl/match" hidden><div id="inflMatch"></div></div>
+      <div class="panel" data-panel="infl/quiz" hidden><div id="inflQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-fiscal" hidden>
+      <p class="intro"><b>Unit 3 &middot; Nov 12.</b> Expansionary and contractionary fiscal policy, the MPC and the two multipliers, his worked example, the four conditions, the eight limits, and automatic stabilizers.</p>
+      <div class="modes"><div class="seg" data-modes="fiscal">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="fiscal/notes"><div id="fiscalNotes"></div></div>
+      <div class="panel" data-panel="fiscal/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="fiscal"></div><button class="btn" type="button" data-shuffle="fiscal">Shuffle deck</button></div>
+        <div id="fiscalCards"></div>
+      </div>
+      <div class="panel" data-panel="fiscal/match" hidden><div id="fiscalMatch"></div></div>
+      <div class="panel" data-panel="fiscal/quiz" hidden><div id="fiscalQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-phillips" hidden>
+      <p class="intro"><b>Unit 3 &middot; Nov 17.</b> The Keynesian revolution, the original curve and the &ldquo;menu,&rdquo; 1970s stagflation, Friedman&ndash;Phelps, the short- and long-run curves, and the three graphing rules.</p>
+      <div class="modes"><div class="seg" data-modes="phillips">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="phillips/notes"><div id="phillipsNotes"></div></div>
+      <div class="panel" data-panel="phillips/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="phillips"></div><button class="btn" type="button" data-shuffle="phillips">Shuffle deck</button></div>
+        <div id="phillipsCards"></div>
+      </div>
+      <div class="panel" data-panel="phillips/match" hidden><div id="phillipsMatch"></div></div>
+      <div class="panel" data-panel="phillips/quiz" hidden><div id="phillipsQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-adas" hidden>
+      <p class="intro"><b>Unit 3 &middot; Nov 19&ndash;24.</b> Business cycles and the NBER, supply vs demand shocks, the AD&ndash;AS model in growth rates, and every shock-and-policy scenario including stagflation and COVID.</p>
+      <div class="modes"><div class="seg" data-modes="adas">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="adas/notes"><div id="adasNotes"></div></div>
+      <div class="panel" data-panel="adas/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="adas"></div><button class="btn" type="button" data-shuffle="adas">Shuffle deck</button></div>
+        <div id="adasCards"></div>
+      </div>
+      <div class="panel" data-panel="adas/match" hidden><div id="adasMatch"></div></div>
+      <div class="panel" data-panel="adas/quiz" hidden><div id="adasQuiz"></div></div>
     </section>
 
     <!-- ================= FORMULAS ================= -->
@@ -3112,9 +3202,139 @@ var READINGS = [
    {t:"tf",q:"Stein (2021) argues that discounting future consumption at the market interest rate is ethically indefensible, and that this condemns interest itself.",a:false,e:"False. He calls discounting ethically indefensible but says explicitly that this “does not condemn interest as such.”"},
    {t:"tf",q:"According to Stein (2021), attempts to prohibit interest in an economy that is not state-controlled have usually led to ways of evading or disguising it.",a:true,e:"True. That is one of his main practical doubts about simply banning interest."}
   ]},
- {id:"rq11", n:11, date:"Tue Oct 6", title:"From Usury to Interest", who:"Persky", year:2007, file:"11 From Usury to Interest.pdf"},
+ {id:"rq11", n:11, date:"Tue Oct 6", title:"From Usury to Interest", who:"Persky", year:2007,
+  start:
+   '<div class="point"><b>The thesis in one line</b><p>Persky (2007) traces how <b>usury</b> (once any payment on a loan) became <b>interest</b> (a legitimate payment), and argues the debate peaked when <b>Jeremy Bentham</b>&rsquo;s <i>Defence of Usury</i> (1787) challenged <b>Adam Smith</b>&rsquo;s support for a legal cap on interest. He agrees with <b>Chesterton</b> that Bentham&rsquo;s essay marks the <b>beginning of the modern world</b>: the old sin of usury became the engine of self-interest.</p></div>'+
+   '<h3 class="sub">The words</h3><ul>'+
+   '<li>Modern economics: interest is <b>the rental price of money</b>.</li>'+
+   '<li>Medieval <b>canon law forbade usury</b>: any repayment above the principal.</li>'+
+   '<li>&ldquo;Interest&rdquo; comes from Latin <i>interesse</i>: first a <b>penalty for default or late payment</b> on a legitimate loan. <b>Fictitious late payments</b> became a way around usury laws, and &ldquo;interest&rdquo; became the word for all accepted payments.</li>'+
+   '<li>The debate lives on: state <b>usury laws</b> and <b>payday lending</b> ($300 loan, $40 fees, $260 cash &mdash; implied rates of <b>1,000%+</b> a year).</li></ul>'+
+   '<h3 class="sub">Before Smith</h3><ul>'+
+   '<li>Medieval churchmen (<b>Occam, Duns Scotus</b>) followed <b>Aquinas</b>: usury = requiring payment for a loan. The <b>late scholastics of Salamanca</b> (1350&ndash;1650) chipped away, excluding normal business loans.</li>'+
+   '<li><b>Thomas Wilson</b>, <i>A Discourse on Usury</i> (1572): lending should be &ldquo;free, simple, and for charity&rsquo;s sake,&rdquo; with nothing above the principal.</li>'+
+   '<li><b>Francis Bacon</b> (1601): state-regulated rates &mdash; <b>5%</b> for most loans, <b>9%</b> for merchants in big centers.</li>'+
+   '<li><b>John Locke</b> (1691): didn&rsquo;t object to interest at all, only to lowering the legal cap from 6% to 4%: the clever would evade it and <b>widows and orphans</b> would be left lending at the low rate &mdash; an early <b>supply and demand</b> argument (a price ceiling shrinks the quantity supplied).</li></ul>'+
+   '<h3 class="sub">Smith</h3><ul>'+
+   '<li>&ldquo;As something can every-where be made by the use of money, something ought every-where to be paid for the use of it.&rdquo; Banning interest only raises borrowing costs (the borrower must &ldquo;insure&rdquo; the lender against penalties).</li>'+
+   '<li>Yet Smith <b>supported a cap</b> a bit above the lowest market rate (about <b>5%</b> in Britain) through four editions of the <i>Wealth of Nations</i>.</li>'+
+   '<li>Why: at 8&ndash;10%, money would go to <b>prodigals and projectors</b> who would outbid &ldquo;sober people&rdquo; and waste the nation&rsquo;s capital.</li></ul>'+
+   '<h3 class="sub">Bentham&rsquo;s <i>Defence of Usury</i> (1787, letters from Russia)</h3><ul>'+
+   '<li>He tests <b>five rationales</b> for regulating interest: prevent <b>usury</b>; prevent <b>prodigality</b>; protect <b>indigence</b> against extortion; protect <b>simplicity</b> against imposition; repress the <b>temerity of projectors</b>.</li>'+
+   '<li><b>Usury:</b> there is no natural fixed rate, only <b>custom</b> (30% in Constantinople, 5% in England). His deepest point: <b>why control this one price and no other?</b> (Compare fixing the price of horses.)</li>'+
+   '<li><b>Prodigals</b> have property to sell or pledge; only an &ldquo;interdict&rdquo; would stop them.</li>'+
+   '<li><b>The poor</b> know their own interests; paying a higher rate shows the loan is worth it to them. The legislator &ldquo;knows nothing.&rdquo;</li>'+
+   '<li><b>Simpletons</b> (&ldquo;absolute idiocy&rdquo;) face the whole market, not just loans.</li>'+
+   '<li><b>Projectors</b> are the <b>fount of invention and improvement</b>; they pay high rates because their projects are risky (a risk premium). Letter XIII was addressed to <b>Smith</b> himself.</li></ul>'+
+   '<h3 class="sub">The Smith enigma and Chesterton&rsquo;s claim</h3><ul>'+
+   '<li>Smith reportedly called it the work of &ldquo;a very superior man,&rdquo; but his <b>1789 edition kept the cap</b>. He sent Bentham the <i>Theory of Moral Sentiments</i> &mdash; perhaps a hint.</li>'+
+   '<li>By &ldquo;projectors,&rdquo; Smith meant <b>financial promoters of dubious schemes</b>, not inventors; Bentham, himself a projector (the <b>Panopticon</b>), read it more broadly.</li>'+
+   '<li><b>Chesterton (1933)</b>, longing for Aquinas&rsquo;s communitarian ethics (loans as charity), called Bentham&rsquo;s essay <b>the start of the modern world</b>: usury, the core economic sin, was <b>transformed into self-interest</b>, the engine of the new age. &ldquo;Smith, never the extremist, looked to hedge the point.&rdquo;</li></ul>'+
+   '<p class="tip"><b>Quiz tip:</b> know who said what (Wilson, Bacon, Locke, Smith, Bentham, Chesterton), Bentham&rsquo;s <b>five</b> rationales, and why Smith wanted a cap.</p>',
+  cards:[
+   ["Persky’s thesis","Usury became interest; Bentham’s challenge to Smith’s interest cap marks the start of the modern world"],
+   ["Interest (modern economics)","The rental price of money"],
+   ["Usury (medieval canon law)","Any loan repayment above the principal"],
+   ["Interesse","Originally a penalty for default or late payment on a legitimate loan"],
+   ["Fictitious late payments","A way around usury laws; “interest” came to mean all accepted payments"],
+   ["Payday lending","$300 loan, $40 fees, $260 cash — implied rates of 1,000%+"],
+   ["Salamanca scholastics","1350–1650: chipped away at the ban, excluding normal business loans"],
+   ["Thomas Wilson (1572)","Lending should be free and for charity — nothing above the principal"],
+   ["Francis Bacon (1601)","Regulated rates: 5% for most loans, 9% for merchants"],
+   ["John Locke (1691)","Against lowering the cap from 6% to 4%: the clever evade; widows and orphans lose"],
+   ["Adam Smith","Accepted interest but supported a cap near 5%"],
+   ["Smith’s reason for a cap","Prodigals and projectors would outbid sober borrowers and waste capital"],
+   ["Bentham’s Defence of Usury","1787, letters written from Russia, arguing interest should be free"],
+   ["Bentham’s five rationales","Usury · prodigality · indigence · simplicity · projectors"],
+   ["Bentham’s deepest point","Why control this one price and no other?"],
+   ["Bentham on projectors","The fount of invention; high rates are a risk premium"],
+   ["Letter XIII","Bentham’s letter addressed directly to Smith"],
+   ["Smith’s response","Kept the cap in the 1789 edition; sent Bentham his Theory of Moral Sentiments"],
+   ["Chesterton (1933)","Bentham’s essay began the modern world: usury turned into self-interest"]],
+  match:[
+   ["Thomas Wilson","Lend freely, for charity’s sake"],
+   ["Francis Bacon","5% for most, 9% for merchants"],
+   ["John Locke","A low cap leaves widows and orphans lending"],
+   ["Adam Smith","A cap near 5% to stop prodigals and projectors"],
+   ["Jeremy Bentham","Interest, like love and religion, should be free"],
+   ["G. K. Chesterton","Bentham’s essay began the modern world"],
+   ["Salamanca scholastics","Excluded normal business loans from usury"],
+   ["Aquinas","Usury is requiring payment for a loan"]],
+  q:[
+   {t:"mc",q:"Which statement best captures the thesis of Persky (2007)?",a:"Usury became interest, and Bentham’s challenge to Smith’s interest cap marks the start of the modern world",w:["Usury laws have always protected the poor, so modern economists should restore strict caps","Adam Smith opposed any limit on interest, and Bentham persuaded Parliament to follow him","Interest is a medieval invention that has no role in a modern market economy"],e:"He traces the word from usury to interest and agrees with Chesterton about Bentham’s Defence."},
+   {t:"mc",q:"According to Persky (2007), in modern economics interest is defined as:",a:"the rental price of money",w:["any repayment above the principal","a penalty for paying a loan late","the profit a lender earns on a partnership"],e:"The first line of the article."},
+   {t:"mc",q:"According to Persky (2007), the word “interest” comes from interesse, which originally meant:",a:"a penalty for default or late payment on a legitimate loan",w:["a fair share of a merchant’s profits from a joint venture", "the rate the church set for loans made to the poor", "the rental price of a house or field for one year"],e:"Fictitious late payments later became a way around usury laws."},
+   {t:"mc",q:"Medieval canon law, as Persky (2007) describes it, generally defined usury as:",a:"a loan repayment exceeding the principal",w:["an interest rate above 5 percent on any loan", "any loan made to a foreigner or a stranger", "interest charged by a merchant to a farmer"],e:"Any payment above the principal counted."},
+   {t:"mc",q:"Persky (2007) uses payday lending as an example of:",a:"how the usury debate continues today",w:["a loan that has no interest cost at all","Bentham’s idea of a projector","the Salamanca scholastics’ view of business loans"],e:"A $300 loan with $40 in fees can imply rates of 1,000% or more a year."},
+   {t:"mc",q:"According to Persky (2007), Francis Bacon (1601) favored:",a:"state-regulated rates of 5% for most loans and 9% for merchants",w:["banning all interest, as the medieval church had done for centuries", "letting interest rates float freely with no legal limit of any kind", "a single 4% legal rate for every kind of loan in the kingdom"],e:"A system of state regulation with two rates."},
+   {t:"mc",q:"According to Persky (2007), John Locke opposed lowering the legal rate from 6% to 4% because:",a:"the clever would evade it, leaving widows and orphans lending at the low rate",w:["interest is sinful at any rate above zero, as the scholastics had taught", "it would make loans to the poor and to farmers much more expensive", "merchants in the big trading centers deserved a higher rate than everyone"],e:"An early supply-and-demand argument: a price ceiling shrinks the quantity of funds supplied."},
+   {t:"mc",q:"Adam Smith, according to Persky (2007), supported a cap on interest mainly because:",a:"at high rates, prodigals and projectors would outbid sober borrowers and waste capital",w:["interest is unnatural, as Aristotle had argued, so it should be kept low", "the church still forbade any payment above the principal in his day", "banks needed a guaranteed profit on every loan they made to merchants"],e:"He wanted the legal rate just above the lowest market rate — about 5%."},
+   {t:"mc",q:"Which is NOT one of the five rationales for regulating interest that Bentham examines?",a:"Protecting the church’s authority over lending",w:["Preventing prodigality","Protecting indigence against extortion","Repressing the temerity of projectors"],e:"The five: usury, prodigality, indigence, simplicity, projectors."},
+   {t:"mc",q:"According to Persky (2007), Bentham’s deepest argument against usury laws was:",a:"why control the price of this one exchange and no other",w:["interest is required by natural law, so no state may limit it", "the poor never borrow money, so caps protect no one at all", "projectors always repay their loans, so lending to them is safe"],e:"If price controls on goods (like horses) are absurd, why is this one different?"},
+   {t:"mc",q:"How did Bentham view “projectors,” according to Persky (2007)?",a:"As the fount of invention and improvement, rightly paying high rates for risk",w:["As swindlers whose schemes should be banned outright by Parliament", "As prodigals who waste their inheritance on luxuries and gambling", "As bankers who set interest rates by custom rather than by the market"],e:"Their projects are new and risky, so they pay a risk premium — and the public gains."},
+   {t:"mc",q:"According to Persky (2007), when Smith spoke of “projectors” he most likely meant:",a:"financial promoters of dubious schemes aimed at fleecing savers",w:["inventors and social reformers like Bentham and his brother", "merchants lending money to one another in large trading centers", "farmers borrowing against their harvests at high seasonal rates"],e:"Bentham, himself a projector (the Panopticon), read the word more broadly."},
+   {t:"mc",q:"How did Smith respond to Bentham, according to Persky (2007)?",a:"He kept his support for the cap in the 1789 edition and sent Bentham the Theory of Moral Sentiments",w:["He publicly recanted and removed the cap from the next edition of his book", "He wrote a long reply defending the medieval ban on all usury", "He refused to read Bentham’s letters and never mentioned them again"],e:"Some suggest the Moral Sentiments was a hint about the argument."},
+   {t:"mc",q:"Why did Chesterton see Bentham’s Defence of Usury as the beginning of the modern world?",a:"It turned usury, the core economic sin, into self-interest, the engine of the new age",w:["It first proposed a central bank to set interest rates for the whole economy", "It proved that interest rates should be fixed by the church, not by the market", "It launched the Industrial Revolution directly by funding Bentham’s own projects"],e:"Chesterton longed for Aquinas’s communitarian ethics, where loans were charity."},
+   {t:"mc",q:"According to Persky (2007), which argument of Smith’s resembles a black-market argument?",a:"Banning interest raises the cost of borrowing because the borrower must insure the lender against penalties",w:["Prodigals and projectors would outbid sober people if rates were high", "Custom alone decides what the right rate of interest should be", "Money should be lent freely, for charity’s sake, with nothing added"],e:"Like Locke, Smith saw that outlawing interest makes borrowing costlier."},
+   {t:"tf",q:"Persky (2007) says Adam Smith opposed any legal limit on interest rates.",a:false,e:"False. Smith supported a cap near 5% through four editions, to keep money from prodigals and projectors."},
+   {t:"tf",q:"According to Persky (2007), Bentham wrote the Defence of Usury as a series of letters while in Russia.",a:true,e:"True — from Count Potemkin’s estates in present-day Belarus, in 1787."},
+   {t:"tf",q:"Thomas Wilson (1572) argued that a low rate of interest was an acceptable compromise.",a:false,e:"False. Wilson said taking even a low rate “excuseth no man”: lending should be free, for charity’s sake."}
+  ]},
  {id:"rq12", n:12, date:"Tue Oct 13", title:"The Morality of Fractional Reserve Banking"},
- {id:"rq13", n:13, date:"Thu Oct 29", title:"Inflation is the Enemy of Justice"},
+ {id:"rq13", n:13, date:"Thu Oct 29", title:"Inflation is the Enemy of Justice", who:"Steen", year:2022,
+  start:
+   '<div class="point"><b>The thesis in one line</b><p>Steen (2022) argues that <b>inflation is an enemy of economic justice</b> because it hits <b>the poor hardest</b>, and that since God cares especially for the poor, Christians should be wary of <b>inflationary policy</b> &mdash; especially heavy government spending near <b>full employment</b>.</p></div>'+
+   '<h3 class="sub">The setting</h3><ul>'+
+   '<li>A lunch with younger colleagues who had <b>never lived through inflation</b>; he recalled the 1970s, when inflation was &ldquo;<b>Public Enemy Number 1</b>,&rdquo; and President Ford&rsquo;s <b>Whip Inflation Now (WIN)</b> buttons (1974).</li>'+
+   '<li><b>2021:</b> CPI inflation <b>7%</b>, the highest in almost 40 years; the <b>PPI</b> (a harbinger of future inflation) rose <b>9.7%</b>.</li></ul>'+
+   '<h3 class="sub">Why inflation is so bad: three reasons</h3><ol>'+
+   '<li><b>It hits everyone</b> &mdash; all income and savings lose value (the vending-machine soda went from $1.50 to $2.00; smaller packages at higher prices).</li>'+
+   '<li><b>It lasts a long time</b> once started &mdash; 1960s excess government spending led to inflation into the 1980s, sustained by the <b>wage-price spiral</b> (prices up &rarr; workers demand raises &rarr; costs up &rarr; prices up).</li>'+
+   '<li><b>It is very hard to remove</b> &mdash; early 1980s: the Fed raised rates (mortgages over <b>18%</b>), unemployment near <b>11%</b>, the worst slowdown since the Depression; then inflation stayed under control for about 40 years.</li></ol>'+
+   '<h3 class="sub">Why it is an enemy of justice</h3><ul>'+
+   '<li><b>Bible:</b> <b>Matthew 25:40</b> (&ldquo;the least of these&rdquo;) and <b>Proverbs 14:31</b> (oppressing the poor shows contempt for their Maker).</li>'+
+   '<li><b>The poor spend a larger share of income</b> (the rich save more), so they are less shielded.</li>'+
+   '<li>They spend more on <b>necessities</b> and can&rsquo;t easily switch purchases.</li>'+
+   '<li>They have <b>fewer resources</b> to weather it (the well-off can use savings and stock up), and they rarely own <b>real estate</b> or wealth that rises with prices.</li>'+
+   '<li>They are more often in the <b>informal sector</b>, where raises are harder to get.</li>'+
+   '<li>Inflation brings <b>higher interest rates</b> (and the cure is higher rates), making borrowing harder, and <b>uncertainty</b> that hits those at the margins &mdash; &ldquo;<b>inflation inequality</b>.&rdquo;</li></ul>'+
+   '<h3 class="sub">The policy point</h3><ul>'+
+   '<li>Pandemic deficits: <b>$3.13 trillion (2020)</b>, <b>$2.77 trillion (2021)</b>, $1.2 trillion projected for 2022. Unemployment topped <b>14%</b> in early 2020 but was <b>3.9%</b> by December 2021; GDP grew <b>5.7%</b> in 2021.</li>'+
+   '<li>&ldquo;Almost every economist will acknowledge that <b>too much spending in an economy near full employment leads to inflation</b>.&rdquo;</li>'+
+   '<li>Be wary of claims that new programs are &ldquo;<b>fully paid for</b>&rdquo; &mdash; see the nearly <b>$30 trillion</b> debt.</li>'+
+   '<li><b>Stewardship:</b> families know not everything that sounds good is affordable; don&rsquo;t pass excessive debt or a decade of inflation to future generations. Inflation should not be part of &ldquo;build back better&rdquo; &mdash; don&rsquo;t throw &ldquo;more fuel on the fire.&rdquo;</li></ul>'+
+   '<p class="tip"><b>Links to class:</b> the inflation tax falls on money held, and the poor hold cash; too much spending near full employment is the fiscal-policy limit; compare North and Larkin on inflation.</p>',
+  cards:[
+   ["Steen’s thesis","Inflation is an enemy of economic justice because it hurts the poor most"],
+   ["Whip Inflation Now","President Ford’s 1974 campaign, with WIN buttons — inflation as “Public Enemy Number 1”"],
+   ["2021 CPI inflation","7% — the highest in almost 40 years"],
+   ["2021 PPI inflation","9.7% — often a harbinger of future inflation"],
+   ["Three reasons inflation is bad","It hits everyone; it lasts a long time; it is very hard to remove"],
+   ["Wage-price spiral","Prices rise → workers demand raises → costs rise → prices rise"],
+   ["Early 1980s cure","Fed raised rates, mortgages over 18%, unemployment near 11%"],
+   ["Matthew 25:40","“Whatever you did for one of the least of these… you did for me”"],
+   ["Proverbs 14:31","Oppressing the poor shows contempt for their Maker"],
+   ["Why the poor are hit hardest","They spend more of their income, on necessities, with fewer assets and less bargaining power"],
+   ["Inflation inequality","Inflation’s disproportionate impact on the poor"],
+   ["Pandemic deficits","$3.13 trillion (2020), $2.77 trillion (2021)"],
+   ["Near full employment","Too much spending leads to inflation"],
+   ["“Fully paid for”","Rhetoric to be cautious about — see the nearly $30 trillion debt"]],
+  q:[
+   {t:"mc",q:"Which statement best captures the thesis of Steen (2022)?",a:"Inflation is an enemy of economic justice because it hurts the poor disproportionately",w:["Inflation is harmless to the poor because wages always rise faster than prices","Inflation mainly hurts the wealthy, whose savings lose value, so it helps equality","Inflation is a technical problem for the Fed with no connection to justice"],e:"He ties God’s concern for the poor to inflation’s uneven burden."},
+   {t:"mc",q:"According to Steen (2022), why does inflation hit the poor harder than the rich?",a:"The poor spend a larger share of their income, mostly on necessities, with fewer assets to fall back on",w:["The poor hold most of their wealth in real estate, which loses value when prices rise", "The poor save more of their income than the rich, so their savings shrink faster", "The poor pay higher tax rates on their interest income as prices go up"],e:"The rich save more, can stock up, and own assets like real estate that rise with prices."},
+   {t:"mc",q:"Which three reasons does Steen (2022) give for why inflation is so bad?",a:"It hits everyone, it lasts a long time once started, and it is very hard to remove",w:["It helps borrowers, hurts savers, and raises everyone’s taxes", "It raises GDP, lowers unemployment, and raises interest rates", "It only affects imports, only lasts a year, and then fixes itself"],e:"Then he turns to why it is an enemy of justice."},
+   {t:"mc",q:"Steen (2022) explains that inflation persists because of:",a:"the wage-price spiral",w:["the money multiplier","the paradox of thrift","the liquidity effect"],e:"Prices rise, workers demand raises, costs rise, prices rise again."},
+   {t:"mc",q:"According to Steen (2022), how was severe inflation finally suppressed in the early 1980s?",a:"The Fed repeatedly raised interest rates, causing a deep recession",w:["Congress passed a law freezing prices and wages","The government cut taxes to raise production","President Ford’s WIN buttons changed public expectations"],e:"Mortgage rates topped 18% and unemployment reached nearly 11% — costly, but inflation stayed low for about 40 years."},
+   {t:"mc",q:"Which Bible passages does Steen (2022) cite about God’s concern for the poor?",a:"Matthew 25:40 and Proverbs 14:31",w:["Leviticus 25 and Deuteronomy 15","Matthew 6:24 and Luke 16:13","Isaiah 1:22 and Micah 6:11"],e:"“The least of these” and “he who oppresses the poor shows contempt for their Maker.”"},
+   {t:"mc",q:"What does Steen (2022) say almost every economist will acknowledge?",a:"Too much spending in an economy near full employment leads to inflation",w:["Deficits never affect inflation in a modern economy with a central bank", "Inflation is always caused by higher oil prices, not by government spending", "Government spending is always fully paid for by the growth it creates"],e:"That is why he urges caution about new spending in 2022."},
+   {t:"mc",q:"According to Steen (2022), the 2021 CPI inflation rate was:",a:"7%, the highest in almost 40 years",w:["2%, right at the Fed’s target","9.7%, the highest since World War II","3.9%, near a 50-year low"],e:"The PPI rose 9.7%; 3.9% was December’s unemployment rate."},
+   {t:"mc",q:"Why does Steen (2022) say the poor are hurt by the usual cure for inflation?",a:"Higher interest rates make it harder for them to borrow",w:["Lower interest rates reduce the return on their savings","Higher taxes on the rich are passed on to them","Price controls cause shortages of luxury goods"],e:"Higher rates, plus uncertainty that hits those at the margins most."},
+   {t:"mc",q:"What does Steen (2022) mean by “inflation inequality”?",a:"Inflation’s disproportionate impact on the poor",w:["Different inflation rates in different countries","The gap between CPI and PPI inflation","Inflation that raises the incomes of the poor faster than the rich"],e:"A term some economists use; he says little recent experience makes it easy to forget."},
+   {t:"mc",q:"Steen (2022) warns readers to be cautious about political claims that new spending programs are:",a:"“fully paid for”",w:["“temporary”","“targeted”","“inflation-proof”"],e:"That has infrequently been true — see the nearly $30 trillion national debt."},
+   {t:"mc",q:"What stewardship lesson does Steen (2022) draw from families?",a:"Not every spending item that sounds good is affordable, and future generations matter",w:["Families should borrow freely while interest rates are still low", "Families should hold all of their savings in cash to avoid any risk", "Families should spend more when prices rise, to beat the next increase"],e:"Government doesn’t always follow the same logic."},
+   {t:"tf",q:"Steen (2022) argues that inflation lasts only a short time and fixes itself.",a:false,e:"False. He says it lasts a long time once started (the 1960s into the 1980s) and is very hard to remove."},
+   {t:"tf",q:"According to Steen (2022), poorer workers are more likely to earn income in the informal sector, where raises are harder to get.",a:true,e:"True — one of his reasons inflation falls hardest on the poor."}
+  ]},
  {id:"rq14", n:14, date:"Thu Nov 5", title:"Is Inflation Too Low?"},
  {id:"rq15", n:15, date:"Thu Nov 12", title:"The Dynamic and Righteous Use of Wealth in James 5:1-6"},
  {id:"rq16", n:16, date:"Thu Nov 19", title:"“Christian” Economics", who:"Woehrling"}
@@ -4033,7 +4253,7 @@ QB = QB.concat([
  {tp:"bank",sec:"g-bank-frac",t:"mc",q:"On a bank’s T-account, deposits are:",a:"liabilities, because they are the depositors’ claims on the bank",w:["assets, because the bank holds the money","assets, because they earn the bank interest","neither assets nor liabilities"],e:"You can withdraw them: they are claims on the bank. Loans and reserves are the bank’s assets."},
  {tp:"bank",sec:"g-bank-frac",t:"mc",q:"Which are both assets on a bank’s T-account?",a:"Loans and reserves",w:["Deposits and loans","Deposits and reserves","Deposits only"],e:"Loans are the bank’s claims on borrowers; reserves can be lent or earn interest at the Fed."},
  {tp:"bank",sec:"g-bank-frac",t:"mc",q:"What is the primary way banks make an income?",a:"Lending",w:["Holding reserves","Charging for deposits","Printing currency"],e:"“Lending is the primary way that banks make an income.”"},
- {tp:"bank",sec:"g-bank-frac",t:"mc",q:"Which measures of money are NOT affected by commercial bank lending?",a:"Currency and the monetary base",w:["M1 and M2","M2 only","All of them are affected"],e:"Banks change M1 and M2; currency and the base (currency + reserves) are “not impacted at all.”"},
+ {tp:"bank",sec:"g-bank-frac",t:"mc",q:"Which measures of money are NOT affected by commercial bank lending?",a:"Currency and the monetary base",w:["M1 and M2, since loans are never deposited back in banks", "M2 only, since loans become time deposits and money funds", "None of them — bank lending changes every measure of money"],e:"Banks change M1 and M2; currency and the base (currency + reserves) are “not impacted at all.”"},
  {tp:"bank",sec:"g-bank-frac",t:"mc",q:"Since March 26, 2020, the U.S. reserve requirement has been:",a:"zero — there is no requirement",w:["10% for most banks","20% for all banks","set separately by each regional Fed"],e:"Before then it was 10% for most banks."},
  {tp:"bank",sec:"g-bank-frac",t:"mc",q:"Which is NOT one of the reasons banks still hold reserves without a requirement?",a:"The law still requires a 10% minimum",w:["To handle daily business and withdrawal requests","To prevent bank runs","Because some loans become non-performing or default"],e:"There has been no requirement since March 2020."},
  {tp:"bank",sec:"g-bank-frac",m:1,ap:true,t:"mc",q:"A bank keeps 10% of its deposits as reserves and has $5,000 in deposits. Its reserves and loans are:",a:"$500 in reserves and $4,500 in loans",w:["$4,500 in reserves and $500 in loans","$500 in reserves and $5,000 in loans","$50 in reserves and $4,950 in loans"],e:"5,000 × 0.10 = 500; 5,000 − 500 = 4,500. Deposits = reserves + loans."},
@@ -4041,7 +4261,7 @@ QB = QB.concat([
  {tp:"bank",sec:"g-bank-frac",t:"tf",q:"Deposits always equal reserves plus loans.",a:true,e:"True — a deposit can only be kept as reserves or lent."},
  {tp:"bank",sec:"g-bank-frac",t:"tf",q:"Before March 2020, most U.S. banks had to hold at least 10% of deposits as reserves.",a:true,e:"True. Since March 26, 2020 there is no requirement."},
 
- {tp:"bank",sec:"g-bank-mult",t:"mc",q:"You deposit $100 of cash in your checking account. Before the bank lends any of it, the money supply:",a:"does not change — only the form of money changes",w:["rises by $100","rises by $1,000","falls by $100"],e:"Currency becomes a checking deposit. Lending is what creates money."},
+ {tp:"bank",sec:"g-bank-mult",t:"mc",q:"You deposit $100 of cash in your checking account. Before the bank lends any of it, the money supply:",a:"does not change — only the form of money changes",w:["rises by $100, because a new deposit has been created in the banking system", "rises by $1,000, because the deposit is multiplied through the banks", "falls by $100, because the currency has left circulation for the bank"],e:"Currency becomes a checking deposit. Lending is what creates money."},
  {tp:"bank",sec:"g-bank-mult",m:1,ap:true,t:"mc",q:"First National keeps 10% of a $100 deposit and lends $90, which the borrower holds as cash. The money supply is now:",a:"$190",w:["$100","$90","$1,000"],e:"$100 of deposits + $90 of currency. “The act of lending is increasing the money supply.”"},
  {tp:"bank",sec:"g-bank-mult",m:1,ap:true,t:"mc",q:"The $90 is deposited at Second National, which keeps 10%. It lends:",a:"$81",w:["$90","$9","$72.90"],e:"It keeps $9 and lends $81; Third National then keeps $8.10 and lends $72.90."},
  {tp:"bank",sec:"g-bank-mult",t:"mc",q:"The money multiplier is:",a:"1 ÷ the reserve ratio, written as a decimal",w:["the reserve ratio ÷ 1, written as a percent","reserves ÷ deposits × 100","deposits ÷ loans"],e:"10% → 1 ÷ 0.1 = 10. Reserves ÷ deposits × 100 is the reserve ratio itself."},
@@ -4383,6 +4603,866 @@ GENS.push(
   }});
 ["fed-tool","fed-rsv","fed-mandate"].forEach(function(id){ GENS.forEach(function(g){ if(g.id === id) GEN_BY_ID[id] = g; }); });
 
+/* ================================================================ money growth and inflation (Unit 2)
+   Lecture, Oct 29: "Money Growth and Inflation" (58:04) and the class exercise
+   "Quantity Theory of Money" (5:14). The value-of-money graph, the exchange
+   equation, the quantity theory, money neutrality, the hot-potato adjustment,
+   and money injections under scarce vs abundant reserves.                    */
+
+/* a general diagram in a 0–100 box: lines [{a:[x,y], b:[x,y], cls, lab, lx, ly}], points [{x,y,lab,cls}] */
+function gfx(o){
+  var L = 46, R = 256, T = 20, B = 188;
+  function X(v){ return (L + (R - L) * v / 100).toFixed(1); }
+  function Y(v){ return (B - (B - T) * v / 100).toFixed(1); }
+  var svg = '<line x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + B + '" class="ax"/><line x1="' + L + '" y1="' + B + '" x2="' + (R + 6) + '" y2="' + B + '" class="ax"/>';
+  (o.bands || []).forEach(function(b){ svg += '<rect x="' + X(b.x1) + '" y="' + Y(b.y2) + '" width="' + (X(b.x2) - X(b.x1)).toFixed(1) + '" height="' + (Y(b.y1) - Y(b.y2)).toFixed(1) + '" class="band"/>'; });
+  (o.lines || []).forEach(function(l){
+    svg += '<line x1="' + X(l.a[0]) + '" y1="' + Y(l.a[1]) + '" x2="' + X(l.b[0]) + '" y2="' + Y(l.b[1]) + '" class="cv' + (l.cls ? ' ' + l.cls : '') + '"/>';
+    if(l.lab) svg += '<text x="' + X(l.lx !== undefined ? l.lx : l.b[0]) + '" y="' + Y(l.ly !== undefined ? l.ly : l.b[1]) + '" class="cl' + (l.cls && /new/.test(l.cls) ? ' new' : '') + '" dx="3" dy="-3">' + l.lab + '</text>';
+  });
+  (o.pts || []).forEach(function(p){
+    var c = p.cls || "old";
+    if(p.drop !== false) svg += '<line x1="' + L + '" y1="' + Y(p.y) + '" x2="' + X(p.x) + '" y2="' + Y(p.y) + '" class="drop ' + c + '"/><line x1="' + X(p.x) + '" y1="' + Y(p.y) + '" x2="' + X(p.x) + '" y2="' + B + '" class="drop ' + c + '"/>';
+    svg += '<circle cx="' + X(p.x) + '" cy="' + Y(p.y) + '" r="3.2" class="dot ' + c + '"/>';
+    if(p.lab) svg += '<text x="' + X(p.x) + '" y="' + Y(p.y) + '" class="lab ' + c + '" dx="5" dy="-5">' + p.lab + '</text>';
+    if(p.yl) svg += '<text x="' + (L - 5) + '" y="' + (+Y(p.y) + 4) + '" class="lab ' + c + '" text-anchor="end">' + p.yl + '</text>';
+    if(p.xl) svg += '<text x="' + X(p.x) + '" y="' + (B + 13) + '" class="lab ' + c + '" text-anchor="middle">' + p.xl + '</text>';
+  });
+  svg += '<text x="' + (L - 30) + '" y="' + ((T + B) / 2) + '" class="axl" transform="rotate(-90 ' + (L - 30) + ' ' + ((T + B) / 2) + ')" text-anchor="middle">' + o.y + '</text>';
+  if(o.y2) svg += '<text x="' + (R + 22) + '" y="' + ((T + B) / 2) + '" class="axl" transform="rotate(90 ' + (R + 22) + ' ' + ((T + B) / 2) + ')" text-anchor="middle">' + o.y2 + '</text>';
+  svg += '<text x="' + ((L + R) / 2) + '" y="' + (B + 30) + '" class="axl" text-anchor="middle">' + o.x + '</text>';
+  return '<figure class="lfg"><svg viewBox="0 0 ' + (o.y2 ? 300 : 280) + ' 226" role="img" aria-label="' + strip(o.cap) + '">' + svg + '</svg><figcaption>' + o.cap + '</figcaption></figure>';
+}
+/* the value-of-money graph: value of money (1/P) up the left, price level (P) up the right, inverted */
+function vomGraph(cap, dS, dD){
+  var lines = [{a:[50, 5], b:[50, 95], lab:"MS", lx:50, ly:95}, {a:[10, 90], b:[90, 10], lab:"MD"}], pts = [];
+  var e0 = [50, 50];
+  if(dS) lines.push({a:[50 + dS, 5], b:[50 + dS, 95], cls:"new dash", lab:"MS₂", lx:50 + dS, ly:88});
+  if(dD) lines.push({a:[10 + dD, 90], b:[90 + dD > 98 ? 98 : 90 + dD, 90 + dD > 98 ? 10 + (90 + dD - 98) : 10], cls:"new dash", lab:"MD₂"});
+  pts.push({x:e0[0], y:e0[1], yl:"1/P₁", cls:"old"});
+  if(dS) pts.push({x:50 + dS, y:50 - dS, yl:"1/P₂", xl:"", cls:"new"});
+  if(dD) pts.push({x:50, y:50 + dD, yl:"1/P₂", cls:"new"});
+  return gfx({cap:cap, x:"Quantity of money", y:"Value of money (1/P) ↑", y2:"Price level (P) ↓", lines:lines, pts:pts});
+}
+
+CH.qtm = {n:11, title:"Money Growth and Inflation", short:"Money & Inflation",
+ notes:[
+  {id:"qtm-graph", h:"The Value of Money: Money Supply and Money Demand", body:
+   '<div class="point"><b>The point</b><p>The price level adjusts to bring <b>money supply and money demand</b> into equilibrium. The graph has <b>two vertical axes that are inverses</b>: the <b>value of money (1/P)</b> and the <b>price level (P)</b>. &ldquo;Here is the trick&rdquo;: going <b>up</b> the value-of-money axis means the price level is <b>falling</b>.</p><p class="able"><b>Be able to</b> draw it and say what happens to the price level, the value of money and the quantity of money when supply or demand shifts.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 29 &middot; on the Exam 2 and Final graph lists</span></p>'+
+   '<h3 class="sub" id="qtm-curves">The curves</h3>'+
+   '<ul><li><b>Money supply:</b> vertical &mdash; the central bank sets it (think of the monetary base).</li>'+
+   '<li><b>Money demand:</b> slopes down against the value of money &mdash; each dollar buying less means you need more of them (a move <b>along</b> the curve).</li>'+
+   '<li>He prefers saying the <b>price level</b> adjusts, since value of money = 1/P.</li></ul>'+
+   '<div class="lfgrid">'+
+   vomGraph("<b>MS &uarr;</b> (QE or expansionary OMO): <b>P rises, value of money falls, quantity rises.</b>", 22, 0)+
+   vomGraph("<b>MD &uarr;</b> (income rises): <b>P falls, value of money rises, quantity unchanged.</b>", 0, 18)+
+   '</div>'+
+   '<div class="tblwrap"><table class="tbl fit c4"><thead><tr><th>Shock</th><th>P</th><th>Value of money</th><th>Quantity</th></tr></thead><tbody>'+
+   '<tr><td class="head">MS &uarr;</td><td class="sm">Rises</td><td class="sm">Falls</td><td class="sm">Rises</td></tr>'+
+   '<tr><td class="head">MS &darr;</td><td class="sm">Falls</td><td class="sm">Rises</td><td class="sm">Falls</td></tr>'+
+   '<tr><td class="head">MD &uarr;</td><td class="sm">Falls</td><td class="sm">Rises</td><td class="sm">No change</td></tr>'+
+   '<tr><td class="head">MD &darr;</td><td class="sm">Rises</td><td class="sm">Falls</td><td class="sm">No change</td></tr></tbody></table></div>'+
+   '<p><b>Takeaway:</b> with a vertical money supply, a change in money demand does <b>not</b> change the quantity of money.</p>'},
+
+  {id:"qtm-eq", h:"The Exchange Equation and the Quantity Theory", body:
+   '<div class="point"><b>The point</b><p><b>M &times; V = P &times; Y</b> is an <b>identity</b>, &ldquo;not a theory&rdquo;: buyers&rsquo; total spending equals sellers&rsquo; nominal output. Because <b>V and Y</b> barely change in the long run, the only realistic cause of persistent inflation is <b>money growth</b>. Friedman: &ldquo;<b>Inflation is always and everywhere a monetary phenomenon.</b>&rdquo; Money is <b>neutral</b> in the long run.</p><p class="able"><b>Be able to</b> define every letter, derive the equation, solve it for any letter in levels or growth rates, and explain money neutrality.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture and class exercise &middot; Oct 29 &middot; Problem Set 11</span></p>'+
+   '<h3 class="sub" id="qtm-letters">The letters</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c2"><tbody>'+
+   '<tr><td class="head">M</td><td class="sm">Money supply</td></tr>'+
+   '<tr><td class="head">V</td><td class="sm"><b>Velocity</b>: the number of times a unit of money is spent a year. <b>k = 1/V</b>: velocity is the inverse of money demand.</td></tr>'+
+   '<tr><td class="head">P</td><td class="sm">Aggregate price level (any index)</td></tr>'+
+   '<tr><td class="head">Y</td><td class="sm">Real output (real GDP)</td></tr>'+
+   '<tr><td class="head">P &times; Y</td><td class="sm"><b>Nominal GDP</b></td></tr>'+
+   '<tr><td class="head">k</td><td class="sm">The &ldquo;Cambridge k&rdquo;: the share of income people want to hold as money</td></tr></tbody></table></div>'+
+   '<ul><li><b>What changes velocity:</b> <b>technology</b> (credit cards &mdash; &ldquo;not a form of money,&rdquo; a short-term loan) and <b>institutions</b> (rules on currency and cards). They change slowly, so V is fairly stable.</li></ul>'+
+   '<h3 class="sub" id="qtm-derive">The derivation, and the growth form</h3>'+
+   '<ol><li>Equilibrium: M = M<sub>D</sub>.</li><li>Money demand: M<sub>D</sub> = k &times; P &times; Y.</li><li>So M = k &times; P &times; Y.</li><li>k = 1/V, so M = (P &times; Y) &divide; V.</li><li>Multiply by V: <b>M &times; V = P &times; Y</b>.</li></ol>'+
+   '<div class="formula">M &times; V = P &times; Y &nbsp;&middot;&nbsp; %&Delta;M + %&Delta;V = %&Delta;P + %&Delta;Y<small>left = total expenditures (buyers) &middot; right = nominal output (sellers)</small></div>'+
+   '<ul><li>P = (M &times; V) &divide; Y: three possible causes &mdash; M, V or Y. V and Y don&rsquo;t move much or consistently in the long run, so <b>persistent inflation comes from M</b>.</li>'+
+   '<li>If V and Y don&rsquo;t change: <b>%&Delta;M = %&Delta;P</b>. A permanent doubling of M roughly doubles P.</li>'+
+   '<li><b>Money neutrality:</b> &ldquo;money doesn&rsquo;t affect output in the long run. All it affects is changes in prices.&rdquo; Monopoly: double the money without adding spaces, and the properties just cost more.</li>'+
+   '<li><b>His two-point summary:</b> (1) the central bank is the primary driver of the price level; (2) money is neutral in the long run.</li></ul>'+
+   '<h3 class="sub" id="qtm-ex">The class exercise</h3>'+
+   '<ol><li>M = $100 billion, P = 5, Y = $45 billion &rarr; 100 &times; V = 225 &rarr; <b>V = 2.25</b> (no $ or %).</li>'+
+   '<li>V = 5, nominal GDP = $20 billion &rarr; M &times; 5 = 20 &rarr; <b>M = $4 billion</b>. (Nominal GDP is P &times; Y.)</li>'+
+   '<li>Money grows 6%, velocity 1% &rarr; nominal GDP grows <b>7%</b>.</li></ol>'},
+
+  {id:"qtm-adjust", h:"How More Money Raises Prices, and the Two Reserve Regimes", body:
+   '<div class="point"><b>The point</b><p>A permanent injection leaves people holding <b>more money than they want</b> at the old price level. They spend it &mdash; &ldquo;like a <b>hot potato</b>&rdquo; &mdash; but the injection added <b>no productive capacity</b>, so prices rise. With <b>scarce</b> reserves, a bigger Fed balance sheet means inflation; with <b>abundant</b> reserves the Fed can <b>sterilize</b> new reserves by raising IOR &mdash; at a cost.</p><p class="able"><b>Be able to</b> tell the four-step adjustment story and the three trade-offs of the abundant regime.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 29 &middot; links to the Fed lectures</span></p>'+
+   '<h3 class="sub" id="qtm-hot">The hot potato</h3>'+
+   '<ol><li>Start in equilibrium. The central bank injects money permanently ($400 instead of $200 for passing Go).</li>'+
+   '<li>At the old price level there is an <b>excess supply of money</b>.</li>'+
+   '<li>People <b>spend</b> the excess on consumption and investment. &ldquo;Holding money is different than income&rdquo;: it&rsquo;s not extra income, so they don&rsquo;t just save it.</li>'+
+   '<li>Output capacity didn&rsquo;t grow, so more spending on the same output means <b>higher prices</b>. &ldquo;If all we needed to do to make the world wealthier was print more money, boy, that would make life a lot easier.&rdquo;</li></ol>'+
+   '<h3 class="sub" id="qtm-regimes">Scarce vs abundant reserves</h3>'+
+   '<ul><li><b>Scarce:</b> the Fed buys bonds, reserves rise, the fed funds rate falls, banks lend, spending and prices rise. &ldquo;The Fed cannot increase its balance sheet without causing inflation.&rdquo;</li>'+
+   '<li><b>Abundant:</b> the fed funds rate doesn&rsquo;t move; the Fed can <b>sterilize</b> reserves by <b>raising IOR</b>, &ldquo;divorcing the quantity of money from the interest rate target.&rdquo;</li>'+
+   '<li><b>&ldquo;No such thing as a free lunch&rdquo; &mdash; three trade-offs:</b> (1) <b>political limits</b> on how high IOR can go; (2) <b>fewer remittances to the Treasury</b>, which raises the deficit (the bigger problem); (3) it <b>may lead to higher inflation</b> &mdash; &ldquo;the high inflation rates of 2021 and 2022 are a testament to the fact that the Fed waited far too long to increase the rate it paid on reserves.&rdquo;</li></ul>'}
+ ],
+ decks:[
+  {id:"terms", label:"Key terms", cards:[
+   ["Value of money","1/P — how many goods and services $1 buys","g-qtm-graph"],
+   ["Going up the value-of-money axis","The price level is falling","g-qtm-graph"],
+   ["Quantity theory of money","A long-run model: changes in the money supply drive changes in the price level","g-qtm-eq"],
+   ["Friedman’s line","“Inflation is always and everywhere a monetary phenomenon”","g-qtm-eq"],
+   ["Velocity (V)","The number of times a unit of money is spent a year","g-qtm-eq"],
+   ["Cambridge k","The share of income people want to hold as money; k = 1/V","g-qtm-eq"],
+   ["Exchange equation","M × V = P × Y — an identity, not a theory","g-qtm-eq"],
+   ["M × V","Total expenditures — the buyers","g-qtm-eq"],
+   ["P × Y","Nominal GDP — the sellers","g-qtm-eq"],
+   ["Money neutrality","In the long run money changes prices, not real output","g-qtm-eq"],
+   ["Credit card","Not money — a short-term loan; it changes velocity","g-qtm-eq"],
+   ["Sterilize reserves","Raise interest on reserves so banks hold new reserves instead of lending them","g-qtm-adjust"]]},
+  {id:"nums", label:"Rules and numbers", cards:[
+   ["MS rises","P rises, value of money falls, quantity rises","g-qtm-graph"],
+   ["MD rises","P falls, value of money rises, quantity unchanged","g-qtm-graph"],
+   ["Growth form","%ΔM + %ΔV = %ΔP + %ΔY","g-qtm-eq"],
+   ["If V and Y are steady","%ΔM = %ΔP","g-qtm-eq"],
+   ["Two things that change velocity","Technology (credit cards) and institutions","g-qtm-eq"],
+   ["M = $100B, P = 5, Y = $45B","V = 2.25","g-qtm-eq"],
+   ["V = 5, nominal GDP = $20B","M = $4 billion","g-qtm-eq"],
+   ["Money +6%, velocity +1%","Nominal GDP +7%","g-qtm-eq"],
+   ["The hot potato","Excess money holdings get spent, raising prices","g-qtm-adjust"],
+   ["Three trade-offs of abundant reserves","Political limits on IOR · fewer remittances to the Treasury · possibly higher inflation","g-qtm-adjust"],
+   ["2021–22 inflation, his view","The Fed waited far too long to raise interest on reserves","g-qtm-adjust"]]}
+ ]
+};
+GUIDE.sections.splice(GUIDE.sections.length - 1, 0, {h:"Money Growth and Inflation", tp:"qtm", items:[
+ {id:"g-qtm-graph", t:"The Value of Money: Money Supply and Money Demand", a:"qtm-graph",
+  short:"Two inverse vertical axes: value of money (1/P) and price level. MS vertical, MD slopes down. MS ↑: P ↑, value ↓, Q ↑. MD ↑: P ↓, value ↑, Q unchanged.",
+  subs:[["The curves","qtm-curves"]]},
+ {id:"g-qtm-eq", t:"The Exchange Equation and the Quantity Theory", a:"qtm-eq",
+  short:"M × V = P × Y, an identity; k = 1/V. %ΔM + %ΔV = %ΔP + %ΔY. V and Y stable in the long run, so money drives inflation (Friedman). Money is neutral. Exercise: V = 2.25; M = $4B; 7%.",
+  subs:[["The letters","qtm-letters"],["The derivation and growth form","qtm-derive"],["The class exercise","qtm-ex"]]},
+ {id:"g-qtm-adjust", t:"How More Money Raises Prices, and the Two Reserve Regimes", a:"qtm-adjust",
+  short:"Excess money is spent like a hot potato; no new capacity, so prices rise. Scarce: bigger balance sheet = inflation. Abundant: sterilize with higher IOR; trade-offs: political limits, fewer Treasury remittances, possible inflation (2021–22).",
+  subs:[["The hot potato","qtm-hot"],["Scarce vs abundant","qtm-regimes"]]}]});
+
+QB = QB.concat([
+ {tp:"qtm",sec:"g-qtm-graph",t:"mc",q:"In the money supply–money demand graph, moving up the value-of-money axis means:",a:"the price level is falling",w:["the price level is rising","the quantity of money is rising","velocity is falling"],e:"Value of money = 1/P. “Here is the trick.”"},
+ {tp:"qtm",sec:"g-qtm-graph",t:"mc",q:"In the value-of-money graph, the money supply curve is:",a:"vertical, because the central bank sets it",w:["upward sloping, because higher prices raise the money supply","downward sloping, like money demand","horizontal at the current price level"],e:"Think of the monetary base."},
+ {tp:"qtm",sec:"g-qtm-graph",m:1,ap:true,t:"mc",q:"The Fed carries out QE and the money supply rises. In the value-of-money graph:",a:"the price level rises, the value of money falls and the quantity of money rises",w:["the price level falls, the value of money rises and the quantity of money rises","the price level rises, the value of money rises and the quantity is unchanged","nothing changes, since money demand did not move"],e:"MS shifts right along money demand."},
+ {tp:"qtm",sec:"g-qtm-graph",m:1,ap:true,t:"mc",q:"Incomes rise and money demand increases, with the money supply unchanged. In the value-of-money graph:",a:"the price level falls, the value of money rises and the quantity is unchanged",w:["the price level rises, the value of money falls and the quantity rises","the price level falls, the value of money rises and the quantity rises","the price level rises and the quantity is unchanged"],e:"With a vertical money supply, a demand shift doesn’t change the quantity."},
+ {tp:"qtm",sec:"g-qtm-graph",ap:true,t:"mc",q:"The Fed shrinks the money supply. The value of money and the price level:",a:"the value of money rises and the price level falls",w:["the value of money falls and the price level rises, since there is less money", "both rise, since scarcer money is worth more and prices adjust upward", "both fall, since less money lowers prices and what each dollar buys"],e:"They always move in opposite directions: value = 1/P."},
+ {tp:"qtm",sec:"g-qtm-graph",t:"mc",q:"Why does money demand slope down against the value of money?",a:"When each dollar buys less, you need to hold more dollars for the same consumption",w:["When prices rise, the central bank prints more money","When the value of money rises, people want to hold more money","Money demand depends only on the interest rate"],e:"A lower value of money means a larger quantity demanded — a move along the curve."},
+ {tp:"qtm",sec:"g-qtm-graph",t:"tf",q:"With a vertical money supply, a change in money demand changes the price level but not the quantity of money.",a:true,e:"True — his takeaway from the graph."},
+ {tp:"qtm",sec:"g-qtm-graph",t:"tf",q:"On the value-of-money graph, a higher value of money means a higher price level.",a:false,e:"False. The axes are inverses: a higher value of money (1/P) means a lower price level."},
+
+ {tp:"qtm",sec:"g-qtm-eq",t:"mc",q:"Velocity is:",a:"the number of times a unit of money is spent in a year",w:["the rate at which the money supply grows","the share of income people hold as money","the speed at which prices adjust"],e:"Stamp a dollar and trace how often it’s spent. The share of income held as money is k = 1/V."},
+ {tp:"qtm",sec:"g-qtm-eq",t:"mc",q:"The “Cambridge k” is related to velocity by:",a:"k = 1/V",w:["k = V","k = V × M","k = P × Y"],e:"If money changes hands faster, you need to hold less of it."},
+ {tp:"qtm",sec:"g-qtm-eq",t:"mc",q:"The exchange equation M × V = P × Y is:",a:"an identity: total spending equals nominal output",w:["a theory that always predicts inflation correctly","a behavioral rule for how the Fed sets money growth","true only when velocity is zero"],e:"“It’s not a theory, it’s an identity.” Buyers on the left, sellers on the right."},
+ {tp:"qtm",sec:"g-qtm-eq",t:"mc",q:"According to the quantity theory, persistent inflation is best explained by:",a:"growth in the money supply",w:["rising velocity","falling real output","higher taxes"],e:"V and Y don’t move much or consistently in the long run, so M is the realistic cause."},
+ {tp:"qtm",sec:"g-qtm-eq",m:1,ap:true,t:"mc",q:"M = $100 billion, P = 5 and Y = $45 billion. Velocity is:",a:"2.25",w:["$2.25 billion","0.44","22.5"],e:"100 × V = 5 × 45 = 225, so V = 2.25 — no $ or % sign."},
+ {tp:"qtm",sec:"g-qtm-eq",m:1,ap:true,t:"mc",q:"Velocity is 5 and nominal GDP is $20 billion. The money supply is:",a:"$4 billion",w:["$100 billion","$25 billion","$0.25 billion"],e:"Nominal GDP = P × Y, so M × 5 = 20 → M = $4 billion."},
+ {tp:"qtm",sec:"g-qtm-eq",m:1,ap:true,t:"mc",q:"The money supply grows 6% and velocity grows 1%. Nominal GDP grows:",a:"7%",w:["5%","6%","6.06%"],e:"%ΔM + %ΔV = %ΔP + %ΔY, and %ΔP + %ΔY is nominal GDP growth: 6 + 1 = 7%."},
+ {tp:"qtm",sec:"g-qtm-eq",t:"mc",q:"Money neutrality means that in the long run money:",a:"changes prices but not real output",w:["changes real output but not prices","changes neither prices nor output","changes velocity one-for-one"],e:"The Monopoly analogy: more money, same board, higher prices."},
+ {tp:"qtm",sec:"g-qtm-eq",t:"mc",q:"What did he say a credit card is?",a:"Not money but a short-term loan, which changes velocity",w:["A form of money that is counted in M1","A form of fiat money issued by banks","A store of value like a savings account"],e:"You settle up with money once a month, so less money is demanded and velocity changes."},
+ {tp:"qtm",sec:"g-qtm-eq",ap:true,t:"mc",q:"Velocity and real output are steady, and the central bank permanently doubles the money supply. In the long run the price level:",a:"roughly doubles",w:["stays the same","roughly halves","rises by only 2%"],e:"%ΔM = %ΔP when V and Y don’t change — “roughly” because Y and V drift."},
+ {tp:"qtm",sec:"g-qtm-eq",t:"tf",q:"In M × V = P × Y, the left side is the actions of buyers and the right side the actions of sellers.",a:true,e:"True: M × V is total expenditures; P × Y is nominal output."},
+ {tp:"qtm",sec:"g-qtm-eq",t:"tf",q:"The quantity theory of money is a short-run model.",a:false,e:"False. It is a long-run model — V and Y are stable only over long periods."},
+
+ {tp:"qtm",sec:"g-qtm-adjust",t:"mc",q:"After a permanent money injection, at the old price level there is:",a:"an excess supply of money, which people spend",w:["an excess demand for money, which people save","extra income, which people save","no change, since money is neutral immediately"],e:"People hold more money than they want and spend it — the hot potato."},
+ {tp:"qtm",sec:"g-qtm-adjust",t:"mc",q:"Why does the extra spending from a money injection raise prices?",a:"The injection added no productive capacity, so more spending chases the same output",w:["Firms must pay higher taxes on the new money, so they pass the tax on in prices", "Velocity falls to zero, so every new dollar goes straight into higher prices", "The central bank raises prices directly when it injects the new money"],e:"“If all we needed to do to make the world wealthier was print more money…”"},
+ {tp:"qtm",sec:"g-qtm-adjust",t:"mc",q:"He stressed that holding extra money is different from having extra:",a:"income",w:["velocity","inflation","reserves"],e:"Because it isn’t extra income, people don’t just save it — they spend it."},
+ {tp:"qtm",sec:"g-qtm-adjust",t:"mc",q:"With scarce reserves, when the Fed grows its balance sheet:",a:"reserves rise, the fed funds rate falls, lending and spending rise, and prices rise",w:["the fed funds rate is unchanged and prices stay stable","reserves fall and the fed funds rate rises","nothing happens until the Fed raises IOR"],e:"“The Fed cannot increase its balance sheet without causing inflation.”"},
+ {tp:"qtm",sec:"g-qtm-adjust",t:"mc",q:"With abundant reserves, how can the Fed grow its balance sheet without causing inflation?",a:"Raise interest on reserves so banks hold the new reserves instead of lending them",w:["Lower interest on reserves so banks lend the new reserves out faster", "Raise the discount rate so banks can’t borrow reserves from the Fed", "Sell short-term Treasury bills at the same time as it buys long-term bonds"],e:"Sterilizing: it divorces the quantity of money from the interest rate target — if IOR rises “high enough and soon enough.”"},
+ {tp:"qtm",sec:"g-qtm-adjust",t:"mc",q:"Which trade-off of the abundant reserve regime did he call the bigger problem?",a:"Fewer remittances to the Treasury, which raises the deficit",w:["Banks earn too little on their reserves","The discount rate can no longer change","Velocity becomes unstable"],e:"The Fed remits tens of billions a year; paying more IOR leaves less to remit."},
+ {tp:"qtm",sec:"g-qtm-adjust",ap:true,t:"mc",q:"According to the lecture, the high inflation of 2021 and 2022 shows that:",a:"the Fed waited far too long to raise the interest rate it paid on reserves",w:["the Fed raised interest on reserves too quickly","velocity collapsed during the pandemic","the quantity theory does not apply with abundant reserves"],e:"Banks found lending more profitable than holding reserves."},
+ {tp:"qtm",sec:"g-qtm-adjust",t:"tf",q:"With abundant reserves, buying bonds still raises reserves and the monetary base, but the fed funds rate doesn’t change.",a:true,e:"True — that is why the Fed must use IOR to control whether the reserves are lent."},
+ {tp:"qtm",sec:"g-qtm-adjust",t:"tf",q:"Printing more money makes an economy permanently wealthier.",a:false,e:"False. Money is neutral in the long run: it raises prices, not real output."}
+]);
+
+PRACTICE_TOPICS.push(["qtm","Money & Inflation"]);
+TOPIC_LABEL.qtm = "Money & Inflation";
+GENS.push({id:"qtm-eq", topic:"qtm", name:"The exchange equation", variants:5,
+ remind:"M × V = P × Y (nominal GDP = P × Y). Growth form: %ΔM + %ΔV = %ΔP + %ΔY. Velocity has no $ or %.",
+ make:function(v){
+  v = v || ri(1, 5);
+  var M = ri(2, 40) * 10, Vv = rp([1.5, 2, 2.5, 3, 4, 5, 6]), pl = rp([2, 4, 5, 8, 10]), Y = M * Vv / pl, b = {v:v, vals:{}};
+  if(v === 1){ b.text = "The money supply is " + usd(M) + " billion, the price level is " + pl + " and real output is " + usd(rnd(Y, 2)) + " billion.";
+   b.parts = [P("V", "velocity", Vv, 2, "", num(M) + " × V = " + pl + " × " + num(Y, 2) + " = " + num(M * Vv, 2) + " → V = " + num(Vv, 2) + ".", {wrong:[1 / Vv, M / pl, Vv * pl]})]; }
+  else if(v === 2){ b.text = "Velocity is " + num(Vv, 1) + " and nominal GDP is " + usd(M * Vv) + " billion.";
+   b.parts = [P("M", "the money supply (in billions)", M, 2, "$", "M × " + num(Vv, 1) + " = " + num(M * Vv) + " → M = " + usd(M) + " billion.", {wrong:[M * Vv * Vv, M * Vv, M / Vv]})]; }
+  else if(v === 3){ b.text = "The money supply is " + usd(M) + " billion, velocity is " + num(Vv, 1) + " and real output is " + usd(rnd(Y, 2)) + " billion.";
+   b.parts = [P("P", "the price level", pl, 2, "", "P = M × V ÷ Y = " + num(M) + " × " + num(Vv, 1) + " ÷ " + num(Y, 2) + " = " + pl + ".", {wrong:[M / Y, Vv / pl, pl * Vv]})]; }
+  else {
+   var gm = ri(2, 12), gv = ri(-2, 3), gy = ri(0, 4), gp = gm + gv - gy;
+   if(v === 4){ b.text = "The money supply grows " + gm + "% and velocity " + (gv < 0 ? "falls " + (-gv) : "grows " + gv) + "%. Real output grows " + gy + "%.";
+    b.parts = [P("gp", "the inflation rate", gp, 1, "%", gm + " + (" + gv + ") − " + gy + " = " + num(gp, 1) + "%.", {signed:true, wrong:[gm + gv + gy, gm - gy, gm + gv]}), P("gn", "the growth of nominal GDP", gm + gv, 1, "%", "%ΔP + %ΔY = %ΔM + %ΔV = " + gm + " + (" + gv + ") = " + (gm + gv) + "%.", {signed:true, wrong:[gm, gm - gv, gp]})]; }
+   else { b.text = "Velocity and real output are constant. The money supply grows " + gm + "% a year.";
+    b.parts = [P("gp", "the inflation rate in the long run", gm, 1, "%", "With %ΔV = %ΔY = 0, %ΔP = %ΔM = " + gm + "%.", {wrong:[0, gm / 2, gm * 2]})]; }
+  }
+  return b;
+ }});
+GEN_BY_ID["qtm-eq"] = GENS[GENS.length - 1];
+[{id:"ex-qtm", gen:"qtm-eq", src:"Class exercise", make:function(){
+   return {text:"(1) M = $100 billion, P = 5, Y = $45 billion. (2) V = 5, nominal GDP = $20 billion. (3) Money grows 6%, velocity 1%.",
+    parts:[P("V", "velocity in (1)", 2.25, 2, "", "100 × V = 5 × 45 = 225 → V = 2.25.", {wrong:[0.44, 22.5, 4.5]}),
+           P("M", "the money supply in (2), in billions", 4, 2, "$", "M × 5 = 20 → M = $4 billion.", {wrong:[100, 25, 0.25]}),
+           P("g", "nominal GDP growth in (3)", 7, 1, "%", "6 + 1 = 7%.", {wrong:[5, 6, 6.06]})]};
+  }}].forEach(function(f){ f.topic = GEN_BY_ID[f.gen].topic; FIXED.push(f); FIXED_BY_ID[f.id] = f; });
+
+/* ================================================================ inflation and deflation (Unit 2)
+   Lecture, Nov 5: "Inflation and Deflation" (1:00:21) — the last lecture before
+   Exam 2 — and the class lecture "Tax Distortions and Inflation" (13:46).     */
+CH.infl = {n:12, title:"Inflation and Deflation", short:"Inflation",
+ notes:[
+  {id:"infl-costs", h:"The Inflation Fallacy, the Seven Costs, and Hyperinflation", body:
+   '<div class="point"><b>The point</b><p>The <b>inflation fallacy</b> &mdash; that inflation erodes real income for the economy as a whole &mdash; is wrong: every price rise is someone&rsquo;s income rise, and real income comes from <b>productivity</b>. Inflation still has <b>seven real costs</b>, and they grow the <b>higher and more variable</b> inflation is. <b>Hyperinflation</b> (&ge;50% a month) is &ldquo;inflation on steroids,&rdquo; always from excessive money growth.</p><p class="able"><b>Be able to</b> explain why the fallacy fails (two reasons), list and explain all seven costs, and define hyperinflation with its examples and two extra dangers.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Nov 5 &middot; Problem Set 12 &middot; last lecture before Exam 2</span></p>'+
+   '<h3 class="sub" id="infl-fallacy">The inflation fallacy</h3>'+
+   '<ul><li>The claim: &ldquo;inflation will erode real income at the aggregate level.&rdquo; <b>Invalid, for two reasons:</b></li>'+
+   '<li>(1) <b>Every transaction has two sides</b>: &ldquo;one person&rsquo;s price increase is another person&rsquo;s income increase.&rdquo; Believing otherwise is the <b>fallacy of composition</b>.</li>'+
+   '<li>(2) <b>Real income comes from real factors</b> &mdash; above all <b>productivity</b> &mdash; and money is neutral in the long run.</li></ul>'+
+   '<h3 class="sub" id="infl-seven">The seven costs of inflation</h3>'+
+   '<ol><li><b>Inflation tax</b> &mdash; money held (cash under the mattress) loses purchasing power.</li>'+
+   '<li><b>Shoe-leather costs</b> &mdash; time and resources spent converting income into money and managing money holdings.</li>'+
+   '<li><b>Menu costs</b> &mdash; the actual cost of changing prices (the restaurant&rsquo;s leather-bound menu).</li>'+
+   '<li><b>Misallocation of resources</b> &mdash; prices rise at different speeds, relative prices change, and labor and capital move around, then move back.</li>'+
+   '<li><b>Confusion and inconvenience for long-term planning</b> &mdash; rule of 70: at 1% prices double in 70 years, at 2% in 35, at 3% in 23.3.</li>'+
+   '<li><b>Tax distortions</b> &mdash; taxes on <b>nominal</b> gains rise even when real income doesn&rsquo;t.</li>'+
+   '<li><b>Redistribution between borrowers and creditors</b> &mdash; with <b>unanticipated</b> inflation on <b>nominal</b> loans: inflation <b>higher</b> than expected helps <b>borrowers</b>, hurts creditors; <b>lower</b> than expected helps <b>creditors</b>. A real cost, because lenders cut the supply of credit.</li></ol>'+
+   '<p><b>Hook:</b> &ldquo;<b>T</b>ax, <b>S</b>hoes, <b>M</b>enus, <b>M</b>isallocation, <b>C</b>onfusion, <b>T</b>ax again, <b>R</b>edistribution&rdquo; &mdash; <i>The Shoe Menu Makes Confused Taxpayers Redistribute.</i></p>'+
+   '<h3 class="sub" id="infl-hyper">Hyperinflation</h3>'+
+   '<ul><li><b>Definition:</b> the price level rising by at least <b>50% per month</b>.</li>'+
+   '<li><b>Examples:</b> <b>Germany after WWI</b> (printing money for Versailles reparations), <b>Hungary after WWII</b> (the largest ever), <b>Zimbabwe 2007&ndash;08</b>. Prices doubled every day.</li>'+
+   '<li><b>Two dangers beyond the normal costs:</b> (1) it is <b>harder to control</b> &mdash; expectations can&rsquo;t settle; (2) it <b>erodes confidence in public institutions</b> (Weimar Germany, then the Nazis).</li>'+
+   '<li>Always caused by <b>excessive money growth</b> (the quantity theory).</li></ul>'},
+
+  {id:"infl-benefits", h:"Why Low, Stable Inflation Helps: The Two Benefits", body:
+   '<div class="point"><b>The point</b><p>Central banks target <b>positive</b> inflation (the Fed about 2%) because low, stable inflation has <b>two benefits</b>: (1) it prevents <b>dynamic inefficiency</b> from sticky wages and prices &mdash; <b>the more important one</b>; (2) it keeps nominal rates away from the <b>zero lower bound</b>. <b>Low</b> keeps costs down; <b>stable</b> anchors expectations.</p><p class="able"><b>Be able to</b> tell the 0% vs 2% layoff story and use r = n &minus; &pi;<sup>e</sup> to show the room-to-cut benefit.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Nov 5 &middot; he says benefit 1 matters more</span></p>'+
+   '<h3 class="sub" id="infl-grease">Benefit 1: inflation greases the wheels</h3>'+
+   '<ul><li><b>Dynamic inefficiency:</b> markets don&rsquo;t clear over time because of a rigidity. <b>Price stickiness:</b> prices don&rsquo;t change quickly with supply and demand.</li>'+
+   '<li><b>At 0% inflation</b>, a firm hit by a recession must cut costs 5%. People hate <b>nominal pay cuts</b> (<b>downward nominal wage rigidity</b>), so it <b>lays people off</b> &rarr; less spending &rarr; more layoffs: a <b>spiral</b>.</li>'+
+   '<li><b>At 2% inflation</b>, it only needs a 1% cut: a <b>1% nominal raise</b> is a <b>1% real cut</b>. No layoffs, no spiral. Inflation &ldquo;greases the wheels of the labor market.&rdquo;</li></ul>'+
+   '<h3 class="sub" id="infl-zlb">Benefit 2: room to cut rates</h3>'+
+   '<ul><li>With r = 3%: if &pi;<sup>e</sup> = 0%, n = 3%; if &pi;<sup>e</sup> = 2%, n = <b>5%</b> &mdash; more room to cut in a downturn.</li>'+
+   '<li>Rates can go a little negative, but not far, because people can switch to cash.</li>'+
+   '<li>Weaker today because the Fed has other tools (QE), but it still matters when growth is slow.</li></ul>'},
+
+  {id:"infl-defl", h:"Good and Bad Deflation, and Inflation Expectations", body:
+   '<div class="point"><b>The point</b><p><b>Deflation</b> is a general fall in the price level. <b>Good deflation</b> comes from <b>productivity</b> (the Industrial Revolution) &mdash; nothing wrong with it. <b>Bad deflation</b> comes from <b>falling nominal spending</b> (the Great Depression, when the money supply fell about a third). <b>Expectations</b> matter because they drive behavior today; <b>forward guidance</b> anchors them.</p><p class="able"><b>Be able to</b> tell good from bad deflation, give bad deflation&rsquo;s two problems, and explain how the Fed measures expected inflation.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Nov 5</span></p>'+
+   '<h3 class="sub" id="infl-gb">Good vs bad deflation</h3>'+
+   '<div class="boxrow"><div class="box"><h4>Good deflation</h4><p>Technology lowers costs; firms keep margins, consumers buy more, wealth rises. The Industrial Revolution.</p></div><div class="box"><h4>Bad deflation</h4><p>Nominal spending (M &times; V) falls. Great Depression: prices fell about 33% and nominal GDP about 50% (1929&ndash;32); money supply fell about a third.</p></div></div>'+
+   '<ul><li><b>Why bad deflation hurts &mdash; two problems:</b> (1) <b>downward nominal wage rigidity</b> &rarr; unemployment and a spiral; (2) it <b>raises debt burdens</b> &mdash; dollars owed are worth more while your income falls.</li>'+
+   '<li><b>1896 election</b> &mdash; the only one centered on monetary policy: after 30 years of gentle deflation hurt farmers (debtors), <b>William Jennings Bryan</b> (&ldquo;Cross of Gold&rdquo;) wanted gold plus silver. <b>FDR</b> left the gold standard in 1933 to end bad deflation.</li></ul>'+
+   '<h3 class="sub" id="infl-exp">Inflation expectations</h3>'+
+   '<ul><li>Bernanke: when the public trusts the central bank to keep inflation low and stable, shocks have <b>transitory</b> effects.</li>'+
+   '<li><b>Two ways to measure:</b> (1) <b>surveys</b> of businesses; (2) <b>market measures</b>:</li>'+
+   '<li><b>Breakeven inflation</b> = the yield on a <b>conventional Treasury</b> minus the yield on a <b>TIPS</b> of the same maturity. A <b>larger spread</b> means <b>higher</b> expected inflation.</li>'+
+   '<li><b>5-year, 5-year forward</b>: expected inflation over the 5 years that <b>start 5 years from now</b>.</li>'+
+   '<li>Anchored expectations make planning easier and shrink the costs of inflation and bad deflation. &ldquo;<b>Forward guidance is about anchoring inflation expectations.</b>&rdquo;</li></ul>'},
+
+  {id:"infl-tax", h:"Tax Distortions and Inflation", body:
+   '<div class="point"><b>The point</b><p>When the government taxes <b>nominal</b> gains, inflation raises the tax bill with <b>no rise in real income</b>, so the <b>after-tax real return falls</b>. With no inflation, there is no distortion.</p><p class="able"><b>Be able to</b> compute nominal and real gains, the tax, the after-tax nominal rate and the after-tax real rate.</p></div>'+
+   '<p class="knowline"><span class="know">Class lecture &middot; Nov 5</span></p>'+
+   '<h3 class="sub" id="infl-taxf">The formulas and his two scenarios</h3>'+
+   '<div class="formula">After-tax nominal rate = (1 &minus; tax rate) &times; nominal rate &nbsp;&middot;&nbsp; After-tax real rate = after-tax nominal rate &minus; inflation<small>tax = tax rate &times; <b>nominal</b> gain &middot; real rate = nominal &minus; inflation</small></div>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>$1,000, 25% tax</th><th>10% nominal, 0% inflation</th><th>20% nominal, 10% inflation</th></tr></thead><tbody>'+
+   '<tr><td class="head">Nominal gain</td><td class="sm">$100</td><td class="sm">$200</td></tr>'+
+   '<tr><td class="head">Real gain</td><td class="sm">$100</td><td class="sm">$100</td></tr>'+
+   '<tr><td class="head">Tax paid</td><td class="sm">$25</td><td class="sm"><b>$50</b></td></tr>'+
+   '<tr><td class="head">After-tax nominal rate</td><td class="sm">7.5%</td><td class="sm">15%</td></tr>'+
+   '<tr><td class="head">After-tax real rate</td><td class="sm">7.5%</td><td class="sm"><b>5%</b></td></tr></tbody></table></div>'+
+   '<p>Same real gain ($100), but the tax doubles and the after-tax real return falls from 7.5% to 5%. <b>That gap is the distortion.</b></p>'}
+ ],
+ decks:[
+  {id:"terms", label:"Key terms", cards:[
+   ["Inflation fallacy","The false claim that inflation erodes real income for the economy as a whole","g-infl-costs"],
+   ["Inflation tax","Money held loses purchasing power","g-infl-costs"],
+   ["Shoe-leather costs","Time and resources spent converting income into money and managing it","g-infl-costs"],
+   ["Menu costs","The actual cost of changing prices","g-infl-costs"],
+   ["Hyperinflation","The price level rising at least 50% per month","g-infl-costs"],
+   ["Dynamic inefficiency","Markets don’t clear over time because of a rigidity","g-infl-benefits"],
+   ["Price stickiness","Prices don’t change quickly with supply and demand","g-infl-benefits"],
+   ["Downward nominal wage rigidity","People resist nominal pay cuts","g-infl-benefits"],
+   ["Deflation","A general fall in the aggregate price level","g-infl-defl"],
+   ["Good deflation","Prices fall because productivity rises — the Industrial Revolution","g-infl-defl"],
+   ["Bad deflation","Prices fall because nominal spending falls — the Great Depression","g-infl-defl"],
+   ["Breakeven inflation","Conventional Treasury yield minus TIPS yield, same maturity","g-infl-defl"],
+   ["5-year, 5-year forward","Expected inflation over the 5 years starting 5 years from now","g-infl-defl"]]},
+  {id:"lists", label:"Lists and numbers", cards:[
+   ["Two reasons the fallacy fails","Every transaction has two sides; real income comes from productivity","g-infl-costs"],
+   ["The seven costs","Inflation tax · shoe leather · menu · misallocation · planning confusion · tax distortions · borrower–creditor redistribution","g-infl-costs"],
+   ["Inflation higher than expected","Helps borrowers, hurts creditors","g-infl-costs"],
+   ["Three hyperinflations","Germany after WWI, Hungary after WWII, Zimbabwe 2007–08","g-infl-costs"],
+   ["Two extra dangers of hyperinflation","Harder to control; erodes confidence in institutions","g-infl-costs"],
+   ["Two benefits of low, stable inflation","Greases the wheels (the more important); room to cut rates","g-infl-benefits"],
+   ["Rule of 70 at 2% inflation","Prices double in 35 years","g-infl-costs"],
+   ["Two problems of bad deflation","Nominal wage rigidity and heavier debt burdens","g-infl-defl"],
+   ["1896 election","Bryan’s “Cross of Gold”: add silver to help indebted farmers","g-infl-defl"],
+   ["Forward guidance","Anchors inflation expectations","g-infl-defl"],
+   ["After-tax real rate, 20% nominal, 10% inflation, 25% tax","15% − 10% = 5%","g-infl-tax"]]}
+ ]
+};
+GUIDE.sections.splice(GUIDE.sections.length - 1, 0, {h:"Inflation and Deflation", tp:"infl", items:[
+ {id:"g-infl-costs", t:"The Inflation Fallacy, the Seven Costs, and Hyperinflation", a:"infl-costs",
+  short:"The fallacy fails: two sides to every transaction; real income from productivity. Seven costs: inflation tax, shoe leather, menu, misallocation, planning confusion, tax distortions, borrower–creditor redistribution. Hyperinflation ≥ 50% a month (Germany, Hungary, Zimbabwe).",
+  subs:[["The fallacy","infl-fallacy"],["The seven costs","infl-seven"],["Hyperinflation","infl-hyper"]]},
+ {id:"g-infl-benefits", t:"Why Low, Stable Inflation Helps: The Two Benefits", a:"infl-benefits",
+  short:"(1) Greases the wheels: a 1% nominal raise at 2% inflation is a 1% real cut, no layoffs (more important). (2) Room to cut: r = 3%, πᵉ = 2% → n = 5%.",
+  subs:[["Greasing the wheels","infl-grease"],["Room to cut rates","infl-zlb"]]},
+ {id:"g-infl-defl", t:"Good and Bad Deflation, and Inflation Expectations", a:"infl-defl",
+  short:"Good (productivity) vs bad (falling spending, the Depression). Bad: wage rigidity and heavier debts. 1896, Bryan. Expectations: surveys, breakeven (Treasury − TIPS), 5y5y forward; forward guidance anchors them.",
+  subs:[["Good vs bad deflation","infl-gb"],["Inflation expectations","infl-exp"]]},
+ {id:"g-infl-tax", t:"Tax Distortions and Inflation", a:"infl-tax",
+  short:"After-tax nominal = (1 − t) × n; after-tax real = that − inflation. $1,000, 25%: 10%/0% → $25 tax, 7.5% real; 20%/10% → $50 tax, 5% real.",
+  subs:[["Formulas and scenarios","infl-taxf"]]}]});
+
+QB = QB.concat([
+ {tp:"infl",sec:"g-infl-costs",t:"mc",q:"The inflation fallacy is the belief that:",a:"inflation erodes real income for the economy as a whole",w:["inflation is always caused by money growth","inflation helps borrowers when it is unexpected","inflation has no costs at all"],e:"Invalid: one person’s price increase is another’s income increase, and real income comes from productivity."},
+ {tp:"infl",sec:"g-infl-costs",t:"mc",q:"According to the lecture, the number one factor that changes real income is:",a:"productivity",w:["the inflation rate","the money supply","the nominal interest rate"],e:"Money is neutral in the long run; real factors set real income."},
+ {tp:"infl",sec:"g-infl-costs",t:"mc",q:"A restaurant must reprint its leather-bound menus every time its costs rise. This is:",a:"a menu cost",w:["a shoe-leather cost","the inflation tax","a tax distortion"],e:"The actual cost of changing prices."},
+ {tp:"infl",sec:"g-infl-costs",t:"mc",q:"Cash kept under a mattress buys less each year because of inflation. This cost is:",a:"the inflation tax",w:["a menu cost","a shoe-leather cost","misallocation of resources"],e:"Money held loses purchasing power: value of money = 1/P."},
+ {tp:"infl",sec:"g-infl-costs",ap:true,t:"mc",q:"Inflation turns out higher than expected on a fixed-rate nominal mortgage. Who gains?",a:"The borrower, who repays with less valuable dollars",w:["The lender, who receives more valuable dollars","Neither, since the loan was fixed","Both equally"],e:"Unanticipated inflation redistributes from creditors to borrowers — and lenders then supply less credit."},
+ {tp:"infl",sec:"g-infl-costs",t:"mc",q:"Why is borrower–creditor redistribution a real cost, not just a transfer?",a:"With ongoing, unpredictable inflation, lenders reduce the overall supply of credit",w:["Borrowers always spend their gains on imports, so domestic output falls", "The government taxes the transfer, which reduces what both sides keep", "It raises the natural rate of unemployment by making workers less willing to work"],e:"Less credit is a real loss to the economy."},
+ {tp:"infl",sec:"g-infl-costs",t:"mc",q:"Hyperinflation is defined as the price level rising by at least:",a:"50% per month",w:["50% per year","10% per month","100% per year"],e:"Germany after WWI, Hungary after WWII (the largest), Zimbabwe 2007–08."},
+ {tp:"infl",sec:"g-infl-costs",t:"mc",q:"Which is one of hyperinflation’s two dangers beyond the normal costs of inflation?",a:"It erodes confidence in public institutions",w:["It lowers the natural rate of unemployment","It raises the value of money","It makes menu costs disappear"],e:"The other: it is harder to control, since expectations can’t settle. Weimar Germany’s collapse is his example."},
+ {tp:"infl",sec:"g-infl-costs",ap:true,t:"mc",q:"At 3% inflation, roughly how long until the price level doubles?",a:"About 23.3 years",w:["About 35 years, the same as at 2% inflation", "About 70 years, since prices rise slowly", "About 3 years, one year for each point of inflation"],e:"Rule of 70: 70 ÷ 3 ≈ 23.3. The value of money halves over the same period."},
+ {tp:"infl",sec:"g-infl-costs",t:"tf",q:"All seven costs of inflation get bigger the higher and more variable inflation is.",a:true,e:"True — his summary of the seven costs."},
+ {tp:"infl",sec:"g-infl-costs",t:"tf",q:"Believing inflation lowers real income for everyone is an example of the fallacy of composition.",a:true,e:"True: what is true for one buyer (paying more) isn’t true for the whole, since sellers receive more."},
+
+ {tp:"infl",sec:"g-infl-benefits",t:"mc",q:"Which benefit of low, stable inflation did he say is the more important one?",a:"Preventing dynamic inefficiency from sticky wages and prices",w:["Keeping nominal rates away from the zero lower bound","Raising the inflation tax revenue","Making menu costs smaller"],e:"Inflation “greases the wheels of the labor market.”"},
+ {tp:"infl",sec:"g-infl-benefits",ap:true,t:"mc",q:"Inflation is 2% and a firm must cut real labor costs 1% in a downturn. Without layoffs, it can:",a:"give a 1% nominal raise, which is a 1% real pay cut",w:["cut nominal pay by 3%","give a 3% nominal raise","freeze pay, which is a 1% real raise"],e:"1% − 2% = −1% real. At 0% inflation it would need a nominal cut, which people hate, so it would lay people off."},
+ {tp:"infl",sec:"g-infl-benefits",t:"mc",q:"Downward nominal wage rigidity means:",a:"people strongly resist cuts to their nominal pay",w:["wages never rise","wages rise automatically with inflation","the minimum wage is always binding"],e:"It is why firms lay people off instead of cutting pay when there is no inflation."},
+ {tp:"infl",sec:"g-infl-benefits",ap:true,t:"mc",q:"The real interest rate is 3%. If expected inflation is 2% instead of 0%, the nominal rate is:",a:"5% instead of 3%, leaving more room to cut in a downturn",w:["1% instead of 3%, leaving less room to cut rates in a downturn", "3% either way, since the nominal rate doesn’t depend on expectations", "6% instead of 3%, since expected inflation doubles the nominal rate"],e:"n = r + πᵉ: 3 + 2 = 5."},
+ {tp:"infl",sec:"g-infl-benefits",t:"mc",q:"Dynamic inefficiency is:",a:"when markets do not clear over time because of some rigidity",w:["when prices change too quickly","when the central bank targets zero inflation","when output grows faster than money"],e:"Examples: binding price floors or ceilings, regulatory barriers, sticky wages."},
+ {tp:"infl",sec:"g-infl-benefits",t:"mc",q:"Why can’t nominal interest rates go far below zero?",a:"People can switch to holding cash",w:["The law forbids negative rates","Banks cannot pay interest","The Fed has no tools below zero"],e:"Cash pays 0%, so deeply negative rates push people into cash."},
+ {tp:"infl",sec:"g-infl-benefits",t:"tf",q:"At 0% inflation, a firm facing a recession is more likely to lay workers off than to cut everyone’s pay.",a:true,e:"True — because of downward nominal wage rigidity, and the layoffs can start a spiral."},
+ {tp:"infl",sec:"g-infl-benefits",t:"tf",q:"Central banks target 0% inflation because any inflation is harmful.",a:false,e:"False. They target low positive inflation (the Fed about 2%) for its two benefits."},
+
+ {tp:"infl",sec:"g-infl-defl",t:"mc",q:"Good deflation happens when prices fall because:",a:"technological progress lowers the cost of production",w:["nominal spending falls as households and firms cut back", "the money supply shrinks after the central bank tightens", "velocity collapses as people hoard money in a panic"],e:"The Industrial Revolution — “make more with less.”"},
+ {tp:"infl",sec:"g-infl-defl",t:"mc",q:"Bad deflation happens when prices fall because:",a:"nominal spending falls",w:["productivity rises","new technology lowers costs","imports become cheaper"],e:"A fall in M, V or both. The Great Depression is the example."},
+ {tp:"infl",sec:"g-infl-defl",t:"mc",q:"During the Great Depression, the money supply fell by about:",a:"one third",w:["one tenth","one half","two thirds"],e:"From 1929 to 1932 prices fell about 33% and nominal GDP about 50%."},
+ {tp:"infl",sec:"g-infl-defl",t:"mc",q:"Which are the two problems with bad deflation?",a:"Downward nominal wage rigidity and heavier debt burdens",w:["Menu costs and shoe-leather costs","Higher velocity and lower money demand","Higher real wages and lower unemployment"],e:"Unemployment spirals, and debts are repaid in more valuable dollars while incomes fall."},
+ {tp:"infl",sec:"g-infl-defl",ap:true,t:"mc",q:"A 5-year Treasury yields 4.5% and a 5-year TIPS yields 2.0%. The breakeven inflation rate is:",a:"2.5%",w:["6.5%","2.0%","4.5%"],e:"Conventional minus TIPS, same maturity: 4.5 − 2.0 = 2.5%. A bigger spread means higher expected inflation."},
+ {tp:"infl",sec:"g-infl-defl",t:"mc",q:"The 5-year, 5-year forward inflation expectation measures expected inflation:",a:"over the 5 years that begin 5 years from today",w:["over the next 5 years, starting from today", "over the full 10 years starting from today", "in the single year exactly 5 years from now"],e:"There is also a 10-year, 10-year version."},
+ {tp:"infl",sec:"g-infl-defl",t:"mc",q:"The 1896 presidential election is notable because:",a:"it was the only one centered on monetary policy, with Bryan urging silver to help indebted farmers",w:["it ended the gold standard after decades of inflation had hurt farmers and other creditors", "it created the Federal Reserve so that a central bank could stop repeated bank panics", "it followed a hyperinflation caused by printing money to pay off Civil War debts"],e:"Thirty years of gentle deflation had hurt debtors. FDR later left gold in 1933."},
+ {tp:"infl",sec:"g-infl-defl",t:"mc",q:"He summed up forward guidance as being about:",a:"anchoring inflation expectations",w:["setting the discount rate","raising the money supply","ending deflation by law"],e:"Anchored expectations make shocks transitory (Bernanke)."},
+ {tp:"infl",sec:"g-infl-defl",t:"tf",q:"If prices are falling because of technological progress, there’s nothing wrong with deflation.",a:true,e:"True. When technology lowers costs, firms keep their margins and buyers get more for less — the Industrial Revolution was good deflation."},
+ {tp:"infl",sec:"g-infl-defl",t:"tf",q:"A smaller spread between a conventional Treasury and a TIPS means higher expected inflation.",a:false,e:"False. A larger spread means higher expected inflation."},
+
+ {tp:"infl",sec:"g-infl-tax",m:1,ap:true,t:"mc",q:"$1,000 is deposited for a year at a 10% nominal rate, with no inflation and a 25% tax on nominal interest. The tax paid and the after-tax real rate are:",a:"$25 and 7.5%",w:["$25 and 10%","$50 and 5%","$100 and 7.5%"],e:"Tax = 25% × $100. After-tax nominal = 0.75 × 10% = 7.5%; minus 0% inflation = 7.5%."},
+ {tp:"infl",sec:"g-infl-tax",m:1,ap:true,t:"mc",q:"$1,000 is deposited at a 20% nominal rate with 10% inflation and a 25% tax on nominal interest. The tax paid and the after-tax real rate are:",a:"$50 and 5%",w:["$25 and 7.5%","$50 and 15%","$25 and 5%"],e:"Tax = 25% × $200 = $50. After-tax nominal = 0.75 × 20% = 15%; minus 10% = 5%."},
+ {tp:"infl",sec:"g-infl-tax",t:"mc",q:"The after-tax nominal rate is:",a:"(1 − tax rate) × nominal rate",w:["nominal rate − tax rate","nominal rate − inflation","(1 + tax rate) × nominal rate"],e:"Then subtract inflation for the after-tax real rate."},
+ {tp:"infl",sec:"g-infl-tax",t:"mc",q:"Why does inflation distort taxes on interest and capital gains?",a:"The tax falls on nominal gains, which rise with inflation even when real gains don’t",w:["Tax rates rise automatically every year with the rate of inflation", "Inflation lowers nominal interest rates, so savers earn less before tax", "Real gains are taxed twice, once as income and again as capital gains"],e:"His two scenarios: same $100 real gain, but the tax doubles from $25 to $50."},
+ {tp:"infl",sec:"g-infl-tax",ap:true,t:"mc",q:"In his two scenarios the real gain is $100 both times. What changes when inflation goes from 0% to 10%?",a:"The tax doubles and the after-tax real rate falls from 7.5% to 5%",w:["Nothing, since the real gain is the same","The tax falls and the after-tax real rate rises","The nominal gain falls to $50"],e:"That gap is the distortion."},
+ {tp:"infl",sec:"g-infl-tax",ap:true,t:"mc",q:"A saver earns 8% nominal, pays a 25% tax on nominal interest, and inflation is 4%. The after-tax real rate is:",a:"2%",w:["4%","6%","3%"],e:"0.75 × 8% = 6% after tax; 6% − 4% = 2%."},
+ {tp:"infl",sec:"g-infl-tax",t:"tf",q:"With zero inflation, taxing nominal interest creates no inflation distortion: after-tax nominal and after-tax real rates are equal.",a:true,e:"True — Q4 and Q5 in his first scenario are both 7.5%."},
+ {tp:"infl",sec:"g-infl-tax",t:"tf",q:"Taxes on nominal gains are fair under inflation because the real gain rises with the nominal gain.",a:false,e:"False. The nominal gain rises with inflation while the real gain doesn’t, so the tax takes a bigger share of the real return."}
+]);
+
+PRACTICE_TOPICS.push(["infl","Inflation"]);
+TOPIC_LABEL.infl = "Inflation";
+GENS.push(
+ {id:"infl-tax", topic:"infl", name:"Taxes, inflation and after-tax returns", variants:2,
+  remind:"Tax = rate × nominal gain. After-tax nominal = (1 − tax) × nominal. After-tax real = after-tax nominal − inflation.",
+  make:function(v){
+   v = v || ri(1, 2);
+   var dep = ri(1, 10) * 1000, tax = rp([10, 20, 25, 30, 40]), infl = ri(0, 8), nom = infl + ri(2, 10), atn = (1 - tax / 100) * nom, atr = atn - infl, gain = dep * nom / 100;
+   var text = usd(dep) + " is deposited for one year at a " + nom + "% nominal rate. Inflation is " + infl + "% and nominal interest is taxed at " + tax + "%.";
+   if(v === 1) return {v:v, vals:{}, text:text,
+    parts:[P("tax", "the tax paid", gain * tax / 100, 2, "$", tax + "% × " + usd(gain) + " (the nominal gain) = " + usd(gain * tax / 100) + ".", {wrong:[dep * (nom - infl) / 100 * tax / 100, gain, gain * (1 - tax / 100)]}),
+           P("real", "the growth in the real value (before tax)", dep * (nom - infl) / 100, 2, "$", usd(dep) + " × (" + nom + "% − " + infl + "%) = " + usd(dep * (nom - infl) / 100) + ".", {wrong:[gain, gain * (1 - tax / 100), dep * infl / 100]})]};
+   return {v:v, vals:{}, text:text,
+    parts:[P("atn", "the after-tax nominal rate", atn, 2, "%", "(1 − " + num(tax / 100, 2) + ") × " + nom + "% = " + num(atn, 2) + "%.", {wrong:[nom - tax / 10, nom * tax / 100, atr]}),
+           P("atr", "the after-tax real rate", atr, 2, "%", num(atn, 2) + "% − " + infl + "% = " + num(atr, 2) + "%." + (atr < 0 ? " Negative: taxes plus inflation eat the whole return." : ""), {signed:true, wrong:[atn, nom - infl, (1 - tax / 100) * (nom - infl)]})]};
+  }},
+ {id:"infl-be", topic:"infl", name:"Breakeven inflation", remind:"Breakeven = conventional Treasury yield − TIPS yield, same maturity. Bigger spread, higher expected inflation.",
+  make:function(){
+   var tips = ri(0, 6) / 2, be = ri(2, 10) / 2, conv = tips + be, yrs = rp([5, 10, 20, 30]);
+   return {vals:{}, text:"A " + yrs + "-year Treasury yields " + num(conv, 1) + "% and a " + yrs + "-year TIPS yields " + num(tips, 1) + "%.",
+    parts:[P("be", "the breakeven (expected) inflation rate", be, 1, "%", num(conv, 1) + " − " + num(tips, 1) + " = " + num(be, 1) + "%.", {wrong:[conv + tips, conv, tips]})]};
+  }});
+GEN_BY_ID["infl-tax"] = GENS[GENS.length - 2]; GEN_BY_ID["infl-be"] = GENS[GENS.length - 1];
+[{id:"ex-tax", gen:"infl-tax", src:"Class lecture", make:function(){
+   return {text:"$1,000 is deposited for one year and nominal interest is taxed at 25%. Scenario 1: 10% nominal, no inflation. Scenario 2: 20% nominal, 10% inflation.",
+    parts:[P("t1", "the tax paid in scenario 1", 25, 2, "$", "25% × $100 = $25.", {wrong:[50, 100, 75]}),
+           P("r1", "the after-tax real rate in scenario 1", 7.5, 2, "%", "0.75 × 10% − 0% = 7.5%.", {wrong:[10, 5, 2.5]}),
+           P("t2", "the tax paid in scenario 2", 50, 2, "$", "25% × $200 = $50 — double, with the same real gain.", {wrong:[25, 200, 100]}),
+           P("n2", "the after-tax nominal rate in scenario 2", 15, 2, "%", "0.75 × 20% = 15%.", {wrong:[5, 20, 10]}),
+           P("r2", "the after-tax real rate in scenario 2", 5, 2, "%", "15% − 10% = 5%.", {wrong:[7.5, 15, 10]})]};
+  }}].forEach(function(f){ f.topic = GEN_BY_ID[f.gen].topic; FIXED.push(f); FIXED_BY_ID[f.id] = f; });
+
+/* ================================================================ fiscal policy (Unit 3, for the final)
+   Lecture, Nov 12: "Fiscal Policy" (52:01, recorded Nov 2020) and the class
+   example (12:41), Scenario 1 on page 84 of the Study Guide and Workbook.    */
+CH.fiscal = {n:13, title:"Fiscal Policy", short:"Fiscal Policy",
+ notes:[
+  {id:"fis-tools", h:"Fiscal Policy and the Multipliers", body:
+   '<div class="point"><b>The point</b><p><b>Fiscal policy</b> is government changing <b>spending or taxes</b> to guide nominal spending and <b>smooth the business cycle</b>. Its effect is multiplied: the <b>spending multiplier is 1 &divide; (1 &minus; MPC)</b> and the <b>tax multiplier is &minus;MPC &divide; (1 &minus; MPC)</b>. For the same MPC, the spending multiplier is <b>larger</b> in absolute value. At <b>full employment</b> it doesn&rsquo;t work, because of crowding out.</p><p class="able"><b>Be able to</b> define both kinds of fiscal policy, compute the MPC and both multipliers, find the change in GDP, and find the spending or tax change needed to close an output gap.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture and class example &middot; Nov 12 &middot; Problem Set 13</span></p>'+
+   '<h3 class="sub" id="fis-defs">The words</h3>'+
+   '<ul><li><b>Fiscal policy:</b> &ldquo;when policymakers change spending or taxation in order to guide nominal spending.&rdquo; Goal: <b>smooth the business cycle</b>.</li>'+
+   '<li><b>Expansionary:</b> <b>raise government spending and/or cut taxes</b>. <b>Contractionary:</b> cut spending and/or raise taxes.</li>'+
+   '<li>It works by putting <b>unused resources</b> back to work; rehired workers spend, and the spending ripples out.</li>'+
+   '<li>&#9888; <b>At full employment</b> (the natural rate of unemployment) fiscal policy doesn&rsquo;t work, because of <b>crowding out</b>.</li>'+
+   '<li><b>Multiplier effect:</b> the additional change in nominal spending that follows a change in fiscal policy. &#9888; Not the money multiplier (1 &divide; reserve ratio).</li></ul>'+
+   '<h3 class="sub" id="fis-mult">The multipliers</h3>'+
+   '<div class="formula">Spending: &Delta;Y = [1 &divide; (1 &minus; MPC)] &times; &Delta;G &nbsp;&middot;&nbsp; Tax: &Delta;Y = [&minus;MPC &divide; (1 &minus; MPC)] &times; &Delta;T<small>MPC = the share of an extra $1 that is spent &middot; MPC + MPS = 1</small></div>'+
+   '<ul><li><b>MPC</b> = &ldquo;the fraction of extra income a household will consume rather than save.&rdquo; Spend 80&cent; of an extra dollar &rarr; MPC = 0.8. It has no $ or %.</li>'+
+   '<li><b>Higher MPC &rarr; bigger multipliers.</b></li>'+
+   '<li>The tax multiplier is <b>negative</b>: a tax <b>cut</b> (&Delta;T negative) raises GDP.</li>'+
+   '<li>The spending multiplier is bigger because <b>government spends the whole dollar</b>, while part of a tax cut is <b>saved</b> &mdash; nothing to do with the minus sign.</li></ul>'+
+   '<h3 class="sub" id="fis-ex">His worked example (MPC = 0.9)</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>Question</th><th>Work</th><th>Answer</th></tr></thead><tbody>'+
+   '<tr><td class="head">MPC (save 10&cent;)</td><td class="sm">0.90 &divide; 1</td><td class="sm"><b>0.9</b></td></tr>'+
+   '<tr><td class="head">Spending multiplier</td><td class="sm">1 &divide; 0.1</td><td class="sm"><b>10</b></td></tr>'+
+   '<tr><td class="head">&Delta;G = $50B</td><td class="sm">10 &times; 50B</td><td class="sm"><b>+$500B</b></td></tr>'+
+   '<tr><td class="head">Close a $250B gap with G</td><td class="sm">250B &divide; 10</td><td class="sm"><b>$25B</b></td></tr>'+
+   '<tr><td class="head">Tax multiplier</td><td class="sm">&minus;0.9 &divide; 0.1</td><td class="sm"><b>&minus;9</b></td></tr>'+
+   '<tr><td class="head">Tax cut of $50B</td><td class="sm">(&minus;9) &times; (&minus;50B)</td><td class="sm"><b>+$450B</b></td></tr>'+
+   '<tr><td class="head">Close a $250B gap with T</td><td class="sm">250B &divide; (&minus;9)</td><td class="sm"><b>cut about $27.78B</b></td></tr></tbody></table></div>'+
+   '<p>&#9888; His common mistake: forgetting the <b>minus sign</b> on a tax cut (&Delta;T = &minus;50B).</p>'},
+
+  {id:"fis-limits", h:"When Fiscal Policy Works, Its Eight Limits, and Automatic Stabilizers", body:
+   '<div class="point"><b>The point</b><p>Expansionary fiscal policy works best when it is <b>timely</b>, <b>targeted</b>, aimed at a <b>demand-side</b> downturn, and not undone by <b>monetary offset</b>. In practice it faces <b>eight limits</b>. <b>Automatic stabilizers</b> avoid the lags because they change without anyone voting.</p><p class="able"><b>Be able to</b> list the four conditions, explain the eight limits with his examples, and give the two automatic stabilizers.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Nov 12</span></p>'+
+   '<h3 class="sub" id="fis-four">The four conditions for it to work</h3>'+
+   '<ol><li><b>Timely</b> &mdash; before or at the start of the downturn.</li><li><b>Targeted</b> &mdash; at the workers and industries actually hurt (COVID, 2008&ndash;09, early 2000s, early 1990s).</li><li><b>A demand-side downturn</b> &mdash; a drop in spending, not productivity.</li><li><b>No monetary offset</b> &mdash; the central bank doesn&rsquo;t cancel it.</li></ol>'+
+   '<h3 class="sub" id="fis-eight">The eight limits</h3>'+
+   '<ol><li><b>Knowledge</b> &mdash; the gap and the MPC aren&rsquo;t known in real time; first GDP estimate comes four weeks after a quarter ends.</li>'+
+   '<li><b>Timing</b> &mdash; legislative and implementation lags (the Feb 2009 stimulus took over 3 years to spend; CARES checks reached 1.1 million deceased people).</li>'+
+   '<li><b>Targeting</b> &mdash; labor and capital aren&rsquo;t <b>fungible</b>: an accountant isn&rsquo;t a steelworker.</li>'+
+   '<li><b>Magnitude</b> &mdash; only 25&ndash;35% of the budget is discretionary; CARES was $2 trillion yet only about 9% of GDP.</li>'+
+   '<li><b>Incentives</b> &mdash; politicians maximize votes with delayed accountability and <b>rational ignorance</b>, so stimulus becomes special-interest bills.</li>'+
+   '<li><b>Crowding out</b> &mdash; (a) through loanable funds: higher real rates, less private investment; (b) <b>anticipated future taxes</b> lower today&rsquo;s MPC.</li>'+
+   '<li><b>Debt changes behavior</b> &mdash; it must be repaid with higher inflation, higher taxes or both, so people spend less now.</li>'+
+   '<li><b>Negative real shocks</b> &mdash; if output fell because of productivity, more spending brings only a temporary bump and higher inflation (Monopoly with part of the board cut off).</li></ol>'+
+   '<p><b>Hook:</b> <b>K</b>now, <b>T</b>ime, <b>T</b>arget, <b>M</b>agnitude, <b>I</b>ncentives, <b>C</b>rowding, <b>D</b>ebt, <b>R</b>eal shocks.</p>'+
+   '<h3 class="sub" id="fis-auto">Automatic stabilizers</h3>'+
+   '<ul><li>Fiscal policy that changes <b>without any deliberate action</b>, so no legislative or implementation lag.</li>'+
+   '<li><b>Progressive income tax</b> &mdash; falling incomes drop into lower rates.</li>'+
+   '<li><b>Unemployment insurance</b> &mdash; pays out automatically in a downturn.</li></ul>'}
+ ],
+ decks:[
+  {id:"terms", label:"Key terms", cards:[
+   ["Fiscal policy","Government changing spending or taxes to guide nominal spending and smooth the business cycle","g-fis-tools"],
+   ["Expansionary fiscal policy","Raise government spending and/or cut taxes","g-fis-tools"],
+   ["Contractionary fiscal policy","Cut government spending and/or raise taxes","g-fis-tools"],
+   ["Multiplier effect","The additional change in nominal spending from a change in fiscal policy","g-fis-tools"],
+   ["Marginal propensity to consume","The fraction of extra income spent rather than saved","g-fis-tools"],
+   ["Spending multiplier","1 ÷ (1 − MPC)","g-fis-tools"],
+   ["Tax multiplier","−MPC ÷ (1 − MPC)","g-fis-tools"],
+   ["Output gap","How far output is below capacity","g-fis-tools"],
+   ["Fungible","Mutually substitutable — labor and capital aren’t","g-fis-limits"],
+   ["Rational ignorance","Voters don’t gather costly information because one vote rarely matters","g-fis-limits"],
+   ["Automatic stabilizers","Fiscal policy that changes without deliberate action","g-fis-limits"],
+   ["Monetary offset","The central bank counters fiscal policy to meet its own goals","g-fis-limits"]]},
+  {id:"nums", label:"Lists and numbers", cards:[
+   ["MPC 0.9","Spending multiplier 10; tax multiplier −9","g-fis-tools"],
+   ["MPC 0.8","Spending multiplier 5; tax multiplier −4","g-fis-tools"],
+   ["ΔG = $50B, MPC 0.9","GDP +$500B","g-fis-tools"],
+   ["Tax cut of $50B, MPC 0.9","GDP +$450B","g-fis-tools"],
+   ["Why the spending multiplier is bigger","Government spends the whole dollar; part of a tax cut is saved","g-fis-tools"],
+   ["Four conditions for it to work","Timely, targeted, demand-side downturn, no monetary offset","g-fis-limits"],
+   ["The eight limits","Knowledge, timing, targeting, magnitude, incentives, crowding out, debt, real shocks","g-fis-limits"],
+   ["Two forms of crowding out","Higher real rates (loanable funds); anticipated future taxes lower the MPC","g-fis-limits"],
+   ["Two automatic stabilizers","Progressive income tax and unemployment insurance","g-fis-limits"],
+   ["Discretionary share of the federal budget","About 25–35%","g-fis-limits"]]}
+ ]
+};
+GUIDE.sections.splice(GUIDE.sections.length - 1, 0, {h:"Fiscal Policy", tp:"fiscal", items:[
+ {id:"g-fis-tools", t:"Fiscal Policy and the Multipliers", a:"fis-tools",
+  short:"Change G or T to guide nominal spending. Spending multiplier 1 ÷ (1 − MPC); tax multiplier −MPC ÷ (1 − MPC); the spending one is bigger. MPC 0.9: 10 and −9; $50B → +$500B / +$450B; $250B gap → $25B of G or a $27.78B tax cut.",
+  subs:[["The words","fis-defs"],["The multipliers","fis-mult"],["His worked example","fis-ex"]]},
+ {id:"g-fis-limits", t:"When Fiscal Policy Works, Its Eight Limits, and Automatic Stabilizers", a:"fis-limits",
+  short:"Works if timely, targeted, demand-side, no monetary offset. Eight limits: knowledge, timing, targeting, magnitude, incentives, crowding out, debt, real shocks. Automatic stabilizers: progressive tax, unemployment insurance.",
+  subs:[["Four conditions","fis-four"],["Eight limits","fis-eight"],["Automatic stabilizers","fis-auto"]]}]});
+
+QB = QB.concat([
+ {tp:"fiscal",sec:"g-fis-tools",t:"mc",q:"Fiscal policy is:",a:"government changing spending or taxes to guide nominal spending",w:["the central bank changing interest rates and the money supply","banks changing how much they lend","the Treasury printing currency"],e:"Its objective is to smooth the business cycle. Monetary policy is the central bank."},
+ {tp:"fiscal",sec:"g-fis-tools",t:"mc",q:"Expansionary fiscal policy means:",a:"raising government spending and/or cutting taxes",w:["cutting government spending and/or raising taxes","lowering interest rates and raising the money supply","raising the reserve ratio"],e:"It stimulates nominal spending by putting unused resources to work."},
+ {tp:"fiscal",sec:"g-fis-tools",t:"mc",q:"The marginal propensity to consume is:",a:"the fraction of extra income that is spent rather than saved",w:["the fraction of total income that is saved","the share of GDP that is consumption","the amount the government spends per dollar of tax"],e:"Spend 80¢ of an extra dollar → MPC = 0.8. MPC + MPS = 1."},
+ {tp:"fiscal",sec:"g-fis-tools",m:1,ap:true,t:"mc",q:"Consumers save 10¢ of every extra dollar. The MPC and the spending multiplier are:",a:"0.9 and 10",w:["0.1 and 10","0.9 and 1.11","0.1 and 1.11"],e:"MPC = 0.9; 1 ÷ (1 − 0.9) = 10."},
+ {tp:"fiscal",sec:"g-fis-tools",m:1,ap:true,t:"mc",q:"With an MPC of 0.9, the government spends an extra $50 billion. GDP changes by:",a:"+$500 billion",w:["+$450 billion","+$50 billion","+$55.6 billion"],e:"ΔY = 10 × 50B."},
+ {tp:"fiscal",sec:"g-fis-tools",m:1,ap:true,t:"mc",q:"With an MPC of 0.9, taxes are cut by $50 billion. GDP changes by:",a:"+$450 billion",w:["+$500 billion","−$450 billion","+$45 billion"],e:"Tax multiplier −9; ΔY = (−9) × (−50B) = +450B. Forgetting the minus on a cut is his common mistake."},
+ {tp:"fiscal",sec:"g-fis-tools",m:1,ap:true,t:"mc",q:"The economy is $250 billion below capacity and the MPC is 0.9. How much extra government spending closes the gap?",a:"$25 billion",w:["$250 billion","$2,500 billion","$27.78 billion"],e:"250B = 10 × ΔG → ΔG = 25B. ($27.78B is the tax cut needed.)"},
+ {tp:"fiscal",sec:"g-fis-tools",t:"mc",q:"Why is the spending multiplier larger in absolute value than the tax multiplier for the same MPC?",a:"Government spends the whole dollar, while part of a tax cut is saved",w:["Because the tax multiplier is negative","Because taxes are collected with a lag","Because government spending is always on investment"],e:"It has nothing to do with the negative sign."},
+ {tp:"fiscal",sec:"g-fis-tools",t:"mc",q:"Why doesn’t fiscal policy work at full employment?",a:"Crowding out: there are no unused resources to put to work",w:["Taxes can’t be cut below zero","The multiplier becomes negative","The central bank must raise reserve requirements"],e:"Full employment is roughly the natural rate of unemployment."},
+ {tp:"fiscal",sec:"g-fis-tools",t:"tf",q:"A higher MPC means bigger fiscal multipliers.",a:true,e:"True: MPC 0.8 gives 5, MPC 0.9 gives 10."},
+ {tp:"fiscal",sec:"g-fis-tools",t:"tf",q:"The fiscal spending multiplier is the same thing as the money multiplier.",a:false,e:"False. The money multiplier is 1 ÷ reserve ratio, from banking; the spending multiplier is 1 ÷ (1 − MPC)."},
+
+ {tp:"fiscal",sec:"g-fis-limits",t:"mc",q:"Which is NOT one of his four conditions for expansionary fiscal policy to work well?",a:"The downturn is caused by a fall in productivity",w:["It is timely, enacted before or at the start of the downturn", "It is targeted at the workers and industries actually hurt", "There is no monetary offset from the central bank"],e:"It must be a demand-side downturn — a fall in spending."},
+ {tp:"fiscal",sec:"g-fis-limits",ap:true,t:"mc",q:"The February 2009 stimulus took over three years to spend, long after most recessions end. This is the:",a:"timing problem",w:["knowledge problem","magnitude problem","incentive problem"],e:"Legislative and implementation lags."},
+ {tp:"fiscal",sec:"g-fis-limits",ap:true,t:"mc",q:"Construction workers laid off in 2008 can’t simply become nurses. This illustrates the:",a:"targeting problem — labor isn’t fungible",w:["knowledge problem — the size of the gap isn’t known in real time", "magnitude problem — only a small share of the budget is discretionary", "debt problem — people expect higher taxes and cut their spending"],e:"You can’t turn an accountant into a steelworker overnight."},
+ {tp:"fiscal",sec:"g-fis-limits",t:"mc",q:"Rational ignorance helps explain the incentive problem because:",a:"voters rarely gather costly information, so politicians face delayed accountability",w:["politicians always know the exact MPC","voters punish every special-interest bill immediately","it makes government spending more fungible"],e:"Only about 10–15% of voters can name their two senators and representative."},
+ {tp:"fiscal",sec:"g-fis-limits",t:"mc",q:"Which are the two forms of crowding out from fiscal policy?",a:"Higher real interest rates cut private investment, and expected future taxes lower today’s MPC",w:["Higher reserve ratios lower the money multiplier, and banks lend less to firms", "Lower inflation raises real wages, and firms hire fewer workers as a result", "Higher imports replace domestic output, and exports fall as the dollar strengthens"],e:"(a) Through loanable funds; (b) anticipated future taxes."},
+ {tp:"fiscal",sec:"g-fis-limits",t:"mc",q:"If output falls because of a negative productivity shock, more government spending:",a:"gives only a temporary output gain plus higher inflation",w:["fully restores output permanently","lowers inflation permanently","has no effect on prices"],e:"Monopoly with part of the board cut off: the missing properties don’t come back; prices rise."},
+ {tp:"fiscal",sec:"g-fis-limits",t:"mc",q:"Which are the two automatic stabilizers he named?",a:"The progressive income tax and unemployment insurance",w:["Stimulus checks and infrastructure bills","The discount rate and interest on reserves","Tariffs and subsidies"],e:"They change without deliberate action, avoiding the lags."},
+ {tp:"fiscal",sec:"g-fis-limits",t:"mc",q:"The CARES Act was about $2 trillion, the largest ever, yet only about 9% of GDP. This speaks to the:",a:"magnitude problem",w:["timing problem","targeting problem","knowledge problem"],e:"Only about 25–35% of the federal budget is discretionary, and more spending must be borrowed."},
+ {tp:"fiscal",sec:"g-fis-limits",t:"tf",q:"Automatic stabilizers avoid legislative and implementation lags.",a:true,e:"True — they change with no one voting."},
+ {tp:"fiscal",sec:"g-fis-limits",t:"tf",q:"Rising government debt has no effect on how people spend today.",a:false,e:"False. Debt must be repaid with higher inflation, taxes or both, so people may spend less now — limit 7."}
+]);
+
+PRACTICE_TOPICS.push(["fiscal","Fiscal"]);
+TOPIC_LABEL.fiscal = "Fiscal";
+GENS.push({id:"fis-mult", topic:"fiscal", name:"Fiscal multipliers", variants:5,
+ remind:"Spending multiplier = 1 ÷ (1 − MPC). Tax multiplier = −MPC ÷ (1 − MPC). ΔY = multiplier × ΔG (or ΔT). A tax cut is a negative ΔT.",
+ make:function(v){
+  v = v || ri(1, 5);
+  var mpc = rp([0.5, 0.6, 0.75, 0.8, 0.9]), sm = 1 / (1 - mpc), tm = -mpc / (1 - mpc), dg = ri(1, 20) * 10, gap = ri(2, 40) * 50, b = {v:v, vals:{}};
+  var save = rnd((1 - mpc) * 100, 0);
+  if(v === 1){ b.text = "For every extra dollar of income, consumers save " + save + "¢.";
+   b.parts = [P("mpc", "the MPC", mpc, 2, "", "They spend " + (100 - save) + "¢ of each extra dollar: MPC = " + num(mpc, 2) + ".", {wrong:[1 - mpc, 100 - save, sm]}),
+              P("sm", "the spending multiplier", sm, 2, "", "1 ÷ (1 − " + num(mpc, 2) + ") = " + num(sm, 2) + ".", {wrong:[1 / mpc, -tm, 1 - mpc]}),
+              P("tm", "the tax multiplier", tm, 2, "", "−" + num(mpc, 2) + " ÷ (1 − " + num(mpc, 2) + ") = " + num(tm, 2) + ".", {signed:true, wrong:[-tm, -sm, mpc]})]; }
+  else if(v === 2){ b.text = "The MPC is " + num(mpc, 2) + " and the government raises spending by $" + dg + " billion.";
+   b.parts = [P("dy", "the change in GDP (in billions)", sm * dg, 2, "$", num(sm, 2) + " × " + dg + " = $" + num(sm * dg, 2) + " billion.", {wrong:[-tm * dg, dg, dg / sm]})]; }
+  else if(v === 3){ b.text = "The MPC is " + num(mpc, 2) + " and the government cuts taxes by $" + dg + " billion.";
+   b.parts = [P("dy", "the change in GDP (in billions)", -tm * dg, 2, "$", num(tm, 2) + " × (−" + dg + ") = +$" + num(-tm * dg, 2) + " billion.", {signed:true, wrong:[tm * dg, sm * dg, dg]})]; }
+  else if(v === 4){ b.text = "The economy is $" + gap + " billion below capacity and the MPC is " + num(mpc, 2) + ".";
+   b.parts = [P("dg", "the government spending needed (in billions)", gap / sm, 2, "$", gap + " ÷ " + num(sm, 2) + " = $" + num(gap / sm, 2) + " billion.", {wrong:[gap, gap * sm, gap / -tm]})]; }
+  else { b.text = "The economy is $" + gap + " billion below capacity and the MPC is " + num(mpc, 2) + ". The government will use a lump-sum tax change.";
+   b.parts = [P("dt", "the tax change needed (in billions; negative is a cut)", gap / tm, 2, "$", gap + " ÷ (" + num(tm, 2) + ") = −$" + num(-gap / tm, 2) + " billion: a tax cut.", {signed:true, wrong:[-gap / tm, gap / sm, gap * tm]})]; }
+  return b;
+ }});
+GEN_BY_ID["fis-mult"] = GENS[GENS.length - 1];
+[{id:"ex-fiscal", gen:"fis-mult", src:"Class example", make:function(){
+   return {text:"For every extra dollar of income, the average consumer saves 10¢. The economy is $250 billion below capacity.",
+    parts:[P("mpc", "the MPC", 0.9, 2, "", "0.90 ÷ 1 = 0.9.", {wrong:[0.1, 90, 10]}),
+           P("sm", "the spending multiplier", 10, 2, "", "1 ÷ 0.1 = 10.", {wrong:[9, 1.11, 0.1]}),
+           P("g50", "ΔGDP from $50 billion of spending (billions)", 500, 2, "$", "10 × 50 = $500 billion.", {wrong:[450, 50, 5]}),
+           P("g", "the spending needed for the gap (billions)", 25, 2, "$", "250 ÷ 10 = $25 billion.", {wrong:[250, 27.78, 2500]}),
+           P("tm", "the tax multiplier", -9, 2, "", "−0.9 ÷ 0.1 = −9.", {signed:true, wrong:[9, -10, -0.9]}),
+           P("t50", "ΔGDP from a $50 billion tax cut (billions)", 450, 2, "$", "(−9) × (−50) = +$450 billion.", {signed:true, wrong:[-450, 500, 50]}),
+           P("t", "the tax change needed for the gap (billions)", -250 / 9, 2, "$", "250 ÷ (−9) = −$27.78 billion — a cut.", {signed:true, wrong:[27.78, -25, -250]})]};
+  }}].forEach(function(f){ f.topic = GEN_BY_ID[f.gen].topic; FIXED.push(f); FIXED_BY_ID[f.id] = f; });
+
+/* ================================================================ the Phillips curve (Unit 3, for the final)
+   Lecture, Nov 17: "Phillips Curve" (50:44, a newer recording). The Keynesian
+   background, the original curve and the "menu", the 1960s–80s data,
+   Friedman–Phelps, the short- and long-run curves, and the three graphing rules. */
+function srpc(shift){ var k = 70 / 80; return function(x){ return 45 + shift + (50 - x) * k; }; }
+function pcGraph(cap, mode){
+  var s1 = srpc(0), s2 = srpc(24), lines = [{a:[50, 4], b:[50, 96], lab:"LRPC", lx:50, ly:96}, {a:[12, s1(12)], b:[90, s1(90)], lab:"SRPC₁"}], pts = [{x:50, y:45, lab:"A", yl:"π₁", xl:"NRU"}];
+  if(mode === "expand"){
+    lines.push({a:[20, s2(20)], b:[92, s2(92)], cls:"new dash", lab:"SRPC₂"});
+    pts.push({x:34, y:s1(34), lab:"B", cls:"new", yl:"π₂"});
+    pts.push({x:50, y:s2(50), lab:"C", cls:"new", drop:false});
+  } else if(mode === "supply"){
+    lines.push({a:[66, 4], b:[66, 96], cls:"new dash", lab:"LRPC₂", lx:66, ly:90});
+    var s3 = function(x){ return 62 + (66 - x) * 70 / 80; };
+    lines.push({a:[30, s3(30)], b:[96, s3(96)], cls:"new dash", lab:"SRPC₂"});
+    pts.push({x:66, y:62, lab:"B", cls:"new", yl:"π₂", xl:"NRU₂"});
+  }
+  return gfx({cap:cap, x:"Unemployment rate", y:"Inflation rate", lines:lines, pts:pts});
+}
+
+CH.phillips = {n:14, title:"The Phillips Curve", short:"Phillips Curve",
+ notes:[
+  {id:"pc-history", h:"From Keynes to Stagflation: The Original Phillips Curve", body:
+   '<div class="point"><b>The point</b><p>After the Depression, <b>Keynesians</b> believed economies can get stuck below potential and that <b>managing demand</b> can fix it. <b>Phillips (1958)</b> found an inverse link between unemployment and <b>wage</b> inflation; <b>Samuelson and Solow</b> turned it into a price-inflation &ldquo;<b>menu</b>.&rdquo; The <b>1970s stagflation</b> broke it: there was <b>no permanent long-run trade-off</b>.</p><p class="able"><b>Be able to</b> give the three Keynesian beliefs, tell the story of the original curve and the menu, and describe what the 1960s, 1970s and 1980s data showed.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Nov 17 &middot; Problem Set 14 (answers hidden)</span></p>'+
+   '<h3 class="sub" id="pc-keynes">The Keynesian revolution: three beliefs</h3>'+
+   '<ol><li>Economies can get <b>stuck with idle resources</b>: output below potential &mdash; the <b>output gap</b> &mdash; and unemployment above the natural rate.</li>'+
+   '<li>Swings in output and jobs are largely driven by <b>inadequate demand</b> (too little spending).</li>'+
+   '<li><b>Active demand management</b> &mdash; fiscal or monetary &mdash; can steer back to full employment.</li></ol>'+
+   '<h3 class="sub" id="pc-orig">The original curve and the menu</h3>'+
+   '<ul><li><b>A. W. Phillips (1958):</b> nearly a century of <b>UK</b> data &mdash; low unemployment went with high <b>wage</b> inflation (firms compete for scarce workers).</li>'+
+   '<li><b>Lipsey</b>, and <b>Samuelson and Solow</b>, recast it as <b>price</b> inflation vs unemployment: wages are a big cost, so firms pass them on.</li>'+
+   '<li><b>The &ldquo;menu of choices&rdquo;</b>: pick a point by adjusting nominal spending &mdash; &ldquo;<b>fine-tuning</b>,&rdquo; best seen under <b>Kennedy and Johnson</b> in the 1960s.</li></ul>'+
+   '<h3 class="sub" id="pc-data">What the data showed</h3>'+
+   '<ul><li><b>1960s:</b> a smooth, stable curve (1961 low inflation/high unemployment; 1969 the reverse).</li>'+
+   '<li><b>1970s: stagflation</b> &mdash; &ldquo;high inflation and high unemployment at the same time.&rdquo; The curve kept shifting <b>up and to the right</b> (1970&ndash;73, 1974&ndash;75, 1976&ndash;79).</li>'+
+   '<li><b>1980s:</b> no stable relationship. &ldquo;Perhaps the 1960s was the anomaly and not the rule.&rdquo;</li>'+
+   '<li><b>Conclusion:</b> &ldquo;there was no permanent long-run trade-off&hellip; any movement along the Phillips curve was temporary.&rdquo;</li></ul>'},
+
+  {id:"pc-model", h:"Expectations, the Long-Run Curve, and the Three Graphing Rules", body:
+   '<div class="point"><b>The point</b><p><b>Friedman and Phelps</b> added <b>expectations</b>: the <b>long-run Phillips curve is vertical</b> at the <b>natural rate of unemployment</b>, where actual inflation = expected inflation. Pushing unemployment below it gives <b>accelerating inflation</b>, not lasting lower unemployment. The short-run trade-off exists only when <b>actual &ne; expected inflation</b>.</p><p class="able"><b>Be able to</b> draw the SRPC and LRPC, walk through repeated expansion (A&rarr;B&rarr;C), and apply the three rules: spending moves you along, expectations shift the SRPC, supply shocks shift both.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Nov 17 &middot; on the Final graph list</span></p>'+
+   '<h3 class="sub" id="pc-fp">Friedman and Phelps</h3>'+
+   '<ol><li><b>The LRPC is vertical at the natural rate (NRU)</b>, set by real factors: demographics, institutions, productivity. At the NRU, actual = expected inflation.</li>'+
+   '<li><b>Unemployment always returns to the natural rate</b> in the long run &mdash; &ldquo;the lowest sustainable rate of unemployment.&rdquo; Money is neutral.</li>'+
+   '<li><b>Expectations adjust</b> to past prices and expected policy.</li></ol>'+
+   '<p><b>The story:</b> more spending &rarr; firms hire &rarr; unemployment falls &rarr; wages and prices rise (along the SRPC) &rarr; workers see lower real wages &rarr; they demand raises &rarr; costs rise &rarr; firms cut back &rarr; <b>back to the NRU at higher inflation</b>.</p>'+
+   '<h3 class="sub" id="pc-graph">The graph</h3>'+
+   '<div class="lfgrid">'+
+   pcGraph("<b>Expansion:</b> A&rarr;B along SRPC&#8321; (less unemployment, more inflation); expectations rise, SRPC shifts up, B&rarr;C: back at the NRU with higher inflation.", "expand")+
+   pcGraph("<b>Negative supply shock:</b> LRPC shifts right and SRPC shifts up and right &mdash; a higher natural rate and higher inflation.", "supply")+
+   '</div>'+
+   '<ul><li>Repeat the expansion (C&rarr;D&rarr;E) and inflation <b>accelerates</b> &mdash; the 1970s.</li>'+
+   '<li>&#9888; Expectations can also cause inflation in the short run (firms raise prices in anticipation), but in the long run inflation is always a monetary phenomenon.</li></ul>'+
+   '<h3 class="sub" id="pc-rules">The three graphing rules</h3>'+
+   '<ol><li><b>Spending shocks</b> (fiscal or monetary) <b>move you along</b> the SRPC: more spending up and left; less spending down and right.</li>'+
+   '<li><b>Inflation expectations shift the SRPC</b>: higher expectations shift it up; lower, down.</li>'+
+   '<li><b>Supply shocks shift both</b>: a <b>negative</b> shock moves the LRPC <b>right</b> and the SRPC up and right (higher NRU and inflation &mdash; the Strait of Hormuz, about 20% of world oil); a <b>positive</b> shock moves the LRPC <b>left</b> and the SRPC down and left, further.</li></ol>'+
+   '<ul><li>&#9888; &ldquo;Whenever the LRPC shifts, the SRPC must shift as well&rdquo; (not the reverse).</li>'+
+   '<li>&#9888; Here a productivity <b>increase</b> shifts the LRPC <b>left</b> (the axis is unemployment). In AD&ndash;AS the axis is output, so it shifts <b>right</b>.</li>'+
+   '<li><b>Early 1980s:</b> credible contractionary policy &rarr; two recessions &rarr; expectations fell, SRPC shifted down: &ldquo;very successful.&rdquo;</li>'+
+   '<li><b>Monetary offset</b> can move you back along the same SRPC (B&rarr;A) before expectations adjust.</li></ul>'+
+   '<h3 class="sub" id="pc-take">His three takeaways</h3>'+
+   '<ol><li>Only a <b>short-run</b> trade-off; in the long run the economy returns to the natural rate.</li>'+
+   '<li>Repeatedly pushing unemployment down gives <b>higher and accelerating inflation</b>.</li>'+
+   '<li>The trade-off exists only when <b>actual inflation &ne; expected inflation</b>.</li></ol>'}
+ ],
+ decks:[
+  {id:"terms", label:"Key terms", cards:[
+   ["Output gap","The difference between actual and potential output","g-pc-history"],
+   ["Original Phillips curve (1958)","An inverse link between UK unemployment and wage inflation","g-pc-history"],
+   ["The “menu of choices”","Samuelson and Solow: pick an inflation–unemployment point by adjusting spending","g-pc-history"],
+   ["Fine-tuning","Adjusting nominal spending to guide the economy — the 1960s","g-pc-history"],
+   ["Stagflation","High inflation and high unemployment at the same time — the 1970s","g-pc-history"],
+   ["Long-run Phillips curve","Vertical at the natural rate of unemployment","g-pc-model"],
+   ["Short-run Phillips curve","Downward sloping — a trade-off only while expectations lag","g-pc-model"],
+   ["Natural rate of unemployment","The lowest sustainable rate; where actual = expected inflation","g-pc-model"],
+   ["Friedman and Phelps","Added expectations; predicted the breakdown in the late 1960s","g-pc-model"],
+   ["Monetary offset","The central bank reverses a spending change before expectations adjust","g-pc-model"]]},
+  {id:"rules", label:"Rules and history", cards:[
+   ["Three Keynesian beliefs","Economies get stuck with idle resources; swings come from inadequate demand; demand management can fix it","g-pc-history"],
+   ["1960s data","A smooth, stable inverse curve","g-pc-history"],
+   ["1970s data","The curve kept shifting up and to the right","g-pc-history"],
+   ["More nominal spending","Move up and to the left along the SRPC","g-pc-model"],
+   ["Higher inflation expectations","The SRPC shifts up","g-pc-model"],
+   ["Negative supply shock","LRPC shifts right; SRPC up and right — higher NRU and inflation","g-pc-model"],
+   ["Positive supply shock","LRPC shifts left; SRPC down and left, further","g-pc-model"],
+   ["Repeated expansion","Accelerating inflation, not lasting lower unemployment","g-pc-model"],
+   ["When a trade-off exists","Only when actual inflation ≠ expected inflation","g-pc-model"],
+   ["Early 1980s","Credible disinflation: expectations fell and the SRPC shifted down","g-pc-model"],
+   ["Productivity up, Phillips vs AD–AS","Phillips: LRPC left (unemployment axis). AD–AS: right (output axis)","g-pc-model"]]}
+ ]
+};
+GUIDE.sections.splice(GUIDE.sections.length - 1, 0, {h:"The Phillips Curve", tp:"phillips", items:[
+ {id:"g-pc-history", t:"From Keynes to Stagflation: The Original Phillips Curve", a:"pc-history",
+  short:"Keynesian beliefs: idle resources, inadequate demand, demand management. Phillips 1958 (wage inflation, UK); Samuelson–Solow menu; 1960s fine-tuning. 1970s stagflation shifted it up and right; no permanent trade-off.",
+  subs:[["Three Keynesian beliefs","pc-keynes"],["The original curve","pc-orig"],["What the data showed","pc-data"]]},
+ {id:"g-pc-model", t:"Expectations, the Long-Run Curve, and the Three Graphing Rules", a:"pc-model",
+  short:"LRPC vertical at the NRU. Spending moves you along the SRPC; expectations shift it; supply shocks shift both (negative: LRPC right, higher NRU and inflation). Repeated expansion → accelerating inflation. Trade-off only when actual ≠ expected.",
+  subs:[["Friedman and Phelps","pc-fp"],["The graph","pc-graph"],["Three graphing rules","pc-rules"],["Takeaways","pc-take"]]}]});
+
+QB = QB.concat([
+ {tp:"phillips",sec:"g-pc-history",t:"mc",q:"Which is NOT one of the three core Keynesian beliefs he described?",a:"Money is neutral in both the short run and the long run",w:["Economies can get stuck with idle resources","Swings in output and jobs are largely driven by inadequate demand","Active demand management can steer the economy back to full employment"],e:"Neutrality is the long-run quantity theory; Keynesians stressed short-run demand problems."},
+ {tp:"phillips",sec:"g-pc-history",t:"mc",q:"A. W. Phillips’s original 1958 finding was an inverse relationship between unemployment and:",a:"wage inflation, in UK data",w:["price inflation, in U.S. data","real GDP growth, in UK data","interest rates, in U.S. data"],e:"It was wage inflation. Lipsey, Samuelson and Solow later recast it as price inflation."},
+ {tp:"phillips",sec:"g-pc-history",t:"mc",q:"Samuelson and Solow’s “menu of choices” meant policymakers could:",a:"pick a point on the inflation–unemployment trade-off by adjusting nominal spending",w:["choose any level of real output they wanted permanently","set the natural rate of unemployment by law","eliminate inflation and unemployment at the same time"],e:"More spending: more inflation, less unemployment. Fine-tuning — the Kennedy and Johnson years."},
+ {tp:"phillips",sec:"g-pc-history",t:"mc",q:"Stagflation is:",a:"high inflation and high unemployment at the same time",w:["low inflation and low unemployment at the same time","falling prices with rising output","a recession with no change in prices"],e:"The 1970s, which the original curve couldn’t explain."},
+ {tp:"phillips",sec:"g-pc-history",t:"mc",q:"In the 1970s, the short-run Phillips curves he showed:",a:"kept shifting up and to the right",w:["kept shifting down and to the left","stayed exactly where the 1960s curve was","became horizontal"],e:"1970–73, 1974–75, 1976–79 — each higher."},
+ {tp:"phillips",sec:"g-pc-history",t:"mc",q:"What did the data of the 1960s through the 1980s show about the Phillips curve?",a:"There was no permanent long-run trade-off; movements along it were temporary",w:["The 1960s trade-off held in every later decade","Inflation and unemployment always move together","Unemployment has no relationship with inflation even in the short run"],e:"“Perhaps the 1960s was the anomaly and not the rule.”"},
+ {tp:"phillips",sec:"g-pc-history",ap:true,t:"mc",q:"Unemployment is very low, so firms compete for scarce workers. According to the original Phillips curve reasoning:",a:"wages, and then prices, are pushed up",w:["wages fall because workers compete for jobs","prices fall because firms are more productive","nothing happens to wages"],e:"Few unemployed means firms bid for workers."},
+ {tp:"phillips",sec:"g-pc-history",t:"tf",q:"The output gap is the difference between actual output and potential output.",a:true,e:"True — the first Keynesian belief is that economies can get stuck with one."},
+ {tp:"phillips",sec:"g-pc-history",t:"tf",q:"The 1960s data showed stagflation.",a:false,e:"False. The 1960s showed a smooth, stable inverse curve; stagflation was the 1970s."},
+
+ {tp:"phillips",sec:"g-pc-model",t:"mc",q:"According to Friedman and Phelps, the long-run Phillips curve is:",a:"vertical at the natural rate of unemployment",w:["downward sloping, like the short-run curve","horizontal at 2% inflation","upward sloping"],e:"In the long run unemployment depends on real factors, not inflation."},
+ {tp:"phillips",sec:"g-pc-model",t:"mc",q:"At the natural rate of unemployment:",a:"actual inflation equals expected inflation",w:["inflation is always zero","unemployment is zero","actual inflation is above expected inflation"],e:"Point A, where the SRPC crosses the LRPC."},
+ {tp:"phillips",sec:"g-pc-model",m:1,ap:true,t:"mc",q:"The economy starts at the natural rate. Policymakers raise nominal spending. In the short run:",a:"the economy moves up and to the left along the SRPC: unemployment falls, inflation rises",w:["the SRPC shifts up and unemployment rises above the natural rate", "the LRPC shifts left and the natural rate of unemployment falls", "the economy moves down and to the right along the SRPC, lowering inflation"],e:"Spending shocks move you along the SRPC (A to B)."},
+ {tp:"phillips",sec:"g-pc-model",m:1,ap:true,t:"mc",q:"After the move from A to B, workers’ inflation expectations rise. What happens next?",a:"The SRPC shifts up and unemployment returns to the natural rate at higher inflation",w:["The SRPC shifts down and unemployment stays low","The LRPC shifts left to the new unemployment rate","Nothing: the economy stays at B"],e:"B to C — the gain in unemployment was temporary; the higher inflation is permanent."},
+ {tp:"phillips",sec:"g-pc-model",m:1,ap:true,t:"mc",q:"A major oil route closes, and a key input becomes much more expensive. On the Phillips curve graph:",a:"the LRPC shifts right and the SRPC shifts up and right: a higher natural rate and higher inflation",w:["the economy moves up and to the left along the SRPC, with lower unemployment and higher inflation", "only the SRPC shifts up, while the natural rate of unemployment stays exactly where it was", "the LRPC shifts left and the SRPC shifts down, giving a lower natural rate and less inflation"],e:"A negative supply shock shifts both (his Strait of Hormuz example)."},
+ {tp:"phillips",sec:"g-pc-model",ap:true,t:"mc",q:"A productivity boom raises output per worker across the economy. On the Phillips curve graph:",a:"the LRPC shifts left and the SRPC shifts down and left, further",w:["the LRPC shifts right and the SRPC shifts up","only the SRPC shifts down","the economy moves along the SRPC"],e:"A lower natural rate and lower inflation — “sort of the best of all worlds.”"},
+ {tp:"phillips",sec:"g-pc-model",t:"mc",q:"What shifts the short-run Phillips curve without shifting the long-run curve?",a:"A change in inflation expectations",w:["A change in government spending","A change in the money supply","A change in productivity"],e:"Spending moves you along the SRPC; productivity shifts both curves."},
+ {tp:"phillips",sec:"g-pc-model",t:"mc",q:"Repeatedly pushing unemployment below the natural rate leads to:",a:"accelerating inflation, not permanently lower unemployment",w:["permanently lower unemployment at stable inflation","deflation and higher unemployment","a lower natural rate of unemployment"],e:"The 1970s: C → D → E, inflation rising each time."},
+ {tp:"phillips",sec:"g-pc-model",t:"mc",q:"According to his third takeaway, the short-run trade-off exists only when:",a:"actual inflation differs from expected inflation",w:["the central bank targets zero inflation","unemployment equals the natural rate","productivity is rising"],e:"Policy moves you along the curve only before expectations adjust."},
+ {tp:"phillips",sec:"g-pc-model",ap:true,t:"mc",q:"In the early 1980s the Fed ran credible, aggressive contractionary policy. On the Phillips curve graph, after the recessions:",a:"expectations fell, the SRPC shifted down, and the economy returned to the natural rate with lower inflation",w:["the LRPC shifted right permanently, raising the natural rate of unemployment for good", "the SRPC shifted up, so inflation and unemployment both stayed higher than before", "the economy stayed below the natural rate, trading lasting unemployment for low inflation"],e:"“Very successful” — because it was credible."},
+ {tp:"phillips",sec:"g-pc-model",t:"mc",q:"Why is it wrong to shift only the LRPC after a productivity shock?",a:"Whenever the LRPC shifts, the SRPC must shift too, or you get the price effect backwards",w:["Because the LRPC never shifts, whatever happens to productivity", "Because only the SRPC matters once the economy reaches the long run", "Because productivity changes only expectations, which move the SRPC alone"],e:"Shifting only the LRPC would wrongly say higher productivity raises prices."},
+ {tp:"phillips",sec:"g-pc-model",t:"tf",q:"In the Phillips curve model, a rise in productivity shifts the long-run curve to the left.",a:true,e:"True — the horizontal axis is unemployment, so a lower natural rate is a shift left. (In AD–AS, it shifts right.)"},
+ {tp:"phillips",sec:"g-pc-model",t:"tf",q:"Expansionary monetary policy shifts the short-run Phillips curve to the right.",a:false,e:"False. Spending shocks move you along the SRPC (up and to the left). Expectations shift it."}
+]);
+
+PRACTICE_TOPICS.push(["phillips","Phillips"]);
+TOPIC_LABEL.phillips = "Phillips";
+var PC_EVENTS = [
+ ["The central bank raises the money supply to push unemployment down.", 0, "A spending shock: move along the SRPC."],
+ ["Congress passes a large spending bill while the economy is at the natural rate.", 0, "More nominal spending: move along the SRPC."],
+ ["The government cuts spending sharply.", 1, "Less nominal spending: move along the SRPC, down and to the right."],
+ ["Workers and firms come to expect higher inflation next year.", 2, "Expectations shift the SRPC."],
+ ["A credible central bank convinces everyone inflation will fall.", 3, "Lower expectations shift the SRPC down."],
+ ["A key shipping route for oil closes, raising input costs everywhere.", 4, "A negative supply shock shifts both curves."],
+ ["A technological revolution raises productivity across the economy.", 5, "A positive supply shock shifts both curves."]];
+var PC_OPTS = ["Move up and to the left along the SRPC", "Move down and to the right along the SRPC", "The SRPC shifts up", "The SRPC shifts down", "The LRPC shifts right and the SRPC shifts up and right", "The LRPC shifts left and the SRPC shifts down and left"];
+GENS.push({id:"pc-shift", topic:"phillips", name:"Phillips curve: along, shift, or both?", remind:"Spending moves you along the SRPC. Expectations shift the SRPC. Supply shocks shift both.",
+ make:function(){ var s = rp(PC_EVENTS); return {vals:{}, text:s[0], choice:{q:"What happens on the Phillips curve graph?", opts:PC_OPTS.slice(), right:s[1], work:s[2] + " " + PC_OPTS[s[1]] + "."}}; }});
+GEN_BY_ID["pc-shift"] = GENS[GENS.length - 1];
+
+/* ================================================================ business cycles and AD–AS (Unit 3, for the final)
+   Lectures, Nov 19 and Nov 24: "Business Cycles" Parts I–III (23:35, 46:30, 46:44).
+   What cycles are and who dates them, supply vs demand shocks, the AD–AS model
+   in growth rates, and every shock-and-policy scenario he walked through.     */
+function adasGraph(cap, mode){
+  var k = 70 / 80;
+  function sras(dx){ return function(x){ return 15 + (x - 10 - dx) * k; }; }
+  function ad(dx){ return function(x){ return 85 - (x - 10 - dx) * k; }; }
+  var S = sras(0), D = ad(0);
+  var lines = [{a:[50, 4], b:[50, 96], lab:"LRAS", lx:50, ly:96}, {a:[12, S(12)], b:[88, S(88)], lab:"SRAS"}, {a:[12, D(12)], b:[88, D(88)], lab:"AD"}];
+  var pts = [{x:50, y:50, lab:"A", yl:"π₁", xl:"Y"}];
+  if(mode === "ad"){
+    var D2 = ad(20), S2 = function(x){ return 67.5 + (x - 50) * k; };
+    lines.push({a:[32, D2(32)], b:[96, D2(96)], cls:"new dash", lab:"AD₂"});
+    lines.push({a:[20, S2(20)], b:[72, S2(72)], cls:"new dash", lab:"SRAS₂", lx:20, ly:S2(20) - 8});
+    pts.push({x:60, y:58.75, lab:"B", cls:"new", xl:"Y₁"});
+    pts.push({x:50, y:67.5, lab:"C", cls:"new", yl:"π₂"});
+  } else if(mode === "supply"){
+    var S3 = sras(-24);
+    lines.push({a:[38, 4], b:[38, 96], cls:"new dash", lab:"LRAS₂", lx:39, ly:74});
+    lines.push({a:[12, S3(12)], b:[70, S3(70)], cls:"new dash", lab:"SRAS₂"});
+    pts.push({x:38, y:60.5, lab:"B", cls:"new", yl:"π₂", xl:"Y₁"});
+  }
+  return gfx({cap:cap, x:"Real GDP growth rate", y:"Inflation rate", lines:lines, pts:pts});
+}
+
+CH.adas = {n:15, title:"Business Cycles and the AD–AS Model", short:"AD–AS",
+ notes:[
+  {id:"bc-cycles", h:"Business Cycles and What Causes Them", body:
+   '<div class="point"><b>The point</b><p><b>Business cycles</b> are the fluctuations in economic activity over time: <b>expansions</b> up to a <b>peak</b>, <b>contractions</b> down to a <b>trough</b>. The <b>NBER</b> dates U.S. recessions using the <b>three Ds</b>. Cycles have two broad causes: <b>supply shocks</b> (productivity) and <b>demand shocks</b> (spending).</p><p class="able"><b>Be able to</b> define the phases, give the NBER&rsquo;s definition and three Ds (and the 2020 exception), and sort examples into positive/negative supply and demand shocks.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Nov 19 &middot; Problem Set 15</span></p>'+
+   '<h3 class="sub" id="bc-defs">The phases</h3>'+
+   '<ul><li><b>Expansion:</b> real GDP and employment rise; the economy uses <b>more</b> of its factors. Its top is the <b>peak</b>.</li>'+
+   '<li><b>Contraction:</b> real GDP and employment fall; factors are <b>underused</b>. Its bottom is the <b>trough</b>.</li>'+
+   '<li><b>Recession:</b> &ldquo;a wide-scale decline in economic activity across multiple sectors for a given length of time.&rdquo; The U.S. has had <b>13</b> since WWII. <b>Expansion is the normal state.</b></li></ul>'+
+   '<h3 class="sub" id="bc-nber">Who dates recessions: the NBER</h3>'+
+   '<ul><li>A <b>private nonprofit</b> (founded 1920); its <b>Business Cycle Dating Committee</b> (1978) dates recessions back to <b>1854</b>. No official authority, but trusted.</li>'+
+   '<li>Definition: &ldquo;a significant decline in economic activity that is spread across the economy and lasts more than a few months.&rdquo;</li>'+
+   '<li><b>The three Ds: depth, diffusion, duration</b> &mdash; usually all three.</li>'+
+   '<li><b>2020</b>: only <b>2 months</b>, the shortest on record, but so deep and widespread it counted.</li></ul>'+
+   '<h3 class="sub" id="bc-causes">Supply shocks and demand shocks</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th></th><th>Supply (productivity)</th><th>Demand (spending)</th></tr></thead><tbody>'+
+   '<tr><td class="head">Positive</td><td class="sm">The 1990s <b>computer revolution</b>; the <b>end of the Cold War</b> (a global economy)</td><td class="sm">Rising net exports (Soviet-bloc markets, China opening); more optimistic expectations</td></tr>'+
+   '<tr><td class="head">Negative</td><td class="sm">The 1970s <b>OPEC oil shock</b> (oil price more than doubled); the <b>2020 COVID shutdowns</b></td><td class="sm">The <b>2007&ndash;09 housing bust</b> (people felt poorer); less investment from worse regulation or higher taxes on capital</td></tr></tbody></table></div>'+
+   '<ul><li>Demand shocks change output and jobs <b>only in the short run, while prices are sticky</b>. <b>Only supply-side changes affect long-run growth</b> (Solow).</li></ul>'},
+
+  {id:"bc-model", h:"The AD–AS Model", body:
+   '<div class="point"><b>The point</b><p>AD&ndash;AS shows how shocks and policy change <b>real GDP growth</b> (horizontal) and <b>inflation</b> (vertical) &mdash; this version is in <b>growth rates</b>. <b>LRAS is vertical</b> (only real factors), <b>SRAS slopes up</b> (sticky wages, sticky prices, misperceptions), <b>AD slopes down</b> (all P&ndash;Y combinations for one growth rate of nominal spending).</p><p class="able"><b>Be able to</b> draw all three curves, say why each has its shape, and list what shifts each &mdash; including that <b>higher expected inflation shifts SRAS left</b>.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Nov 19 &middot; on the Final graph list</span></p>'+
+   '<h3 class="sub" id="bc-srlr">Short run and long run</h3>'+
+   '<ul><li><b>Short run:</b> prices are <b>sticky</b> because of rigidities (minimum wage, downward nominal wage rigidity, imperfect information), so <b>money is non-neutral</b>.</li>'+
+   '<li><b>Long run:</b> prices are <b>flexible</b>, markets clear, <b>money is neutral</b>, and only real factors matter.</li>'+
+   '<li>Are we ever in the long run? &ldquo;<b>Yes and no</b>&rdquo; &mdash; the long run of past shocks and the short run of current ones, at once.</li></ul>'+
+   adasGraph("The model: LRAS vertical at sustainable growth, SRAS up, AD down, all meeting at A (e.g. 3% growth, 2% inflation = 5% nominal spending growth).", "")+
+   '<h3 class="sub" id="bc-curves">The three curves</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c4"><thead><tr><th>Curve</th><th>Shape</th><th>Why</th><th>Shifted by</th></tr></thead><tbody>'+
+   '<tr><td class="head">LRAS (&ldquo;Solow growth curve&rdquo;)</td><td class="sm">Vertical</td><td class="sm">Flexible prices; money neutral</td><td class="sm"><b>Only real factors</b>: + productivity right, &minus; left</td></tr>'+
+   '<tr><td class="head">SRAS</td><td class="sm">Upward</td><td class="sm">Sticky wages, sticky prices, misperceptions</td><td class="sm">Everything that shifts LRAS, <b>plus expectations</b>: expected inflation &uarr; &rarr; <b>left (up)</b></td></tr>'+
+   '<tr><td class="head">AD</td><td class="sm">Downward</td><td class="sm">P + Y combinations for one nominal-spending growth rate</td><td class="sm"><b>M, V, C, I, G, NX</b>: &uarr; right, &darr; left</td></tr></tbody></table></div>'+
+   '<ul><li><b>Output can be above LRAS</b> for a while (capacity strain, <b>inflationary</b> pressure) or <b>below</b> it (&ldquo;slack,&rdquo; <b>deflationary</b> pressure), but not permanently.</li>'+
+   '<li><b>SRAS&rsquo;s three explanations:</b> (1) <b>sticky wages</b> &mdash; prices rise, contracted wages don&rsquo;t, so profit and output rise; (2) <b>sticky prices</b> &mdash; relative prices shift demand between firms; (3) <b>misperceptions</b> &mdash; firms mistake a general price rise for demand for their product. Forward guidance corrects misperceptions.</li>'+
+   '<li>&#9888; &ldquo;A common mistake&rdquo;: shifting SRAS <b>right</b> when expectations rise. <b>Wrong &mdash; it shifts left (up).</b></li>'+
+   '<li><b>AD is not a micro demand curve.</b> It comes from %&Delta;M + %&Delta;V = %&Delta;P + %&Delta;Y: at 5% spending growth, 0% growth means 5% inflation; 3% growth means 2%.</li></ul>'},
+
+  {id:"bc-shocks", h:"Shocks and Policy in AD–AS", body:
+   '<div class="point"><b>The point</b><p><b>Demand shocks</b> move growth and inflation the <b>same</b> way in the short run, but in the long run only <b>inflation</b> changes: &ldquo;changes in AD will not change the growth rate of output in the long run.&rdquo; <b>Supply shocks</b> move them in <b>opposite</b> ways. A <b>negative supply shock</b> (stagflation) forces a <b>trade-off</b>: prop up output with permanently higher prices, or hold prices with a short-run loss of output.</p><p class="able"><b>Be able to</b> walk through every scenario: AD up or down, perfect and too-much stimulus, monetary offset, positive and negative supply shocks with each policy option, and the double shock.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Nov 24 &middot; the final lecture &middot; Problem Set 15</span></p>'+
+   '<h3 class="sub" id="bc-demand">Demand shocks</h3>'+
+   adasGraph("<b>AD &uarr;</b>: A&rarr;B, growth and inflation rise. Output is above LRAS, expectations rise, SRAS shifts left: B&rarr;C. <b>Long run: same growth, permanently higher inflation.</b>", "ad")+
+   '<ul><li><b>AD &darr;</b>: growth and inflation fall; slack lowers expectations, SRAS shifts right. <b>Long run: same growth, permanently lower inflation.</b></li>'+
+   '<li><b>AD &darr; + perfect, timely stimulus</b> (before expectations change): AD shifts back; no lasting change.</li>'+
+   '<li><b>AD &darr; + too much stimulus</b>: AD overshoots, expectations rise, SRAS shifts left &mdash; <b>permanently higher inflation</b>.</li>'+
+   '<li><b>Monetary offset:</b> the Fed counters fiscal policy to hit its own inflation target &mdash; why &ldquo;many economists will support monetary policy before fiscal policy&rdquo; for spending shocks.</li></ul>'+
+   '<h3 class="sub" id="bc-supply">Supply shocks</h3>'+
+   adasGraph("<b>Negative productivity shock</b>: LRAS and SRAS shift left, A&rarr;B: <b>stagflation</b> &mdash; lower growth, higher inflation. The old LRAS no longer exists.", "supply")+
+   '<ul><li><b>Positive productivity shock</b>: LRAS and SRAS shift right &mdash; higher growth, lower inflation (&ldquo;good deflation&rdquo;). &ldquo;The best of all worlds&rdquo;; no need to intervene.</li>'+
+   '<li><b>After a negative shock, the trade-off:</b></li>'+
+   '<li>&nbsp;&nbsp;&bull; <b>Expansionary</b>: a short-run boost in output and jobs, but <b>permanently higher prices</b>. Choose it if the job loss is big and the price jump small.</li>'+
+   '<li>&nbsp;&nbsp;&bull; <b>Contractionary</b>: a short-run loss of output and jobs, but <b>permanently lower prices</b>. Choose it if the price jump is big and the job loss small.</li>'+
+   '<li>&ldquo;A negative productivity shock leads to a trade-off. There is not a best of all worlds here.&rdquo;</li></ul>'+
+   '<h3 class="sub" id="bc-double">The double shock (COVID-19)</h3>'+
+   '<ul><li>Shutdown orders (productivity) and fearful households (spending): <b>LRAS, SRAS and AD all shift left</b>.</li>'+
+   '<li><b>Productivity shock bigger:</b> growth down, inflation <b>higher</b> &mdash; the same trade-off.</li>'+
+   '<li><b>Spending shock bigger:</b> growth down, inflation <b>lower</b> &mdash; expansionary policy makes sense; contractionary does not. <b>The Great Depression made this mistake</b>: the Fed let the monetary base shrink and taxes rose under Hoover and FDR.</li>'+
+   '<li>&ldquo;Policymaking is incredibly difficult.&rdquo;</li></ul>'}
+ ],
+ decks:[
+  {id:"terms", label:"Key terms", cards:[
+   ["Business cycles","The fluctuation in economic activity an economy experiences over time","g-bc-cycles"],
+   ["Peak","The top of an expansion","g-bc-cycles"],
+   ["Trough","The bottom of a contraction","g-bc-cycles"],
+   ["NBER recession definition","A significant decline in activity spread across the economy, lasting more than a few months","g-bc-cycles"],
+   ["The three Ds","Depth, diffusion, duration","g-bc-cycles"],
+   ["Supply shock","Output changes because a real variable (productivity) changes","g-bc-cycles"],
+   ["Demand shock","Output changes because nominal spending changes","g-bc-cycles"],
+   ["Aggregate supply","The total quantity an economy can produce at various price levels","g-bc-model"],
+   ["Aggregate demand","Total demand for goods and services = nominal spending","g-bc-model"],
+   ["LRAS","Vertical at sustainable growth; shifted only by real factors","g-bc-model"],
+   ["SRAS","Upward sloping; shifted by real factors and inflation expectations","g-bc-model"],
+   ["Stagflation","Lower growth and higher inflation — a negative supply shock","g-bc-shocks"],
+   ["Monetary offset","The Fed counters fiscal policy to meet its own goals","g-bc-shocks"]]},
+  {id:"rules", label:"Shifts and scenarios", cards:[
+   ["AD shifters","M, V, C, I, G, NX","g-bc-model"],
+   ["Three reasons SRAS slopes up","Sticky wages, sticky prices, misperceptions","g-bc-model"],
+   ["Expected inflation rises","SRAS shifts LEFT (up) — not right","g-bc-model"],
+   ["AD’s axes in this course","Real GDP growth rate (horizontal), inflation rate (vertical)","g-bc-model"],
+   ["AD ↑, no policy, long run","Same growth; permanently higher inflation","g-bc-shocks"],
+   ["AD ↓, no policy, long run","Same growth; permanently lower inflation","g-bc-shocks"],
+   ["Positive productivity shock","LRAS and SRAS right: higher growth, lower inflation — no policy needed","g-bc-shocks"],
+   ["Negative shock + expansionary policy","Short-run output boost, permanently higher prices","g-bc-shocks"],
+   ["Negative shock + contractionary policy","Short-run output loss, permanently lower prices","g-bc-shocks"],
+   ["Double shock, spending bigger","Inflation lower: expand; contracting was the Great Depression mistake","g-bc-shocks"],
+   ["2020 recession","Two months — the shortest on record","g-bc-cycles"],
+   ["Recessions since WWII","13","g-bc-cycles"]]}
+ ]
+};
+GUIDE.sections.splice(GUIDE.sections.length - 1, 0, {h:"Business Cycles and the AD–AS Model", tp:"adas", items:[
+ {id:"g-bc-cycles", t:"Business Cycles and What Causes Them", a:"bc-cycles",
+  short:"Expansion to peak, contraction to trough. NBER (private, dates back to 1854): depth, diffusion, duration; 2020 lasted 2 months. Supply shocks (productivity: computers, Cold War's end; OPEC, COVID) vs demand shocks (spending: exports, optimism; housing bust).",
+  subs:[["The phases","bc-defs"],["The NBER","bc-nber"],["Supply and demand shocks","bc-causes"]]},
+ {id:"g-bc-model", t:"The AD–AS Model", a:"bc-model",
+  short:"Growth rate across, inflation up. LRAS vertical (real factors only). SRAS up (sticky wages, prices, misperceptions); expectations up shift it LEFT. AD down (%ΔM + %ΔV = %ΔP + %ΔY); shifted by M, V, C, I, G, NX.",
+  subs:[["Short run and long run","bc-srlr"],["The three curves","bc-curves"]]},
+ {id:"g-bc-shocks", t:"Shocks and Policy in AD–AS", a:"bc-shocks",
+  short:"AD shocks change only inflation in the long run. Positive supply: higher growth, lower inflation. Negative supply: stagflation and a trade-off (expand: permanently higher prices; contract: short-run output loss). Double shock: if spending is bigger, expand.",
+  subs:[["Demand shocks","bc-demand"],["Supply shocks","bc-supply"],["The double shock","bc-double"]]}]});
+
+QB = QB.concat([
+ {tp:"adas",sec:"g-bc-cycles",t:"mc",q:"The NBER defines a recession as:",a:"a significant decline in economic activity spread across the economy, lasting more than a few months",w:["two consecutive quarters of falling real GDP, with no other test applied", "any month in which the unemployment rate rises by a quarter point or more", "a fall in the aggregate price level that lasts for at least a full year"],e:"Judged by the three Ds: depth, diffusion and duration."},
+ {tp:"adas",sec:"g-bc-cycles",t:"mc",q:"The NBER’s three Ds are:",a:"depth, diffusion and duration",w:["deficit, debt and deflation","demand, depreciation and duration","depth, deflation and debt"],e:"Usually all three must be met."},
+ {tp:"adas",sec:"g-bc-cycles",t:"mc",q:"Why did the 2020 recession count even though it lasted only two months?",a:"It was so deep and widespread that it met the other criteria overwhelmingly",w:["The government declared it a recession by law","Every recession must last exactly two months","It was a supply shock, which the NBER always counts"],e:"The shortest recession on record since 1854."},
+ {tp:"adas",sec:"g-bc-cycles",t:"mc",q:"The NBER is:",a:"a private nonprofit research organization with no official authority",w:["a division of the Federal Reserve that sets the official recession dates", "a department of the Treasury that measures GDP and announces recessions", "a congressional committee that votes on when a recession has begun"],e:"Economists accept its impartiality."},
+ {tp:"adas",sec:"g-bc-cycles",ap:true,t:"mc",q:"OPEC cuts oil shipments and the price of oil more than doubles. This is a:",a:"negative supply shock",w:["negative demand shock","positive supply shock","positive demand shock"],e:"A real input becomes scarcer, lowering productivity."},
+ {tp:"adas",sec:"g-bc-cycles",ap:true,t:"mc",q:"Falling home values make households feel poorer, and they spend less. This is a:",a:"negative demand shock",w:["negative supply shock","positive supply shock","positive demand shock"],e:"The 2007–09 housing bust — a fall in spending."},
+ {tp:"adas",sec:"g-bc-cycles",ap:true,t:"mc",q:"The computer revolution of the 1990s let workers do more with fewer inputs. This is a:",a:"positive supply shock",w:["positive demand shock","negative supply shock","negative demand shock"],e:"Higher productivity; with the end of the Cold War, it explains the strong 1990s."},
+ {tp:"adas",sec:"g-bc-cycles",t:"mc",q:"Which kind of change affects long-run growth?",a:"Only supply-side changes",w:["Only demand-side changes","Both equally","Neither — growth is constant"],e:"Spending is neutral in the long run (the QTM); the Solow model sets growth."},
+ {tp:"adas",sec:"g-bc-cycles",t:"tf",q:"Expansion is the normal state of the U.S. economy; recessions are abnormal.",a:true,e:"True. The NBER treats expansions as normal; recessions are the unusual, temporary declines it dates."},
+ {tp:"adas",sec:"g-bc-cycles",t:"tf",q:"A demand shock is about productivity; a supply shock is about spending.",a:false,e:"False. It is the other way round: a supply shock changes how much can be produced, while a demand shock changes how much people buy."},
+
+ {tp:"adas",sec:"g-bc-model",t:"mc",q:"In this course’s AD–AS model, the axes are:",a:"real GDP growth rate (horizontal) and inflation rate (vertical)",w:["real GDP level and the price level","unemployment rate and inflation rate","quantity of money and nominal interest rate"],e:"This version is in growth rates."},
+ {tp:"adas",sec:"g-bc-model",t:"mc",q:"The long-run aggregate supply curve is vertical because:",a:"in the long run growth depends only on real factors, not the price level",w:["the Fed holds the inflation rate constant at its 2% target in the long run", "prices stay sticky in the long run, so output can’t respond to them", "aggregate demand never changes once the economy reaches the long run"],e:"Flexible prices, money is neutral — the “Solow growth curve.”"},
+ {tp:"adas",sec:"g-bc-model",t:"mc",q:"Which is NOT one of the three explanations for an upward-sloping SRAS?",a:"Flexible prices",w:["Sticky wages","Sticky prices","Misperceptions"],e:"The short run is defined by sticky prices; flexible prices are the long run."},
+ {tp:"adas",sec:"g-bc-model",m:1,ap:true,t:"mc",q:"Firms and workers come to expect higher inflation. The SRAS curve:",a:"shifts left (up)",w:["shifts right (down)","does not shift; the economy moves along it","becomes vertical"],e:"“A common mistake… students want to shift it to the right.” Wrong."},
+ {tp:"adas",sec:"g-bc-model",t:"mc",q:"Which of these shifts aggregate demand?",a:"A change in velocity",w:["A change in productivity","A change in inflation expectations only","A change in the number of workers"],e:"AD shifters: M, V, C, I, G, NX."},
+ {tp:"adas",sec:"g-bc-model",t:"mc",q:"What shifts the LRAS curve?",a:"Only real factors, such as productivity, workers and institutions",w:["Changes in money growth and velocity, since they change nominal spending", "Changes in inflation expectations, which move firms’ pricing decisions", "Changes in government purchases and taxes, through the fiscal multiplier"],e:"A positive productivity shock shifts it right; a negative one, left."},
+ {tp:"adas",sec:"g-bc-model",ap:true,t:"mc",q:"Nominal spending grows 5% a year. If real growth is 3%, inflation along this AD curve is:",a:"2%",w:["8%","5%","3%"],e:"%ΔP + %ΔY = 5 → %ΔP = 2. At 0% growth it would be 5%."},
+ {tp:"adas",sec:"g-bc-model",t:"mc",q:"Output above the LRAS creates:",a:"inflationary pressure, since firms bid for scarce workers",w:["deflationary pressure from slack","no pressure, since LRAS doesn’t matter in the short run","a permanent rise in the growth rate"],e:"Below LRAS is slack, which creates deflationary pressure."},
+ {tp:"adas",sec:"g-bc-model",t:"mc",q:"The misperceptions explanation for SRAS says firms:",a:"mistake a rise in the overall price level for more demand for their own product",w:["always know the true aggregate price level, so they never change their output", "cut their output whenever the overall price level rises, fearing lower demand", "raise workers’ wages first and only later decide whether to raise their prices"],e:"That is why forward guidance matters — it corrects misperceptions."},
+ {tp:"adas",sec:"g-bc-model",t:"tf",q:"Aggregate demand is just a large microeconomic demand curve for one good.",a:false,e:"False. AD covers all goods and services: combinations of inflation and growth for one rate of nominal spending growth."},
+ {tp:"adas",sec:"g-bc-model",t:"tf",q:"Money is non-neutral in the short run because prices are sticky.",a:true,e:"True — a money injection raises production until prices adjust."},
+
+ {tp:"adas",sec:"g-bc-shocks",m:1,ap:true,t:"mc",q:"Consumers become more optimistic and spending rises, with no policy response. In the long run:",a:"growth returns to its original rate and inflation is permanently higher",w:["growth is permanently higher and inflation unchanged","growth and inflation both return to where they started","growth is permanently higher and inflation permanently higher"],e:"AD right (A→B), then expectations rise and SRAS shifts left (B→C)."},
+ {tp:"adas",sec:"g-bc-shocks",m:1,ap:true,t:"mc",q:"Spending falls and policymakers do nothing. In the long run:",a:"growth returns to its original rate and inflation is permanently lower",w:["growth is permanently lower and inflation unchanged","both growth and inflation are permanently lower","inflation is permanently higher"],e:"Slack lowers expectations, SRAS shifts right. “Changes in AD will not change the growth rate of output in the long run.”"},
+ {tp:"adas",sec:"g-bc-shocks",m:1,ap:true,t:"mc",q:"A negative productivity shock hits. In the short run:",a:"growth falls and inflation rises — stagflation",w:["growth and inflation both fall","growth rises and inflation falls","growth falls and inflation is unchanged"],e:"LRAS and SRAS both shift left."},
+ {tp:"adas",sec:"g-bc-shocks",m:1,ap:true,t:"mc",q:"After a negative productivity shock, policymakers use expansionary policy. The result is:",a:"a short-run boost in output and jobs, but permanently higher prices",w:["growth permanently back to the old LRAS","permanently lower prices and higher growth","no change in prices at all"],e:"The old LRAS no longer exists; growth ends at the new, lower rate."},
+ {tp:"adas",sec:"g-bc-shocks",ap:true,t:"mc",q:"A negative supply shock causes a big jump in inflation but only a small fall in output. The lecture suggests:",a:"contractionary policy",w:["expansionary policy","no possible policy","raising government spending sharply"],e:"Choose contractionary if the price harm is bigger; expansionary if the job loss is bigger."},
+ {tp:"adas",sec:"g-bc-shocks",t:"mc",q:"A positive productivity shock leads to:",a:"higher growth and lower inflation, with no need for policy",w:["lower growth and higher inflation","higher growth and higher inflation","a trade-off between growth and prices"],e:"“Good deflation” — “the best of all worlds.”"},
+ {tp:"adas",sec:"g-bc-shocks",t:"mc",q:"Monetary offset means:",a:"the central bank counters fiscal policy to meet its own inflation target",w:["fiscal policy cancels monetary policy","the Fed buys government bonds to fund a deficit","prices adjust instantly to spending"],e:"Why many economists prefer monetary policy for spending shocks."},
+ {tp:"adas",sec:"g-bc-shocks",t:"mc",q:"In a double shock where the spending shock is bigger than the productivity shock, contractionary policy:",a:"makes no sense, since inflation is already lower — the Great Depression mistake",w:["is the best choice, since inflation has risen above where it was before the shocks", "has no effect on output, because the productivity shock already set the new growth rate", "raises long-run growth, because it restores confidence and lowers expected inflation"],e:"The Fed let the base shrink and taxes rose under Hoover and FDR."},
+ {tp:"adas",sec:"g-bc-shocks",t:"mc",q:"After a negative demand shock, a perfect and timely stimulus:",a:"shifts AD back to where it was, with no lasting change",w:["raises the growth rate permanently above its old long-run rate", "lowers inflation permanently below where it started before the shock", "shifts LRAS to the right by the amount of the new spending"],e:"The “textbook case” — it must come before expectations change."},
+ {tp:"adas",sec:"g-bc-shocks",t:"tf",q:"Too much stimulus after a negative demand shock leaves inflation permanently higher once expectations adjust.",a:true,e:"True: AD overshoots, SRAS shifts left, growth returns to LRAS at higher inflation."},
+ {tp:"adas",sec:"g-bc-shocks",t:"tf",q:"After a negative productivity shock, there is a policy that restores both the old growth rate and the old inflation rate.",a:false,e:"False. “There is not a best of all worlds here” — the old LRAS no longer exists, so policy trades output against prices."}
+]);
+
+PRACTICE_TOPICS.push(["adas","AD–AS"]);
+TOPIC_LABEL.adas = "AD–AS";
+var ADAS_SHOCKS = [
+ ["Consumers grow optimistic and spend more.", 0, 0],
+ ["Foreign demand for U.S. exports jumps.", 0, 0],
+ ["The Fed speeds up money growth.", 0, 0],
+ ["Falling home prices make households cut spending.", 1, 1],
+ ["Higher taxes on capital make firms cut investment.", 1, 1],
+ ["Velocity falls as people hold on to their money.", 1, 1],
+ ["A technological revolution raises productivity everywhere.", 2, 2],
+ ["Countries integrate into one global economy, raising productivity.", 2, 2],
+ ["An oil embargo more than doubles the price of oil.", 3, 3],
+ ["Government orders close restaurants and theaters.", 3, 3],
+ ["Everyone comes to expect higher inflation next year.", 4, 0]];
+var ADAS_SR = ["AD shifts right: growth up, inflation up", "AD shifts left: growth down, inflation down", "LRAS and SRAS shift right: growth up, inflation down", "LRAS and SRAS shift left: growth down, inflation up (stagflation)", "Only SRAS shifts left: growth down, inflation up"];
+var ADAS_LR = ["Growth back at the original rate; inflation permanently higher", "Growth back at the original rate; inflation permanently lower", "Permanently higher growth and lower inflation; no policy needed", "Permanently lower growth; policy must trade output against prices"];
+GENS.push(
+ {id:"adas-sr", topic:"adas", name:"AD–AS: the short run", remind:"Spending (M, V, C, I, G, NX) moves AD. Productivity moves LRAS and SRAS together. Expectations up move SRAS left.",
+  make:function(){ var s = rp(ADAS_SHOCKS); return {vals:{}, text:s[0], choice:{q:"What happens in the short run?", opts:ADAS_SR.slice(), right:s[1], work:ADAS_SR[s[1]] + "."}}; }},
+ {id:"adas-lr", topic:"adas", name:"AD–AS: the long run, no policy", remind:"Demand shocks change only inflation in the long run. Supply shocks change growth.",
+  make:function(){ var s = rp(ADAS_SHOCKS.filter(function(x){ return x[1] < 4; })); return {vals:{}, text:s[0] + " Policymakers do nothing.", choice:{q:"What is the long-run result?", opts:ADAS_LR.slice(), right:s[2], work:ADAS_SR[s[1]] + " in the short run; then " + ADAS_LR[s[2]].toLowerCase() + "."}}; }});
+GEN_BY_ID["adas-sr"] = GENS[GENS.length - 2]; GEN_BY_ID["adas-lr"] = GENS[GENS.length - 1];
+
 /* ================================================================ helpers */
 function $(s,r){ return (r||document).querySelector(s); }
 function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
@@ -4395,8 +5475,8 @@ var store = {
   set:function(k,v){ try{ localStorage.setItem("macro."+k, v); }catch(e){} }
 };
 var CORNERS = ['tl','tr','bl','br'].map(function(c){ return '<svg class="c '+c+'" aria-hidden="true"><use href="#corner"/></svg>'; }).join('');
-var CHAPTERS = ["gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","formulas"];
-var UNIT1 = ["gdp","growth","labor","prices","saving","formulas"], UNIT2 = ["lf","money","tvm","bank","fed"];
+var CHAPTERS = ["gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","qtm","infl","fiscal","phillips","adas","formulas"];
+var UNIT1 = ["gdp","growth","labor","prices","saving","formulas"], UNIT2 = ["lf","money","tvm","bank","fed","qtm","infl"], UNIT3 = ["fiscal","phillips","adas"];
 var TOPIC_NAMES = {};
 CHAPTERS.forEach(function(tp){ TOPIC_NAMES[tp] = CH[tp].short; });
 /* Every question and card carries the id of the study-guide section it belongs to */
@@ -4737,7 +5817,7 @@ function matchRound(tp, n){
 if(typeof window === "undefined"){
   module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions, READINGS:READINGS, readingQuestions:readingQuestions, questionsByKeys:questionsByKeys, PAST_RQ:PAST_RQ, pastStats:pastStats, pastQuestions:pastQuestions, rdQuestions:rdQuestions,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
-    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, UNIT1:UNIT1, UNIT2:UNIT2, PRACTICE_TOPICS:PRACTICE_TOPICS, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
+    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, UNIT1:UNIT1, UNIT2:UNIT2, UNIT3:UNIT3, PRACTICE_TOPICS:PRACTICE_TOPICS, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,
     deckFor:deckFor, matchRound:matchRound, verdictFor:verdictFor};
   return;
@@ -5399,6 +6479,10 @@ function startExam1(){
   engines.mock = makeQuiz($("#mockExam"), exam1Questions, {showTopic:true, showTier:true, againLabel:"Exam 1 again", onSetup:renderMockSetup});
   engines.mock.start(null);
 }
+function startFinal(){
+  engines.mock = makeQuiz($("#mockExam"), function(){ return finalFifty(40, CHAPTERS); }, {showTopic:true, showTier:true, againLabel:"Another forty", onSetup:renderMockSetup});
+  engines.mock.start(null);
+}
 function startExam2(){
   engines.mock = makeQuiz($("#mockExam"), function(){ return finalFifty(33, UNIT2); }, {showTopic:true, showTier:true, againLabel:"Another thirty-three", onSetup:renderMockSetup});
   engines.mock.start(null);
@@ -5412,8 +6496,10 @@ function renderMockSetup(){
     '<div class="qnum">Practice exam</div><p class="qtext">Set it up, then answer across the topics. Each run is drawn fresh.</p>'+
     '<div class="fifty"><button class="btn primary" type="button" id="mxFifty">The 38 &mdash; Exam 1&rsquo;s length, every Unit 1 section</button>'+
       '<p>Thirty-eight questions &mdash; the exam&rsquo;s length &mdash; at least one from each of the 24 sections, your misses first. Drawn fresh each time.</p></div>'+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxFinal">Final set &mdash; 40 questions, the whole course</button>'+
+      '<p>The final&rsquo;s length (Tue Dec 8, cumulative): questions drawn from every unit, fresh each time.</p></div>'+
     '<div class="fifty"><button class="btn primary" type="button" id="mxExam2">Exam 2 set &mdash; 33 questions, Unit 2</button>'+
-      '<p>Exam 2&rsquo;s length (Tue Nov 10): loanable funds, money, time value, banking and the Fed, every section covered. Drawn fresh each time.</p></div>'+
+      '<p>Exam 2&rsquo;s length (Tue Nov 10): loanable funds through inflation and deflation, every section covered. Drawn fresh each time.</p></div>'+
     '<div class="fifty"><button class="btn primary" type="button" id="mxExam1">Exam 1 again &mdash; the real questions</button>'+
       '<p>Every multiple-choice question from the first exam, with your '+QB.filter(function(b){ return b.ex && b.m === 3; }).length+' misses marked. The fill-in calculations are in Math Practice &rarr; Numbers &rarr; <b>Exam 1 problems</b>.</p></div>'+
     '<div class="setup">'+
@@ -5433,6 +6519,7 @@ function renderMockSetup(){
   $("#mxFifty").addEventListener("click", startFifty);
   $("#mxExam1").addEventListener("click", startExam1);
   $("#mxExam2").addEventListener("click", startExam2);
+  $("#mxFinal").addEventListener("click", startFinal);
   engines.mock = null;
 }
 
@@ -5528,8 +6615,8 @@ CHAPTERS.forEach(function(tp){
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","guide"];
-var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", money:"notes", tvm:"notes", bank:"notes", fed:"notes", formulas:"notes", exam:"mock", readings:"page"};
+var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","qtm","infl","fiscal","phillips","adas","guide"];
+var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", money:"notes", tvm:"notes", bank:"notes", fed:"notes", qtm:"notes", infl:"notes", fiscal:"notes", phillips:"notes", adas:"notes", formulas:"notes", exam:"mock", readings:"page"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });

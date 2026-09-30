@@ -10,8 +10,8 @@ var store = {
   set:function(k,v){ try{ localStorage.setItem("macro."+k, v); }catch(e){} }
 };
 var CORNERS = ['tl','tr','bl','br'].map(function(c){ return '<svg class="c '+c+'" aria-hidden="true"><use href="#corner"/></svg>'; }).join('');
-var CHAPTERS = ["gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","formulas"];
-var UNIT1 = ["gdp","growth","labor","prices","saving","formulas"], UNIT2 = ["lf","money","tvm","bank","fed"];
+var CHAPTERS = ["gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","qtm","infl","fiscal","phillips","adas","formulas"];
+var UNIT1 = ["gdp","growth","labor","prices","saving","formulas"], UNIT2 = ["lf","money","tvm","bank","fed","qtm","infl"], UNIT3 = ["fiscal","phillips","adas"];
 var TOPIC_NAMES = {};
 CHAPTERS.forEach(function(tp){ TOPIC_NAMES[tp] = CH[tp].short; });
 /* Every question and card carries the id of the study-guide section it belongs to */

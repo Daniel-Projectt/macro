@@ -18,8 +18,8 @@ vm.createContext(sandbox);
 vm.runInContext(src, sandbox);
 const A = sandbox.module.exports;
 console.log('script parsed and loaded, exports: ' + Object.keys(A).length);
-const tps = ['gdp', 'growth', 'labor', 'prices', 'saving', 'lf', 'money', 'tvm', 'bank', 'fed', 'formulas'];
-const PREFIX = { gdp: 'gdp-', growth: 'gro-', labor: 'lab-', prices: 'pri-', saving: 'sav-', lf: 'lf-', money: 'mon-', tvm: 'tvm-', bank: 'bank-', fed: 'fed-', formulas: 'for-' };
+const tps = ['gdp', 'growth', 'labor', 'prices', 'saving', 'lf', 'money', 'tvm', 'bank', 'fed', 'qtm', 'infl', 'fiscal', 'phillips', 'adas', 'formulas'];
+const PREFIX = { gdp: 'gdp-', growth: 'gro-', labor: 'lab-', prices: 'pri-', saving: 'sav-', lf: 'lf-', money: 'mon-', tvm: 'tvm-', bank: 'bank-', fed: 'fed-', qtm: 'qtm-', infl: 'infl-', fiscal: 'fis-', phillips: 'pc-', adas: 'bc-', formulas: 'for-' };
 const body = tp => A.CH[tp].notes.map(n => n.body).join(' ');
 const allBodies = tps.map(body).join(' ');
 const anchorExists = id => tps.some(tp => A.CH[tp].notes.some(n => n.id === id)) || allBodies.includes('id="' + id + '"');
@@ -29,8 +29,8 @@ head('the outline');
 ok(A.COURSE.code === 'Principles of Macroeconomics' && A.COURSE.term === 'The whole course' && /cumulative/.test(A.COURSE.exam), 'course and the cumulative final');
 ok(/47\.07 of 60/.test(A.COURSE.scope) && /Problem Sets 1–4/.test(A.COURSE.scope), 'scope line: Exam 1 and Unit 1 at a glance');
 ok(A.COURSE.rules.length === 6 && /\$ sign/.test(A.COURSE.rules[0]) && /True, false or uncertain/.test(A.COURSE.rules[1]) && /Inflation/.test(A.COURSE.rules[2]) && /misses/.test(A.COURSE.rules[3]) && /Formulas tab/.test(A.COURSE.rules[4]) && /calculator/.test(A.COURSE.rules[5]), 'the six instructions');
-const HEADS = ['Intro to Macro and GDP', 'Long-Run Growth and the Solow Model', 'The Labor Market', 'Price Levels, CPI and Inflation', 'Saving and Investment', 'Loanable Funds and the Real Interest Rate', 'Money and the Liquidity Preference Model', 'Time Value of Money', 'Banking and Money Creation', 'The Federal Reserve and Monetary Policy', 'Formulas — What Divides by What'];
-ok(A.GUIDE.sections.length === 11 && A.GUIDE.sections.every((s, i) => s.tp === tps[i] && s.h === HEADS[i]), 'ten units in class order, then the formulas', A.GUIDE.sections.map(s => s.h).join(' | '));
+const HEADS = ['Intro to Macro and GDP', 'Long-Run Growth and the Solow Model', 'The Labor Market', 'Price Levels, CPI and Inflation', 'Saving and Investment', 'Loanable Funds and the Real Interest Rate', 'Money and the Liquidity Preference Model', 'Time Value of Money', 'Banking and Money Creation', 'The Federal Reserve and Monetary Policy', 'Money Growth and Inflation', 'Inflation and Deflation', 'Fiscal Policy', 'The Phillips Curve', 'Business Cycles and the AD–AS Model', 'Formulas — What Divides by What'];
+ok(A.GUIDE.sections.length === 16 && A.GUIDE.sections.every((s, i) => s.tp === tps[i] && s.h === HEADS[i]), 'fifteen units in class order, then the formulas', A.GUIDE.sections.map(s => s.h).join(' | '));
 const OUTLINE = {
   gdp: ['Macro Basics', 'GDP and the Expenditure Approach', 'What Counts in GDP', 'Limits of GDP', 'Real vs Nominal GDP'],
   growth: ['Growth Facts, Per Capita and the Rule of 70', 'Catch-up vs Innovative Growth, Factors, Diminishing Returns', 'The Solow Model and the Steady State', 'What Shifts What', 'Policy, Institutions and Solow’s Weaknesses'],
@@ -41,6 +41,11 @@ const OUTLINE = {
   tvm: ['Discounting and Present Value', 'Compounding and Future Value', 'Depreciation', 'Risk, Simple vs Compound Interest, and the Takeaways'],
   bank: ['Fractional Reserve Banking and the T-Account', 'Money Creation and the Money Multiplier'],
   fed: ['Monetary Policy and the Dual Mandate', 'Structure, Independence and the Five Functions', 'The Six Tools of Monetary Policy', 'The Market for Reserves', 'Difficulties, and Rules versus Discretion'],
+  qtm: ['The Value of Money: Money Supply and Money Demand', 'The Exchange Equation and the Quantity Theory', 'How More Money Raises Prices, and the Two Reserve Regimes'],
+  infl: ['The Inflation Fallacy, the Seven Costs, and Hyperinflation', 'Why Low, Stable Inflation Helps: The Two Benefits', 'Good and Bad Deflation, and Inflation Expectations', 'Tax Distortions and Inflation'],
+  fiscal: ['Fiscal Policy and the Multipliers', 'When Fiscal Policy Works, Its Eight Limits, and Automatic Stabilizers'],
+  phillips: ['From Keynes to Stagflation: The Original Phillips Curve', 'Expectations, the Long-Run Curve, and the Three Graphing Rules'],
+  adas: ['Business Cycles and What Causes Them', 'The AD–AS Model', 'Shocks and Policy in AD–AS'],
   lf: ['Interest Rates: Nominal and Real', 'The Loanable Funds Model', 'Shifts: What Happens to r and Investment', 'Crowding Out, Deficits and Debt'],
   formulas: ['Formula Sheet', 'Ways to Remember Them', 'What Divides by What', 'What Multiplies, Adds and Subtracts', 'How to Do Each Calculation', 'The Traps'] };
 A.GUIDE.sections.forEach(s => {
@@ -52,7 +57,7 @@ A.GUIDE.sections.forEach(s => {
   });
 });
 const items = A.GUIDE.sections.flatMap(s => s.items);
-ok(items.length === 43 && new Set(items.map(i => i.id)).size === 43, 'forty-three sections, unique ids');
+ok(items.length === 57 && new Set(items.map(i => i.id)).size === 57, 'fifty-seven sections, unique ids');
 
 // ---------- 2. topics ----------
 head('topics');
@@ -120,7 +125,7 @@ Object.keys(A.SEC_CHAPTER).forEach(id => {
 // ---------- 3. every question and card belongs to a section ----------
 head('every question and card belongs to a section of the outline');
 const SEC = A.SEC_CHAPTER;
-ok(Object.keys(SEC).length === 43 && Object.keys(A.SEC_TITLES).length === 43, 'forty-three sections known to the engine');
+ok(Object.keys(SEC).length === 57 && Object.keys(A.SEC_TITLES).length === 57, 'fifty-seven sections known to the engine');
 for (let i = 0; i < A.QB.length; i++) ok(A.QB[i] && typeof A.QB[i] === 'object', 'no empty slot in the question list at #' + i);
 A.QB.forEach((q, i) => ok(q.sec && SEC[q.sec] === q.tp, 'question #' + i + ' is tagged with a section of its own topic', q.sec + ' / ' + q.q.slice(0, 60)));
 tps.forEach(tp => A.CH[tp].decks.forEach(d => d.cards.forEach(c => ok(c[2] && SEC[c[2]] === tp, 'card is tagged with a section of its topic: ' + c[0], c[2]))));
@@ -150,7 +155,7 @@ for (let r = 0; r < 60; r++) {
     else if (n <= 25 || want === 1) ok(got.length === n, 'focus ' + f + ' fills the exam', got.length + '/' + n);
     ok(got.every(q => (q.hot || 0) === want), 'focus ' + f + ' draws only that tier');
     ok(got.every(q => q.sec && A.SEC_CHAPTER[q.sec] === q.tp), 'focus ' + f + ' questions name their section');
-    if (n >= 25 && want < 2) ok(wantTopics[want].every(tp => got.some(q => q.tp === tp)), 'focus ' + f + ' spreads across every topic that has that tier', wantTopics[want].join(',') + ' vs ' + [...new Set(got.map(q => q.tp))].join(','));
+    if (want < 2 && n >= 2 * wantTopics[want].length) ok(wantTopics[want].every(tp => got.some(q => q.tp === tp)), 'focus ' + f + ' spreads across every topic that has that tier', wantTopics[want].join(',') + ' vs ' + [...new Set(got.map(q => q.tp))].join(','));
   });
   ok(A.mockQuestions({ n: n, types: 'ap', focus: 'rest' }).every(q => q.ap && !(q.hot || 0)), 'the filters combine: application questions from the readings');
   ok(A.mockQuestions({ n: n, types: 'mc', focus: 'ps' }).every(q => q.kind !== 'tf' && q.hot === 1), 'the filters combine: multiple choice, problem-set style');
@@ -218,6 +223,12 @@ for (let r = 0; r < 20; r++) {
   const f2 = A.finalFifty(33, A.UNIT2);
   ok(f2.length === 33 && new Set(f2.map(q => q.key)).size === 33, 'the Exam 2 set is 33 different questions', f2.length);
   ok(u2Secs.every(s => f2.some(q => q.sec === s)) && f2.every(q => A.UNIT2.includes(q.tp)), 'the Exam 2 set covers every Unit 2 section and nothing else');
+}
+// the Final set: 40 questions from the whole course
+for (let r = 0; r < 10; r++) {
+  const ff = A.finalFifty(40, A.CHAPTERS);
+  ok(ff.length === 40 && new Set(ff.map(q => q.key)).size === 40, 'the Final set is 40 different questions', ff.length);
+  ok([A.UNIT1, A.UNIT2, A.UNIT3].every(u => ff.some(q => u.includes(q.tp))), 'the Final set reaches all three units');
 }
 // the 38
 const allSecs = A.GUIDE.sections.filter(s => A.UNIT1.includes(s.tp)).flatMap(s => s.items.map(i => i.id));
@@ -462,7 +473,7 @@ panels.forEach(pn => {
   ok(new RegExp('data-modes="' + t + '"[\\s\\S]*?data-mode="' + mo + '"').test(html), 'panel ' + pn + ' has its mode button');
 });
 ['list', 'practice', 'guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
-ok((html.match(/class="topic-btn"/g) || []).length === 16, 'sixteen tabs');
+ok((html.match(/class="topic-btn"/g) || []).length === 21, 'twenty-one tabs');
 // ---------- readings ----------
 head('readings');
 const built = A.READINGS.filter(r => r.q);

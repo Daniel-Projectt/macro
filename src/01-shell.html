@@ -24,6 +24,11 @@
     <button class="topic-btn" role="tab" data-topic="tvm" aria-selected="false">Time Value</button>
     <button class="topic-btn" role="tab" data-topic="bank" aria-selected="false">Banking</button>
     <button class="topic-btn" role="tab" data-topic="fed" aria-selected="false">The Fed</button>
+    <button class="topic-btn" role="tab" data-topic="qtm" aria-selected="false">Money &amp; Inflation</button>
+    <button class="topic-btn" role="tab" data-topic="infl" aria-selected="false">Inflation</button>
+    <button class="topic-btn" role="tab" data-topic="fiscal" aria-selected="false">Fiscal Policy</button>
+    <button class="topic-btn" role="tab" data-topic="phillips" aria-selected="false">Phillips Curve</button>
+    <button class="topic-btn" role="tab" data-topic="adas" aria-selected="false">AD&ndash;AS</button>
     <button class="topic-btn" role="tab" data-topic="guide"    aria-selected="false">Outline</button>
   </nav>
 
@@ -238,6 +243,91 @@
       </div>
       <div class="panel" data-panel="fed/match" hidden><div id="fedMatch"></div></div>
       <div class="panel" data-panel="fed/quiz" hidden><div id="fedQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-qtm" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 29.</b> The value-of-money graph, the exchange equation M &times; V = P &times; Y, the quantity theory, money neutrality, the hot-potato adjustment, and money injections under scarce and abundant reserves.</p>
+      <div class="modes"><div class="seg" data-modes="qtm">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="qtm/notes"><div id="qtmNotes"></div></div>
+      <div class="panel" data-panel="qtm/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="qtm"></div><button class="btn" type="button" data-shuffle="qtm">Shuffle deck</button></div>
+        <div id="qtmCards"></div>
+      </div>
+      <div class="panel" data-panel="qtm/match" hidden><div id="qtmMatch"></div></div>
+      <div class="panel" data-panel="qtm/quiz" hidden><div id="qtmQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-infl" hidden>
+      <p class="intro"><b>Unit 2 &middot; Nov 5 &mdash; the last lecture before Exam 2.</b> The inflation fallacy, the seven costs, hyperinflation, the two benefits of low stable inflation, good vs bad deflation, expectations, and the tax-distortion exercise.</p>
+      <div class="modes"><div class="seg" data-modes="infl">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="infl/notes"><div id="inflNotes"></div></div>
+      <div class="panel" data-panel="infl/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="infl"></div><button class="btn" type="button" data-shuffle="infl">Shuffle deck</button></div>
+        <div id="inflCards"></div>
+      </div>
+      <div class="panel" data-panel="infl/match" hidden><div id="inflMatch"></div></div>
+      <div class="panel" data-panel="infl/quiz" hidden><div id="inflQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-fiscal" hidden>
+      <p class="intro"><b>Unit 3 &middot; Nov 12.</b> Expansionary and contractionary fiscal policy, the MPC and the two multipliers, his worked example, the four conditions, the eight limits, and automatic stabilizers.</p>
+      <div class="modes"><div class="seg" data-modes="fiscal">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="fiscal/notes"><div id="fiscalNotes"></div></div>
+      <div class="panel" data-panel="fiscal/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="fiscal"></div><button class="btn" type="button" data-shuffle="fiscal">Shuffle deck</button></div>
+        <div id="fiscalCards"></div>
+      </div>
+      <div class="panel" data-panel="fiscal/match" hidden><div id="fiscalMatch"></div></div>
+      <div class="panel" data-panel="fiscal/quiz" hidden><div id="fiscalQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-phillips" hidden>
+      <p class="intro"><b>Unit 3 &middot; Nov 17.</b> The Keynesian revolution, the original curve and the &ldquo;menu,&rdquo; 1970s stagflation, Friedman&ndash;Phelps, the short- and long-run curves, and the three graphing rules.</p>
+      <div class="modes"><div class="seg" data-modes="phillips">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="phillips/notes"><div id="phillipsNotes"></div></div>
+      <div class="panel" data-panel="phillips/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="phillips"></div><button class="btn" type="button" data-shuffle="phillips">Shuffle deck</button></div>
+        <div id="phillipsCards"></div>
+      </div>
+      <div class="panel" data-panel="phillips/match" hidden><div id="phillipsMatch"></div></div>
+      <div class="panel" data-panel="phillips/quiz" hidden><div id="phillipsQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-adas" hidden>
+      <p class="intro"><b>Unit 3 &middot; Nov 19&ndash;24.</b> Business cycles and the NBER, supply vs demand shocks, the AD&ndash;AS model in growth rates, and every shock-and-policy scenario including stagflation and COVID.</p>
+      <div class="modes"><div class="seg" data-modes="adas">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="adas/notes"><div id="adasNotes"></div></div>
+      <div class="panel" data-panel="adas/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="adas"></div><button class="btn" type="button" data-shuffle="adas">Shuffle deck</button></div>
+        <div id="adasCards"></div>
+      </div>
+      <div class="panel" data-panel="adas/match" hidden><div id="adasMatch"></div></div>
+      <div class="panel" data-panel="adas/quiz" hidden><div id="adasQuiz"></div></div>
     </section>
 
     <!-- ================= FORMULAS ================= -->

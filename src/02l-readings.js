@@ -119,9 +119,139 @@ var READINGS = [
    {t:"tf",q:"Stein (2021) argues that discounting future consumption at the market interest rate is ethically indefensible, and that this condemns interest itself.",a:false,e:"False. He calls discounting ethically indefensible but says explicitly that this “does not condemn interest as such.”"},
    {t:"tf",q:"According to Stein (2021), attempts to prohibit interest in an economy that is not state-controlled have usually led to ways of evading or disguising it.",a:true,e:"True. That is one of his main practical doubts about simply banning interest."}
   ]},
- {id:"rq11", n:11, date:"Tue Oct 6", title:"From Usury to Interest", who:"Persky", year:2007, file:"11 From Usury to Interest.pdf"},
+ {id:"rq11", n:11, date:"Tue Oct 6", title:"From Usury to Interest", who:"Persky", year:2007,
+  start:
+   '<div class="point"><b>The thesis in one line</b><p>Persky (2007) traces how <b>usury</b> (once any payment on a loan) became <b>interest</b> (a legitimate payment), and argues the debate peaked when <b>Jeremy Bentham</b>&rsquo;s <i>Defence of Usury</i> (1787) challenged <b>Adam Smith</b>&rsquo;s support for a legal cap on interest. He agrees with <b>Chesterton</b> that Bentham&rsquo;s essay marks the <b>beginning of the modern world</b>: the old sin of usury became the engine of self-interest.</p></div>'+
+   '<h3 class="sub">The words</h3><ul>'+
+   '<li>Modern economics: interest is <b>the rental price of money</b>.</li>'+
+   '<li>Medieval <b>canon law forbade usury</b>: any repayment above the principal.</li>'+
+   '<li>&ldquo;Interest&rdquo; comes from Latin <i>interesse</i>: first a <b>penalty for default or late payment</b> on a legitimate loan. <b>Fictitious late payments</b> became a way around usury laws, and &ldquo;interest&rdquo; became the word for all accepted payments.</li>'+
+   '<li>The debate lives on: state <b>usury laws</b> and <b>payday lending</b> ($300 loan, $40 fees, $260 cash &mdash; implied rates of <b>1,000%+</b> a year).</li></ul>'+
+   '<h3 class="sub">Before Smith</h3><ul>'+
+   '<li>Medieval churchmen (<b>Occam, Duns Scotus</b>) followed <b>Aquinas</b>: usury = requiring payment for a loan. The <b>late scholastics of Salamanca</b> (1350&ndash;1650) chipped away, excluding normal business loans.</li>'+
+   '<li><b>Thomas Wilson</b>, <i>A Discourse on Usury</i> (1572): lending should be &ldquo;free, simple, and for charity&rsquo;s sake,&rdquo; with nothing above the principal.</li>'+
+   '<li><b>Francis Bacon</b> (1601): state-regulated rates &mdash; <b>5%</b> for most loans, <b>9%</b> for merchants in big centers.</li>'+
+   '<li><b>John Locke</b> (1691): didn&rsquo;t object to interest at all, only to lowering the legal cap from 6% to 4%: the clever would evade it and <b>widows and orphans</b> would be left lending at the low rate &mdash; an early <b>supply and demand</b> argument (a price ceiling shrinks the quantity supplied).</li></ul>'+
+   '<h3 class="sub">Smith</h3><ul>'+
+   '<li>&ldquo;As something can every-where be made by the use of money, something ought every-where to be paid for the use of it.&rdquo; Banning interest only raises borrowing costs (the borrower must &ldquo;insure&rdquo; the lender against penalties).</li>'+
+   '<li>Yet Smith <b>supported a cap</b> a bit above the lowest market rate (about <b>5%</b> in Britain) through four editions of the <i>Wealth of Nations</i>.</li>'+
+   '<li>Why: at 8&ndash;10%, money would go to <b>prodigals and projectors</b> who would outbid &ldquo;sober people&rdquo; and waste the nation&rsquo;s capital.</li></ul>'+
+   '<h3 class="sub">Bentham&rsquo;s <i>Defence of Usury</i> (1787, letters from Russia)</h3><ul>'+
+   '<li>He tests <b>five rationales</b> for regulating interest: prevent <b>usury</b>; prevent <b>prodigality</b>; protect <b>indigence</b> against extortion; protect <b>simplicity</b> against imposition; repress the <b>temerity of projectors</b>.</li>'+
+   '<li><b>Usury:</b> there is no natural fixed rate, only <b>custom</b> (30% in Constantinople, 5% in England). His deepest point: <b>why control this one price and no other?</b> (Compare fixing the price of horses.)</li>'+
+   '<li><b>Prodigals</b> have property to sell or pledge; only an &ldquo;interdict&rdquo; would stop them.</li>'+
+   '<li><b>The poor</b> know their own interests; paying a higher rate shows the loan is worth it to them. The legislator &ldquo;knows nothing.&rdquo;</li>'+
+   '<li><b>Simpletons</b> (&ldquo;absolute idiocy&rdquo;) face the whole market, not just loans.</li>'+
+   '<li><b>Projectors</b> are the <b>fount of invention and improvement</b>; they pay high rates because their projects are risky (a risk premium). Letter XIII was addressed to <b>Smith</b> himself.</li></ul>'+
+   '<h3 class="sub">The Smith enigma and Chesterton&rsquo;s claim</h3><ul>'+
+   '<li>Smith reportedly called it the work of &ldquo;a very superior man,&rdquo; but his <b>1789 edition kept the cap</b>. He sent Bentham the <i>Theory of Moral Sentiments</i> &mdash; perhaps a hint.</li>'+
+   '<li>By &ldquo;projectors,&rdquo; Smith meant <b>financial promoters of dubious schemes</b>, not inventors; Bentham, himself a projector (the <b>Panopticon</b>), read it more broadly.</li>'+
+   '<li><b>Chesterton (1933)</b>, longing for Aquinas&rsquo;s communitarian ethics (loans as charity), called Bentham&rsquo;s essay <b>the start of the modern world</b>: usury, the core economic sin, was <b>transformed into self-interest</b>, the engine of the new age. &ldquo;Smith, never the extremist, looked to hedge the point.&rdquo;</li></ul>'+
+   '<p class="tip"><b>Quiz tip:</b> know who said what (Wilson, Bacon, Locke, Smith, Bentham, Chesterton), Bentham&rsquo;s <b>five</b> rationales, and why Smith wanted a cap.</p>',
+  cards:[
+   ["Persky’s thesis","Usury became interest; Bentham’s challenge to Smith’s interest cap marks the start of the modern world"],
+   ["Interest (modern economics)","The rental price of money"],
+   ["Usury (medieval canon law)","Any loan repayment above the principal"],
+   ["Interesse","Originally a penalty for default or late payment on a legitimate loan"],
+   ["Fictitious late payments","A way around usury laws; “interest” came to mean all accepted payments"],
+   ["Payday lending","$300 loan, $40 fees, $260 cash — implied rates of 1,000%+"],
+   ["Salamanca scholastics","1350–1650: chipped away at the ban, excluding normal business loans"],
+   ["Thomas Wilson (1572)","Lending should be free and for charity — nothing above the principal"],
+   ["Francis Bacon (1601)","Regulated rates: 5% for most loans, 9% for merchants"],
+   ["John Locke (1691)","Against lowering the cap from 6% to 4%: the clever evade; widows and orphans lose"],
+   ["Adam Smith","Accepted interest but supported a cap near 5%"],
+   ["Smith’s reason for a cap","Prodigals and projectors would outbid sober borrowers and waste capital"],
+   ["Bentham’s Defence of Usury","1787, letters written from Russia, arguing interest should be free"],
+   ["Bentham’s five rationales","Usury · prodigality · indigence · simplicity · projectors"],
+   ["Bentham’s deepest point","Why control this one price and no other?"],
+   ["Bentham on projectors","The fount of invention; high rates are a risk premium"],
+   ["Letter XIII","Bentham’s letter addressed directly to Smith"],
+   ["Smith’s response","Kept the cap in the 1789 edition; sent Bentham his Theory of Moral Sentiments"],
+   ["Chesterton (1933)","Bentham’s essay began the modern world: usury turned into self-interest"]],
+  match:[
+   ["Thomas Wilson","Lend freely, for charity’s sake"],
+   ["Francis Bacon","5% for most, 9% for merchants"],
+   ["John Locke","A low cap leaves widows and orphans lending"],
+   ["Adam Smith","A cap near 5% to stop prodigals and projectors"],
+   ["Jeremy Bentham","Interest, like love and religion, should be free"],
+   ["G. K. Chesterton","Bentham’s essay began the modern world"],
+   ["Salamanca scholastics","Excluded normal business loans from usury"],
+   ["Aquinas","Usury is requiring payment for a loan"]],
+  q:[
+   {t:"mc",q:"Which statement best captures the thesis of Persky (2007)?",a:"Usury became interest, and Bentham’s challenge to Smith’s interest cap marks the start of the modern world",w:["Usury laws have always protected the poor, so modern economists should restore strict caps","Adam Smith opposed any limit on interest, and Bentham persuaded Parliament to follow him","Interest is a medieval invention that has no role in a modern market economy"],e:"He traces the word from usury to interest and agrees with Chesterton about Bentham’s Defence."},
+   {t:"mc",q:"According to Persky (2007), in modern economics interest is defined as:",a:"the rental price of money",w:["any repayment above the principal","a penalty for paying a loan late","the profit a lender earns on a partnership"],e:"The first line of the article."},
+   {t:"mc",q:"According to Persky (2007), the word “interest” comes from interesse, which originally meant:",a:"a penalty for default or late payment on a legitimate loan",w:["a fair share of a merchant’s profits from a joint venture", "the rate the church set for loans made to the poor", "the rental price of a house or field for one year"],e:"Fictitious late payments later became a way around usury laws."},
+   {t:"mc",q:"Medieval canon law, as Persky (2007) describes it, generally defined usury as:",a:"a loan repayment exceeding the principal",w:["an interest rate above 5 percent on any loan", "any loan made to a foreigner or a stranger", "interest charged by a merchant to a farmer"],e:"Any payment above the principal counted."},
+   {t:"mc",q:"Persky (2007) uses payday lending as an example of:",a:"how the usury debate continues today",w:["a loan that has no interest cost at all","Bentham’s idea of a projector","the Salamanca scholastics’ view of business loans"],e:"A $300 loan with $40 in fees can imply rates of 1,000% or more a year."},
+   {t:"mc",q:"According to Persky (2007), Francis Bacon (1601) favored:",a:"state-regulated rates of 5% for most loans and 9% for merchants",w:["banning all interest, as the medieval church had done for centuries", "letting interest rates float freely with no legal limit of any kind", "a single 4% legal rate for every kind of loan in the kingdom"],e:"A system of state regulation with two rates."},
+   {t:"mc",q:"According to Persky (2007), John Locke opposed lowering the legal rate from 6% to 4% because:",a:"the clever would evade it, leaving widows and orphans lending at the low rate",w:["interest is sinful at any rate above zero, as the scholastics had taught", "it would make loans to the poor and to farmers much more expensive", "merchants in the big trading centers deserved a higher rate than everyone"],e:"An early supply-and-demand argument: a price ceiling shrinks the quantity of funds supplied."},
+   {t:"mc",q:"Adam Smith, according to Persky (2007), supported a cap on interest mainly because:",a:"at high rates, prodigals and projectors would outbid sober borrowers and waste capital",w:["interest is unnatural, as Aristotle had argued, so it should be kept low", "the church still forbade any payment above the principal in his day", "banks needed a guaranteed profit on every loan they made to merchants"],e:"He wanted the legal rate just above the lowest market rate — about 5%."},
+   {t:"mc",q:"Which is NOT one of the five rationales for regulating interest that Bentham examines?",a:"Protecting the church’s authority over lending",w:["Preventing prodigality","Protecting indigence against extortion","Repressing the temerity of projectors"],e:"The five: usury, prodigality, indigence, simplicity, projectors."},
+   {t:"mc",q:"According to Persky (2007), Bentham’s deepest argument against usury laws was:",a:"why control the price of this one exchange and no other",w:["interest is required by natural law, so no state may limit it", "the poor never borrow money, so caps protect no one at all", "projectors always repay their loans, so lending to them is safe"],e:"If price controls on goods (like horses) are absurd, why is this one different?"},
+   {t:"mc",q:"How did Bentham view “projectors,” according to Persky (2007)?",a:"As the fount of invention and improvement, rightly paying high rates for risk",w:["As swindlers whose schemes should be banned outright by Parliament", "As prodigals who waste their inheritance on luxuries and gambling", "As bankers who set interest rates by custom rather than by the market"],e:"Their projects are new and risky, so they pay a risk premium — and the public gains."},
+   {t:"mc",q:"According to Persky (2007), when Smith spoke of “projectors” he most likely meant:",a:"financial promoters of dubious schemes aimed at fleecing savers",w:["inventors and social reformers like Bentham and his brother", "merchants lending money to one another in large trading centers", "farmers borrowing against their harvests at high seasonal rates"],e:"Bentham, himself a projector (the Panopticon), read the word more broadly."},
+   {t:"mc",q:"How did Smith respond to Bentham, according to Persky (2007)?",a:"He kept his support for the cap in the 1789 edition and sent Bentham the Theory of Moral Sentiments",w:["He publicly recanted and removed the cap from the next edition of his book", "He wrote a long reply defending the medieval ban on all usury", "He refused to read Bentham’s letters and never mentioned them again"],e:"Some suggest the Moral Sentiments was a hint about the argument."},
+   {t:"mc",q:"Why did Chesterton see Bentham’s Defence of Usury as the beginning of the modern world?",a:"It turned usury, the core economic sin, into self-interest, the engine of the new age",w:["It first proposed a central bank to set interest rates for the whole economy", "It proved that interest rates should be fixed by the church, not by the market", "It launched the Industrial Revolution directly by funding Bentham’s own projects"],e:"Chesterton longed for Aquinas’s communitarian ethics, where loans were charity."},
+   {t:"mc",q:"According to Persky (2007), which argument of Smith’s resembles a black-market argument?",a:"Banning interest raises the cost of borrowing because the borrower must insure the lender against penalties",w:["Prodigals and projectors would outbid sober people if rates were high", "Custom alone decides what the right rate of interest should be", "Money should be lent freely, for charity’s sake, with nothing added"],e:"Like Locke, Smith saw that outlawing interest makes borrowing costlier."},
+   {t:"tf",q:"Persky (2007) says Adam Smith opposed any legal limit on interest rates.",a:false,e:"False. Smith supported a cap near 5% through four editions, to keep money from prodigals and projectors."},
+   {t:"tf",q:"According to Persky (2007), Bentham wrote the Defence of Usury as a series of letters while in Russia.",a:true,e:"True — from Count Potemkin’s estates in present-day Belarus, in 1787."},
+   {t:"tf",q:"Thomas Wilson (1572) argued that a low rate of interest was an acceptable compromise.",a:false,e:"False. Wilson said taking even a low rate “excuseth no man”: lending should be free, for charity’s sake."}
+  ]},
  {id:"rq12", n:12, date:"Tue Oct 13", title:"The Morality of Fractional Reserve Banking"},
- {id:"rq13", n:13, date:"Thu Oct 29", title:"Inflation is the Enemy of Justice"},
+ {id:"rq13", n:13, date:"Thu Oct 29", title:"Inflation is the Enemy of Justice", who:"Steen", year:2022,
+  start:
+   '<div class="point"><b>The thesis in one line</b><p>Steen (2022) argues that <b>inflation is an enemy of economic justice</b> because it hits <b>the poor hardest</b>, and that since God cares especially for the poor, Christians should be wary of <b>inflationary policy</b> &mdash; especially heavy government spending near <b>full employment</b>.</p></div>'+
+   '<h3 class="sub">The setting</h3><ul>'+
+   '<li>A lunch with younger colleagues who had <b>never lived through inflation</b>; he recalled the 1970s, when inflation was &ldquo;<b>Public Enemy Number 1</b>,&rdquo; and President Ford&rsquo;s <b>Whip Inflation Now (WIN)</b> buttons (1974).</li>'+
+   '<li><b>2021:</b> CPI inflation <b>7%</b>, the highest in almost 40 years; the <b>PPI</b> (a harbinger of future inflation) rose <b>9.7%</b>.</li></ul>'+
+   '<h3 class="sub">Why inflation is so bad: three reasons</h3><ol>'+
+   '<li><b>It hits everyone</b> &mdash; all income and savings lose value (the vending-machine soda went from $1.50 to $2.00; smaller packages at higher prices).</li>'+
+   '<li><b>It lasts a long time</b> once started &mdash; 1960s excess government spending led to inflation into the 1980s, sustained by the <b>wage-price spiral</b> (prices up &rarr; workers demand raises &rarr; costs up &rarr; prices up).</li>'+
+   '<li><b>It is very hard to remove</b> &mdash; early 1980s: the Fed raised rates (mortgages over <b>18%</b>), unemployment near <b>11%</b>, the worst slowdown since the Depression; then inflation stayed under control for about 40 years.</li></ol>'+
+   '<h3 class="sub">Why it is an enemy of justice</h3><ul>'+
+   '<li><b>Bible:</b> <b>Matthew 25:40</b> (&ldquo;the least of these&rdquo;) and <b>Proverbs 14:31</b> (oppressing the poor shows contempt for their Maker).</li>'+
+   '<li><b>The poor spend a larger share of income</b> (the rich save more), so they are less shielded.</li>'+
+   '<li>They spend more on <b>necessities</b> and can&rsquo;t easily switch purchases.</li>'+
+   '<li>They have <b>fewer resources</b> to weather it (the well-off can use savings and stock up), and they rarely own <b>real estate</b> or wealth that rises with prices.</li>'+
+   '<li>They are more often in the <b>informal sector</b>, where raises are harder to get.</li>'+
+   '<li>Inflation brings <b>higher interest rates</b> (and the cure is higher rates), making borrowing harder, and <b>uncertainty</b> that hits those at the margins &mdash; &ldquo;<b>inflation inequality</b>.&rdquo;</li></ul>'+
+   '<h3 class="sub">The policy point</h3><ul>'+
+   '<li>Pandemic deficits: <b>$3.13 trillion (2020)</b>, <b>$2.77 trillion (2021)</b>, $1.2 trillion projected for 2022. Unemployment topped <b>14%</b> in early 2020 but was <b>3.9%</b> by December 2021; GDP grew <b>5.7%</b> in 2021.</li>'+
+   '<li>&ldquo;Almost every economist will acknowledge that <b>too much spending in an economy near full employment leads to inflation</b>.&rdquo;</li>'+
+   '<li>Be wary of claims that new programs are &ldquo;<b>fully paid for</b>&rdquo; &mdash; see the nearly <b>$30 trillion</b> debt.</li>'+
+   '<li><b>Stewardship:</b> families know not everything that sounds good is affordable; don&rsquo;t pass excessive debt or a decade of inflation to future generations. Inflation should not be part of &ldquo;build back better&rdquo; &mdash; don&rsquo;t throw &ldquo;more fuel on the fire.&rdquo;</li></ul>'+
+   '<p class="tip"><b>Links to class:</b> the inflation tax falls on money held, and the poor hold cash; too much spending near full employment is the fiscal-policy limit; compare North and Larkin on inflation.</p>',
+  cards:[
+   ["Steen’s thesis","Inflation is an enemy of economic justice because it hurts the poor most"],
+   ["Whip Inflation Now","President Ford’s 1974 campaign, with WIN buttons — inflation as “Public Enemy Number 1”"],
+   ["2021 CPI inflation","7% — the highest in almost 40 years"],
+   ["2021 PPI inflation","9.7% — often a harbinger of future inflation"],
+   ["Three reasons inflation is bad","It hits everyone; it lasts a long time; it is very hard to remove"],
+   ["Wage-price spiral","Prices rise → workers demand raises → costs rise → prices rise"],
+   ["Early 1980s cure","Fed raised rates, mortgages over 18%, unemployment near 11%"],
+   ["Matthew 25:40","“Whatever you did for one of the least of these… you did for me”"],
+   ["Proverbs 14:31","Oppressing the poor shows contempt for their Maker"],
+   ["Why the poor are hit hardest","They spend more of their income, on necessities, with fewer assets and less bargaining power"],
+   ["Inflation inequality","Inflation’s disproportionate impact on the poor"],
+   ["Pandemic deficits","$3.13 trillion (2020), $2.77 trillion (2021)"],
+   ["Near full employment","Too much spending leads to inflation"],
+   ["“Fully paid for”","Rhetoric to be cautious about — see the nearly $30 trillion debt"]],
+  q:[
+   {t:"mc",q:"Which statement best captures the thesis of Steen (2022)?",a:"Inflation is an enemy of economic justice because it hurts the poor disproportionately",w:["Inflation is harmless to the poor because wages always rise faster than prices","Inflation mainly hurts the wealthy, whose savings lose value, so it helps equality","Inflation is a technical problem for the Fed with no connection to justice"],e:"He ties God’s concern for the poor to inflation’s uneven burden."},
+   {t:"mc",q:"According to Steen (2022), why does inflation hit the poor harder than the rich?",a:"The poor spend a larger share of their income, mostly on necessities, with fewer assets to fall back on",w:["The poor hold most of their wealth in real estate, which loses value when prices rise", "The poor save more of their income than the rich, so their savings shrink faster", "The poor pay higher tax rates on their interest income as prices go up"],e:"The rich save more, can stock up, and own assets like real estate that rise with prices."},
+   {t:"mc",q:"Which three reasons does Steen (2022) give for why inflation is so bad?",a:"It hits everyone, it lasts a long time once started, and it is very hard to remove",w:["It helps borrowers, hurts savers, and raises everyone’s taxes", "It raises GDP, lowers unemployment, and raises interest rates", "It only affects imports, only lasts a year, and then fixes itself"],e:"Then he turns to why it is an enemy of justice."},
+   {t:"mc",q:"Steen (2022) explains that inflation persists because of:",a:"the wage-price spiral",w:["the money multiplier","the paradox of thrift","the liquidity effect"],e:"Prices rise, workers demand raises, costs rise, prices rise again."},
+   {t:"mc",q:"According to Steen (2022), how was severe inflation finally suppressed in the early 1980s?",a:"The Fed repeatedly raised interest rates, causing a deep recession",w:["Congress passed a law freezing prices and wages","The government cut taxes to raise production","President Ford’s WIN buttons changed public expectations"],e:"Mortgage rates topped 18% and unemployment reached nearly 11% — costly, but inflation stayed low for about 40 years."},
+   {t:"mc",q:"Which Bible passages does Steen (2022) cite about God’s concern for the poor?",a:"Matthew 25:40 and Proverbs 14:31",w:["Leviticus 25 and Deuteronomy 15","Matthew 6:24 and Luke 16:13","Isaiah 1:22 and Micah 6:11"],e:"“The least of these” and “he who oppresses the poor shows contempt for their Maker.”"},
+   {t:"mc",q:"What does Steen (2022) say almost every economist will acknowledge?",a:"Too much spending in an economy near full employment leads to inflation",w:["Deficits never affect inflation in a modern economy with a central bank", "Inflation is always caused by higher oil prices, not by government spending", "Government spending is always fully paid for by the growth it creates"],e:"That is why he urges caution about new spending in 2022."},
+   {t:"mc",q:"According to Steen (2022), the 2021 CPI inflation rate was:",a:"7%, the highest in almost 40 years",w:["2%, right at the Fed’s target","9.7%, the highest since World War II","3.9%, near a 50-year low"],e:"The PPI rose 9.7%; 3.9% was December’s unemployment rate."},
+   {t:"mc",q:"Why does Steen (2022) say the poor are hurt by the usual cure for inflation?",a:"Higher interest rates make it harder for them to borrow",w:["Lower interest rates reduce the return on their savings","Higher taxes on the rich are passed on to them","Price controls cause shortages of luxury goods"],e:"Higher rates, plus uncertainty that hits those at the margins most."},
+   {t:"mc",q:"What does Steen (2022) mean by “inflation inequality”?",a:"Inflation’s disproportionate impact on the poor",w:["Different inflation rates in different countries","The gap between CPI and PPI inflation","Inflation that raises the incomes of the poor faster than the rich"],e:"A term some economists use; he says little recent experience makes it easy to forget."},
+   {t:"mc",q:"Steen (2022) warns readers to be cautious about political claims that new spending programs are:",a:"“fully paid for”",w:["“temporary”","“targeted”","“inflation-proof”"],e:"That has infrequently been true — see the nearly $30 trillion national debt."},
+   {t:"mc",q:"What stewardship lesson does Steen (2022) draw from families?",a:"Not every spending item that sounds good is affordable, and future generations matter",w:["Families should borrow freely while interest rates are still low", "Families should hold all of their savings in cash to avoid any risk", "Families should spend more when prices rise, to beat the next increase"],e:"Government doesn’t always follow the same logic."},
+   {t:"tf",q:"Steen (2022) argues that inflation lasts only a short time and fixes itself.",a:false,e:"False. He says it lasts a long time once started (the 1960s into the 1980s) and is very hard to remove."},
+   {t:"tf",q:"According to Steen (2022), poorer workers are more likely to earn income in the informal sector, where raises are harder to get.",a:true,e:"True — one of his reasons inflation falls hardest on the poor."}
+  ]},
  {id:"rq14", n:14, date:"Thu Nov 5", title:"Is Inflation Too Low?"},
  {id:"rq15", n:15, date:"Thu Nov 12", title:"The Dynamic and Righteous Use of Wealth in James 5:1-6"},
  {id:"rq16", n:16, date:"Thu Nov 19", title:"“Christian” Economics", who:"Woehrling"}

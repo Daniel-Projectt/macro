@@ -65,15 +65,15 @@ ok(visible($('#topic-list')) && visible(panel('list/page')) && !visible($('#topi
 ok($$('#mlTable tr.mrow').length === 24 && $$('#mlTable tr.chrow').length === 5, 'My List: 24 lines in five chapters', $$('#mlTable tr.mrow').length);
 ok(w.localStorage.getItem('macro.seenList') === '1', 'the first visit is remembered');
 const items = $$('#guideRoot .gitem');
-ok(items.length === 43, 'guide shows the 43 sections', items.length);
-ok(/0 of 43/.test($('#gCount').textContent), 'progress starts at 0 of 43', $('#gCount').textContent);
+ok(items.length === 57, 'guide shows the 57 sections', items.length);
+ok(/0 of 57/.test($('#gCount').textContent), 'progress starts at 0 of 57', $('#gCount').textContent);
 ok(!!$('#guideRoot .handout') && $$('#guideRoot .handout .hrules li').length === 6 && /cumulative/.test($('#guideRoot .handout h2').textContent), 'the header card: the exam and its six instructions');
 ok(/47.07 of 60/.test($('#guideRoot .handout').textContent), 'Exam 1 score at a glance');
-ok($$('.topic-btn').length === 16 && ['list', 'practice', 'formulas', 'exam'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'sixteen tabs: My List, Math Practice, Formulas, Practice Exam first');
+ok($$('.topic-btn').length === 21 && ['list', 'practice', 'formulas', 'exam'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'twenty-one tabs: My List, Math Practice, Formulas, Practice Exam first');
 
 head('guide checkboxes and jumps');
 const cb = $('#guideRoot input[data-g="g-for-divide"]'); cb.checked = true; cb.dispatchEvent(new w.Event('change', { bubbles: true }));
-ok(/1 of 43/.test($('#gCount').textContent), 'checking an item moves the progress', $('#gCount').textContent);
+ok(/1 of 57/.test($('#gCount').textContent), 'checking an item moves the progress', $('#gCount').textContent);
 ok(/g-for-divide":true/.test(w.localStorage.getItem('macro.guide') || ''), 'the check is saved on the device');
 click($('#gPrint')); ok(w.__printed === 1, 'print button prints');
 click($('#guideRoot .gitem[data-gi="g-for-divide"] > button[data-go]'));
@@ -91,7 +91,7 @@ ok(visible(panel('exam/mock')) && !!$('#mxStart'), 'the practice-exam button ope
 head('every tab and mode');
 const modes = {};
 $$('.seg[data-modes]').forEach(s => { modes[s.getAttribute('data-modes')] = Array.from(s.querySelectorAll('button[data-mode]')).map(b => b.getAttribute('data-mode')); });
-ok(Object.keys(modes).length === 16, 'sixteen sections with modes', Object.keys(modes).join(','));
+ok(Object.keys(modes).length === 21, 'twenty-one sections with modes', Object.keys(modes).join(','));
 Object.keys(modes).forEach(t => {
   topic(t);
   ok(visible($('#topic-' + t)), 'tab opens: ' + t);
@@ -246,7 +246,7 @@ key('Enter'); ok(/Question 2/.test($('#gdpQuiz .qnum').textContent), 'Enter move
 head('practice exam');
 topic('exam'); mode('exam', 'mock');
 ok(!!$('#mxStart'), 'setup screen shows');
-ok($$('#mxP button').length === 12 && /All/.test($('#mxP').textContent) && /Formulas/.test($('#mxP').textContent) && /Loanable Funds/.test($('#mxP').textContent), 'the topic row offers all eleven topics');
+ok($$('#mxP button').length === 17 && /All/.test($('#mxP').textContent) && /Formulas/.test($('#mxP').textContent) && /Loanable Funds/.test($('#mxP').textContent), 'the topic row offers all sixteen topics');
 click($('#mxN button[data-n="15"]')); click($('#mxT button[data-t="all"]')); click($('#mxP button[data-p="all"]')); click($('#mxF button[data-f="all"]'));
 click($('#mxStart'));
 ok($$('#mockExam .dots i').length === 15, 'fifteen-question exam', $$('#mockExam .dots i').length);

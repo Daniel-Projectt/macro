@@ -65,15 +65,15 @@ ok(visible($('#topic-list')) && visible(panel('list/page')) && !visible($('#topi
 ok($$('#mlTable tr.mrow').length === 24 && $$('#mlTable tr.chrow').length === 5, 'My List: 24 lines in five chapters', $$('#mlTable tr.mrow').length);
 ok(w.localStorage.getItem('macro.seenList') === '1', 'the first visit is remembered');
 const items = $$('#guideRoot .gitem');
-ok(items.length === 24, 'guide shows the 24 sections', items.length);
-ok(/0 of 24/.test($('#gCount').textContent), 'progress starts at 0 of 24', $('#gCount').textContent);
+ok(items.length === 28, 'guide shows the 28 sections', items.length);
+ok(/0 of 28/.test($('#gCount').textContent), 'progress starts at 0 of 28', $('#gCount').textContent);
 ok(!!$('#guideRoot .handout') && $$('#guideRoot .handout .hrules li').length === 6 && /cumulative/.test($('#guideRoot .handout h2').textContent), 'the header card: the exam and its six instructions');
 ok(/47.07 of 60/.test($('#guideRoot .handout').textContent), 'Exam 1 score at a glance');
-ok($$('.topic-btn').length === 11 && ['list', 'practice', 'formulas', 'exam'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'eleven tabs: My List, Math Practice, Formulas, Practice Exam first');
+ok($$('.topic-btn').length === 12 && ['list', 'practice', 'formulas', 'exam'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'twelve tabs: My List, Math Practice, Formulas, Practice Exam first');
 
 head('guide checkboxes and jumps');
 const cb = $('#guideRoot input[data-g="g-for-divide"]'); cb.checked = true; cb.dispatchEvent(new w.Event('change', { bubbles: true }));
-ok(/1 of 24/.test($('#gCount').textContent), 'checking an item moves the progress', $('#gCount').textContent);
+ok(/1 of 28/.test($('#gCount').textContent), 'checking an item moves the progress', $('#gCount').textContent);
 ok(/g-for-divide":true/.test(w.localStorage.getItem('macro.guide') || ''), 'the check is saved on the device');
 click($('#gPrint')); ok(w.__printed === 1, 'print button prints');
 click($('#guideRoot .gitem[data-gi="g-for-divide"] > button[data-go]'));
@@ -91,7 +91,7 @@ ok(visible(panel('exam/mock')) && !!$('#mxStart'), 'the practice-exam button ope
 head('every tab and mode');
 const modes = {};
 $$('.seg[data-modes]').forEach(s => { modes[s.getAttribute('data-modes')] = Array.from(s.querySelectorAll('button[data-mode]')).map(b => b.getAttribute('data-mode')); });
-ok(Object.keys(modes).length === 11, 'eleven sections with modes', Object.keys(modes).join(','));
+ok(Object.keys(modes).length === 12, 'twelve sections with modes', Object.keys(modes).join(','));
 Object.keys(modes).forEach(t => {
   topic(t);
   ok(visible($('#topic-' + t)), 'tab opens: ' + t);
@@ -179,7 +179,7 @@ click($('#practiceRoot .setupbtn'));
 click($('#pxT button[data-t="all"]')); click($('#pxF button[data-f="mc"]')); click($('#pxS button[data-s="class"]')); click($('#pxN button[data-n="40"]')); click($('#pxStart'));
 const nClass = $$('#practiceRoot .dots i').length;
 ok(nClass >= 15 && nClass <= 40, 'the class and problem-set problems', nClass);
-ok(/Class|Problem Set|Course|Exam 1/.test(($('#practiceRoot .qtag.src') || {}).textContent || ''), 'each one says where it comes from');
+ok(/Class|Problem Set|Course|Exam 1|Lecture/.test(($('#practiceRoot .qtag.src') || {}).textContent || ''), 'each one says where it comes from');
 const plabels = new Set();
 answerPractice($('#practiceRoot'), plabels);
 ok(plabels.size >= 2, 'tapped answers come in more than one format', [...plabels].join(', '));
@@ -246,7 +246,7 @@ key('Enter'); ok(/Question 2/.test($('#gdpQuiz .qnum').textContent), 'Enter move
 head('practice exam');
 topic('exam'); mode('exam', 'mock');
 ok(!!$('#mxStart'), 'setup screen shows');
-ok($$('#mxP button').length === 7 && /All six/.test($('#mxP').textContent) && /Formulas/.test($('#mxP').textContent), 'the topic row offers all six topics, formulas included');
+ok($$('#mxP button').length === 8 && /All/.test($('#mxP').textContent) && /Formulas/.test($('#mxP').textContent) && /Loanable Funds/.test($('#mxP').textContent), 'the topic row offers all seven topics, formulas and loanable funds included');
 click($('#mxN button[data-n="15"]')); click($('#mxT button[data-t="all"]')); click($('#mxP button[data-p="all"]')); click($('#mxF button[data-f="all"]'));
 click($('#mxStart'));
 ok($$('#mockExam .dots i').length === 15, 'fifteen-question exam', $$('#mockExam .dots i').length);
@@ -330,7 +330,7 @@ ok(ex.querySelectorAll('.dots i').length === 38, 'thirty-eight questions', ex.qu
 const fRes = answerQuiz(ex, 'the 38');
 ok(!!fRes, 'the thirty-eight reaches results');
 const fSec = fRes.querySelectorAll('.tbl')[0];
-ok(fSec && fSec.querySelectorAll('tr').length === 24, 'the results list all twenty-four sections', fSec && fSec.querySelectorAll('tr').length);
+ok(fSec && fSec.querySelectorAll('tr').length === 28, 'the results list all twenty-eight sections', fSec && fSec.querySelectorAll('tr').length);
 
 head('opening a tab from a link');
 const dom2 = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true, url: 'https://example.test/?v=7#practice', virtualConsole: vc,

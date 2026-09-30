@@ -19,6 +19,7 @@
     <button class="topic-btn" role="tab" data-topic="labor"    aria-selected="false">Labor</button>
     <button class="topic-btn" role="tab" data-topic="prices"   aria-selected="false">Prices</button>
     <button class="topic-btn" role="tab" data-topic="saving"   aria-selected="false">Saving</button>
+    <button class="topic-btn" role="tab" data-topic="lf"       aria-selected="false">Loanable Funds</button>
     <button class="topic-btn" role="tab" data-topic="guide"    aria-selected="false">Outline</button>
   </nav>
 
@@ -148,6 +149,23 @@
       </div>
       <div class="panel" data-panel="saving/match" hidden><div id="savingMatch"></div></div>
       <div class="panel" data-panel="saving/quiz" hidden><div id="savingQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-lf" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 1.</b> Interest rates, nominal and real; the loanable funds model &mdash; supply is saving, demand is investment, the price is the real interest rate; what shifts each curve; and crowding out. From the lecture, for Problem Set 5, Exam 2 and the final.</p>
+      <div class="modes"><div class="seg" data-modes="lf">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="lf/notes"><div id="lfNotes"></div></div>
+      <div class="panel" data-panel="lf/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="lf"></div><button class="btn" type="button" data-shuffle="lf">Shuffle deck</button></div>
+        <div id="lfCards"></div>
+      </div>
+      <div class="panel" data-panel="lf/match" hidden><div id="lfMatch"></div></div>
+      <div class="panel" data-panel="lf/quiz" hidden><p class="hint">Definitions, the graph shifts and real-rate calculations.</p><div id="lfQuiz"></div></div>
     </section>
 
     <!-- ================= FORMULAS ================= -->

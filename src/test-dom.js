@@ -61,15 +61,18 @@ function answerPractice(root, labels) {
 
 head('landing');
 ok(errors.length === 0, 'no errors while loading', errors.join(' || '));
-ok(visible($('#topic-list')) && visible(panel('list/page')) && !visible($('#topic-guide')) && !visible($('#topic-gdp')), 'opens on My List');
+ok(visible($('#topic-home')) && visible(panel('home/page')) && !visible($('#topic-list')) && !visible($('#topic-gdp')), 'opens on Home');
+ok($$('#homeRoot .cd').length === 2 && /Exam 2/.test($('#homeRoot').textContent) && /Final/.test($('#homeRoot').textContent), 'Home: the two exam countdowns');
+ok($$('#homeRoot .tool').length === 6 && $$('#homeRoot .mistakes li').length === 18, 'Home: six tools and his 18 mistakes');
+topic('list');
 ok($$('#mlTable tr.mrow').length === 24 && $$('#mlTable tr.chrow').length === 5, 'My List: 24 lines in five chapters', $$('#mlTable tr.mrow').length);
-ok(w.localStorage.getItem('macro.seenList') === '1', 'the first visit is remembered');
+ok(w.localStorage.getItem('macro.seenHome') === '1', 'the first visit is remembered');
 const items = $$('#guideRoot .gitem');
 ok(items.length === 57, 'guide shows the 57 sections', items.length);
 ok(/0 of 57/.test($('#gCount').textContent), 'progress starts at 0 of 57', $('#gCount').textContent);
 ok(!!$('#guideRoot .handout') && $$('#guideRoot .handout .hrules li').length === 6 && /cumulative/.test($('#guideRoot .handout h2').textContent), 'the header card: the exam and its six instructions');
 ok(/47.07 of 60/.test($('#guideRoot .handout').textContent), 'Exam 1 score at a glance');
-ok($$('.topic-btn').length === 21 && ['list', 'practice', 'formulas', 'exam'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'twenty-one tabs: My List, Math Practice, Formulas, Practice Exam first');
+ok($$('.topic-btn').length === 23 && ['home', 'exam', 'practice', 'graphs'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'twenty-three tabs: Home, Practice Exam, Math Practice, Graphs first');
 
 head('guide checkboxes and jumps');
 const cb = $('#guideRoot input[data-g="g-for-divide"]'); cb.checked = true; cb.dispatchEvent(new w.Event('change', { bubbles: true }));
@@ -91,7 +94,7 @@ ok(visible(panel('exam/mock')) && !!$('#mxStart'), 'the practice-exam button ope
 head('every tab and mode');
 const modes = {};
 $$('.seg[data-modes]').forEach(s => { modes[s.getAttribute('data-modes')] = Array.from(s.querySelectorAll('button[data-mode]')).map(b => b.getAttribute('data-mode')); });
-ok(Object.keys(modes).length === 21, 'twenty-one sections with modes', Object.keys(modes).join(','));
+ok(Object.keys(modes).length === 23, 'twenty-three sections with modes', Object.keys(modes).join(','));
 Object.keys(modes).forEach(t => {
   topic(t);
   ok(visible($('#topic-' + t)), 'tab opens: ' + t);
@@ -264,6 +267,17 @@ head('remembers where you were');
 topic('labor'); mode('labor', 'cards');
 ok(w.localStorage.getItem('macro.topic') === 'labor' && w.localStorage.getItem('macro.mode.labor') === 'cards', 'topic and mode saved');
 
+head('graphs');
+topic('graphs');
+ok($$('#graphsRoot .gcard').length === 8 && $$('#graphsRoot .gcard figure.lfg').length === 8, 'Graphs: eight cards, each with its drawing');
+click($('#gDrill'));
+ok(!!$('#graphDrill .qtext, #graphDrill .ptext, #graphDrill .qbody'), 'the graph drill starts');
+head('saved misses');
+w.localStorage.setItem('macro.missbank', JSON.stringify({'gdp:0': {m: 1, s: 0}, 'gdp:1': {m: 2, s: 0}}));
+topic('home');
+ok(/2 questions/.test($('#homeRoot').textContent) && !!$('#homeMiss'), 'Home shows the saved misses');
+click($('#homeMiss'));
+ok(visible($('#topic-exam')) && $$('#mockExam .dots i').length === 2, 'practicing them opens a quiz of exactly those', $$('#mockExam .dots i').length);
 head('readings');
 topic('readings');
 const rmode = m => click($('.seg[data-modes="readings"] button[data-mode="' + m + '"]'));

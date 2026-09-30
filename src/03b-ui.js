@@ -2,7 +2,7 @@
 if(typeof window === "undefined"){
   module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions, READINGS:READINGS, readingQuestions:readingQuestions, questionsByKeys:questionsByKeys, PAST_RQ:PAST_RQ, pastStats:pastStats, pastQuestions:pastQuestions, rdQuestions:rdQuestions,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
-    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, UNIT1:UNIT1, UNIT2:UNIT2, UNIT3:UNIT3, PRACTICE_TOPICS:PRACTICE_TOPICS, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
+    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, missNote:missNote, missKeys:missKeys, missQuestions:missQuestions, SCHEDULE:SCHEDULE, MISTAKES:MISTAKES, GRAPHS:GRAPHS, schedDate:schedDate, daysUntil:daysUntil, UNIT1:UNIT1, UNIT2:UNIT2, UNIT3:UNIT3, PRACTICE_TOPICS:PRACTICE_TOPICS, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,
     deckFor:deckFor, matchRound:matchRound, verdictFor:verdictFor};
   return;
@@ -141,6 +141,7 @@ function makeQuiz(root, gen, opts){
     if(answered) return;
     answered = true;
     var q = qs[qi], body = $(".qbody", root); q.got = o.ok;
+    missNote(q, o.ok);
     $$(".opt", body).forEach(function(b, i){ b.disabled = true; if(q.opts[i].ok) b.classList.add("correct"); });
     if(o.ok){ score++; $(".feedback", body).innerHTML = "<b>Correct.</b> " + q.explain; }
     else { node.classList.add("wrong"); missed.push(q); $(".feedback", body).innerHTML = "<b>Not this one.</b> " + q.explain; }

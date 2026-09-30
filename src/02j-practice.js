@@ -791,8 +791,8 @@ function practiceQuestions(cfg, stats){
     cfg.again.forEach(function(m){ var g = GEN_BY_ID[m.gen]; if(g) out.push(formatProblem(g, baseOf(g, m.v || undefined, m.fixed), null, {fmt:m.fmt, part:m.part})); });
     return out;
   }
-  var pool = GENS.filter(function(g){ return cfg.gen ? g.id === cfg.gen : (!cfg.topic || cfg.topic === "all" || g.topic === cfg.topic); });
-  var fixed = FIXED.filter(function(f){ return cfg.gen ? f.gen === cfg.gen : (!cfg.topic || cfg.topic === "all" || f.topic === cfg.topic); });
+  var pool = GENS.filter(function(g){ return cfg.gen ? g.id === cfg.gen : (cfg.topic === "graphs" ? g.graph : (!cfg.topic || cfg.topic === "all" || g.topic === cfg.topic)); });
+  var fixed = cfg.topic === "graphs" ? [] : FIXED.filter(function(f){ return cfg.gen ? f.gen === cfg.gen : (!cfg.topic || cfg.topic === "all" || f.topic === cfg.topic); });
   var used = {}, bag = [], last = null, guard = 0;
   if(!pool.length) return out;
   while(out.length < n && guard++ < n * 30){

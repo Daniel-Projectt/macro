@@ -557,6 +557,42 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
 .lfg .band{fill:var(--gold-soft);opacity:.18}
 .lfg .cv.dash{stroke-dasharray:5 4}
 .lfg .cl.sm{font-family:var(--sans);font-size:9px;letter-spacing:.04em}
+
+/* ---- grouped tabs, home, graphs ---- */
+.navlab{flex-basis:100%;text-align:center;font-family:var(--sans);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:10px 0 0}
+.navlab:first-child{margin-top:4px}
+.homegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 22px}
+.cd{background:var(--surface);border:1px solid var(--line);padding:14px 12px;text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center}
+.cd b{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;color:var(--ink)}
+.cd small{font-size:12.5px;color:var(--ink-soft)}
+.cd .btn{margin-top:6px}
+.cd.past{opacity:.55}
+.cd .rdn,.due .rdn,.tool .rdn{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.dues{list-style:none;padding:0 !important;margin:0}
+.due{display:grid;gap:4px;padding:12px 0;border-bottom:1px solid var(--line);margin:0 !important}
+.due:last-child{border-bottom:0}
+.due .dt{font-size:16px;line-height:1.4}
+.due .db{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.due.k-exam .dt{font-weight:600}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.tool{text-align:left;font:inherit;background:var(--surface);border:1px solid var(--line);padding:12px;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:3px}
+.tool b{font-family:var(--serif);font-weight:400;font-size:18px}
+.tool small{font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.tool:hover{border-color:var(--gold)}
+.mistakes summary{cursor:pointer;list-style:none}
+.mistakes summary::-webkit-details-marker{display:none}
+.mistakes summary h2::after{content:" \25BE";font-size:.6em;color:var(--gold)}
+.mistakes ol li{margin:0 0 8px;line-height:1.55}
+.gtable .gexam{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+@media (max-width:420px){.homegrid{grid-template-columns:1fr}}
+.gcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.gcard{background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin:0}
+.gcard h3.sub{margin-top:0}
+.gcard .gexam{display:inline-block;margin-left:6px;font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-style:normal}
+.gcard dl{margin:6px 0 0}
+.gcard dt{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+.gcard dd{margin:2px 0 0;font-size:14.5px;line-height:1.5}
+.seg[data-modes="home"],.seg[data-modes="graphs"]{display:none}
 </style>
 </head>
 <body>
@@ -615,39 +651,57 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
     <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true"><use href="#emblem"/></svg>
     <p class="eyebrow">Study Guide</p>
     <h1>Principles of Macroeconomics</h1>
-    <p class="sub">The whole course &middot; the final is cumulative &middot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment &middot; the readings</p>
+    <p class="sub">The whole course &middot; Exam 2 Tue Nov 10 &middot; Final Tue Dec 8, cumulative</p>
     <svg class="orn" viewBox="0 0 320 44" aria-hidden="true"><use href="#flourish"/></svg>
   </header>
 
   <nav class="topics" role="tablist" aria-label="Topics">
-    <button class="topic-btn" role="tab" data-topic="list"     aria-selected="true">My List</button>
+    <span class="navlab">Study</span>
+    <button class="topic-btn" role="tab" data-topic="home" aria-selected="true">Home</button>
+    <button class="topic-btn" role="tab" data-topic="exam" aria-selected="false">Practice Exam</button>
     <button class="topic-btn" role="tab" data-topic="practice" aria-selected="false">Math Practice</button>
-    <button class="topic-btn" role="tab" data-topic="formulas" aria-selected="false">Formulas</button>
-    <button class="topic-btn" role="tab" data-topic="exam"     aria-selected="false">Practice Exam</button>
+    <button class="topic-btn" role="tab" data-topic="graphs" aria-selected="false">Graphs</button>
     <button class="topic-btn" role="tab" data-topic="readings" aria-selected="false">Readings</button>
-    <button class="topic-btn" role="tab" data-topic="gdp"      aria-selected="false">GDP</button>
-    <button class="topic-btn" role="tab" data-topic="growth"   aria-selected="false">Growth</button>
-    <button class="topic-btn" role="tab" data-topic="labor"    aria-selected="false">Labor</button>
-    <button class="topic-btn" role="tab" data-topic="prices"   aria-selected="false">Prices</button>
-    <button class="topic-btn" role="tab" data-topic="saving"   aria-selected="false">Saving</button>
-    <button class="topic-btn" role="tab" data-topic="lf"       aria-selected="false">Loanable Funds</button>
+    <button class="topic-btn" role="tab" data-topic="formulas" aria-selected="false">Formulas</button>
+    <button class="topic-btn" role="tab" data-topic="guide" aria-selected="false">Outline</button>
+    <span class="navlab">Unit 1 &middot; Exam 1 (done)</span>
+    <button class="topic-btn" role="tab" data-topic="list" aria-selected="false">Exam 1 List</button>
+    <button class="topic-btn" role="tab" data-topic="gdp" aria-selected="false">GDP</button>
+    <button class="topic-btn" role="tab" data-topic="growth" aria-selected="false">Growth</button>
+    <button class="topic-btn" role="tab" data-topic="labor" aria-selected="false">Labor</button>
+    <button class="topic-btn" role="tab" data-topic="prices" aria-selected="false">Prices</button>
+    <button class="topic-btn" role="tab" data-topic="saving" aria-selected="false">Saving</button>
+    <span class="navlab">Unit 2 &middot; Exam 2 &middot; Tue Nov 10</span>
+    <button class="topic-btn" role="tab" data-topic="lf" aria-selected="false">Loanable Funds</button>
     <button class="topic-btn" role="tab" data-topic="money" aria-selected="false">Money</button>
     <button class="topic-btn" role="tab" data-topic="tvm" aria-selected="false">Time Value</button>
     <button class="topic-btn" role="tab" data-topic="bank" aria-selected="false">Banking</button>
     <button class="topic-btn" role="tab" data-topic="fed" aria-selected="false">The Fed</button>
     <button class="topic-btn" role="tab" data-topic="qtm" aria-selected="false">Money &amp; Inflation</button>
     <button class="topic-btn" role="tab" data-topic="infl" aria-selected="false">Inflation</button>
+    <span class="navlab">Unit 3 &middot; Final &middot; Tue Dec 8</span>
     <button class="topic-btn" role="tab" data-topic="fiscal" aria-selected="false">Fiscal Policy</button>
     <button class="topic-btn" role="tab" data-topic="phillips" aria-selected="false">Phillips Curve</button>
     <button class="topic-btn" role="tab" data-topic="adas" aria-selected="false">AD&ndash;AS</button>
-    <button class="topic-btn" role="tab" data-topic="guide"    aria-selected="false">Outline</button>
   </nav>
 
   <main>
 
+    <section class="topic" id="topic-home">
+      <p class="intro">What&rsquo;s due next, with a button straight to the right place &mdash; plus your saved misses and which tool to use when.</p>
+      <div class="modes"><div class="seg" data-modes="home"><button type="button" data-mode="page" aria-pressed="true">Home</button></div></div>
+      <div class="panel" data-panel="home/page"><div id="homeRoot"></div></div>
+    </section>
+
+    <section class="topic" id="topic-graphs" hidden>
+      <p class="intro">Every graph on the Exam 2 and Final lists: the axes, the curves and what moves what, drawn out &mdash; then a drill of mixed shifts from all of them.</p>
+      <div class="modes"><div class="seg" data-modes="graphs"><button type="button" data-mode="page" aria-pressed="true">Graphs</button></div></div>
+      <div class="panel" data-panel="graphs/page"><div id="graphsRoot"></div></div>
+    </section>
+
     <!-- ================= MY LIST ================= -->
-    <section class="topic" id="topic-list">
-      <p class="intro">Your list: 24 lines. Hide the answers and say each line out loud, flip the flashcards, then take the quiz &mdash; one question for every line, new ones each round.</p>
+    <section class="topic" id="topic-list" hidden>
+      <p class="intro">Your Exam 1 list: 24 lines. Hide the answers and say each line out loud, flip the flashcards, then take the quiz &mdash; one question for every line, new ones each round.</p>
       <div class="modes"><div class="seg" data-modes="list">
         <button type="button" data-mode="page" aria-pressed="true">The list</button>
         <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
@@ -983,7 +1037,7 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
     </section>
 
     <section class="topic" id="topic-exam" hidden>
-      <p class="intro">Questions from every topic, formulas included, in the exam&rsquo;s two styles: calculations and concept questions. Every one is labelled by where it comes from &mdash; a problem-set question you missed, a problem-set-style question, or the readings &mdash; so you can drill your misses first. Reshuffled each run, with the working behind every answer.</p>
+      <p class="intro">Full-length sets for Exam 2 and the final, your saved misses, the real Exam 1 questions, or a set you build yourself. Every question is labelled by its topic and where it comes from, and every answer shows why.</p>
       <div class="modes"><div class="seg" data-modes="exam">
         <button type="button" data-mode="mock" aria-pressed="true">Practice exam</button>
       </div></div>
@@ -993,7 +1047,7 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
   </main>
 
   <footer>
-    <p>Built from the course&rsquo;s Problem Sets 1&ndash;4, <i>Brief Summary of the Solow Growth Model</i>, <i>Mathematical Example of the Solow Model</i>, <i>Pitfalls in GDP Accounting</i> and the <i>Comparing Dollar Figures</i> exercise. On the exam, type calculations exactly as asked &mdash; dollar signs, commas and percent signs.</p>
+    <p>Built from Dr. Pincin&rsquo;s lectures and class exercises, your graded problem sets, quizzes and Exam 1, the course documents and the assigned readings. On exams, type calculations exactly as asked &mdash; dollar signs, commas and percent signs.</p>
     <span class="keys">Flashcards <kbd>&larr;</kbd> <kbd>&rarr;</kbd> <kbd>Space</kbd> &nbsp;&middot;&nbsp; Quizzes <kbd>1</kbd>&ndash;<kbd>4</kbd> <kbd>Enter</kbd></span>
   </footer>
 
@@ -2963,8 +3017,8 @@ function practiceQuestions(cfg, stats){
     cfg.again.forEach(function(m){ var g = GEN_BY_ID[m.gen]; if(g) out.push(formatProblem(g, baseOf(g, m.v || undefined, m.fixed), null, {fmt:m.fmt, part:m.part})); });
     return out;
   }
-  var pool = GENS.filter(function(g){ return cfg.gen ? g.id === cfg.gen : (!cfg.topic || cfg.topic === "all" || g.topic === cfg.topic); });
-  var fixed = FIXED.filter(function(f){ return cfg.gen ? f.gen === cfg.gen : (!cfg.topic || cfg.topic === "all" || f.topic === cfg.topic); });
+  var pool = GENS.filter(function(g){ return cfg.gen ? g.id === cfg.gen : (cfg.topic === "graphs" ? g.graph : (!cfg.topic || cfg.topic === "all" || g.topic === cfg.topic)); });
+  var fixed = cfg.topic === "graphs" ? [] : FIXED.filter(function(f){ return cfg.gen ? f.gen === cfg.gen : (!cfg.topic || cfg.topic === "all" || f.topic === cfg.topic); });
   var used = {}, bag = [], last = null, guard = 0;
   if(!pool.length) return out;
   while(out.length < n && guard++ < n * 30){
@@ -5463,6 +5517,97 @@ GENS.push(
   make:function(){ var s = rp(ADAS_SHOCKS.filter(function(x){ return x[1] < 4; })); return {vals:{}, text:s[0] + " Policymakers do nothing.", choice:{q:"What is the long-run result?", opts:ADAS_LR.slice(), right:s[2], work:ADAS_SR[s[1]] + " in the short run; then " + ADAS_LR[s[2]].toLowerCase() + "."}}; }});
 GEN_BY_ID["adas-sr"] = GENS[GENS.length - 2]; GEN_BY_ID["adas-lr"] = GENS[GENS.length - 1];
 
+/* ================================================================ home, graphs and the schedule
+   The schedule (from the syllabus and Canvas), his common mistakes (collected from
+   the lectures), the seven exam graphs, and two more graph drills.            */
+var SCHEDULE = [
+ {d:"2026-10-01T12:30", k:"Reading quiz", t:"#10 · A Christian Approach to Interest", rd:"rq10"},
+ {d:"2026-10-03T17:00", k:"Problem set", t:"Problem Set 5 · Loanable funds", ch:"lf", px:"interest"},
+ {d:"2026-10-06T12:30", k:"Reading quiz", t:"#11 · From Usury to Interest", rd:"rq11"},
+ {d:"2026-10-08T17:00", k:"Problem set", t:"Problem Set 6 · Liquidity preference", ch:"money", px:"interest"},
+ {d:"2026-10-10T17:00", k:"Problem set", t:"Problem Set 7 · Time value of money", ch:"tvm", px:"tvm"},
+ {d:"2026-10-13T12:30", k:"Reading quiz", t:"#12 · The Morality of Fractional Reserve Banking", rd:"rq12"},
+ {d:"2026-10-15T17:00", k:"Problem set", t:"Problem Set 8 · Banking and the money multiplier", ch:"bank", px:"banking"},
+ {d:"2026-10-22T17:00", k:"Problem set", t:"Problem Set 9 · The Fed I (mandate, structure)", ch:"fed", px:"fed"},
+ {d:"2026-10-29T12:30", k:"Reading quiz", t:"#13 · Inflation is the Enemy of Justice", rd:"rq13"},
+ {d:"2026-10-29T17:00", k:"Problem set", t:"Problem Set 10 · The Fed II–III (tools, reserves)", ch:"fed", px:"fed"},
+ {d:"2026-11-05T12:30", k:"Reading quiz", t:"#14 · Is Inflation Too Low?", rd:"rq14"},
+ {d:"2026-11-05T17:00", k:"Problem set", t:"Problem Set 11 · Money growth and inflation", ch:"qtm", px:"qtm"},
+ {d:"2026-11-07T17:00", k:"Problem set", t:"Problem Set 12 · Inflation and deflation", ch:"infl", px:"infl"},
+ {d:"2026-11-10T12:30", k:"Exam", t:"Exam 2 · Oct 1 – Nov 5 · 33 questions, 75 minutes", exam:"exam2"},
+ {d:"2026-11-12T12:30", k:"Reading quiz", t:"#15 · The Dynamic and Righteous Use of Wealth in James 5", rd:"rq15"},
+ {d:"2026-11-14T17:00", k:"Problem set", t:"Problem Set 13 · Fiscal policy", ch:"fiscal", px:"fiscal"},
+ {d:"2026-11-19T12:30", k:"Reading quiz", t:"#16 · “Christian” Economics", rd:"rq16"},
+ {d:"2026-11-19T17:00", k:"Problem set", t:"Problem Set 14 · Phillips curve (answers hidden)", ch:"phillips", px:"phillips"},
+ {d:"2026-11-26T17:00", k:"Problem set", t:"Problem Set 15 · Business cycles and AD–AS", ch:"adas", px:"adas"},
+ {d:"2026-12-05T17:00", k:"Problem set", t:"Problem Set 16 · 3 questions, 60 minutes", ch:"adas", px:"adas"},
+ {d:"2026-12-08T10:30", k:"Exam", t:"Final · cumulative · 40 questions, 120 minutes", exam:"final"}];
+
+var MISTAKES = [
+ "Dropping the $ sign on a dollar answer — including per capita (Exam 1 Q17, Problem Set 2 Q3).",
+ "Putting $ or % on unitless numbers: the CPI, the GDP deflator, velocity, the money multiplier, the MPC and fiscal multipliers.",
+ "Putting the wrong year on the bottom of a growth or inflation rate — it’s the earlier year, and not always 100.",
+ "Writing 5 instead of .05 for a rate inside a formula.",
+ "Dividing unemployed by the adult population — the unemployment rate divides by the labor force.",
+ "Confusing a movement along a curve (a price or rate change) with a shift of the curve.",
+ "Mixing up loanable funds and liquidity preference: real vs nominal rate, long vs short run, saving vs money supply. “The biggest mistake.”",
+ "Reasoning from a price change: a lower rate doesn’t tell you whether investment rose — ask what shifted.",
+ "Treating economic investment (new capital) as financial investment (stocks and bonds).",
+ "Thinking imports lower GDP, or reading Y = C + I + G + NX as a causal theory.",
+ "Confusing government purchases with government spending (spending includes transfers).",
+ "Confusing M1 with the monetary base, or money with income or wealth.",
+ "Treating the Fed like a commercial bank, or the fed funds rate (bank to bank) like the discount rate (bank to Fed).",
+ "Shifting SRAS right when inflation expectations rise — it shifts left (up).",
+ "Shifting only the LRPC after a supply shock — the SRPC must shift too.",
+ "Mixing directions across models: higher productivity moves the Phillips LRPC left but the AD–AS LRAS right.",
+ "Forgetting the minus sign on a tax cut in the tax multiplier, or on a deficit in public saving.",
+ "Answering “not necessarily” on a true / false / uncertain question — start with True, False or Uncertain (Exam 1 Q38)."];
+
+var GRAPHS = [
+ ["Solow model", "Output, investment, depreciation", "Capital (K)", "Output Y = A√K and investment sY (both bend); depreciation δK (straight)", "Steady state where I = D. Technology up shifts output and investment up; the savings rate moves only investment.", "Final"],
+ ["Loanable funds", "Real interest rate", "Quantity of loanable funds", "Supply = saving (up); demand = investment (down)", "Saving up → S right, r down. Deficit → S left, r up: crowding out. Profits, technology, R&D credit → D right.", "Exam 2, Final"],
+ ["Liquidity preference", "Nominal interest rate", "Quantity of money", "Money supply vertical; money demand down", "MD up (income, prices): n up, Q same. MS up: n down, Q up (short run).", "Exam 2, Final"],
+ ["Market for reserves — scarce", "Federal funds rate", "Quantity of reserves", "Supply vertical then flat at the discount rate; demand down, then flat at IORB", "Supply meets the sloped part: only OMO moves the fed funds rate.", "Exam 2, Final"],
+ ["Market for reserves — abundant", "Federal funds rate", "Quantity of reserves", "Same curves", "Supply meets the flat part: OMO/QE move only quantity; IOR (ceiling) and reverse repos (floor) move the rate.", "Exam 2, Final"],
+ ["Money supply–money demand", "Value of money (1/P); price level inverted", "Quantity of money", "Money supply vertical; money demand down", "MS up: P up, value down, Q up. MD up: P down, value up, Q same.", "Exam 2, Final"],
+ ["Phillips curve", "Inflation rate", "Unemployment rate", "SRPC down; LRPC vertical at the natural rate", "Spending moves you along the SRPC; expectations shift it; supply shocks shift both.", "Final"],
+ ["AD–AS", "Inflation rate", "Real GDP growth rate", "LRAS vertical; SRAS up; AD down", "AD: M, V, C, I, G, NX. LRAS: real factors only. Expectations up → SRAS left. Negative supply shock → stagflation.", "Final"]];
+
+/* the Solow diagram: output and investment bend (diminishing returns), depreciation is a straight line */
+function solowGraph(cap, techUp){
+  function curve(f, cls, lab){
+    var out = [], prev = null;
+    for(var x = 2; x <= 94; x += 4){ var pt = [x, Math.min(97, f(x))]; if(prev) out.push({a:prev, b:pt, cls:cls}); prev = pt; }
+    out[out.length - 1].lab = lab;
+    return out;
+  }
+  var Y = function(x){ return 9 * Math.sqrt(x); }, I = function(x){ return 0.45 * Y(x); };
+  var lines = curve(Y, "", "Y = A√K").concat(curve(I, "", "I = sY"));
+  lines.push({a:[0, 0], b:[88, 44], lab:"D = δK", lx:74, ly:44});
+  var pts = [{x:65.6, y:32.8, xl:"K*"}];
+  if(techUp){
+    var Y2 = function(x){ return 1.15 * Y(x); }, I2 = function(x){ return 0.45 * Y2(x); };
+    lines = lines.concat(curve(Y2, "new dash", "Y₂"), curve(I2, "new dash", ""));
+    pts.push({x:86.8, y:43.4, cls:"new", xl:"K*₂"});
+  }
+  return gfx({cap:cap, x:"Capital (K)", y:"Output, investment, depreciation", lines:lines, pts:pts});
+}
+
+/* two more graph drills; the drill pool is every generator marked graph:true */
+var SOLOW_EVENTS = [
+ ["Technology improves (A rises).", 0], ["The country saves a larger share of its income.", 1],
+ ["Machines wear out faster (the depreciation rate rises).", 2], ["The country adds more capital, moving toward the steady state.", 3]];
+var SOLOW_OPTS = ["Output and investment curves shift up; steady-state capital and output rise", "Only the investment curve shifts up; steady-state capital and output rise", "The depreciation line gets steeper; steady-state capital and output fall", "No curve shifts; the economy moves along the curves (catch-up growth)"];
+var VOM_EVENTS = [["The Fed carries out quantitative easing.", 0], ["The Fed shrinks the money supply.", 1], ["Incomes rise, so money demand rises.", 2], ["Households decide to hold less money, so money demand falls.", 3]];
+var VOM_OPTS = ["The price level rises, the value of money falls, the quantity of money rises", "The price level falls, the value of money rises, the quantity of money falls", "The price level falls, the value of money rises, the quantity is unchanged", "The price level rises, the value of money falls, the quantity is unchanged"];
+GENS.push(
+ {id:"sol-shift", topic:"solow", name:"Solow graph: what shifts?", graph:true, remind:"Technology moves output and investment. The savings rate moves only investment. Depreciation moves the D line. Adding capital is a move along.",
+  make:function(){ var s = rp(SOLOW_EVENTS); return {vals:{}, text:s[0], choice:{q:"What happens on the Solow graph?", opts:SOLOW_OPTS.slice(), right:s[1], work:SOLOW_OPTS[s[1]] + "."}}; }},
+ {id:"vom-shift", topic:"qtm", name:"Value-of-money graph: what happens?", graph:true, remind:"Money supply is vertical. Value of money = 1/P, so they always move opposite ways. A demand shift doesn’t change the quantity.",
+  make:function(){ var s = rp(VOM_EVENTS); return {vals:{}, text:s[0], choice:{q:"What happens in the money supply–money demand graph?", opts:VOM_OPTS.slice(), right:s[1], work:VOM_OPTS[s[1]] + "."}}; }});
+GEN_BY_ID["sol-shift"] = GENS[GENS.length - 2]; GEN_BY_ID["vom-shift"] = GENS[GENS.length - 1];
+["lf-shift","lp-shift","fed-rsv","pc-shift","adas-sr","adas-lr"].forEach(function(id){ if(GEN_BY_ID[id]) GEN_BY_ID[id].graph = true; });
+
 /* ================================================================ helpers */
 function $(s,r){ return (r||document).querySelector(s); }
 function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
@@ -5817,7 +5962,7 @@ function matchRound(tp, n){
 if(typeof window === "undefined"){
   module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions, READINGS:READINGS, readingQuestions:readingQuestions, questionsByKeys:questionsByKeys, PAST_RQ:PAST_RQ, pastStats:pastStats, pastQuestions:pastQuestions, rdQuestions:rdQuestions,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
-    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, UNIT1:UNIT1, UNIT2:UNIT2, UNIT3:UNIT3, PRACTICE_TOPICS:PRACTICE_TOPICS, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
+    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, missNote:missNote, missKeys:missKeys, missQuestions:missQuestions, SCHEDULE:SCHEDULE, MISTAKES:MISTAKES, GRAPHS:GRAPHS, schedDate:schedDate, daysUntil:daysUntil, UNIT1:UNIT1, UNIT2:UNIT2, UNIT3:UNIT3, PRACTICE_TOPICS:PRACTICE_TOPICS, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,
     deckFor:deckFor, matchRound:matchRound, verdictFor:verdictFor};
   return;
@@ -5956,6 +6101,7 @@ function makeQuiz(root, gen, opts){
     if(answered) return;
     answered = true;
     var q = qs[qi], body = $(".qbody", root); q.got = o.ok;
+    missNote(q, o.ok);
     $$(".opt", body).forEach(function(b, i){ b.disabled = true; if(q.opts[i].ok) b.classList.add("correct"); });
     if(o.ok){ score++; $(".feedback", body).innerHTML = "<b>Correct.</b> " + q.explain; }
     else { node.classList.add("wrong"); missed.push(q); $(".feedback", body).innerHTML = "<b>Not this one.</b> " + q.explain; }
@@ -6194,6 +6340,98 @@ function makePractice(root, opts){
       return false;
     }
   };
+}
+
+/* ================================================================ home, graphs, and the saved misses
+   Home: what is due next (with a button straight to the right place), the two
+   exam countdowns, the saved misses, which tool to use when, and his common
+   mistakes. Graphs: all the exam graphs on one page plus a graph drill.
+   Saved misses: every quiz remembers a missed question until it is answered
+   right twice in a row.                                                        */
+
+/* ---- the saved misses ---- */
+function missBank(){ try{ var v = store.get("missbank"); return v ? JSON.parse(v) : {}; }catch(e){ return {}; } }
+function missNote(q, ok){
+  if(!q || !q.key || /^(lgen|lid):/.test(q.key)) return;
+  var b = missBank(), e = b[q.key];
+  if(ok){ if(e){ e.s = (e.s || 0) + 1; if(e.s >= 2) delete b[q.key]; } }
+  else b[q.key] = {m:(e ? e.m : 0) + 1, s:0};
+  store.set("missbank", JSON.stringify(b));
+}
+function missKeys(){ return Object.keys(missBank()); }
+function missQuestions(){ return shuffle(questionsByKeys(missKeys())).slice(0, 40); }
+function startMisses(){
+  engines.mock = makeQuiz($("#mockExam"), missQuestions, {showTopic:true, showTier:true, againLabel:"Go again", onSetup:renderMockSetup});
+  engines.mock.start(null);
+}
+
+/* ---- dates ---- */
+var WEEKDAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function schedDate(s){ var m = /^(\d+)-(\d+)-(\d+)T(\d+):(\d+)$/.exec(s); return new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]); }
+function dayLabel(d){ var h = d.getHours(), mm = ("0" + d.getMinutes()).slice(-2); return WEEKDAY[d.getDay()] + " " + MONTH[d.getMonth()] + " " + d.getDate() + " · " + (h > 12 ? h - 12 : h) + ":" + mm + (h >= 12 ? " pm" : " am"); }
+function daysUntil(d, now){ var a = new Date(now.getFullYear(), now.getMonth(), now.getDate()), b = new Date(d.getFullYear(), d.getMonth(), d.getDate()); return Math.round((b - a) / 86400000); }
+function whenWord(n){ return n <= 0 ? "today" : (n === 1 ? "tomorrow" : "in " + n + " days"); }
+
+/* ---- home ---- */
+function renderHome(now){
+  now = now || new Date();
+  var ahead = SCHEDULE.map(function(s){ return {s:s, d:schedDate(s.d)}; }).filter(function(x){ return x.d.getTime() + 3600000 > now.getTime(); });
+  var exams = SCHEDULE.filter(function(s){ return s.exam; }).map(function(s){ var d = schedDate(s.d); return {s:s, d:d, n:daysUntil(d, now)}; });
+  var misses = missKeys().length;
+  var html = '<div class="homegrid">' + exams.map(function(e){
+      return '<div class="cd' + (e.n < 0 ? ' past' : '') + '"><span class="rdn">' + (e.s.exam === "final" ? "Final exam" : "Exam 2") + '</span><b>' + (e.n < 0 ? "done" : e.n + (e.n === 1 ? " day" : " days")) + '</b><small>' + dayLabel(e.d) + '</small>' +
+        '<button class="btn" type="button" data-set="' + e.s.exam + '">' + (e.s.exam === "final" ? "Final set" : "Exam 2 set") + '</button></div>';
+    }).join("") + '</div>';
+  html += '<div class="note-sec rdpage"><h2 class="rdtitle">Coming up</h2>' + divider() +
+    (ahead.length ? '<ul class="dues">' + ahead.slice(0, 6).map(function(x){
+      var s = x.s, n = daysUntil(x.d, now), btn;
+      if(s.rd) btn = '<button class="btn" type="button" data-rdgo="' + s.rd + '">Study the reading</button>';
+      else if(s.ch) btn = '<button class="btn" type="button" data-go="' + s.ch + '/notes">Chapter</button><button class="btn" type="button" data-px="' + s.px + '">Math practice</button>';
+      else btn = '<button class="btn" type="button" data-set="' + s.exam + '">Practice set</button>';
+      return '<li class="due k-' + s.k.split(" ")[0].toLowerCase() + '"><span class="rdn">' + s.k + ' &middot; ' + dayLabel(x.d) + ' &middot; <b>' + whenWord(n) + '</b></span><span class="dt">' + s.t + '</span><span class="db">' + btn + '</span></li>';
+    }).join("") + '</ul>' : '<p>The semester is over.</p>') + '</div>';
+  html += '<div class="note-sec rdpage"><h2 class="rdtitle">Your saved misses</h2>' + divider() +
+    (misses ? '<p>You have <b>' + misses + '</b> question' + (misses === 1 ? '' : 's') + ' you missed in the quizzes. Each one leaves the list once you get it right twice in a row.</p><div class="toolbar" style="justify-content:center"><button class="btn primary" type="button" id="homeMiss">Practice my ' + misses + ' misses</button></div>'
+            : '<p>Nothing saved yet. Every question you miss in any quiz lands here, so you can come back to it until you get it right twice.</p>') + '</div>';
+  html += '<div class="note-sec rdpage"><h2 class="rdtitle">Which tool, when</h2>' + divider() + '<div class="tools">' + [
+      ["The night before a reading quiz", "Readings", "Start here, flashcards, who said what, then the timed 5-in-4-minutes.", 'data-go="readings/page"'],
+      ["Before a problem set opens", "The chapter", "Notes first, then the chapter quiz, then Math Practice on its topic.", 'data-go="guide/overview"'],
+      ["Calculations until they’re automatic", "Math Practice", "Fresh numbers every time; a miss shows the working and the reminder.", 'data-go="practice/run"'],
+      ["Graphs for Exam 2 and the final", "Graphs", "Every exam graph on one page, then a mixed shift drill.", 'data-go="graphs/page"'],
+      ["A week before an exam", "Practice Exam", "The Exam 2 set or the Final set, then your saved misses.", 'data-go="exam/mock"'],
+      ["Five minutes to spare", "Formulas", "What divides by what, and the traps.", 'data-go="formulas/notes"']
+    ].map(function(t){ return '<button type="button" class="tool" ' + t[3] + '><span class="rdn">' + t[0] + '</span><b>' + t[1] + '</b><small>' + t[2] + '</small></button>'; }).join("") + '</div></div>';
+  html += '<details class="note-sec rdpage mistakes"><summary><h2 class="rdtitle">His ' + MISTAKES.length + ' common mistakes</h2></summary>' + divider() + '<ol>' + MISTAKES.map(li).join("") + '</ol></details>';
+  $("#homeRoot").innerHTML = html;
+  $$("#homeRoot [data-go]").forEach(function(b){ b.addEventListener("click", function(){ goTo(b.getAttribute("data-go")); }); });
+  $$("#homeRoot [data-rdgo]").forEach(function(b){ b.addEventListener("click", function(){ rdState.cur = b.getAttribute("data-rdgo"); store.set("reading", rdState.cur); renderRdPick(); goTo("readings/page"); }); });
+  $$("#homeRoot [data-px]").forEach(function(b){ b.addEventListener("click", function(){ practiceCfg.topic = b.getAttribute("data-px"); practiceCfg.gen = ""; store.set("practicecfg", JSON.stringify(practiceCfg)); engines.practice = null; goTo("practice/run"); renderPracticeSetup(); }); });
+  $$("#homeRoot [data-set]").forEach(function(b){ b.addEventListener("click", function(){ goTo("exam/mock"); (b.getAttribute("data-set") === "final" ? startFinal : startExam2)(); }); });
+  if($("#homeMiss")) $("#homeMiss").addEventListener("click", function(){ goTo("exam/mock"); startMisses(); });
+}
+
+/* ---- graphs ---- */
+function renderGraphs(){
+  var figs = [
+    solowGraph("Technology shifts output and investment up (dashed); the steady state moves right.", true),
+    lfGraph("Saving rises: supply shifts right, the real rate falls, investment rises.", 45, 0),
+    lpGraph("The Fed raises the money supply: the nominal rate falls.", 45, 0),
+    rsvGraph("Supply meets the sloped part, so OMO moves the fed funds rate.", false),
+    rsvGraph("Supply meets the flat part; IOR and reverse repos set the range.", true),
+    vomGraph("More money: a higher price level, a lower value of money.", 22, 0),
+    pcGraph("Expansion moves along the SRPC; expectations then shift it up.", "expand"),
+    adasGraph("A negative productivity shock: stagflation.", "supply")];
+  var html = '<div class="toolbar" style="justify-content:center;margin:0 0 18px"><button class="btn primary" type="button" id="gDrill">Graph drill &mdash; 10 mixed shifts</button></div><div id="graphDrill"></div>' +
+    '<div class="gcards">' + GRAPHS.map(function(g, i){
+      return '<div class="gcard note-sec"><h3 class="sub">' + g[0] + ' <span class="gexam">' + g[5] + '</span></h3>' + figs[i] +
+        '<dl><dt>Axes</dt><dd>&uarr; ' + g[1] + ' &nbsp;&middot;&nbsp; &rarr; ' + g[2] + '</dd><dt>Curves</dt><dd>' + g[3] + '</dd><dt>What moves what</dt><dd>' + g[4] + '</dd></dl></div>';
+    }).join("") + '</div>';
+  $("#graphsRoot").innerHTML = html;
+  $("#gDrill").addEventListener("click", function(){
+    engines.graphs = makePractice($("#graphDrill"), {onSetup:function(){ engines.graphs = null; $("#graphDrill").innerHTML = ""; }});
+    engines.graphs.start({topic:"graphs", format:"mc", source:"fresh", n:10});
+    $("#graphDrill").scrollIntoView({behavior:"smooth", block:"start"});
+  });
 }
 
 /* ================================================================ readings: every way to study one reading
@@ -6494,13 +6732,15 @@ function renderMockSetup(){
   }
   root.innerHTML = '<div class="quizWrap"><div class="qcard card-corners">'+CORNERS+
     '<div class="qnum">Practice exam</div><p class="qtext">Set it up, then answer across the topics. Each run is drawn fresh.</p>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxFifty">The 38 &mdash; Exam 1&rsquo;s length, every Unit 1 section</button>'+
-      '<p>Thirty-eight questions &mdash; the exam&rsquo;s length &mdash; at least one from each of the 24 sections, your misses first. Drawn fresh each time.</p></div>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxFinal">Final set &mdash; 40 questions, the whole course</button>'+
-      '<p>The final&rsquo;s length (Tue Dec 8, cumulative): questions drawn from every unit, fresh each time.</p></div>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxExam2">Exam 2 set &mdash; 33 questions, Unit 2</button>'+
+    (missKeys().length ? '<div class="fifty"><button class="btn primary" type="button" id="mxMiss">My saved misses &mdash; '+missKeys().length+'</button>'+
+      '<p>Every question you&rsquo;ve missed in any quiz and haven&rsquo;t yet answered right twice in a row.</p></div>' : '')+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxExam2">Exam 2 set &mdash; 33 questions</button>'+
       '<p>Exam 2&rsquo;s length (Tue Nov 10): loanable funds through inflation and deflation, every section covered. Drawn fresh each time.</p></div>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxExam1">Exam 1 again &mdash; the real questions</button>'+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxFinal">Final set &mdash; 40 questions, the whole course</button>'+
+      '<p>The final&rsquo;s length (Tue Dec 8, cumulative): questions from every unit, fresh each time.</p></div>'+
+    '<div class="fifty"><button class="btn" type="button" id="mxFifty">The 38 &mdash; Exam 1&rsquo;s length, every Unit 1 section</button>'+
+      '<p>Thirty-eight questions from the 24 Unit 1 sections, your misses first. Good review for the final.</p></div>'+
+    '<div class="fifty"><button class="btn" type="button" id="mxExam1">Exam 1 again &mdash; the real questions</button>'+
       '<p>Every multiple-choice question from the first exam, with your '+QB.filter(function(b){ return b.ex && b.m === 3; }).length+' misses marked. The fill-in calculations are in Math Practice &rarr; Numbers &rarr; <b>Exam 1 problems</b>.</p></div>'+
     '<div class="setup">'+
       '<p class="orline">or set one up yourself</p>'+
@@ -6519,6 +6759,7 @@ function renderMockSetup(){
   $("#mxFifty").addEventListener("click", startFifty);
   $("#mxExam1").addEventListener("click", startExam1);
   $("#mxExam2").addEventListener("click", startExam2);
+  if($("#mxMiss")) $("#mxMiss").addEventListener("click", startMisses);
   $("#mxFinal").addEventListener("click", startFinal);
   engines.mock = null;
 }
@@ -6604,8 +6845,8 @@ function startPractice(){
 
 initReadings();
 
-var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }, "practice/run":function(){ if(!engines.practice) renderPracticeSetup(); }};
-var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }};
+var ON_SHOW = {"home/page":function(){ renderHome(); }, "graphs/page":function(){ if(!$("#graphsRoot").innerHTML) renderGraphs(); },"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }, "practice/run":function(){ if(!engines.practice) renderPracticeSetup(); }};
+var KEYS = {"graphs/page":function(e){ return engines.graphs ? engines.graphs.keys(e) : false; },"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }};
 ["page","cards","match","quiz","real","how","past"].forEach(function(m){ ON_SHOW["readings/" + m] = function(){ renderRdMode(m); }; });
 KEYS["readings/cards"] = function(e){ return rdState.eng.cards ? rdState.eng.cards.keys(e) : false; };
 ["quiz","real","past"].forEach(function(m){ KEYS["readings/" + m] = function(e){ var g = rdState.eng[m]; return g && g.keys ? g.keys(e) : false; }; });
@@ -6615,8 +6856,8 @@ CHAPTERS.forEach(function(tp){
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","qtm","infl","fiscal","phillips","adas","guide"];
-var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", money:"notes", tvm:"notes", bank:"notes", fed:"notes", qtm:"notes", infl:"notes", fiscal:"notes", phillips:"notes", adas:"notes", formulas:"notes", exam:"mock", readings:"page"};
+var TOPICS = ["home","graphs","list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","qtm","infl","fiscal","phillips","adas","guide"];
+var currentTopic = "home", currentMode = {home:"page", graphs:"page", list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", money:"notes", tvm:"notes", bank:"notes", fed:"notes", qtm:"notes", infl:"notes", fiscal:"notes", phillips:"notes", adas:"notes", formulas:"notes", exam:"mock", readings:"page"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });
@@ -6653,12 +6894,12 @@ document.addEventListener("keydown", function(e){
 (function(){
   var t = store.get("topic");
   /* the first visit after My List was added lands on it, whatever was open before */
-  if(!store.get("seenList")){ t = "list"; store.set("seenList", "1"); store.set("mode.list", "page"); }
+  if(!store.get("seenHome")){ t = "home"; store.set("seenHome", "1"); }
   TOPICS.forEach(function(k){ var m = store.get("mode."+k); if(m && $('.seg[data-modes="'+k+'"] button[data-mode="'+m+'"]')) currentMode[k] = m; });
   /* a link can open a tab directly: …/macro/#practice */
   var h = (location.hash || "").replace("#", "");
   if(h && TOPICS.indexOf(h) >= 0) t = h;
-  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "list");
+  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "home");
 })();
 
 window.addEventListener("hashchange", function(){ var h = (location.hash || "").replace("#", ""); if(h && TOPICS.indexOf(h) >= 0) showTopic(h); });

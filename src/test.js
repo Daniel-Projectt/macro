@@ -13,7 +13,8 @@ const m = html.match(/<script>([\s\S]*?)<\/script>/);
 if (!m) { console.log('NO SCRIPT'); process.exit(1); }
 const src = m[1];
 try { new vm.Script(src); } catch (e) { console.log('JS PARSE ERROR: ' + e.message); process.exit(1); }
-const sandbox = { module: { exports: {} }, console };
+const memStore = {};
+const sandbox = { module: { exports: {} }, console, localStorage: { getItem: k => (k in memStore ? memStore[k] : null), setItem: (k, v) => { memStore[k] = String(v); }, removeItem: k => { delete memStore[k]; } } };
 vm.createContext(sandbox);
 vm.runInContext(src, sandbox);
 const A = sandbox.module.exports;
@@ -472,8 +473,32 @@ panels.forEach(pn => {
   ok(html.includes('data-modes="' + t + '"'), 'panel ' + pn + ' has a mode switch');
   ok(new RegExp('data-modes="' + t + '"[\\s\\S]*?data-mode="' + mo + '"').test(html), 'panel ' + pn + ' has its mode button');
 });
-['list', 'practice', 'guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
-ok((html.match(/class="topic-btn"/g) || []).length === 21, 'twenty-one tabs');
+['home', 'graphs', 'list', 'practice', 'guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
+ok((html.match(/class="topic-btn"/g) || []).length === 23, 'twenty-three tabs');
+ok((html.match(/class="navlab"/g) || []).length === 4, 'the tabs are in four labelled groups');
+// ---------- home: the schedule, and the saved misses ----------
+head('home');
+ok(A.SCHEDULE.length === 21 && A.SCHEDULE.every((s, i) => i === 0 || A.schedDate(s.d) >= A.schedDate(A.SCHEDULE[i - 1].d)), 'the schedule is in date order', A.SCHEDULE.length);
+ok(A.SCHEDULE.filter(s => s.k === 'Reading quiz').length === 7 && A.SCHEDULE.filter(s => s.k === 'Problem set').length === 12 && A.SCHEDULE.filter(s => s.exam).length === 2, 'seven reading quizzes, twelve problem sets, two exams');
+ok(A.SCHEDULE.filter(s => s.rd).every(s => A.READINGS.some(r => r.id === s.rd)), 'every reading quiz links to its reading');
+ok(A.SCHEDULE.filter(s => s.ch).every(s => A.CHAPTERS.includes(s.ch) && A.PRACTICE_TOPICS.some(p => p[0] === s.px)), 'every problem set links to a chapter and a practice topic');
+ok(A.daysUntil(A.schedDate('2026-11-10T12:30'), new Date(2026, 9, 1, 9, 0)) === 40, 'days until Exam 2 from Oct 1: 40');
+ok(A.MISTAKES.length === 18 && A.GRAPHS.length === 8, 'his 18 common mistakes and the 8 graphs (7 lists, reserves twice)');
+const q0 = A.questionsByKeys(['gdp:0'])[0];
+A.missNote(q0, false);
+ok(A.missKeys().includes('gdp:0'), 'a miss is saved');
+A.missNote(q0, true);
+ok(A.missKeys().includes('gdp:0'), 'one right answer is not enough to clear it');
+A.missNote(q0, true);
+ok(!A.missKeys().includes('gdp:0'), 'two right in a row clears it');
+A.missNote(q0, false); A.missNote(q0, true); A.missNote(q0, false); A.missNote(q0, true);
+ok(A.missKeys().includes('gdp:0'), 'a miss in between resets the streak');
+A.missNote({key:'lgen:x:y'}, false);
+ok(!A.missKeys().includes('lgen:x:y'), 'generated questions are not saved (they cannot come back)');
+ok(A.missQuestions().length === A.missKeys().length && A.missQuestions().every(q => q.opts), 'saved misses come back as full questions');
+const gdrill = A.practiceQuestions({topic: 'graphs', format: 'mc', source: 'fresh', n: 30});
+ok(gdrill.length === 30 && gdrill.every(q => A.GEN_BY_ID[q.gen].graph), 'the graph drill draws only graph questions');
+ok(new Set(gdrill.map(q => q.gen)).size >= 6, 'the graph drill mixes the graphs', new Set(gdrill.map(q => q.gen)).size);
 // ---------- readings ----------
 head('readings');
 const built = A.READINGS.filter(r => r.q);
@@ -515,7 +540,7 @@ const rq10 = A.READINGS.find(r => r.id === 'rq10');
 ok(rq10.q.length >= 30 && rq10.cards.length >= 25 && rq10.match.length >= 10, 'Stein: 30+ questions, 25+ flashcards, 10+ who-said-what pairs', rq10.q.length + '/' + rq10.cards.length + '/' + rq10.match.length);
 ok(new Set(rq10.match.map(m => m[0])).size === rq10.match.length && new Set(rq10.match.map(m => m[1])).size === rq10.match.length, 'Stein: who-said-what has no duplicate names or sayings');
 ok(rdLongest / rdN <= 0.45, 'readings: the right answer is not usually the longest', (100 * rdLongest / rdN).toFixed(1) + '%');
-ok(/data-topic="list"\s+aria-selected="true"/.test(html) && html.indexOf('data-topic="list"') < html.indexOf('data-topic="formulas"') && /My List<\/button>/.test(html) && !/data-topic="start"/.test(html), 'My List is the first, default tab');
+ok(/data-topic="home"\s+aria-selected="true"/.test(html) && html.indexOf('data-topic="home"') < html.indexOf('data-topic="exam"') && /Exam 1 List<\/button>/.test(html), 'Home is the first, default tab; the Exam 1 list is still there');
 ok((html.match(/<script>/g) || []).length === 1, 'a single script block');
 ['div', 'section', 'button', 'nav', 'main', 'header', 'footer', 'svg', 'symbol', 'table', 'g', 'ol', 'ul', 'h3', 'h4', 'thead', 'tbody', 'tr', 'span', 'sub', 'sup'].forEach(t => {
   const open = (html.match(new RegExp('<' + t + '[\\s>]', 'g')) || []).length;

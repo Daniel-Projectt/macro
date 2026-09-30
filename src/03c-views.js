@@ -112,13 +112,15 @@ function renderMockSetup(){
   }
   root.innerHTML = '<div class="quizWrap"><div class="qcard card-corners">'+CORNERS+
     '<div class="qnum">Practice exam</div><p class="qtext">Set it up, then answer across the topics. Each run is drawn fresh.</p>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxFifty">The 38 &mdash; Exam 1&rsquo;s length, every Unit 1 section</button>'+
-      '<p>Thirty-eight questions &mdash; the exam&rsquo;s length &mdash; at least one from each of the 24 sections, your misses first. Drawn fresh each time.</p></div>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxFinal">Final set &mdash; 40 questions, the whole course</button>'+
-      '<p>The final&rsquo;s length (Tue Dec 8, cumulative): questions drawn from every unit, fresh each time.</p></div>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxExam2">Exam 2 set &mdash; 33 questions, Unit 2</button>'+
+    (missKeys().length ? '<div class="fifty"><button class="btn primary" type="button" id="mxMiss">My saved misses &mdash; '+missKeys().length+'</button>'+
+      '<p>Every question you&rsquo;ve missed in any quiz and haven&rsquo;t yet answered right twice in a row.</p></div>' : '')+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxExam2">Exam 2 set &mdash; 33 questions</button>'+
       '<p>Exam 2&rsquo;s length (Tue Nov 10): loanable funds through inflation and deflation, every section covered. Drawn fresh each time.</p></div>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxExam1">Exam 1 again &mdash; the real questions</button>'+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxFinal">Final set &mdash; 40 questions, the whole course</button>'+
+      '<p>The final&rsquo;s length (Tue Dec 8, cumulative): questions from every unit, fresh each time.</p></div>'+
+    '<div class="fifty"><button class="btn" type="button" id="mxFifty">The 38 &mdash; Exam 1&rsquo;s length, every Unit 1 section</button>'+
+      '<p>Thirty-eight questions from the 24 Unit 1 sections, your misses first. Good review for the final.</p></div>'+
+    '<div class="fifty"><button class="btn" type="button" id="mxExam1">Exam 1 again &mdash; the real questions</button>'+
       '<p>Every multiple-choice question from the first exam, with your '+QB.filter(function(b){ return b.ex && b.m === 3; }).length+' misses marked. The fill-in calculations are in Math Practice &rarr; Numbers &rarr; <b>Exam 1 problems</b>.</p></div>'+
     '<div class="setup">'+
       '<p class="orline">or set one up yourself</p>'+
@@ -137,6 +139,7 @@ function renderMockSetup(){
   $("#mxFifty").addEventListener("click", startFifty);
   $("#mxExam1").addEventListener("click", startExam1);
   $("#mxExam2").addEventListener("click", startExam2);
+  if($("#mxMiss")) $("#mxMiss").addEventListener("click", startMisses);
   $("#mxFinal").addEventListener("click", startFinal);
   engines.mock = null;
 }
@@ -222,8 +225,8 @@ function startPractice(){
 
 initReadings();
 
-var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }, "practice/run":function(){ if(!engines.practice) renderPracticeSetup(); }};
-var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }};
+var ON_SHOW = {"home/page":function(){ renderHome(); }, "graphs/page":function(){ if(!$("#graphsRoot").innerHTML) renderGraphs(); },"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }, "practice/run":function(){ if(!engines.practice) renderPracticeSetup(); }};
+var KEYS = {"graphs/page":function(e){ return engines.graphs ? engines.graphs.keys(e) : false; },"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }};
 ["page","cards","match","quiz","real","how","past"].forEach(function(m){ ON_SHOW["readings/" + m] = function(){ renderRdMode(m); }; });
 KEYS["readings/cards"] = function(e){ return rdState.eng.cards ? rdState.eng.cards.keys(e) : false; };
 ["quiz","real","past"].forEach(function(m){ KEYS["readings/" + m] = function(e){ var g = rdState.eng[m]; return g && g.keys ? g.keys(e) : false; }; });
@@ -233,8 +236,8 @@ CHAPTERS.forEach(function(tp){
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","qtm","infl","fiscal","phillips","adas","guide"];
-var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", money:"notes", tvm:"notes", bank:"notes", fed:"notes", qtm:"notes", infl:"notes", fiscal:"notes", phillips:"notes", adas:"notes", formulas:"notes", exam:"mock", readings:"page"};
+var TOPICS = ["home","graphs","list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","qtm","infl","fiscal","phillips","adas","guide"];
+var currentTopic = "home", currentMode = {home:"page", graphs:"page", list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", money:"notes", tvm:"notes", bank:"notes", fed:"notes", qtm:"notes", infl:"notes", fiscal:"notes", phillips:"notes", adas:"notes", formulas:"notes", exam:"mock", readings:"page"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });
@@ -271,12 +274,12 @@ document.addEventListener("keydown", function(e){
 (function(){
   var t = store.get("topic");
   /* the first visit after My List was added lands on it, whatever was open before */
-  if(!store.get("seenList")){ t = "list"; store.set("seenList", "1"); store.set("mode.list", "page"); }
+  if(!store.get("seenHome")){ t = "home"; store.set("seenHome", "1"); }
   TOPICS.forEach(function(k){ var m = store.get("mode."+k); if(m && $('.seg[data-modes="'+k+'"] button[data-mode="'+m+'"]')) currentMode[k] = m; });
   /* a link can open a tab directly: …/macro/#practice */
   var h = (location.hash || "").replace("#", "");
   if(h && TOPICS.indexOf(h) >= 0) t = h;
-  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "list");
+  showTopic(t && TOPICS.indexOf(t) >= 0 ? t : "home");
 })();
 
 window.addEventListener("hashchange", function(){ var h = (location.hash || "").replace("#", ""); if(h && TOPICS.indexOf(h) >= 0) showTopic(h); });

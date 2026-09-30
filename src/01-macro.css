@@ -271,3 +271,39 @@
 .lfg .band{fill:var(--gold-soft);opacity:.18}
 .lfg .cv.dash{stroke-dasharray:5 4}
 .lfg .cl.sm{font-family:var(--sans);font-size:9px;letter-spacing:.04em}
+
+/* ---- grouped tabs, home, graphs ---- */
+.navlab{flex-basis:100%;text-align:center;font-family:var(--sans);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:10px 0 0}
+.navlab:first-child{margin-top:4px}
+.homegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 22px}
+.cd{background:var(--surface);border:1px solid var(--line);padding:14px 12px;text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center}
+.cd b{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;color:var(--ink)}
+.cd small{font-size:12.5px;color:var(--ink-soft)}
+.cd .btn{margin-top:6px}
+.cd.past{opacity:.55}
+.cd .rdn,.due .rdn,.tool .rdn{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.dues{list-style:none;padding:0 !important;margin:0}
+.due{display:grid;gap:4px;padding:12px 0;border-bottom:1px solid var(--line);margin:0 !important}
+.due:last-child{border-bottom:0}
+.due .dt{font-size:16px;line-height:1.4}
+.due .db{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.due.k-exam .dt{font-weight:600}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.tool{text-align:left;font:inherit;background:var(--surface);border:1px solid var(--line);padding:12px;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:3px}
+.tool b{font-family:var(--serif);font-weight:400;font-size:18px}
+.tool small{font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.tool:hover{border-color:var(--gold)}
+.mistakes summary{cursor:pointer;list-style:none}
+.mistakes summary::-webkit-details-marker{display:none}
+.mistakes summary h2::after{content:" \25BE";font-size:.6em;color:var(--gold)}
+.mistakes ol li{margin:0 0 8px;line-height:1.55}
+.gtable .gexam{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+@media (max-width:420px){.homegrid{grid-template-columns:1fr}}
+.gcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.gcard{background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin:0}
+.gcard h3.sub{margin-top:0}
+.gcard .gexam{display:inline-block;margin-left:6px;font-family:var(--sans);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-style:normal}
+.gcard dl{margin:6px 0 0}
+.gcard dt{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+.gcard dd{margin:2px 0 0;font-size:14.5px;line-height:1.5}
+.seg[data-modes="home"],.seg[data-modes="graphs"]{display:none}

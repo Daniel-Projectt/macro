@@ -469,6 +469,27 @@ built.forEach(r => {
   ok(qs.length === r.q.length && qs.every(q => q.opts.filter(o => o.ok).length === 1), r.id + ': every practice question has exactly one right answer');
   ok(A.questionsByKeys(qs.map(q => q.key)).length === qs.length, r.id + ': misses can be practiced again by key');
 });
+// the reading quizzes already taken: word for word, scores must match the picks
+ok(A.PAST_RQ.length === 9 && A.PAST_RQ.every((p, i) => p.n === i + 1 && p.qs.length === 5), 'reading quizzes 1-9, five questions each');
+A.PAST_RQ.forEach(p => {
+  ok(p.qs.filter(b => b.mine === b.right).length === p.score, 'quiz #' + p.n + ': the score matches the picks', p.score);
+  p.qs.forEach((b, i) => {
+    ok(b.o.length === 4 && b.mine >= 0 && b.mine < 4 && b.right >= 0 && b.right < 4, 'quiz #' + p.n + ' q' + (i + 1) + ': four options, valid picks');
+    ok(!b.likely || b.mine !== b.right, 'quiz #' + p.n + ' q' + (i + 1) + ': "most likely" only on a miss');
+    if (b.mine !== b.right) ok(b.why && b.why.length > 25, 'quiz #' + p.n + ' q' + (i + 1) + ': a miss explains the answer');
+  });
+});
+const ps = A.pastStats();
+ok(ps.n === 45 && ps.missed === 7 && ps.sure === 39, 'past quizzes: 45 questions, 7 misses, 39 answers known', JSON.stringify(ps));
+ok(ps.longest === 32, 'past quizzes: the right answer was the longest 32 of 39 times (quoted in How he asks)', ps.longest);
+const allPast = A.pastQuestions(), missPast = A.pastQuestions(b => b.mine !== b.right);
+ok(allPast.length === 45 && missPast.length === 7, 'past quiz runs: all 45, or the 7 misses');
+ok(allPast.every(q => q.opts.filter(o => o.ok).length === 1), 'every past question has exactly one right answer');
+ok(A.questionsByKeys(missPast.map(q => q.key)).length === 7, 'past misses can be practiced again by key');
+ok(A.rdQuestions('past3', 5).length === 5 && A.rdQuestions('rq10', 5).length === 5, 'the real thing draws five');
+const rq10 = A.READINGS.find(r => r.id === 'rq10');
+ok(rq10.q.length >= 30 && rq10.cards.length >= 25 && rq10.match.length >= 10, 'Stein: 30+ questions, 25+ flashcards, 10+ who-said-what pairs', rq10.q.length + '/' + rq10.cards.length + '/' + rq10.match.length);
+ok(new Set(rq10.match.map(m => m[0])).size === rq10.match.length && new Set(rq10.match.map(m => m[1])).size === rq10.match.length, 'Stein: who-said-what has no duplicate names or sayings');
 ok(rdLongest / rdN <= 0.45, 'readings: the right answer is not usually the longest', (100 * rdLongest / rdN).toFixed(1) + '%');
 ok(/data-topic="list"\s+aria-selected="true"/.test(html) && html.indexOf('data-topic="list"') < html.indexOf('data-topic="formulas"') && /My List<\/button>/.test(html) && !/data-topic="start"/.test(html), 'My List is the first, default tab');
 ok((html.match(/<script>/g) || []).length === 1, 'a single script block');

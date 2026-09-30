@@ -508,15 +508,33 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
 .misslist .rem{margin-top:8px}
 
 /* ---- readings ---- */
-.rdlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:0 0 22px}
-.rdbtn{text-align:left;font:inherit;font-size:14px;line-height:1.35;color:var(--ink);background:var(--surface);border:1px solid var(--rule);padding:10px 12px;cursor:pointer}
-.rdbtn .rdn{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.rdgroup{font-family:var(--sans);font-weight:400;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin:6px 0 10px;text-align:left}
+.rdlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin:0 0 20px}
+.rdlist.past .rdbtn{font-size:13px}
+.rdbtn{text-align:left;font:inherit;font-size:14px;line-height:1.35;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:10px 12px;cursor:pointer}
+.rdbtn .rdn,.missl .rdn{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
 .rdbtn[aria-pressed="true"]{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
-.rdbtn.soon{opacity:.6}
-.rdpage h2 small{font-size:.6em;color:var(--ink-soft);font-weight:400}
-.rdpage ul{padding-left:1.1em}
+.rdbtn.soon{opacity:.55}
+.rdtitle small{font-size:.6em;color:var(--ink-soft);font-weight:400;white-space:nowrap}
+.rdpage ul,.rdpage ol{padding-left:1.1em}
 .rdpage li{margin:0 0 8px;line-height:1.6}
-.rdpage .tip{border-top:1px solid var(--rule);padding-top:12px;margin-top:18px;font-size:14.5px}
+.rdpage .tip{border-top:1px solid var(--line);padding-top:12px;margin-top:18px;font-size:14.5px}
+.missl li{list-style:none;margin:0 0 14px;padding:10px 12px;background:var(--surface);border:1px solid var(--line)}
+.missl{padding-left:0 !important}
+.pastq{margin:0 0 26px}
+.pqi{margin:0 0 16px;padding:12px 14px;background:var(--surface);border:1px solid var(--line)}
+.pqq{margin:0 0 8px;line-height:1.55}
+.pqo{list-style:none;padding:0 !important;margin:0}
+.pqo li{margin:0 0 4px !important;padding:5px 8px;font-size:14.5px;line-height:1.45;border-left:2px solid transparent;color:var(--ink-soft)}
+.pqo li.right{border-left-color:var(--gold);color:var(--ink);font-weight:600}
+.pqo li.mine{border-left-color:var(--bad);text-decoration:line-through;text-decoration-color:var(--bad)}
+.pqt{font-family:var(--sans);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;margin-left:8px;color:var(--gold);font-weight:400;text-decoration:none;display:inline-block}
+.pqo li.mine .pqt{color:var(--bad)}
+.pqwhy{font-size:14px;color:var(--ink-soft);margin:6px 0 0}
+.rdclock{text-align:center;font-family:var(--sans);letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--gold);margin:0 0 14px;padding:8px;border:1px solid var(--line);background:var(--surface)}
+.rdclock.low{color:var(--bad);border-color:var(--bad)}
+.rdclock.over{color:var(--bad);text-transform:none;letter-spacing:0;font-size:14.5px}
+.rdclock.done{text-transform:none;letter-spacing:0;font-size:14.5px}
 </style>
 </head>
 <body>
@@ -575,7 +593,7 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
     <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true"><use href="#emblem"/></svg>
     <p class="eyebrow">Study Guide</p>
     <h1>Principles of Macroeconomics</h1>
-    <p class="sub">The whole course <p class="sub">First Exam &middot; GDPmiddot; final is cumulative <p class="sub">First Exam &middot; GDPmiddot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment</p>
+    <p class="sub">The whole course &middot; the final is cumulative &middot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment &middot; the readings</p>
     <svg class="orn" viewBox="0 0 320 44" aria-hidden="true"><use href="#flourish"/></svg>
   </header>
 
@@ -742,11 +760,24 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
 
     <!-- ================= PRACTICE EXAM ================= -->
     <section class="topic" id="topic-readings" hidden>
-      <p class="intro">One reading for each reading quiz: the author&rsquo;s point in plain words, what a five-question, four-minute quiz can ask, and practice questions written the way the professor writes them.</p>
+      <p class="intro">Everything for the reading quizzes: pick a reading, then study it seven ways &mdash; the author&rsquo;s point in plain words, flashcards, who said what, practice questions written the way the professor writes them, and a timed five-question run like the one at 12:30. <b>How he asks</b> and <b>Past quizzes</b> use your 45 real questions from Quizzes 1&ndash;9.</p>
+      <div id="rdPick"></div>
       <div class="modes"><div class="seg" data-modes="readings">
-        <button type="button" data-mode="page" aria-pressed="true">Readings</button>
+        <button type="button" data-mode="page" aria-pressed="true">Start here</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Who said what</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Practice</button>
+        <button type="button" data-mode="real" aria-pressed="false">The real thing</button>
+        <button type="button" data-mode="how" aria-pressed="false">How he asks</button>
+        <button type="button" data-mode="past" aria-pressed="false">Past quizzes</button>
       </div></div>
-      <div class="panel" data-panel="readings/page"><div id="readingsRoot"></div><div id="readingsQuiz"></div></div>
+      <div class="panel" data-panel="readings/page"><div id="rdPage"></div></div>
+      <div class="panel" data-panel="readings/cards" hidden><p class="hint">Front: a name, date or idea. Back: what the author says about it. Space flips, arrows move.</p><div id="rdCardsBar"></div><div id="rdCards"></div></div>
+      <div class="panel" data-panel="readings/match" hidden><p class="hint">Tap a name, then what they said. History readings mix names up on purpose.</p><div id="rdMatch"></div></div>
+      <div class="panel" data-panel="readings/quiz" hidden><p class="hint">Every question, reshuffled. Keys <kbd>1</kbd>&ndash;<kbd>4</kbd> answer, <kbd>Enter</kbd> moves on.</p><div id="rdQuizBox"></div></div>
+      <div class="panel" data-panel="readings/real" hidden><div id="rdTimer"></div><div id="rdRealBox"></div></div>
+      <div class="panel" data-panel="readings/how" hidden><div id="rdHow"></div></div>
+      <div class="panel" data-panel="readings/past" hidden><div id="rdPastBar"></div><div id="rdPastBox"></div></div>
     </section>
 
     <section class="topic" id="topic-exam" hidden>
@@ -2882,6 +2913,54 @@ var READINGS = [
    '<li><b>Any real change needs five things:</b> a convincing argument; a working <b>model</b> (Islamic banking&rsquo;s profit-and-loss partnership, or credit unions); high standards of behavior (moral hazard); different assumptions about people; savers who scrutinize banks.</li>'+
    '<li><b>Examples he praises:</b> John <b>Wesley</b>&rsquo;s insurance schemes and Henry <b>Duncan</b>&rsquo;s Trustee Savings Bank: they helped the poor without waiting for a ban on interest.</li></ul>'+
    '<p class="tip"><b>Quiz tip from your past quizzes:</b> the right answer is usually the <b>moderate</b> one that restates the author&rsquo;s own view. Avoid the extreme options (&ldquo;always,&rdquo; &ldquo;commands,&rdquo; &ldquo;pointless&rdquo;).</p>',
+  cards:[
+   ["Stein’s thesis","Good reasons exist for interest-free banking, but it can’t easily co-exist with conventional banking, so pursue its purpose by other means"],
+   ["Usury (original meaning)","A neutral charge for using property, the same as interest. Later it came to mean an excessive, greedy rate"],
+   ["Plato","Interest-bearing debt splits society into debtors and “money-makers”"],
+   ["Aristotle","Interest is unnatural: “the birth of money from money.” Money is for exchange"],
+   ["The Romans","Didn’t question interest, but stepped in when debt piled up"],
+   ["Old Testament","Interest-free loans to the poor, debts cancelled every 7 years, no interest to a brother Israelite, but allowed to foreigners"],
+   ["New Testament","Silent on charging interest; the “hard man” in the parables expects it"],
+   ["Augustine","Taking interest excluded a person from the kingdom of heaven"],
+   ["Council of Nicaea (325)","Banned interest only for clergy after Constantine allowed 12%: a double standard"],
+   ["Charlemagne (789)","The state banned interest for all citizens"],
+   ["Aquinas","Money is used up when spent, so interest pays for no service; time is God’s free gift. Allowed returns from a partnership"],
+   ["Cessant gain","A charge for the profit a trader gives up by lending"],
+   ["Emergent loss","A charge for risk, or a penalty for late repayment: the credit card"],
+   ["1918","Catholic canon law finally allowed interest"],
+   ["Luther","Against interest on money loans; “two kingdoms”: the church stays out of civil matters"],
+   ["Calvin","Money can be fruitful; consumption vs production loans; the ban was Israel’s political law; left to conscience"],
+   ["Vitus Pichler","Usury may be permitted for the general good; the state legislates"],
+   ["Positive vs normative","20th-century economists treated interest as how things work (positive), not how they should be (normative)"],
+   ["Marx","Interest extracts surplus value from labor, but it isn’t wrong in itself"],
+   ["Trustees","God owns everything (Lev 25:23); seeking wealth for its own sake and exploiting the poor are forbidden"],
+   ["Humans can do evil","Command socialism and laissez-faire capitalism are equally open to abuse"],
+   ["Discounting the future","Ethically indefensible, but that does not condemn interest itself"],
+   ["Incarnation","Be realist and practical: improve a flawed system from within"],
+   ["Trinity","Love as relationship: lender and borrower in a mutual relationship. Debt is often, not always, slavery"],
+   ["Wise or foolish","Stein’s frame: many questions about interest are wise or foolish, not simply right or wrong"],
+   ["Where people agree","No interest for anyone in immediate need of food or medical help; borrow for assets, business, a car for work, not consumption"],
+   ["Why interest-free is more stable","Equity-style deposits move with the bank’s assets, so fewer bank runs"],
+   ["Seven arguments against interest","Separates lender from borrower · only lender paid for risk · burdens future generations · safe assets over risk capital · favors big lenders and short-term · bonds ease war · bad loans to poor countries"],
+   ["Five things change would need","A convincing argument · a working model · high standards (moral hazard) · new assumptions about people · savers who scrutinize banks"],
+   ["The two working models","Islamic profit-and-loss partnership, and credit unions"],
+   ["Wesley and Duncan","Insurance for the poor; the Trustee Savings Bank: helped the poor without waiting for a ban on interest"],
+   ["Keynes’s natural rate","The rate that keeps saving equal to investment"]],
+  match:[
+   ["Plato","Debt splits society into debtors and money-makers"],
+   ["Aristotle","Interest is money breeding money, unnatural"],
+   ["The Romans","Accepted interest but intervened when debt piled up"],
+   ["Augustine","Interest shuts you out of the kingdom"],
+   ["Constantine","Allowed 12% interest on loans"],
+   ["Charlemagne","Banned interest for all citizens"],
+   ["Aquinas","Time is God’s free gift; money is used up when spent"],
+   ["Luther","Two kingdoms: the church stays out of civil matters"],
+   ["Calvin","Consumption vs production loans; left to conscience"],
+   ["Vitus Pichler","Usury allowed for the general good"],
+   ["Marx","Interest extracts surplus value from labor"],
+   ["Keynes","A natural rate keeps saving equal to investment"],
+   ["John Wesley","Insurance schemes for his poor followers"],
+   ["Henry Duncan","Founded the Trustee Savings Bank"]],
   q:[
    {t:"mc",q:"Which statement best captures the thesis of Stein (2021)?",a:"There are good reasons for interest-free banking, but it cannot easily co-exist with conventional banking, so Christians pursue its purpose by other means",w:["The Bible forbids all interest, so Christians must leave interest-based banking behind and bank only with institutions that charge no interest at all","Interest is morally neutral, so Christian ethics has nothing to say about how banks, loans and borrowers ought to deal with one another","Interest-free banking has failed wherever it was tried, so Christians should defend the conventional banking system as the best we have"],e:"His conclusion: good reasons exist for non-interest banking, it doesn’t fit easily beside conventional banks, and Christians care about spirit and purpose over the letter of a law."},
    {t:"mc",q:"According to Stein (2021), the word “usury” originally meant:",a:"a neutral charge for using property, the same as interest today",w:["an excessive, greedy rate of interest charged to the poor who could not refuse","a penalty charged only when a borrower repaid a loan after it was due","interest that foreigners charged to members of the community"],e:"Latin usura was neutral; only later did usury come to mean an excessive, greedy rate."},
@@ -2901,6 +2980,23 @@ var READINGS = [
    {t:"mc",q:"Why would a non-interest banking system be more stable, according to Stein (2021)?",a:"Deposits would rise and fall with the bank’s assets, so fewer runs",w:["Banks would be required to keep all of their deposits in the vault at all times","The government would guarantee every deposit and every loan the banks made","Borrowers would never default on their loans because they would pay no interest"],e:"Fixed par-value deposits invite bank runs; equity-style deposits adjust automatically, lessening economic cycles."},
    {t:"mc",q:"Which is one of Stein’s (2021) seven arguments against interest-based finance?",a:"Bonds make it easier for governments to go to war",w:["Interest makes lenders care too much about the personal circumstances of each borrower","Interest pushes investors toward risky new businesses instead of safe, steady assets","Interest favors small lenders and long-term projects over big lenders and quick returns"],e:"The other options reverse his points: interest separates lenders from borrowers, pulls investors toward safe assets, and favors big lenders and short-term returns."},
    {t:"mc",q:"Which of these does Stein (2021) name as a working model of a system with less reliance on fixed interest?",a:"Islamic profit-and-loss partnership, and credit unions",w:["Quantitative easing by central banks, which re-liquified the whole banking system","Payday lenders, which make small short-term loans to people without collateral","Investment banks, which he says have little connection with the real economy"],e:"He lists Islamic banking and credit unions. He criticizes QE and wants investment banking separated from commercial banking."},
+   {t:"mc",q:"According to Stein (2021), Plato observed that interest-bearing debt:",a:"split society into debtors and the “money-makers”",w:["was the birth of money from money, and so against nature","was allowed with foreigners but not with fellow citizens","should be cancelled by the state every seven years"],e:"Plato: two camps, those without property who owe money and the money-makers who “walk off with the interest.” Money breeding money is Aristotle."},
+   {t:"mc",q:"How did the Romans approach interest, according to Stein (2021)?",a:"They didn’t question it but stepped in when debt piled up",w:["They argued it was unnatural but did nothing about it","They banned it for clergy while allowing it for everyone else","They let each person decide by their own conscience"],e:"“The Greeks talked about interest but did little, the Romans avoided theorising but recognised that problems needed active solutions” (they even tried banning it in 342 B.C.E.)."},
+   {t:"mc",q:"According to Stein (2021), in 789 C.E. under Charlemagne:",a:"the state prohibited taking interest for all citizens",w:["the church allowed interest of 12 percent on loans","Jews were banned from lending money at interest","canon law was changed to allow interest on loans"],e:"Once a whole country was meant to be ruled by Christian thought, the ban applied to everyone. (12% was Constantine; the Jewish ban was 1275; canon law changed in 1918.)"},
+   {t:"mc",q:"When did Roman Catholic canon law finally allow charging interest on money loans, according to Stein (2021)?",a:"1918",w:["1139","1275","1571"],e:"Not until 1918. (1139 is when the Catholic Church restricted usury; 1275 is when Jews were banned from moneylending.)"},
+   {t:"mc",q:"According to Stein (2021), Aquinas answered the claim that interest rewards the lender for the time he goes without his money by arguing that:",a:"time is a free gift of God to all, so charging for it is usury",w:["time is money, so a small charge for it is always fair","the lender is paid enough by getting his money back","time only has value when money is lent to a merchant"],e:"This was Aquinas’s “killer reply”: time is a common good given free by God. Some added that money should at least rest on the sabbath!"},
+   {t:"mc",q:"What is “cessant gain,” as Stein (2021) describes it?",a:"A charge for the profit a trader gives up by lending his capital",w:["A penalty charged when a borrower repays a loan after its due date","A charge to insure the lender against the risk of losing his capital","A share of the gain that borrower and lender split equally"],e:"If a trader pulls working capital out of his business to make a loan, he earns less, so he may charge for it. Late penalties and risk charges are emergent loss."},
+   {t:"mc",q:"According to Stein (2021), Luther’s “two kingdoms” view meant that:",a:"the church should not encroach on the civil authority",w:["the church should enforce the ban on interest through the courts","Christians should run two separate banking systems","borrower and lender should share equally in any gain"],e:"Luther opposed interest on money loans (not trade credit) but watered it down: the church stays out of civil matters, and individuals must make “a right honest deal.”"},
+   {t:"mc",q:"According to Stein (2021), the Jesuit Vitus Pichler argued that usury:",a:"may be permitted for the general good, since the state legislates for its citizens",w:["must always be forbidden, since interest is contrary to natural law","should be allowed only on loans made to foreigners outside the community","is acceptable only when the borrower and the lender share the risk"],e:"Pichler based it on the state’s responsibility to legislate, and freedom from church control became the norm."},
+   {t:"mc",q:"According to Stein (2021), Marx taught that interest:",a:"extracts surplus value from labor, though it isn’t wrong in itself",w:["is the fair reward for the time a lender goes without his money","is a sin because the Bible forbids it between brothers","should be set by the state at a single fixed rate"],e:"Marx saw interest as exploiting labor but did not call it wrong in itself. Stein adds that Marx was right that a debt-based economy tends to concentrate wealth."},
+   {t:"mc",q:"According to Stein (2021), Keynes described a “natural rate of interest” as the rate that:",a:"keeps saving and investment equal",w:["keeps inflation at zero every year","the church judges to be fair and not greedy","banks charge their very best customers"],e:"Keynes’s natural rate preserves equality between saving and investment (the same S = I from class), though he admitted the actual rate depends on what people expect it to be."},
+   {t:"mc",q:"What does Stein (2021) say about quantitative easing (QE)?",a:"It shored up banks and made the rich richer but did little for small businesses",w:["It finally gave small businesses the credit they had been denied for decades","It proved that central banks can set every long-term interest rate precisely","It replaced interest with profit-and-loss sharing across the banking system"],e:"He quotes Kay: “pouring public money into a leaky conduit in the hope that some will dribble through,” and the Bank of England’s own admission."},
+   {t:"mc",q:"According to Stein (2021), banning interest would also:",a:"eliminate conventional government bond finance or force a strictly balanced budget",w:["make every mortgage cheaper and much easier to get","end all bank runs and every economic cycle at once","let the church, not the state, set a just rate"],e:"That would prevent conventional monetary policy. Without bonds, infrastructure would have to be paid for out of taxes."},
+   {t:"mc",q:"What is the most obvious way to tackle problems within the current banking system, according to Stein (2021)?",a:"Strictly separate investment banking from commercial banking",w:["Nationalize every bank and set all interest rates by law","Ban credit cards and personal loans for consumption","Require every bank to become an Islamic bank"],e:"As America did for many years; he calls the arguments against separation “self-serving.”"},
+   {t:"mc",q:"According to Stein (2021), how should Christians read the Old Testament rules on interest today?",a:"In the light of Christ: not literally binding, but not to be ignored",w:["Literally, as binding law for every Christian economy today","As irrelevant, since the Old Testament was written for Israel only","As Aristotle read them, as statements about natural law"],e:"That is his point on hermeneutics: what fit a desert economy may or may not fit ours, but we cannot ignore what was said (Matthew 5:17)."},
+   {t:"mc",q:"Which statement best reflects Stein’s (2021) conclusion about Islamic banking?",a:"It is more feasible where the state backs it, and Christians might use it if it took a more general name",w:["It is the only system a Christian may use in good conscience","It has been shown to be simply conventional interest under another name","It should be banned in Christian countries so that it cannot compete with conventional banks"],e:"Non-interest banking works best in places like Pakistan and Iran, where the state allows and regulates it; with a more general name, Christians and others might use it."},
+   {t:"tf",q:"According to Stein (2021), economics is a value-free science, so political leaders are not responsible for caring for the poor.",a:false,e:"False. He ends by agreeing with Muslims that economics is not value-free: leaders and the people who elect them must uphold just law and care for the poor, and no economic system can be trusted to do that for them."},
+   {t:"tf",q:"Stein (2021) says Christianity shares several beliefs about God with Judaism and Islam that shape economic relationships, such as God as Creator, provider and judge.",a:true,e:"True. God as Creator and owner (we are trustees), who cares for people, provides the earth’s resources, desires justice and will judge."},
    {t:"tf",q:"Stein (2021) argues that discounting future consumption at the market interest rate is ethically indefensible, and that this condemns interest itself.",a:false,e:"False. He calls discounting ethically indefensible but says explicitly that this “does not condemn interest as such.”"},
    {t:"tf",q:"According to Stein (2021), attempts to prohibit interest in an economy that is not state-controlled have usually led to ways of evading or disguising it.",a:true,e:"True. That is one of his main practical doubts about simply banning interest."}
   ]},
@@ -2913,6 +3009,95 @@ var READINGS = [
 ];
 var READING_BY_ID = {};
 READINGS.forEach(function(r){ READING_BY_ID[r.id] = r; });
+
+/* ================================================================ the reading quizzes already taken
+   Reading Quizzes 1–9, word for word from Canvas, with the answer he chose.
+   Canvas hides the key on reading quizzes, so:
+     his answer scored 1/1  → it is the right answer (sure)
+     his answer scored 0/1  → "right" is the most likely answer (likely:true),
+                              reasoned from the reading; never presented as the key.
+   o = the options in Canvas's order, mine = his pick, right = the answer.   */
+var PAST_RQ = [
+ {n:1, date:"Thu Aug 27", title:"Does Current Economic Theory Impose a Materialistic View of Work?", who:"McMullen & Steen", year:2017, score:5, qs:[
+  {q:"Which statement best synthesizes Steen and McMullen's (2017) richer theological ethic of work compared to the minimalist ethic implicit in economics?",o:["Whereas economics focuses on consumption, a theological ethic stresses that work's true value lies exclusively in aligning with the worker's vocation.","Whereas economics values efficiency, a theological ethic argues that only the worker's good should be prioritized, since others benefit indirectly.","Whereas economics prioritizes profit maximization, a theological ethic dismisses material concerns altogether in favor of purely spiritual benefits.","Whereas economics reduces work to wages and productivity, a theological ethic emphasizes serving others, fostering the worker's good, and aligning with the worker's broader calling."],mine:3,right:3},
+  {q:"What alternative perspective on economic progress is suggested by McMullen and Steen (2017)?",o:["Progress should be measured by the sum of domestic spending, regardless of its effects.","Progress should be measured by the balance between imports and exports.","Progress should be measured by whether work sustains the good of others, the worker, and their calling, not merely by GDP growth.","Progress should be measured solely by wage equality among workers."],mine:2,right:2},
+  {q:"McMullen and Steen (2017) argue that the standard economic framework of labor markets \"does not provide a vocabulary for many important concerns.\" Which statement helps illustrate this?",o:["The standard economic framework of the labor market allows society to draw a distinction between work that is doing good and work that is doing bad.","The standard economic framework of the labor market provides society with the ability to draw distinctions between virtue-forming and vice-forming work.","The standard economic framework of the labor market does not provide society with the ability to draw distinction between virtue-forming and vice-forming work.","The standard economic framework of the labor market provides a clear distinction between good work and bad work."],mine:2,right:2},
+  {q:"What is the central limitation of GDP as a measure of economic progress, according to McMullen and Steen (2017)?",o:["GDP does not increase when consumer spending rises.","GDP does not distinguish between good and bad production, nor reflect whether work fulfills human calling","GDP underestimates the contribution of high-income earners compared to low-income earners.","GDP only measures environmental sustainability, neglecting other forms of production."],mine:1,right:1},
+  {q:"Which statement best captures the thesis of McMullen and Steen (2017)?",o:["Work and leisure should be evaluated solely in terms of their contributions to overall economic growth.","Ethical thinking about labor markets is unnecessary because market forces naturally produce fair outcomes.","Economic analysis provides the most objective and reliable framework for understanding the ethical dimensions of work and leisure.","Economic analysis overemphasizes material considerations when thinking about work and leisure and thus ill-informs ethical thinking about labor markets and work."],mine:3,right:3}]},
+ {n:2, date:"Tue Sep 1", title:"Christian Obligations: “The Poor You Will Always Have With You”", who:"Bolt", year:2004, score:3, qs:[
+  {q:"According to Bolt (2004), Jesus' statement \"The poor you will always have with you\" (Matt. 26:11) primarily means:",o:["Poverty is inevitable, so helping the poor is pointless.","The poor will always exist, giving us continual opportunity to help them.","Poverty is a divine punishment for sin.","Christians should only care for the spiritual poor."],mine:2,right:1,likely:true,why:"The verse is about an ongoing opportunity to help, not about poverty as punishment. Bolt’s whole article is about obligations to the poor."},
+  {q:"Bolt (2004) writes, \"To be human is to be created for communion, communion with God and communion with fellow image bearers.\" Bolt uses this as a springboard to discuss the obligations of the poor, of the church, of civil society, and the poor. Which statement does not align with Bolt's argument?",o:["The poor have no responsibility for their own situation, even though they are image bearers themselves.","Poverty is in part a cultural and personal matter.","While there is no debate that Christians have an obligation to help the poor, there is debate as to which institutions have what responsibility for implementing compassion.","Generosity of spirit and of hand is expected of all Christians."],mine:0,right:0},
+  {q:"Which statement best aligns with Bolt's (2004) view of how Christians should help the poor?",o:["People have the right to the fruit of another's labor.","The Bible commands redistribution of wealth, in-line with the Sabbath and Jubilee requirements of the Old Testament.","The Bible requires Christians to help the poor, and provides a precise roadmap for how this should occur.","The Bible requires Christians to help the poor, but does not provide a precise roadmap."],mine:1,right:3,likely:true,why:"Bolt says the debate is over which institutions should carry out compassion, so the Bible gives the duty but not a precise roadmap."},
+  {q:"Bolt (2004) argues that \"if we are to come to terms with poverty, we must not begin with poverty itself.\" To Bolt, this is true for which of the following two reasons?",o:["Because poverty is necessarily a relative and not an absolute term, and because poverty presupposes wealth—the ordinary and primitive state of a human being is to have nothing.","Because wealth is naturally distributed equally, and poverty arises only when systems of injustice interfere.","Because the Bible speaks only about spiritual poverty, not material poverty.","Because poverty is always the direct result of greed, racism, or other intentional evils."],mine:0,right:0},
+  {q:"Which of the following statements best aligns with Bolt's (2004) view of stewardship?",o:["Stewardship is maintaining creation as we received it.","Stewardship is a matter of wise use of creation, rather than the view of non-use of creation.","Stewardship is best handled by the government, rather than individuals.","Stewardship acknowledges that tradeoffs do not exist."],mine:1,right:1}]},
+ {n:3, date:"Thu Sep 3", title:"Justice and Poverty: Two Views Contrasted", who:"Beisner", year:1993, score:4, qs:[
+  {q:"Which biblical principle does Beisner (1993) use to argue against unconditional economic claims?",o:["\"Love your neighbor as yourself\"","\"The meek shall inherit the earth\"","\"Whoever refuses to work must not eat\"","\"Judge not, lest you be judged\""],mine:2,right:2},
+  {q:"Which of the following is NOT one of the four criteria of biblical justice identified by Beisner (1993)?",o:["Impartiality","Proportionality","Equality of outcome","Normativity"],mine:2,right:2},
+  {q:"According to Beisner (1993), why are the poor often connected with justice in Scripture?",o:["Equalizing wealth across society","Providing government welfare programs","Giving resources to those with the greatest need","Applying the rules of justice impartially to all people"],mine:2,right:3,likely:true,why:"Beisner: Scripture ties the poor to justice because they are the most vulnerable to injustice, so they most need impartial justice. Giving by need is charity (grace), which he keeps separate from justice."},
+  {q:"According to Beisner (1993), proportionality in justice means:",o:["Rewards and punishments should correspond to actions committed","Punishment should always be identical for every offense","Justice should favor the poor proportionally more than the rich","Wealth should be distributed according to need"],mine:0,right:0},
+  {q:"According to Beisner (1993), confusing justice with grace could lead to the belief that:",o:["Christians should avoid charitable giving","Salvation and material provision are owed to people as a right","Governments should never help the poor","Justice should be separated from morality entirely"],mine:1,right:1}]},
+ {n:4, date:"Tue Sep 8", title:"On Wealth and Worry (the application section)", who:"Blomberg", year:1992, score:4, qs:[
+  {q:"According to Blomberg (1992), what is ironic about many affluent American churches?",o:["They often invest heavily in buildings while giving little to missions or the poor.","They only serve rural communities.","They discourage education.","They refuse to accept donations."],mine:0,right:0},
+  {q:"Which irony does Blomberg (1992) identify in American conservative Christian culture?",o:["Rejecting the Bible as a moral guide","It focuses only on personal holiness","Focusing only on evangelism","Equating poverty relief and environmental concern with liberalism"],mine:3,right:3},
+  {q:"What does the New Testament teach about tithing?",o:["A fixed 10% is commanded.","Only the wealthy are required to give.","Generous and sacrificial giving is commanded, not a set percentage.","No giving is required."],mine:2,right:2},
+  {q:"Which statement best describes a \"graduated tithe?\"",o:["Everyone gives the same flat amount.","The more one earns, the more one gives, even if the percentage doesn't change.","The more one earns, the higher percentage one gives.","The less one earns, the higher percentage one gives."],mine:1,right:2,why:"Blomberg says it directly: “the more money one makes, the higher percentage one would give away.” A flat percentage is an ordinary tithe."},
+  {q:"What irony does Blomberg (1992) identify in American liberal Christian culture?",o:["Equating poverty relief and environmental concern with liberalism","It rejects Jesus' ethical teachings","It often emphasizes justice at the expense of preparing people for eternity","It ignores issues of peace and justice"],mine:2,right:2}]},
+ {n:5, date:"Thu Sep 10", title:"Wisdom and Work: Perspectives on Human Labor from Ecclesiastes", who:"Charles", year:2019, score:4, qs:[
+  {q:"What theological principle undergirds the rejection of a secular/sacred division in work?",o:["Only spiritual vocations are blessed by God","Secular work has no eternal value","Secular work only leads to momentary benefits, whereas spiritual work leads to lasting benefits.","Human creativity mirrors God's image, making all labor meaningful"],mine:2,right:3,likely:true,why:"It is the only option that rejects the split between secular and sacred work; the other three assume it. It matches the answer you got right on Question 4."},
+  {q:"According to Charles (2019), why is \"meaninglessness\" not applied to human work categorically in Ecclesiastes?",o:["Because wealth transforms work into meaning","Because work is meaningless only when separated from a theocentric outlook","Because work is never mentioned as meaningless in the book","Because work is always profitable economically"],mine:1,right:1},
+  {q:"How does Charles (2019) describe work in the larger theological framework of Ecclesiastes?",o:["A divine ordinance but not a source of joy","A satisfying gift from God within a theocentric worldview","A futile cycle that must be escaped","A path to self-fulfillment in modern terms"],mine:1,right:1},
+  {q:"Why does the Judeo-Christian tradition recognize no split between manual and mental labor?",o:["Because historically, society values both equally","Because the church elevated physical work above spiritual work","Since humans are made in God's image, utilizing the gifts God gives us allows our work to glorify God.","The Greco-Roman tradition, which saw no split between manual and mental labor, was adopted by the early church."],mine:2,right:2},
+  {q:"How does Ecclesiastes present the enjoyment of labor in contrast to a secular view?",o:["As a privilege only for priests and kings","As punishment for sin","As a fleeting distraction","As a residual gift from God that continues in the believer's life"],mine:3,right:3}]},
+ {n:6, date:"Tue Sep 15", title:"Just Remuneration Over a Worker's Lifetime", who:"Klay & Lunn", year:2003, score:4, qs:[
+  {q:"According to Klay and Lunn (2003), why must wages change over time?",o:["Because workers expect continual raises regardless of productivity.","Because circumstances such as scarcity, risks, and expenditures vary, and fixed wages undermine both justice and efficiency.","Because inflation requires that wages rise automatically each year.","Because constant wages create job security but reduce worker motivation."],mine:1,right:1},
+  {q:"What problem do modern economists see with setting wage rates according to family circumstances (e.g., larger families earning higher wages)?",o:["It would create hiring disincentives and raise production costs, harming poor consumers.","It would discourage family members from seeking additional employment.","It would make employers more charitable toward families with dependents.","It would motivate more people to have children solely for higher pay."],mine:1,right:0,likely:true,why:"If pay depended on family size, employers would avoid hiring workers with large families, and the higher costs would pass on to consumers, including poor ones."},
+  {q:"Klay and Lunn (2003) argue that \"just remuneration\" should be understood primarily in terms of",o:["lifetime earnings and benefits","daily earnings and benefits","employer's profit margins","hourly earnings and benefits"],mine:0,right:0},
+  {q:"According to Klay and Lunn (2003), what is the key ethical concern in the labor market?",o:["Whether workers work the longest hours","Whether the job seeker can find meaningful work across life stages","Guaranteeing permanent employment","Equality of all wages"],mine:1,right:1},
+  {q:"According to Klay and Lunn (2003), what is the true way to ensure a living wage in poor countries?",o:["By redistributing wealth from rich to poor through taxation","By requiring international companies to pay standardized wages","By mandating higher minimum wages across all industries","By making workers more productive so their incomes rise over time"],mine:3,right:3}]},
+ {n:7, date:"Thu Sep 17", title:"Isaiah's Critique of Inflation", who:"North", year:1979, score:4, qs:[
+  {q:"According to North (1979), what is the deeper problem with universal monetary debasement?",o:["It is part of a broader pattern of religious, cultural, judicial, political, and economic corruption","It is a technical flaw in the banking system rather than a moral issue","It only harms international trade but not domestic society","It primarily reflects inefficient government administration"],mine:0,right:0},
+  {q:"What happens as sellers recognize that more fiat money has entered circulation?",o:["They lower prices to remain competitive","They raise selling prices as buyers bid against each other","They refuse to sell until the money stabilizes","They increase production at the old price levels indefinitely"],mine:1,right:1},
+  {q:"According to North (1979), who benefits most from newly created fiat money?",o:["Those who save their money rather than spend it","Those who gain first access to it and can buy at yesterday's prices","Those who hoard precious metals outside the market","Those who wait until the money is widely circulated"],mine:1,right:1},
+  {q:"What does North (1979) argue will happen if Christians fail to challenge inflation and other forms of institutional debasement?",o:["Inflation will temporarily enrich some groups, but market corrections will eventually restore balance","Inflation will correct itself as markets stabilize","The economy may continue to function outwardly, but hidden spiritual decay will leave it unstable","God's people will face predictable judgment as secular humanism dominates society's institutions"],mine:2,right:3,likely:true,why:"North reads Isaiah as covenant judgment: if God’s people don’t resist debasement, judgment follows as secular humanism takes over the institutions."},
+  {q:"According to North (1979), why do civil governments resort to monetary inflation?",o:["To preserve the reliability of money permanently","To redistribute wealth from the poor to the rich in a transparent way","To maintain stable currency values in international trade","To exploit the profit from debasement and inflation when convenient"],mine:3,right:3}]},
+ {n:8, date:"Tue Sep 22", title:"The Ethics of Inflation (pages 98–105)", who:"Larkin", year:1980, score:5, qs:[
+  {q:"What behavior does inflation encourage, according to Larkin (1980)?",o:["Saving for the future","Delayed consumption and generosity","Immediate, covetous consumption and borrowing","Dependence on charity"],mine:2,right:2},
+  {q:"According to Larkin (1980), what moral values are undermined in an inflationary economy?",o:["Creativity and innovation","Generosity and charity","Leadership and responsibility","Honesty, industry, and saving"],mine:3,right:3},
+  {q:"What does Larkin (1980) conclude is the overall biblical judgment on inflation?",o:["Inflation is unbiblical and immoral, violating commands on honest dealing and justice.","Inflation is morally neutral but economically harmful.","Inflation is a necessary evil in modern economies.","Inflation is God's judgment on idolatry."],mine:0,right:0},
+  {q:"How does Larkin (1980) apply the biblical command for \"just weights\" to modern inflationary practices?",o:["Gold standards ensure biblical justice.","Inflation is a blessing for the poor.","Printing excess money is equivalent to using false or \"light\" weights.","Inflation is unrelated to biblical economic commands."],mine:2,right:2},
+  {q:"How does inflation destabilize society, according to Larkin (1980)?",o:["It creates opportunities for innovation.","It strengthens family savings.","It fosters dishonesty, divisiveness, and family strain.","It unites people around common economic goals."],mine:2,right:2}]},
+ {n:9, date:"Thu Sep 24", title:"Investing in Stocks: Three Models of Faith Integration", who:"Porter & Steen", year:2003, score:5, qs:[
+  {q:"According to Porter and Steen (2003), what responsibility comes with owning stock in a company?",o:["Christians should prioritize companies that produce the highest long-term returns since profitable firms usually benefit society.","Christians should avoid becoming too involved in corporate behavior because no company is completely ethical.","Christians should mainly invest in companies that openly market themselves as Christian businesses.","Christians should seek to understand how companies use their resources and exercise stewardship through informed ownership and participation."],mine:3,right:3},
+  {q:"According to Porter and Steen (2003), what should be the primary goal of investments?",o:["Building earthly treasure","Beating the stock market","Supporting God's kingdom and glorifying Him","Achieving financial independence"],mine:2,right:2},
+  {q:"According to Porter and Steen (2003), what responsibility comes with owning stock?",o:["Avoiding all risk","Participating in corporate decision-making","Maximizing personal wealth","Paying corporate taxes"],mine:1,right:1},
+  {q:"What is the central thesis of Porter and Steen (2003)?",o:["Christians should completely withdraw from modern financial markets.","Christians should thoughtfully consider how biblical principles shape their investment decisions.","The stock market is inherently immoral and incompatible with Christianity.","Ethical investing is impossible because no company is fully moral."],mine:1,right:1},
+  {q:"What overall conclusion do Porter and Steen (2003) reach about Christian investing?",o:["All Christians should avoid the stock market","Investing is morally neutral","Ethical investing guarantees better returns","Christians must recognize that all resources belong to God"],mine:3,right:3}]}
+];
+
+var PAST_BY_ID = {};
+PAST_RQ.forEach(function(p){ p.id = "past" + p.n; PAST_BY_ID[p.id] = p; });
+
+/* the patterns in how he writes them, counted from the 45 real questions above */
+function pastStats(){
+  var all = [], s = {n:0, according:0, thesis:0, not:0, irony:0, longest:0, sure:0, missed:0, extremeWrong:0};
+  PAST_RQ.forEach(function(r){ r.qs.forEach(function(q){ all.push(q); }); });
+  var ABS = /\b(only|solely|always|never|all|no |exclusively|entirely|completely|commanded|commands|pointless|inherently|impossible|guarantees?)\b/i;
+  all.forEach(function(q){
+    s.n++;
+    if(/according to|argue|writes|identify|suggested by/i.test(q.q)) s.according++;
+    if(/thesis|best captures|best synthesizes|overall conclusion|central/i.test(q.q)) s.thesis++;
+    if(/\bNOT\b|does not align/.test(q.q)) s.not++;
+    if(/iron/i.test(q.q)) s.irony++;
+    if(q.mine !== q.right) s.missed++;
+    if(!q.likely){
+      s.sure++;
+      var L = q.o.map(function(o){ return o.length; }), mx = Math.max.apply(null, L);
+      if(L[q.right] === mx && L.filter(function(x){ return x === mx; }).length === 1) s.longest++;
+    }
+    if(q.mine !== q.right && ABS.test(q.o[q.mine])) s.extremeWrong++;
+  });
+  return s;
+}
 
 /* ================================================================ helpers */
 function $(s,r){ return (r||document).querySelector(s); }
@@ -3071,6 +3256,8 @@ function readingQuestions(id){
 }
 function questionsByKeys(keys){
   return uniqBy(keys, function(k){ return k; }).map(function(k){
+    var pq = /^pq:(\d+):(\d+)$/.exec(k);
+    if(pq){ var pp = PAST_BY_ID["past" + pq[1]], pj = parseInt(pq[2],10); return (pp && pp.qs[pj]) ? fromPast(pp, pj) : null; }
     var rd = /^rd:([a-z0-9]+):(\d+)$/.exec(k);
     if(rd){ var r = READING_BY_ID[rd[1]], j = parseInt(rd[2],10); return (r && r.q && r.q[j]) ? fromReading(r, j) : null; }
     var m = /^([a-z0-9]+):p(\d+)(r?)$/.exec(k);
@@ -3263,7 +3450,7 @@ function matchRound(tp, n){
 
 /* ---- the pure parts can be tested outside a browser ---- */
 if(typeof window === "undefined"){
-  module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions, READINGS:READINGS, readingQuestions:readingQuestions, questionsByKeys:questionsByKeys,
+  module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions, READINGS:READINGS, readingQuestions:readingQuestions, questionsByKeys:questionsByKeys, PAST_RQ:PAST_RQ, pastStats:pastStats, pastQuestions:pastQuestions, rdQuestions:rdQuestions,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
     CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,
@@ -3644,6 +3831,190 @@ function makePractice(root, opts){
   };
 }
 
+/* ================================================================ readings: every way to study one reading
+   Pick a reading at the top (coming up, or already taken), then study it seven ways:
+   Start here · Flashcards · Who said what · Practice · The real thing (5 questions,
+   4 minutes) · How he asks · Past quizzes (the 45 real questions from quizzes 1–9). */
+var rdState = {cur:null, mode:"page", timer:null, eng:{}};
+function rdGet(id){ return READING_BY_ID[id] || PAST_BY_ID[id] || null; }
+function rdLabel(r){ return r.who ? r.who + (r.year ? " (" + r.year + ")" : "") : r.title; }
+function rdBuilt(r){ return !!(r && (r.q || r.qs)); }
+
+/* a question from a quiz already taken, with what he picked */
+function pastExplain(b){
+  if(b.mine === b.right) return "You got this one on the quiz." + (b.why ? " " + b.why : "");
+  return "On the quiz you picked “" + b.o[b.mine] + ".” " + (b.likely ? "Canvas hides the key; the most likely answer is the one above. " : "") + (b.why || "");
+}
+function fromPast(p, i){
+  var b = p.qs[i];
+  return {key:"pq:" + p.n + ":" + i, sec:null, hot:0, ap:false, kind:"mc", text:b.q, cue:"Reading Quiz #" + p.n + " · " + rdLabel(p),
+    opts:shuffle(b.o.map(function(o, j){ return {html:o, ok:j === b.right}; })), explain:pastExplain(b),
+    miss:strip(b.q) + " — <b>" + b.o[b.right] + "</b>" + (b.likely ? " (most likely)" : "")};
+}
+function pastQuestions(filter){
+  var out = [];
+  PAST_RQ.forEach(function(p){ p.qs.forEach(function(b, i){ if(!filter || filter(b)) out.push(fromPast(p, i)); }); });
+  return shuffle(out);
+}
+function rdQuestions(id, n){
+  var r = rdGet(id), qs = [];
+  if(r && r.q) qs = readingQuestions(id);
+  else if(r && r.qs) qs = shuffle(r.qs.map(function(b, i){ return fromPast(r, i); }));
+  return n ? qs.slice(0, n) : qs;
+}
+function rdDeck(r){
+  if(r.cards) return r.cards.map(function(c){ return {front:c[0], back:c[1]}; });
+  if(r.qs) return r.qs.map(function(b){ return {front:b.q, back:b.o[b.right] + (b.likely ? " (most likely)" : "")}; });
+  return [];
+}
+function rdCardFaces(deck){
+  return shuffle(deck).map(function(c){
+    return {front:'<div class="mid" style="font-family:var(--serif);letter-spacing:.01em;text-transform:none;font-size:clamp(18px,4vw,24px);line-height:1.4">' + c.front + '</div>',
+            back:'<div class="bname">' + c.front + '</div><div class="bsound" style="margin-top:12px">' + c.back + '</div>'};
+  });
+}
+
+/* ---- the picker ---- */
+function renderRdPick(){
+  function btn(r, sub){ return '<button type="button" class="rdbtn' + (rdBuilt(r) ? '' : ' soon') + '" data-rd="' + r.id + '" aria-pressed="' + (r.id === rdState.cur) + '"><span class="rdn">' + sub + '</span>' + r.title + '</button>'; }
+  $("#rdPick").innerHTML =
+    '<h3 class="rdgroup">Coming up</h3><div class="rdlist">' + READINGS.map(function(r){ return btn(r, 'Quiz #' + r.n + ' &middot; ' + r.date + (rdBuilt(r) ? '' : ' &middot; soon')); }).join("") + '</div>' +
+    '<h3 class="rdgroup">Already taken</h3><div class="rdlist past">' + PAST_RQ.map(function(p){ return btn(p, 'Quiz #' + p.n + ' &middot; you got ' + p.score + '/5'); }).join("") + '</div>';
+  $$("#rdPick [data-rd]").forEach(function(b){
+    b.addEventListener("click", function(){
+      rdState.cur = b.getAttribute("data-rd"); store.set("reading", rdState.cur);
+      renderRdPick(); renderRdMode(rdState.mode);
+      var m = $(".topic#topic-readings .modes"); if(m) m.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
+}
+function rdHead(r){
+  return '<h2 class="rdtitle">' + r.title + (r.who ? ' <small>' + rdLabel(r) + '</small>' : '') + '</h2>' + divider();
+}
+function rdNotBuilt(r){
+  return '<div class="note-sec rdpage">' + rdHead(r) + '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + '</span></p><p>Not built yet. It will be ready before its class.</p></div>';
+}
+function rdStopTimer(){ if(rdState.timer){ clearInterval(rdState.timer); rdState.timer = null; } }
+
+/* ---- the review list: every question, the right answer, and his pick ---- */
+function pastReview(list){
+  return list.map(function(p){
+    return '<div class="pastq"><h3 class="rdgroup">Reading Quiz #' + p.n + ' &middot; ' + rdLabel(p) + ' &middot; ' + p.score + '/5</h3>' +
+      p.qs.map(function(b, i){
+        return '<div class="pqi"><p class="pqq"><b>' + (i + 1) + '.</b> ' + b.q + '</p><ul class="pqo">' +
+          b.o.map(function(o, j){
+            var cls = j === b.right ? 'right' : (j === b.mine ? 'mine' : '');
+            var tag = j === b.right ? (b.likely ? '<span class="pqt">most likely</span>' : '<span class="pqt">right</span>') : (j === b.mine ? '<span class="pqt">your pick</span>' : '');
+            return '<li class="' + cls + '">' + o + tag + '</li>';
+          }).join("") + '</ul>' + (b.mine !== b.right && b.why ? '<p class="pqwhy">' + b.why + '</p>' : '') + '</div>';
+      }).join("") + '</div>';
+  }).join("");
+}
+
+/* ---- How he asks: counted from the 45 real questions ---- */
+function renderRdHow(){
+  var s = pastStats(), pct = function(a, b){ return Math.round(100 * a / b); };
+  var misses = [];
+  PAST_RQ.forEach(function(p){ p.qs.forEach(function(b){ if(b.mine !== b.right) misses.push({p:p, b:b}); }); });
+  $("#rdHow").innerHTML = '<div class="note-sec rdpage">' +
+    '<h2 class="rdtitle">How he writes reading quizzes</h2>' + divider() +
+    '<p class="knowline"><span class="know">Counted from your 45 real questions, Reading Quizzes 1&ndash;9</span></p>' +
+    '<div class="point"><b>The quiz</b><p><b>5 questions, 4 minutes</b>, on Canvas at 12:30 at the start of class. That is under a minute each. Canvas never shows you the answers afterwards.</p></div>' +
+    '<h3 class="sub">The question types</h3><ul>' +
+    '<li><b>&ldquo;According to [Author] ([year]), &hellip;&rdquo;</b> &mdash; ' + s.according + ' of ' + s.n + ' questions name the author and year. Know the author&rsquo;s name and year cold, and what they personally argue.</li>' +
+    '<li><b>The thesis</b> &mdash; &ldquo;best captures the thesis,&rdquo; &ldquo;best synthesizes,&rdquo; &ldquo;overall conclusion&rdquo; (' + s.thesis + ' times). Know the author&rsquo;s main claim in one sentence.</li>' +
+    '<li><b>&ldquo;Which does NOT align&rdquo; / &ldquo;is NOT one of&rdquo;</b> (' + s.not + ' times). Three options restate the author; find the one that contradicts him.</li>' +
+    '<li><b>Lists from the reading</b> &mdash; &ldquo;four criteria of justice,&rdquo; ironies, reasons. Learn every numbered list the author gives (Stein has <b>seven</b> arguments against interest and <b>five</b> things change would need).</li>' +
+    '<li><b>Terms the author defines</b> &mdash; &ldquo;graduated tithe,&rdquo; &ldquo;proportionality,&rdquo; &ldquo;stewardship.&rdquo; Know the author&rsquo;s exact meaning, not the everyday one.</li>' +
+    '<li><b>A quote, then &ldquo;why&rdquo;</b> &mdash; he quotes a sentence and asks the reason behind it.</li></ul>' +
+    '<h3 class="sub">What the right answer looks like</h3><ul>' +
+    '<li><b>It restates the author&rsquo;s own view, in the author&rsquo;s own words</b> &mdash; usually the moderate, qualified position (&ldquo;requires&hellip; but does not provide a precise roadmap&rdquo;).</li>' +
+    '<li><b>Tiebreaker:</b> on the ' + s.sure + ' questions where the answer is known, the right answer was the <b>longest option ' + s.longest + ' times (' + pct(s.longest, s.sure) + '%)</b>. Know the reading first; use this only when you are stuck between two.</li>' +
+    '<li><b>Wrong answers</b> are usually extreme (&ldquo;only,&rdquo; &ldquo;always,&rdquo; &ldquo;pointless,&rdquo; &ldquo;commands&rdquo;), the opposite of the thesis, or a view the author argues <i>against</i>.</li></ul>' +
+    '<h3 class="sub">Your ' + misses.length + ' misses, and the trap in each</h3><ul class="missl">' +
+    misses.map(function(m){ return '<li><span class="rdn">Quiz #' + m.p.n + ' &middot; ' + rdLabel(m.p) + '</span>You picked <i>&ldquo;' + m.b.o[m.b.mine] + '&rdquo;</i><br>Answer' + (m.b.likely ? ' (most likely)' : '') + ': <b>' + m.b.o[m.b.right] + '</b>' + (m.b.why ? '<br><span class="pqwhy">' + m.b.why + '</span>' : '') + '</li>'; }).join("") + '</ul>' +
+    '<p class="tip"><b>The pattern in your misses:</b> each time you chose an answer that sounds pious or reasonable on its own but is <b>not what this author argues</b> &mdash; punishment for sin, commanded redistribution, giving by need, &ldquo;hidden spiritual decay.&rdquo; Ask: <i>would this author write that sentence?</i></p>' +
+    '<h3 class="sub">The night before</h3><ol>' +
+    '<li>Read <b>Start here</b> once, slowly.</li><li>Flashcards until you can say each back.</li><li><b>Who said what</b> until it&rsquo;s clean (history readings mix up names on purpose).</li><li>Practice until you pass twice in a row.</li><li>Finish with <b>The real thing</b>: 5 questions, 4 minutes.</li></ol>' +
+    '</div>';
+}
+
+/* ---- each mode for the current reading ---- */
+function renderRdMode(mode){
+  rdState.mode = mode;
+  rdStopTimer();
+  var r = rdGet(rdState.cur), built = rdBuilt(r);
+  if(mode === "how"){ renderRdHow(); return; }
+  if(mode === "past"){
+    var box = $("#rdPastBox");
+    $("#rdPastBar").innerHTML = '<div class="toolbar" style="justify-content:center"><button class="btn primary" type="button" data-pq="all">Quiz me on all 45</button><button class="btn" type="button" data-pq="miss">Only my 7 misses</button><button class="btn" type="button" data-pq="list">See every question</button></div>';
+    function run(kind){
+      if(kind === "list"){ rdState.eng.past = null; box.innerHTML = pastReview(PAST_RQ); return; }
+      rdState.eng.past = makeQuiz(box, function(){ return pastQuestions(kind === "miss" ? function(b){ return b.mine !== b.right; } : null); }, {againLabel:"Again, reshuffled"});
+      rdState.eng.past.start(null);
+    }
+    $$("#rdPastBar [data-pq]").forEach(function(b){ b.addEventListener("click", function(){ run(b.getAttribute("data-pq")); }); });
+    if(!box.innerHTML) run("list");
+    return;
+  }
+  if(mode === "page"){
+    if(!built){ $("#rdPage").innerHTML = rdNotBuilt(r); return; }
+    if(r.start){
+      $("#rdPage").innerHTML = '<div class="note-sec rdpage">' + rdHead(r) +
+        '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + ' &middot; 5 questions, 4 minutes, in class</span></p>' + r.start +
+        '<div class="toolbar" style="justify-content:center;margin-top:18px"><button class="btn primary" type="button" data-go-rd="quiz">Practice (' + r.q.length + ' questions)</button><button class="btn" type="button" data-go-rd="real">The real thing: 5 in 4 minutes</button></div></div>';
+    } else {
+      $("#rdPage").innerHTML = '<div class="note-sec rdpage">' + rdHead(r) +
+        '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + ' &middot; you scored ' + r.score + '/5</span></p>' +
+        '<p>This quiz is done. Here are its five real questions, the right answer to each, and what you picked. Canvas hides the key, so where you missed one the answer is marked &ldquo;most likely.&rdquo;</p>' +
+        pastReview([r]) + '</div>';
+    }
+    $$("#rdPage [data-go-rd]").forEach(function(b){ b.addEventListener("click", function(){ showMode("readings", b.getAttribute("data-go-rd")); }); });
+    return;
+  }
+  var target = {cards:"#rdCards", match:"#rdMatch", quiz:"#rdQuizBox", real:"#rdRealBox"}[mode];
+  if(!built){ $(target).innerHTML = rdNotBuilt(r); if(mode === "cards") $("#rdCardsBar").innerHTML = ""; if(mode === "real") $("#rdTimer").innerHTML = ""; return; }
+  if(mode === "cards"){
+    var deck = rdDeck(r);
+    $("#rdCardsBar").innerHTML = '<div class="toolbar"><span class="label">' + deck.length + ' cards &middot; ' + rdLabel(r) + '</span><button class="btn" type="button" id="rdShuffle">Shuffle</button></div>';
+    rdState.eng.cards = makeCards($("#rdCards")); rdState.eng.cards.load(rdCardFaces(deck));
+    $("#rdShuffle").addEventListener("click", function(){ rdState.eng.cards.load(rdCardFaces(deck)); });
+  } else if(mode === "match"){
+    if(!r.match){ $("#rdMatch").innerHTML = '<p class="hint">Who said what is for the readings with people and dates in them. This one is practiced in Flashcards and Practice.</p>'; return; }
+    rdState.eng.match = makeMatch($("#rdMatch"), function(){
+      var items = r.match.map(function(p, i){ return {id:r.id + "m" + i, left:p[0], right:p[1]}; });
+      return {leftTitle:"Who", rightTitle:"What they said", items:pick(items, Math.min(6, items.length))};
+    });
+    rdState.eng.match.ensure();
+  } else if(mode === "quiz"){
+    rdState.eng.quiz = makeQuiz($("#rdQuizBox"), function(){ return rdQuestions(rdState.cur); }, {againLabel:"Again, reshuffled"});
+    rdState.eng.quiz.start(null);
+  } else if(mode === "real"){
+    $("#rdTimer").innerHTML = "";
+    $("#rdRealBox").innerHTML = '<div class="quizWrap"><div class="qcard card-corners">' + CORNERS +
+      '<div class="qnum">The real thing</div><p class="qtext">Five questions and four minutes, like 12:30 in class. The clock starts when you press Start. Questions are drawn fresh each time.</p>' +
+      '<div class="toolbar" style="justify-content:center;margin-top:22px"><button class="btn primary" type="button" id="rdRealGo">Start the clock</button></div></div></div>';
+    $("#rdRealGo").addEventListener("click", function(){
+      var left = 240, box = $("#rdRealBox"), t = $("#rdTimer");
+      rdState.eng.real = makeQuiz(box, function(){ return rdQuestions(rdState.cur, 5); }, {againLabel:"Another five"});
+      rdState.eng.real.start(null);
+      function tick(){
+        if($(".result", box)){ rdStopTimer(); t.innerHTML = '<p class="rdclock done">Finished with ' + Math.floor(left / 60) + ':' + ("0" + left % 60).slice(-2) + ' to spare.</p>'; return; }
+        if(left <= 0){ rdStopTimer(); t.innerHTML = '<p class="rdclock over">Time&rsquo;s up &mdash; in class, Canvas would submit now. Finish to see how you would have done.</p>'; return; }
+        t.innerHTML = '<p class="rdclock' + (left <= 60 ? ' low' : '') + '">' + Math.floor(left / 60) + ':' + ("0" + left % 60).slice(-2) + ' left</p>';
+        left--;
+      }
+      tick(); rdState.timer = setInterval(tick, 1000);
+    });
+  }
+}
+function initReadings(){
+  var saved = store.get("reading");
+  rdState.cur = rdGet(saved) ? saved : READINGS.filter(rdBuilt).slice(-1)[0].id;
+  renderRdPick();
+  renderRdMode("page");
+}
+
 /* ================================================================ small helpers */
 function segWire(sel, attr, fn){
   var seg = $(sel); if(!seg) return;
@@ -3852,38 +4223,13 @@ function startPractice(){
   engines.practice.start({topic:practiceCfg.topic, gen:practiceCfg.gen || null, format:practiceCfg.format, source:practiceCfg.source, n:practiceCfg.n});
 }
 
-/* Readings: pick a reading, read "Start here", then its practice quiz */
-var readingCur = store.get("reading") || "";
-function nextReading(){ var r = READINGS.filter(function(x){ return x.q; }); return r.length ? r[r.length - 1].id : READINGS[0].id; }
-function renderReadings(){
-  if(!READING_BY_ID[readingCur]) readingCur = nextReading();
-  var r = READING_BY_ID[readingCur];
-  var html = '<div class="rdlist">' + READINGS.map(function(x){
-      return '<button type="button" class="rdbtn' + (x.q ? '' : ' soon') + '" data-rd="' + x.id + '" aria-pressed="' + (x.id === readingCur) + '"><span class="rdn">Quiz #' + x.n + ' &middot; ' + x.date + '</span>' + x.title + '</button>';
-    }).join("") + '</div>';
-  if(r.q){
-    html += '<div class="note-sec rdpage"><h2>' + r.title + (r.who ? ' <small>' + r.who + (r.year ? ' (' + r.year + ')' : '') + '</small>' : '') + '</h2>' + divider() +
-      '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + ' &middot; 5 questions, 4 minutes, in class</span></p>' + r.start +
-      '<div class="toolbar" style="justify-content:center;margin-top:18px"><button class="btn primary" type="button" id="rdQuiz">Practice quiz (' + r.q.length + ' questions)</button></div></div>';
-  } else {
-    html += '<div class="note-sec rdpage"><h2>' + r.title + '</h2>' + divider() + '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + '</span></p><p>Not built yet. It will be ready before its class.</p></div>';
-  }
-  $("#readingsRoot").innerHTML = html;
-  $("#readingsQuiz").innerHTML = "";
-  engines.readings = null;
-  $$("#readingsRoot [data-rd]").forEach(function(b){
-    b.addEventListener("click", function(){ readingCur = b.getAttribute("data-rd"); store.set("reading", readingCur); renderReadings(); });
-  });
-  if($("#rdQuiz")) $("#rdQuiz").addEventListener("click", function(){
-    engines.readings = makeQuiz($("#readingsQuiz"), function(){ return readingQuestions(readingCur); }, {againLabel:"Again, reshuffled"});
-    engines.readings.start(null);
-    $("#readingsQuiz").scrollIntoView({behavior:"smooth", block:"start"});
-  });
-}
-renderReadings();
+initReadings();
 
 var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }, "practice/run":function(){ if(!engines.practice) renderPracticeSetup(); }};
-var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }, "readings/page":function(e){ return engines.readings ? engines.readings.keys(e) : false; }};
+var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }};
+["page","cards","match","quiz","real","how","past"].forEach(function(m){ ON_SHOW["readings/" + m] = function(){ renderRdMode(m); }; });
+KEYS["readings/cards"] = function(e){ return rdState.eng.cards ? rdState.eng.cards.keys(e) : false; };
+["quiz","real","past"].forEach(function(m){ KEYS["readings/" + m] = function(e){ var g = rdState.eng[m]; return g && g.keys ? g.keys(e) : false; }; });
 CHAPTERS.forEach(function(tp){
   ON_SHOW[tp+"/match"] = function(){ engines[tp+"Match"].ensure(); };
   ON_SHOW[tp+"/quiz"]  = function(){ engines[tp+"Quiz"].ensure(); };

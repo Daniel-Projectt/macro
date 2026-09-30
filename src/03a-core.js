@@ -155,6 +155,8 @@ function readingQuestions(id){
 }
 function questionsByKeys(keys){
   return uniqBy(keys, function(k){ return k; }).map(function(k){
+    var pq = /^pq:(\d+):(\d+)$/.exec(k);
+    if(pq){ var pp = PAST_BY_ID["past" + pq[1]], pj = parseInt(pq[2],10); return (pp && pp.qs[pj]) ? fromPast(pp, pj) : null; }
     var rd = /^rd:([a-z0-9]+):(\d+)$/.exec(k);
     if(rd){ var r = READING_BY_ID[rd[1]], j = parseInt(rd[2],10); return (r && r.q && r.q[j]) ? fromReading(r, j) : null; }
     var m = /^([a-z0-9]+):p(\d+)(r?)$/.exec(k);

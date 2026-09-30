@@ -4,7 +4,7 @@
     <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true"><use href="#emblem"/></svg>
     <p class="eyebrow">Study Guide</p>
     <h1>Principles of Macroeconomics</h1>
-    <p class="sub">The whole course <p class="sub">First Exam &middot; GDPmiddot; final is cumulative <p class="sub">First Exam &middot; GDPmiddot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment</p>
+    <p class="sub">The whole course &middot; the final is cumulative &middot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment &middot; the readings</p>
     <svg class="orn" viewBox="0 0 320 44" aria-hidden="true"><use href="#flourish"/></svg>
   </header>
 
@@ -171,11 +171,24 @@
 
     <!-- ================= PRACTICE EXAM ================= -->
     <section class="topic" id="topic-readings" hidden>
-      <p class="intro">One reading for each reading quiz: the author&rsquo;s point in plain words, what a five-question, four-minute quiz can ask, and practice questions written the way the professor writes them.</p>
+      <p class="intro">Everything for the reading quizzes: pick a reading, then study it seven ways &mdash; the author&rsquo;s point in plain words, flashcards, who said what, practice questions written the way the professor writes them, and a timed five-question run like the one at 12:30. <b>How he asks</b> and <b>Past quizzes</b> use your 45 real questions from Quizzes 1&ndash;9.</p>
+      <div id="rdPick"></div>
       <div class="modes"><div class="seg" data-modes="readings">
-        <button type="button" data-mode="page" aria-pressed="true">Readings</button>
+        <button type="button" data-mode="page" aria-pressed="true">Start here</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Who said what</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Practice</button>
+        <button type="button" data-mode="real" aria-pressed="false">The real thing</button>
+        <button type="button" data-mode="how" aria-pressed="false">How he asks</button>
+        <button type="button" data-mode="past" aria-pressed="false">Past quizzes</button>
       </div></div>
-      <div class="panel" data-panel="readings/page"><div id="readingsRoot"></div><div id="readingsQuiz"></div></div>
+      <div class="panel" data-panel="readings/page"><div id="rdPage"></div></div>
+      <div class="panel" data-panel="readings/cards" hidden><p class="hint">Front: a name, date or idea. Back: what the author says about it. Space flips, arrows move.</p><div id="rdCardsBar"></div><div id="rdCards"></div></div>
+      <div class="panel" data-panel="readings/match" hidden><p class="hint">Tap a name, then what they said. History readings mix names up on purpose.</p><div id="rdMatch"></div></div>
+      <div class="panel" data-panel="readings/quiz" hidden><p class="hint">Every question, reshuffled. Keys <kbd>1</kbd>&ndash;<kbd>4</kbd> answer, <kbd>Enter</kbd> moves on.</p><div id="rdQuizBox"></div></div>
+      <div class="panel" data-panel="readings/real" hidden><div id="rdTimer"></div><div id="rdRealBox"></div></div>
+      <div class="panel" data-panel="readings/how" hidden><div id="rdHow"></div></div>
+      <div class="panel" data-panel="readings/past" hidden><div id="rdPastBar"></div><div id="rdPastBox"></div></div>
     </section>
 
     <section class="topic" id="topic-exam" hidden>

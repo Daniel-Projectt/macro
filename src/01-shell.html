@@ -4,7 +4,7 @@
     <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true"><use href="#emblem"/></svg>
     <p class="eyebrow">Study Guide</p>
     <h1>Principles of Macroeconomics</h1>
-    <p class="sub">First Exam &middot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment</p>
+    <p class="sub">The whole course <p class="sub">First Exam &middot; GDPmiddot; final is cumulative <p class="sub">First Exam &middot; GDPmiddot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment</p>
     <svg class="orn" viewBox="0 0 320 44" aria-hidden="true"><use href="#flourish"/></svg>
   </header>
 
@@ -13,6 +13,7 @@
     <button class="topic-btn" role="tab" data-topic="practice" aria-selected="false">Math Practice</button>
     <button class="topic-btn" role="tab" data-topic="formulas" aria-selected="false">Formulas</button>
     <button class="topic-btn" role="tab" data-topic="exam"     aria-selected="false">Practice Exam</button>
+    <button class="topic-btn" role="tab" data-topic="readings" aria-selected="false">Readings</button>
     <button class="topic-btn" role="tab" data-topic="gdp"      aria-selected="false">GDP</button>
     <button class="topic-btn" role="tab" data-topic="growth"   aria-selected="false">Growth</button>
     <button class="topic-btn" role="tab" data-topic="labor"    aria-selected="false">Labor</button>
@@ -51,7 +52,7 @@
 
     <!-- ================= GUIDE ================= -->
     <section class="topic" id="topic-guide" hidden>
-      <p class="intro">Everything the First Exam covers, in the order the class did it: Problem Sets 1&ndash;4 and the two Solow documents, through September 24. Check a section off once you can explain it and do its calculation without looking; <b>Study it</b> jumps to the notes, the small buttons to each subsection. The last group, <b>Formulas</b>, drills what divides by what.</p>
+      <p class="intro">Unit 1, everything the First Exam covered, in the order the class did it: Problem Sets 1&ndash;4 and the two Solow documents, through September 24. Check a section off once you can explain it and do its calculation without looking; <b>Study it</b> jumps to the notes, the small buttons to each subsection. The last group, <b>Formulas</b>, drills what divides by what.</p>
       <div class="modes"><div class="seg" data-modes="guide">
         <button type="button" data-mode="overview" aria-pressed="true">The review list</button>
       </div></div>
@@ -169,6 +170,14 @@
     </section>
 
     <!-- ================= PRACTICE EXAM ================= -->
+    <section class="topic" id="topic-readings" hidden>
+      <p class="intro">One reading for each reading quiz: the author&rsquo;s point in plain words, what a five-question, four-minute quiz can ask, and practice questions written the way the professor writes them.</p>
+      <div class="modes"><div class="seg" data-modes="readings">
+        <button type="button" data-mode="page" aria-pressed="true">Readings</button>
+      </div></div>
+      <div class="panel" data-panel="readings/page"><div id="readingsRoot"></div><div id="readingsQuiz"></div></div>
+    </section>
+
     <section class="topic" id="topic-exam" hidden>
       <p class="intro">Questions from every topic, formulas included, in the exam&rsquo;s two styles: calculations and concept questions. Every one is labelled by where it comes from &mdash; a problem-set question you missed, a problem-set-style question, or the readings &mdash; so you can drill your misses first. Reshuffled each run, with the working behind every answer.</p>
       <div class="modes"><div class="seg" data-modes="exam">

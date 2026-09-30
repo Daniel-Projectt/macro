@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Principles of Macroeconomics &mdash; Study Guide</title>
-<meta name="description" content="Study guide for the First Exam in Principles of Macroeconomics: GDP, long-run growth and the Solow model, the labor market, price levels and inflation, saving and investment. Built from Problem Sets 1–4 and the Solow documents, with notes, flashcards, matching, quizzes and a practice exam.">
+<meta name="description" content="Study guide for the whole Principles of Macroeconomics course (final is cumulative): GDP, long-run growth and the Solow model, the labor market, price levels and inflation, saving and investment. Built from Problem Sets 1–4 and the Solow documents, with notes, flashcards, matching, quizzes and a practice exam.">
 <meta name="theme-color" content="#f5f1e8">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon.png">
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Principles of Macroeconomics &mdash; Study Guide">
 <meta property="og:url" content="https://daniel-projectt.github.io/macro/">
 <meta property="og:title" content="Principles of Macroeconomics &mdash; Study Guide">
-<meta property="og:description" content="First Exam: GDP, growth and Solow, the labor market, prices and inflation, saving and investment. Notes, flashcards, match, quizzes and a practice exam that puts your problem-set misses first.">
+<meta property="og:description" content="The whole course: GDP, growth and Solow, the labor market, prices and inflation, saving and investment. Notes, flashcards, match, quizzes and a practice exam that puts your problem-set misses first.">
 <meta property="og:image" content="https://daniel-projectt.github.io/macro/preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -506,6 +506,17 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
 .misslist .mqtext .tblwrap{margin:8px 0}
 .misslist .wline{display:block;font-size:14px;color:var(--ink-soft);margin:3px 0 0 10px}
 .misslist .rem{margin-top:8px}
+
+/* ---- readings ---- */
+.rdlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:0 0 22px}
+.rdbtn{text-align:left;font:inherit;font-size:14px;line-height:1.35;color:var(--ink);background:var(--surface);border:1px solid var(--rule);padding:10px 12px;cursor:pointer}
+.rdbtn .rdn{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.rdbtn[aria-pressed="true"]{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+.rdbtn.soon{opacity:.6}
+.rdpage h2 small{font-size:.6em;color:var(--ink-soft);font-weight:400}
+.rdpage ul{padding-left:1.1em}
+.rdpage li{margin:0 0 8px;line-height:1.6}
+.rdpage .tip{border-top:1px solid var(--rule);padding-top:12px;margin-top:18px;font-size:14.5px}
 </style>
 </head>
 <body>
@@ -564,7 +575,7 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
     <svg class="emblem" viewBox="0 0 120 120" aria-hidden="true"><use href="#emblem"/></svg>
     <p class="eyebrow">Study Guide</p>
     <h1>Principles of Macroeconomics</h1>
-    <p class="sub">First Exam &middot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment</p>
+    <p class="sub">The whole course <p class="sub">First Exam &middot; GDPmiddot; final is cumulative <p class="sub">First Exam &middot; GDPmiddot; GDP &middot; growth &amp; the Solow model &middot; the labor market &middot; prices &amp; inflation &middot; saving &amp; investment</p>
     <svg class="orn" viewBox="0 0 320 44" aria-hidden="true"><use href="#flourish"/></svg>
   </header>
 
@@ -573,6 +584,7 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
     <button class="topic-btn" role="tab" data-topic="practice" aria-selected="false">Math Practice</button>
     <button class="topic-btn" role="tab" data-topic="formulas" aria-selected="false">Formulas</button>
     <button class="topic-btn" role="tab" data-topic="exam"     aria-selected="false">Practice Exam</button>
+    <button class="topic-btn" role="tab" data-topic="readings" aria-selected="false">Readings</button>
     <button class="topic-btn" role="tab" data-topic="gdp"      aria-selected="false">GDP</button>
     <button class="topic-btn" role="tab" data-topic="growth"   aria-selected="false">Growth</button>
     <button class="topic-btn" role="tab" data-topic="labor"    aria-selected="false">Labor</button>
@@ -611,7 +623,7 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
 
     <!-- ================= GUIDE ================= -->
     <section class="topic" id="topic-guide" hidden>
-      <p class="intro">Everything the First Exam covers, in the order the class did it: Problem Sets 1&ndash;4 and the two Solow documents, through September 24. Check a section off once you can explain it and do its calculation without looking; <b>Study it</b> jumps to the notes, the small buttons to each subsection. The last group, <b>Formulas</b>, drills what divides by what.</p>
+      <p class="intro">Unit 1, everything the First Exam covered, in the order the class did it: Problem Sets 1&ndash;4 and the two Solow documents, through September 24. Check a section off once you can explain it and do its calculation without looking; <b>Study it</b> jumps to the notes, the small buttons to each subsection. The last group, <b>Formulas</b>, drills what divides by what.</p>
       <div class="modes"><div class="seg" data-modes="guide">
         <button type="button" data-mode="overview" aria-pressed="true">The review list</button>
       </div></div>
@@ -729,6 +741,14 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
     </section>
 
     <!-- ================= PRACTICE EXAM ================= -->
+    <section class="topic" id="topic-readings" hidden>
+      <p class="intro">One reading for each reading quiz: the author&rsquo;s point in plain words, what a five-question, four-minute quiz can ask, and practice questions written the way the professor writes them.</p>
+      <div class="modes"><div class="seg" data-modes="readings">
+        <button type="button" data-mode="page" aria-pressed="true">Readings</button>
+      </div></div>
+      <div class="panel" data-panel="readings/page"><div id="readingsRoot"></div><div id="readingsQuiz"></div></div>
+    </section>
+
     <section class="topic" id="topic-exam" hidden>
       <p class="intro">Questions from every topic, formulas included, in the exam&rsquo;s two styles: calculations and concept questions. Every one is labelled by where it comes from &mdash; a problem-set question you missed, a problem-set-style question, or the readings &mdash; so you can drill your misses first. Reshuffled each run, with the working behind every answer.</p>
       <div class="modes"><div class="seg" data-modes="exam">
@@ -2828,6 +2848,72 @@ var EXAM1_FIXED = [
 ];
 EXAM1_FIXED.forEach(function(f){ f.topic = GEN_BY_ID[f.gen].topic; FIXED.push(f); FIXED_BY_ID[f.id] = f; });
 
+/* ================================================================ the readings
+   One entry per reading quiz. Each has a short "Start here" (the thesis and the
+   handful of points a 5-question, 4-minute quiz can ask) and practice questions
+   written the way the professor writes them: "According to <author> (<year>)…",
+   the thesis, and "which does NOT align". Built from the reading itself.       */
+var READINGS = [
+ {id:"rq10", n:10, date:"Thu Oct 1", title:"A Christian Approach to Interest", who:"Stein", year:2021,
+  start:
+   '<div class="point"><b>The thesis in one line</b><p>Stein (2021) looks at interest through history and Christian ethics and concludes that there are <b>good moral and practical reasons for interest-free banking</b>, but it <b>cannot easily co-exist</b> with conventional banking. So Christians care about the <b>spirit and purpose, not the letter</b>, of the law: help the poor by whatever means work, and treat interest as a question of <b>wise or foolish</b> more than simply right or wrong.</p></div>'+
+   '<h3 class="sub">The history (seven snapshots)</h3><ul>'+
+   '<li><b>Usury</b> first just meant interest (Latin <i>usura</i>, a charge for using property). Only later did it mean an <b>excessive, greedy</b> rate.</li>'+
+   '<li><b>Plato:</b> interest-bearing debt splits society into debtors and &ldquo;money-makers.&rdquo; <b>Aristotle:</b> interest is <b>unnatural</b>, &ldquo;the birth of money from money&rdquo;; money is for exchange.</li>'+
+   '<li><b>Romans</b> didn&rsquo;t question interest but stepped in when debt piled up. Greeks talked and did little; Romans acted.</li>'+
+   '<li><b>Old Testament:</b> interest-free loans to the poor, debts cancelled every <b>seven years</b>, no interest to a fellow Israelite, but interest allowed to <b>foreigners</b>, which is how Jews became moneylenders in medieval Europe.</li>'+
+   '<li><b>New Testament:</b> <b>silent</b> on charging interest. In the parables the &ldquo;hard man&rdquo; expects interest, and Jesus neither commends nor condemns it.</li>'+
+   '<li><b>Early Church:</b> the fathers called interest sinful (Augustine: it shuts you out of the kingdom). Constantine allowed 12%, so the Council of <b>Nicaea (325)</b> banned it only for <b>clergy</b>: a double standard.</li>'+
+   '<li><b>Aquinas:</b> money is <b>used up</b> when spent, unlike a house you rent and get back, so interest is a payment for <b>no service</b>. And <b>time is God&rsquo;s free gift</b>, so you can&rsquo;t charge for it. He <b>allowed</b> a return from a <b>partnership</b> (the investor shares the risk). Two exceptions: <b>cessant gain</b> (a gain you give up by lending) and <b>emergent loss</b> (risk, or a penalty for late payment: the <b>credit card</b>).</li>'+
+   '<li>Catholic canon law allowed interest only in <b>1918</b>.</li>'+
+   '<li><b>Luther:</b> against interest on money loans (not trade credit), but the church shouldn&rsquo;t police the state (&ldquo;two kingdoms&rdquo;). <b>Calvin:</b> money can be fruitful; he split loans for <b>consumption</b> from loans for <b>production</b>; the ban was a <b>political law for Israel</b>, and its real meaning is <b>charity and protecting the poor</b>. Both left it to <b>individual conscience</b>, which let interest-based banking grow.</li>'+
+   '<li>By the 20th century interest was treated as <b>positive economics</b> (how things work), not <b>normative</b> (how they should be). Marx: interest takes &ldquo;surplus value,&rdquo; but it isn&rsquo;t wrong in itself.</li></ul>'+
+   '<h3 class="sub">Christian ethics and interest today</h3><ul>'+
+   '<li><b>God owns everything; we are trustees.</b> Seeking wealth for its own sake and exploiting the poor are forbidden. People are not <i>homo economicus</i>.</li>'+
+   '<li><b>Humans can do evil:</b> command socialism and laissez-faire capitalism are <b>equally open to abuse</b>.</li>'+
+   '<li><b>God will judge:</b> think of future generations. Discounting the future is &ldquo;ethically indefensible,&rdquo; but that does <b>not</b> condemn interest itself.</li>'+
+   '<li><b>Incarnation:</b> the Christian approach is <b>realist and practical</b>: improve a flawed system from within rather than overthrow it.</li>'+
+   '<li><b>Trinity:</b> love as relationship, so a <b>mutual</b> relationship between lender and borrower. <b>Debt is often, though not always, slavery.</b></li></ul>'+
+   '<h3 class="sub">Interest today</h3><ul>'+
+   '<li><b>Benefits of interest:</b> trade finance, government bonds (and so monetary policy), voluntary loans at reasonable rates.</li>'+
+   '<li><b>Where people would agree:</b> no one in <b>immediate need of food or medical help</b> should pay interest; borrow for capital assets, business or a car for work, <b>not for immediate consumption</b>.</li>'+
+   '<li><b>Interest-free banking</b> (equity-style deposits) would be <b>more stable</b>: fewer bank runs. But banning interest has always led to <b>evasion</b>.</li>'+
+   '<li><b>Seven arguments against interest:</b> it separates lenders from borrowers; only the lender is paid for risk; government debt burdens future generations; investors pick safe interest over risk capital; it favors big lenders and short-term projects; bonds make war easier; debt to poor countries went badly.</li>'+
+   '<li><b>Any real change needs five things:</b> a convincing argument; a working <b>model</b> (Islamic banking&rsquo;s profit-and-loss partnership, or credit unions); high standards of behavior (moral hazard); different assumptions about people; savers who scrutinize banks.</li>'+
+   '<li><b>Examples he praises:</b> John <b>Wesley</b>&rsquo;s insurance schemes and Henry <b>Duncan</b>&rsquo;s Trustee Savings Bank: they helped the poor without waiting for a ban on interest.</li></ul>'+
+   '<p class="tip"><b>Quiz tip from your past quizzes:</b> the right answer is usually the <b>moderate</b> one that restates the author&rsquo;s own view. Avoid the extreme options (&ldquo;always,&rdquo; &ldquo;commands,&rdquo; &ldquo;pointless&rdquo;).</p>',
+  q:[
+   {t:"mc",q:"Which statement best captures the thesis of Stein (2021)?",a:"There are good reasons for interest-free banking, but it cannot easily co-exist with conventional banking, so Christians pursue its purpose by other means",w:["The Bible forbids all interest, so Christians must leave interest-based banking behind and bank only with institutions that charge no interest at all","Interest is morally neutral, so Christian ethics has nothing to say about how banks, loans and borrowers ought to deal with one another","Interest-free banking has failed wherever it was tried, so Christians should defend the conventional banking system as the best we have"],e:"His conclusion: good reasons exist for non-interest banking, it doesn’t fit easily beside conventional banks, and Christians care about spirit and purpose over the letter of a law."},
+   {t:"mc",q:"According to Stein (2021), the word “usury” originally meant:",a:"a neutral charge for using property, the same as interest today",w:["an excessive, greedy rate of interest charged to the poor who could not refuse","a penalty charged only when a borrower repaid a loan after it was due","interest that foreigners charged to members of the community"],e:"Latin usura was neutral; only later did usury come to mean an excessive, greedy rate."},
+   {t:"mc",q:"According to Stein (2021), Aristotle objected to interest because:",a:"it made money breed money, which he called unnatural",w:["it divided society into those with property and the money-makers who lent to them","charging a fellow citizen was forbidden, though charging a foreigner was allowed","time is a free gift of God to everyone, so no one may make a charge for it"],e:"Money is meant to be a medium of exchange; using it to breed more money was “most contrary to nature.” (The two-camps point is Plato’s; time as God’s gift is Aquinas’s.)"},
+   {t:"mc",q:"What does Stein (2021) say the New Testament teaches about charging interest?",a:"It is largely silent; Jesus neither commends nor condemns it",w:["It forbids all interest and repeats the Old Testament ban for Christians everywhere","It commands interest-free loans to foreigners and to fellow believers in every case","It approves of interest as a fair reward for the time the lender waits to be repaid"],e:"The NT widens generosity to foreigners (Luke 6), but on charging interest it is silent; in the parables it is a “hard man” who expects interest."},
+   {t:"mc",q:"According to Stein (2021), the Old Testament allowed interest to be charged to:",a:"foreigners living outside Israel",w:["the poor, as long as every debt was cancelled in the seventh year","a fellow Israelite, as long as the rate charged was not excessive","no one at all, in any circumstance or for any kind of loan"],e:"No interest to the poor or a brother Israelite; the foreigner exception is what later made Jewish moneylending in medieval Europe possible."},
+   {t:"mc",q:"How did the Council of Nicaea (325) change the church’s position on interest, according to Stein (2021)?",a:"It limited the ban to clergy, a double standard",w:["It extended the ban on interest to every Christian throughout the empire","It approved Constantine’s 12% rate for all loans made by Christians","It ordered every debt owed by the poor cancelled in the seventh year"],e:"Constantine had legalized 12% interest, so the council limited the ban to clergy, which weakened it."},
+   {t:"mc",q:"According to Stein (2021), Aquinas argued interest was unjust because:",a:"money is used up when spent, so interest pays for no service",w:["the Old Testament law against interest was still binding on every Christian believer","lenders nearly always charged the poor more than they could ever hope to repay","interest is only just when the borrower comes from outside the community of faith"],e:"A rented house comes back and wears out, so rent is fair; money is consumed in use, so interest pays for nothing. He added that time is God’s free gift."},
+   {t:"mc",q:"Which kind of return did Aquinas accept, according to Stein (2021)?",a:"A return from a partnership, where the investor shares the risk",w:["A fixed rate of interest on any money loan, as long as it stayed below five percent","Interest charged to the wealthy, but never to anyone who was poor or in need","A charge for the time that passes while the lender waits to get the money back"],e:"“True interest” from a partnership was fine: no transfer of ownership, and the investor shares the risk."},
+   {t:"mc",q:"Stein (2021) gives the modern credit card as an example of which medieval exception to the ban on interest?",a:"Emergent loss: a charge for risk, such as a late-payment penalty",w:["Cessant gain: a trader charging for the profit he gives up by lending out his capital","Just price: a price for loans set by the common estimation of the whole market","Two kingdoms: leaving all business questions to the civil authority, not the church"],e:"Emergent loss covers risk to the lender, including a penalty for late repayment, which is how a credit card works. Cessant gain is the gain the lender gives up."},
+   {t:"mc",q:"According to Stein (2021), how did Calvin view interest?",a:"Money can be fruitful; he split consumption loans from production loans and left interest to conscience",w:["Interest was always sinful, and the church had a duty to police every commercial transaction in the city","The Old Testament ban on interest was a moral law that binds every person in every age and place","The state should set one fixed rate of interest for every loan so that no lender could ever overcharge"],e:"He saw the ban as a political law for Israel whose real meaning is charity and protecting the poor, and left it to conscience, which let interest-based banking develop."},
+   {t:"mc",q:"According to Stein (2021), by the twentieth century interest was mostly treated as a question of:",a:"positive economics (how things work), not normative",w:["normative economics, how things should be, rather than positive economics","church law, settled by councils and canon lawyers rather than by economists","criminal law, since every charge for a loan was still prosecuted as usury"],e:"The great economists discussed interest, but only as how the economy works, not whether it is right."},
+   {t:"mc",q:"Stein (2021) argues that because humans are capable of evil as well as good:",a:"socialism and laissez-faire capitalism are equally open to abuse",w:["only a state-controlled economy can distribute the earth’s resources fairly","laissez-faire capitalism is the only system that truly restrains human greed","interest must be banned outright so that no lender can exploit a borrower"],e:"Neither extreme escapes human sin; both prove ineffective at growing or fairly distributing resources."},
+   {t:"mc",q:"What does the incarnation imply for economics, according to Stein (2021)?",a:"Be realist and practical: improve a flawed system from within",w:["Be idealist: design a perfect system first, then replace the one we have","Withdraw from economic life so that believers are not stained by interest","Apply every Old Testament law literally to the modern world economy"],e:"God came down to us, so Christian ethics deals with the real world rather than utopia, and works from within rather than overthrowing the system."},
+   {t:"mc",q:"Which statement does NOT align with Stein’s (2021) argument?",a:"Christians should wait for interest-free banking before helping the poor",w:["Many questions about interest are wise or foolish rather than simply right or wrong","No one in immediate need of food or medical help should have to pay interest on a loan","Debt is often, though not always, a form of slavery that relationships should guard against"],e:"He says the opposite: Christians will not postpone finding other ways to help the poor (think Wesley’s insurance and Duncan’s savings bank)."},
+   {t:"mc",q:"According to Stein (2021), loans should generally be taken for:",a:"capital assets, business, or a car for work, not immediate consumption",w:["immediate consumption, since that is when ordinary people need credit the most","any purpose at all, as long as the interest rate stays below the market rate","government projects only, and never by private individuals or families"],e:"That is where he sees broad consensus, along with no interest for anyone in immediate need of food or medical help."},
+   {t:"mc",q:"Why would a non-interest banking system be more stable, according to Stein (2021)?",a:"Deposits would rise and fall with the bank’s assets, so fewer runs",w:["Banks would be required to keep all of their deposits in the vault at all times","The government would guarantee every deposit and every loan the banks made","Borrowers would never default on their loans because they would pay no interest"],e:"Fixed par-value deposits invite bank runs; equity-style deposits adjust automatically, lessening economic cycles."},
+   {t:"mc",q:"Which is one of Stein’s (2021) seven arguments against interest-based finance?",a:"Bonds make it easier for governments to go to war",w:["Interest makes lenders care too much about the personal circumstances of each borrower","Interest pushes investors toward risky new businesses instead of safe, steady assets","Interest favors small lenders and long-term projects over big lenders and quick returns"],e:"The other options reverse his points: interest separates lenders from borrowers, pulls investors toward safe assets, and favors big lenders and short-term returns."},
+   {t:"mc",q:"Which of these does Stein (2021) name as a working model of a system with less reliance on fixed interest?",a:"Islamic profit-and-loss partnership, and credit unions",w:["Quantitative easing by central banks, which re-liquified the whole banking system","Payday lenders, which make small short-term loans to people without collateral","Investment banks, which he says have little connection with the real economy"],e:"He lists Islamic banking and credit unions. He criticizes QE and wants investment banking separated from commercial banking."},
+   {t:"tf",q:"Stein (2021) argues that discounting future consumption at the market interest rate is ethically indefensible, and that this condemns interest itself.",a:false,e:"False. He calls discounting ethically indefensible but says explicitly that this “does not condemn interest as such.”"},
+   {t:"tf",q:"According to Stein (2021), attempts to prohibit interest in an economy that is not state-controlled have usually led to ways of evading or disguising it.",a:true,e:"True. That is one of his main practical doubts about simply banning interest."}
+  ]},
+ {id:"rq11", n:11, date:"Tue Oct 6", title:"From Usury to Interest", who:"Persky", year:2007, file:"11 From Usury to Interest.pdf"},
+ {id:"rq12", n:12, date:"Tue Oct 13", title:"The Morality of Fractional Reserve Banking"},
+ {id:"rq13", n:13, date:"Thu Oct 29", title:"Inflation is the Enemy of Justice"},
+ {id:"rq14", n:14, date:"Thu Nov 5", title:"Is Inflation Too Low?"},
+ {id:"rq15", n:15, date:"Thu Nov 12", title:"The Dynamic and Righteous Use of Wealth in James 5:1-6"},
+ {id:"rq16", n:16, date:"Thu Nov 19", title:"“Christian” Economics", who:"Woehrling"}
+];
+var READING_BY_ID = {};
+READINGS.forEach(function(r){ READING_BY_ID[r.id] = r; });
+
 /* ================================================================ helpers */
 function $(s,r){ return (r||document).querySelector(s); }
 function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
@@ -2967,8 +3053,26 @@ function topicQuestions(tp, keys, n){
   return shuffle(out);
 }
 /* Rebuild exact questions from their keys ("tp:i" bank, "tp:pN" / "tp:pNr" pairs); anything malformed is dropped */
+/* a reading's practice quiz: its questions, shuffled, wrong answers reshuffled each time */
+function fromReading(r, i){
+  var b = r.q[i], q = {key:"rd:"+r.id+":"+i, sec:null, hot:0, ap:!!b.ap, kind:b.t, text:b.q, explain:b.e, cue:"Reading Quiz #"+r.n+" · "+(r.who || r.title)};
+  if(b.t === "tf"){
+    q.opts = [{html:"True", ok:b.a === true, cls:"tf"}, {html:"False", ok:b.a === false, cls:"tf"}];
+    q.miss = strip(b.q) + " — <b>" + (b.a ? "True" : "False") + "</b>";
+  } else {
+    q.opts = shuffle([{html:b.a, ok:true}].concat(b.w.map(function(w){ return {html:w, ok:false}; })));
+    q.miss = strip(b.q) + " — <b>" + b.a + "</b>";
+  }
+  return q;
+}
+function readingQuestions(id){
+  var r = READING_BY_ID[id];
+  return r && r.q ? shuffle(r.q.map(function(b, i){ return fromReading(r, i); })) : [];
+}
 function questionsByKeys(keys){
   return uniqBy(keys, function(k){ return k; }).map(function(k){
+    var rd = /^rd:([a-z0-9]+):(\d+)$/.exec(k);
+    if(rd){ var r = READING_BY_ID[rd[1]], j = parseInt(rd[2],10); return (r && r.q && r.q[j]) ? fromReading(r, j) : null; }
     var m = /^([a-z0-9]+):p(\d+)(r?)$/.exec(k);
     if(m){
       var set = PAIRSETS[m[1]], i = parseInt(m[2],10);
@@ -3159,7 +3263,7 @@ function matchRound(tp, n){
 
 /* ---- the pure parts can be tested outside a browser ---- */
 if(typeof window === "undefined"){
-  module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions,
+  module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions, READINGS:READINGS, readingQuestions:readingQuestions, questionsByKeys:questionsByKeys,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
     CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,
@@ -3748,16 +3852,46 @@ function startPractice(){
   engines.practice.start({topic:practiceCfg.topic, gen:practiceCfg.gen || null, format:practiceCfg.format, source:practiceCfg.source, n:practiceCfg.n});
 }
 
+/* Readings: pick a reading, read "Start here", then its practice quiz */
+var readingCur = store.get("reading") || "";
+function nextReading(){ var r = READINGS.filter(function(x){ return x.q; }); return r.length ? r[r.length - 1].id : READINGS[0].id; }
+function renderReadings(){
+  if(!READING_BY_ID[readingCur]) readingCur = nextReading();
+  var r = READING_BY_ID[readingCur];
+  var html = '<div class="rdlist">' + READINGS.map(function(x){
+      return '<button type="button" class="rdbtn' + (x.q ? '' : ' soon') + '" data-rd="' + x.id + '" aria-pressed="' + (x.id === readingCur) + '"><span class="rdn">Quiz #' + x.n + ' &middot; ' + x.date + '</span>' + x.title + '</button>';
+    }).join("") + '</div>';
+  if(r.q){
+    html += '<div class="note-sec rdpage"><h2>' + r.title + (r.who ? ' <small>' + r.who + (r.year ? ' (' + r.year + ')' : '') + '</small>' : '') + '</h2>' + divider() +
+      '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + ' &middot; 5 questions, 4 minutes, in class</span></p>' + r.start +
+      '<div class="toolbar" style="justify-content:center;margin-top:18px"><button class="btn primary" type="button" id="rdQuiz">Practice quiz (' + r.q.length + ' questions)</button></div></div>';
+  } else {
+    html += '<div class="note-sec rdpage"><h2>' + r.title + '</h2>' + divider() + '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + '</span></p><p>Not built yet. It will be ready before its class.</p></div>';
+  }
+  $("#readingsRoot").innerHTML = html;
+  $("#readingsQuiz").innerHTML = "";
+  engines.readings = null;
+  $$("#readingsRoot [data-rd]").forEach(function(b){
+    b.addEventListener("click", function(){ readingCur = b.getAttribute("data-rd"); store.set("reading", readingCur); renderReadings(); });
+  });
+  if($("#rdQuiz")) $("#rdQuiz").addEventListener("click", function(){
+    engines.readings = makeQuiz($("#readingsQuiz"), function(){ return readingQuestions(readingCur); }, {againLabel:"Again, reshuffled"});
+    engines.readings.start(null);
+    $("#readingsQuiz").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+}
+renderReadings();
+
 var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }, "practice/run":function(){ if(!engines.practice) renderPracticeSetup(); }};
-var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }};
+var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }, "readings/page":function(e){ return engines.readings ? engines.readings.keys(e) : false; }};
 CHAPTERS.forEach(function(tp){
   ON_SHOW[tp+"/match"] = function(){ engines[tp+"Match"].ensure(); };
   ON_SHOW[tp+"/quiz"]  = function(){ engines[tp+"Quiz"].ensure(); };
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["list","practice","formulas","exam","gdp","growth","labor","prices","saving","guide"];
-var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
+var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","guide"];
+var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock", readings:"page"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });

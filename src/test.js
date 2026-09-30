@@ -449,7 +449,27 @@ panels.forEach(pn => {
   ok(new RegExp('data-modes="' + t + '"[\\s\\S]*?data-mode="' + mo + '"').test(html), 'panel ' + pn + ' has its mode button');
 });
 ['list', 'practice', 'guide'].concat(tps, ['exam']).forEach(t => ok(html.includes('data-topic="' + t + '"') && html.includes('id="topic-' + t + '"'), 'topic ' + t + ' has a tab and a section'));
-ok((html.match(/class="topic-btn"/g) || []).length === 10, 'ten tabs');
+ok((html.match(/class="topic-btn"/g) || []).length === 11, 'eleven tabs');
+// ---------- readings ----------
+head('readings');
+const built = A.READINGS.filter(r => r.q);
+ok(built.length >= 1 && A.READINGS.length === 7, 'reading quizzes 10-16 listed, at least one built', built.length + ' / ' + A.READINGS.length);
+let rdLongest = 0, rdN = 0;
+built.forEach(r => {
+  ok(/The thesis/.test(r.start), r.id + ': opens with the thesis');
+  ok(new Set(r.q.map(b => b.q)).size === r.q.length, r.id + ': no duplicate questions');
+  r.q.forEach((b, i) => {
+    ok(b.e && b.e.length > 25, r.id + ' #' + i + ': explains why', b.q);
+    if (b.t === 'mc') {
+      ok(b.w.length === 3 && !b.w.includes(b.a) && new Set(b.w).size === 3, r.id + ' #' + i + ': three distinct wrong answers');
+      rdN++; if (b.a.length > Math.max(...b.w.map(w => w.length))) rdLongest++;
+    } else ok(b.a === true || b.a === false, r.id + ' #' + i + ': true/false has a boolean answer');
+  });
+  const qs = A.readingQuestions(r.id);
+  ok(qs.length === r.q.length && qs.every(q => q.opts.filter(o => o.ok).length === 1), r.id + ': every practice question has exactly one right answer');
+  ok(A.questionsByKeys(qs.map(q => q.key)).length === qs.length, r.id + ': misses can be practiced again by key');
+});
+ok(rdLongest / rdN <= 0.45, 'readings: the right answer is not usually the longest', (100 * rdLongest / rdN).toFixed(1) + '%');
 ok(/data-topic="list"\s+aria-selected="true"/.test(html) && html.indexOf('data-topic="list"') < html.indexOf('data-topic="formulas"') && /My List<\/button>/.test(html) && !/data-topic="start"/.test(html), 'My List is the first, default tab');
 ok((html.match(/<script>/g) || []).length === 1, 'a single script block');
 ['div', 'section', 'button', 'nav', 'main', 'header', 'footer', 'svg', 'symbol', 'table', 'g', 'ol', 'ul', 'h3', 'h4', 'thead', 'tbody', 'tr', 'span', 'sub', 'sup'].forEach(t => {

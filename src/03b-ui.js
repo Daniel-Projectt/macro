@@ -1,6 +1,6 @@
 /* ---- the pure parts can be tested outside a browser ---- */
 if(typeof window === "undefined"){
-  module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions,
+  module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions, READINGS:READINGS, readingQuestions:readingQuestions, questionsByKeys:questionsByKeys,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
     CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,

@@ -206,16 +206,46 @@ function startPractice(){
   engines.practice.start({topic:practiceCfg.topic, gen:practiceCfg.gen || null, format:practiceCfg.format, source:practiceCfg.source, n:practiceCfg.n});
 }
 
+/* Readings: pick a reading, read "Start here", then its practice quiz */
+var readingCur = store.get("reading") || "";
+function nextReading(){ var r = READINGS.filter(function(x){ return x.q; }); return r.length ? r[r.length - 1].id : READINGS[0].id; }
+function renderReadings(){
+  if(!READING_BY_ID[readingCur]) readingCur = nextReading();
+  var r = READING_BY_ID[readingCur];
+  var html = '<div class="rdlist">' + READINGS.map(function(x){
+      return '<button type="button" class="rdbtn' + (x.q ? '' : ' soon') + '" data-rd="' + x.id + '" aria-pressed="' + (x.id === readingCur) + '"><span class="rdn">Quiz #' + x.n + ' &middot; ' + x.date + '</span>' + x.title + '</button>';
+    }).join("") + '</div>';
+  if(r.q){
+    html += '<div class="note-sec rdpage"><h2>' + r.title + (r.who ? ' <small>' + r.who + (r.year ? ' (' + r.year + ')' : '') + '</small>' : '') + '</h2>' + divider() +
+      '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + ' &middot; 5 questions, 4 minutes, in class</span></p>' + r.start +
+      '<div class="toolbar" style="justify-content:center;margin-top:18px"><button class="btn primary" type="button" id="rdQuiz">Practice quiz (' + r.q.length + ' questions)</button></div></div>';
+  } else {
+    html += '<div class="note-sec rdpage"><h2>' + r.title + '</h2>' + divider() + '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + '</span></p><p>Not built yet. It will be ready before its class.</p></div>';
+  }
+  $("#readingsRoot").innerHTML = html;
+  $("#readingsQuiz").innerHTML = "";
+  engines.readings = null;
+  $$("#readingsRoot [data-rd]").forEach(function(b){
+    b.addEventListener("click", function(){ readingCur = b.getAttribute("data-rd"); store.set("reading", readingCur); renderReadings(); });
+  });
+  if($("#rdQuiz")) $("#rdQuiz").addEventListener("click", function(){
+    engines.readings = makeQuiz($("#readingsQuiz"), function(){ return readingQuestions(readingCur); }, {againLabel:"Again, reshuffled"});
+    engines.readings.start(null);
+    $("#readingsQuiz").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+}
+renderReadings();
+
 var ON_SHOW = {"exam/mock":function(){ if(!engines.mock) renderMockSetup(); }, "list/quiz":function(){ engines.list.ensure(); }, "practice/run":function(){ if(!engines.practice) renderPracticeSetup(); }};
-var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }};
+var KEYS = {"exam/mock":function(e){ return engines.mock ? engines.mock.keys(e) : false; }, "list/quiz":function(e){ return engines.list.keys(e); }, "list/cards":function(e){ return engines.listCards.keys(e); }, "practice/run":function(e){ return engines.practice ? engines.practice.keys(e) : false; }, "readings/page":function(e){ return engines.readings ? engines.readings.keys(e) : false; }};
 CHAPTERS.forEach(function(tp){
   ON_SHOW[tp+"/match"] = function(){ engines[tp+"Match"].ensure(); };
   ON_SHOW[tp+"/quiz"]  = function(){ engines[tp+"Quiz"].ensure(); };
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["list","practice","formulas","exam","gdp","growth","labor","prices","saving","guide"];
-var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock"};
+var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","guide"];
+var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", formulas:"notes", exam:"mock", readings:"page"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });

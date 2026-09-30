@@ -137,8 +137,26 @@ function topicQuestions(tp, keys, n){
   return shuffle(out);
 }
 /* Rebuild exact questions from their keys ("tp:i" bank, "tp:pN" / "tp:pNr" pairs); anything malformed is dropped */
+/* a reading's practice quiz: its questions, shuffled, wrong answers reshuffled each time */
+function fromReading(r, i){
+  var b = r.q[i], q = {key:"rd:"+r.id+":"+i, sec:null, hot:0, ap:!!b.ap, kind:b.t, text:b.q, explain:b.e, cue:"Reading Quiz #"+r.n+" · "+(r.who || r.title)};
+  if(b.t === "tf"){
+    q.opts = [{html:"True", ok:b.a === true, cls:"tf"}, {html:"False", ok:b.a === false, cls:"tf"}];
+    q.miss = strip(b.q) + " — <b>" + (b.a ? "True" : "False") + "</b>";
+  } else {
+    q.opts = shuffle([{html:b.a, ok:true}].concat(b.w.map(function(w){ return {html:w, ok:false}; })));
+    q.miss = strip(b.q) + " — <b>" + b.a + "</b>";
+  }
+  return q;
+}
+function readingQuestions(id){
+  var r = READING_BY_ID[id];
+  return r && r.q ? shuffle(r.q.map(function(b, i){ return fromReading(r, i); })) : [];
+}
 function questionsByKeys(keys){
   return uniqBy(keys, function(k){ return k; }).map(function(k){
+    var rd = /^rd:([a-z0-9]+):(\d+)$/.exec(k);
+    if(rd){ var r = READING_BY_ID[rd[1]], j = parseInt(rd[2],10); return (r && r.q && r.q[j]) ? fromReading(r, j) : null; }
     var m = /^([a-z0-9]+):p(\d+)(r?)$/.exec(k);
     if(m){
       var set = PAIRSETS[m[1]], i = parseInt(m[2],10);

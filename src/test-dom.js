@@ -69,7 +69,7 @@ ok(items.length === 24, 'guide shows the 24 sections', items.length);
 ok(/0 of 24/.test($('#gCount').textContent), 'progress starts at 0 of 24', $('#gCount').textContent);
 ok(!!$('#guideRoot .handout') && $$('#guideRoot .handout .hrules li').length === 6 && /cumulative/.test($('#guideRoot .handout h2').textContent), 'the header card: the exam and its six instructions');
 ok(/47.07 of 60/.test($('#guideRoot .handout').textContent), 'Exam 1 score at a glance');
-ok($$('.topic-btn').length === 10 && ['list', 'practice', 'formulas', 'exam'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'ten tabs: My List, Math Practice, Formulas, Practice Exam first');
+ok($$('.topic-btn').length === 11 && ['list', 'practice', 'formulas', 'exam'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'eleven tabs: My List, Math Practice, Formulas, Practice Exam first');
 
 head('guide checkboxes and jumps');
 const cb = $('#guideRoot input[data-g="g-for-divide"]'); cb.checked = true; cb.dispatchEvent(new w.Event('change', { bubbles: true }));
@@ -91,7 +91,7 @@ ok(visible(panel('exam/mock')) && !!$('#mxStart'), 'the practice-exam button ope
 head('every tab and mode');
 const modes = {};
 $$('.seg[data-modes]').forEach(s => { modes[s.getAttribute('data-modes')] = Array.from(s.querySelectorAll('button[data-mode]')).map(b => b.getAttribute('data-mode')); });
-ok(Object.keys(modes).length === 10, 'ten sections with modes', Object.keys(modes).join(','));
+ok(Object.keys(modes).length === 11, 'eleven sections with modes', Object.keys(modes).join(','));
 Object.keys(modes).forEach(t => {
   topic(t);
   ok(visible($('#topic-' + t)), 'tab opens: ' + t);
@@ -264,6 +264,17 @@ head('remembers where you were');
 topic('labor'); mode('labor', 'cards');
 ok(w.localStorage.getItem('macro.topic') === 'labor' && w.localStorage.getItem('macro.mode.labor') === 'cards', 'topic and mode saved');
 
+head('readings');
+topic('readings');
+ok($$('#readingsRoot .rdbtn').length === 7, 'seven reading quizzes listed');
+ok(/Christian Approach to Interest/.test($('#readingsRoot .rdpage h2').textContent), 'opens on the next reading');
+ok(/thesis/i.test($('#readingsRoot .rdpage').textContent), 'starts with the thesis');
+click($('#rdQuiz'));
+const rdRes = answerQuiz($('#readingsQuiz'), 'reading quiz');
+ok(!!rdRes, 'the reading quiz reaches results');
+click($('#readingsRoot .rdbtn[data-rd="rq12"]'));
+ok(/Not built yet/.test($('#readingsRoot .rdpage').textContent) && !$('#rdQuiz'), 'a reading not built yet says so');
+click($('#readingsRoot .rdbtn[data-rd="rq10"]'));
 head('the exam’s source filter');
 topic('exam');
 if (!$('#mxStart')) {

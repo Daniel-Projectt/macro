@@ -67,8 +67,8 @@ ok(w.localStorage.getItem('macro.seenList') === '1', 'the first visit is remembe
 const items = $$('#guideRoot .gitem');
 ok(items.length === 24, 'guide shows the 24 sections', items.length);
 ok(/0 of 24/.test($('#gCount').textContent), 'progress starts at 0 of 24', $('#gCount').textContent);
-ok(!!$('#guideRoot .handout') && $$('#guideRoot .handout .hrules li').length === 4 && /September 29/.test($('#guideRoot .handout h2').textContent), 'the header card: the exam and its four instructions');
-ok(/38 questions/.test($('#guideRoot .handout').textContent), 'the exam at a glance');
+ok(!!$('#guideRoot .handout') && $$('#guideRoot .handout .hrules li').length === 6 && /cumulative/.test($('#guideRoot .handout h2').textContent), 'the header card: the exam and its six instructions');
+ok(/47.07 of 60/.test($('#guideRoot .handout').textContent), 'Exam 1 score at a glance');
 ok($$('.topic-btn').length === 10 && ['list', 'practice', 'formulas', 'exam'].every((t, i) => $$('.topic-btn')[i].getAttribute('data-topic') === t), 'ten tabs: My List, Math Practice, Formulas, Practice Exam first');
 
 head('guide checkboxes and jumps');
@@ -179,7 +179,7 @@ click($('#practiceRoot .setupbtn'));
 click($('#pxT button[data-t="all"]')); click($('#pxF button[data-f="mc"]')); click($('#pxS button[data-s="class"]')); click($('#pxN button[data-n="40"]')); click($('#pxStart'));
 const nClass = $$('#practiceRoot .dots i').length;
 ok(nClass >= 15 && nClass <= 40, 'the class and problem-set problems', nClass);
-ok(/Class|Problem Set|Course/.test(($('#practiceRoot .qtag.src') || {}).textContent || ''), 'each one says where it comes from');
+ok(/Class|Problem Set|Course|Exam 1/.test(($('#practiceRoot .qtag.src') || {}).textContent || ''), 'each one says where it comes from');
 const plabels = new Set();
 answerPractice($('#practiceRoot'), plabels);
 ok(plabels.size >= 2, 'tapped answers come in more than one format', [...plabels].join(', '));
@@ -254,7 +254,7 @@ ok(!!$('#mockExam .qtag.tier') && /missed|Problem-set|readings/.test($('#mockExa
 const mres = answerQuiz($('#mockExam'), 'exam');
 const secTbl = mres && mres.querySelectorAll('.tbl')[0], tierTbl = mres && mres.querySelectorAll('.tbl')[1];
 ok(secTbl && secTbl.querySelectorAll('tr').length >= 4 && secTbl.querySelectorAll('tr').length <= 24 && secTbl.querySelectorAll('.secch').length === secTbl.querySelectorAll('tr').length, 'results break down by section', secTbl && secTbl.querySelectorAll('tr').length);
-ok(tierTbl && tierTbl.querySelectorAll('tr').length >= 1 && tierTbl.querySelectorAll('tr').length <= 3, 'and by where the questions come from', tierTbl && tierTbl.querySelectorAll('tr').length);
+ok(tierTbl && tierTbl.querySelectorAll('tr').length >= 1 && tierTbl.querySelectorAll('tr').length <= 4, 'and by where the questions come from', tierTbl && tierTbl.querySelectorAll('tr').length);
 click(mres.querySelector('.setupbtn')); ok(!!$('#mxStart'), 'change settings returns to setup');
 click($('#mxP button[data-p="formulas"]')); click($('#mxN button[data-n="25"]')); click($('#mxStart'));
 ok($$('#mockExam .dots i').length === 25, 'a formulas-only exam of twenty-five', $$('#mockExam .dots i').length);
@@ -271,7 +271,7 @@ if (!$('#mxStart')) {
   ok(!!(fin && fin.querySelector('.setupbtn')), 'an exam in progress can be finished and reset');
   click(fin.querySelector('.setupbtn'));
 }
-ok(!!$('#mxF') && $$('#mxF button').length === 4, 'the exam setup has a four-way source row');
+ok(!!$('#mxF') && $$('#mxF button').length === 5, 'the exam setup has a five-way source row');
 ok(/problem-set/i.test(panel('exam/mock').textContent), 'the setup explains where the tags come from');
 click($('#mxN button[data-n="15"]')); click($('#mxT button[data-t="all"]'));
 click($('#mxP button[data-p="all"]')); click($('#mxF button[data-f="misses"]')); click($('#mxStart'));

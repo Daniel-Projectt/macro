@@ -26,9 +26,9 @@ const anchorExists = id => tps.some(tp => A.CH[tp].notes.some(n => n.id === id))
 
 // ---------- 1. the outline ----------
 head('the outline');
-ok(A.COURSE.code === 'Principles of Macroeconomics' && A.COURSE.term === 'First Exam' && /September 29/.test(A.COURSE.exam), 'course, exam and date');
-ok(/38 questions, 60 points, 75 minutes/.test(A.COURSE.scope) && /Problem Sets 1–4/.test(A.COURSE.scope), 'scope line: the exam at a glance');
-ok(A.COURSE.rules.length === 4 && /exactly as asked/.test(A.COURSE.rules[0]) && /misses/.test(A.COURSE.rules[1]) && /Formulas tab/.test(A.COURSE.rules[2]) && /calculations/.test(A.COURSE.rules[3]) && /calculator/.test(A.COURSE.rules[3]), 'the four instructions');
+ok(A.COURSE.code === 'Principles of Macroeconomics' && A.COURSE.term === 'The whole course' && /cumulative/.test(A.COURSE.exam), 'course and the cumulative final');
+ok(/47\.07 of 60/.test(A.COURSE.scope) && /Problem Sets 1–4/.test(A.COURSE.scope), 'scope line: Exam 1 and Unit 1 at a glance');
+ok(A.COURSE.rules.length === 6 && /\$ sign/.test(A.COURSE.rules[0]) && /True, false or uncertain/.test(A.COURSE.rules[1]) && /Inflation/.test(A.COURSE.rules[2]) && /misses/.test(A.COURSE.rules[3]) && /Formulas tab/.test(A.COURSE.rules[4]) && /calculator/.test(A.COURSE.rules[5]), 'the six instructions');
 const HEADS = ['Intro to Macro and GDP', 'Long-Run Growth and the Solow Model', 'The Labor Market', 'Price Levels, CPI and Inflation', 'Saving and Investment', 'Formulas — What Divides by What'];
 ok(A.GUIDE.sections.length === 6 && A.GUIDE.sections.every((s, i) => s.tp === tps[i] && s.h === HEADS[i]), 'five units in class order, then the formulas', A.GUIDE.sections.map(s => s.h).join(' | '));
 const OUTLINE = {
@@ -124,9 +124,9 @@ console.log('  questions per section: ' + Object.keys(SEC).map(id => id.replace(
 
 // ---------- 3c. the source tiers ----------
 head('where questions come from');
-ok(A.TIERS.length === 3 && A.TIERS.map(t => t.w).join() === '2,1,0', 'three source tiers, misses first');
-ok(/missed/.test(A.TIERS[0].t) && /Problem-set/.test(A.TIERS[1].t) && /readings/.test(A.TIERS[2].t), 'tier labels');
-A.QB.forEach((q, i) => ok(q.hot === (q.m || 0) && [0, 1, 2].includes(q.hot), 'question #' + i + ' carries its source tier'));
+ok(A.TIERS.length === 4 && A.TIERS.map(t => t.w).join() === '3,2,1,0', 'four source tiers, misses first');
+ok(/Exam 1/.test(A.TIERS[0].t) && /problem set/.test(A.TIERS[1].t) && /Problem-set/.test(A.TIERS[2].t) && /readings/.test(A.TIERS[3].t), 'tier labels');
+A.QB.forEach((q, i) => ok(q.hot === (q.m || 0) && [0, 1, 2, 3].includes(q.hot) && (q.hot !== 3 || q.ex), 'question #' + i + ' carries its source tier'));
 const byTier = {}; [0, 1, 2].forEach(t => { byTier[t] = A.QB.filter(q => (q.hot || 0) === t); });
 ok(byTier[2].length >= 13 && byTier[1].length >= 80 && byTier[0].length >= 40, 'every tier has enough questions to draw on', [2, 1, 0].map(t => t + ':' + byTier[t].length).join(' '));
 const wantTopics = {}; [0, 1, 2].forEach(t => { wantTopics[t] = tps.filter(tp => byTier[t].filter(q => q.tp === tp).length >= 4); });
@@ -138,18 +138,19 @@ for (let r = 0; r < 60; r++) {
   ok(new Set(all.map(q => q.key)).size === all.length, 'no repeats inside one exam');
   all.forEach(q => seenTiers.add(q.hot || 0));
   if (n >= 40) ok(new Set(all.map(q => q.hot || 0)).size >= 2, 'a full-length unfiltered exam reaches at least two tiers');
-  [['misses', 2], ['ps', 1], ['rest', 0]].forEach(([f, want]) => {
+  [['exam1', 3], ['misses', 2], ['ps', 1], ['rest', 0]].forEach(([f, want]) => {
     const got = A.mockQuestions({ n: n, types: 'all', focus: f });
     if (want === 2) ok(got.length >= 12, 'focus ' + f + ' draws the misses', got.length);
+    else if (want === 3) ok(got.length === Math.min(n, 10), 'focus ' + f + ' draws the Exam 1 misses', got.length);
     else if (n <= 25 || want === 1) ok(got.length === n, 'focus ' + f + ' fills the exam', got.length + '/' + n);
     ok(got.every(q => (q.hot || 0) === want), 'focus ' + f + ' draws only that tier');
     ok(got.every(q => q.sec && A.SEC_CHAPTER[q.sec] === q.tp), 'focus ' + f + ' questions name their section');
-    if (n >= 25 && want !== 2) ok(wantTopics[want].every(tp => got.some(q => q.tp === tp)), 'focus ' + f + ' spreads across every topic that has that tier', wantTopics[want].join(',') + ' vs ' + [...new Set(got.map(q => q.tp))].join(','));
+    if (n >= 25 && want < 2) ok(wantTopics[want].every(tp => got.some(q => q.tp === tp)), 'focus ' + f + ' spreads across every topic that has that tier', wantTopics[want].join(',') + ' vs ' + [...new Set(got.map(q => q.tp))].join(','));
   });
   ok(A.mockQuestions({ n: n, types: 'ap', focus: 'rest' }).every(q => q.ap && !(q.hot || 0)), 'the filters combine: application questions from the readings');
   ok(A.mockQuestions({ n: n, types: 'mc', focus: 'ps' }).every(q => q.kind !== 'tf' && q.hot === 1), 'the filters combine: multiple choice, problem-set style');
 }
-ok(seenTiers.size === 3, 'unfiltered exams draw on all three tiers', [...seenTiers].join(','));
+ok(seenTiers.size === 4, 'unfiltered exams draw on all four tiers', [...seenTiers].join(','));
 // my list: 24 lines as written, their flashcards, and a quiz with one question per line
 const LR = A.LIST_ROWS;
 const llen = s => String(s).replace(/<[^>]+>/g, '').length;
@@ -217,7 +218,7 @@ for (let r = 0; r < 40; r++) {
   allSecs.forEach(s => ok(f.filter(q => q.sec === s).length >= 1, 'at least one question on ' + A.SEC_TITLES[s], f.filter(q => q.sec === s).length));
   ok(new Set(f.map(q => q.tp)).size === 6, 'the thirty-eight spans all six topics');
   ok(f.every(q => q.text && q.explain && q.opts.some(o => o.ok)), 'every question is answerable and explained');
-  ok(f.filter(q => q.hot === 2).length >= 6, 'the thirty-eight leans on the misses', f.filter(q => q.hot === 2).length);
+  ok(f.filter(q => q.hot >= 2).length >= 6, 'the thirty-eight leans on the misses', f.filter(q => q.hot >= 2).length);
   const means = f.map(q => A.meaningOf(q));
   let clash = 0;
   for (let x = 0; x < means.length; x++) for (let y = x + 1; y < means.length; y++) if (A.sameThing(means[x], means[y])) clash++;
@@ -293,6 +294,19 @@ console.log('  practice: ' + A.GENS.length + ' kinds of problem, ' + A.FIXED.len
 // the professor's own numbers
 const fx = id => A.FIXED_BY_ID[id].make();
 const part = (b, key) => b.parts.find(p => p.key === key).a;
+// Exam 1: the real answers, worked out independently
+ok(['pri', 'pub', 'inv'].map(k => part(fx('ex1-saving'), k)).join() === [2000 - 700 - 1200, 700 - 500, 2000 - 1200 - 500].join(), 'Exam 1 Q11: saving with a surplus');
+ok(['nom2024', 'nom2025', 'real2024', 'real2025', 'pc2024', 'pc2025'].map(k => part(fx('ex1-leaf'), k)).join() === [10*150 + 3*1000, 9*175 + 3.5*1200, 9*150 + 3.5*1000, 9*175 + 3.5*1200, 48.5, 52.5].join(), 'Exam 1 Q17: Longbottom Leaf');
+ok(['d2024', 'd2025', 'inf'].map(k => part(fx('ex1-deflator'), k)).join() === [100, 1150 / 920 * 100, (1150 / 920 * 100 - 100)].join(), 'Exam 1 Q23: deflator and inflation');
+ok(part(fx('ex1-hogsville'), 'yrs') === 70 / 1.4, 'Exam 1 Q24: rule of 70');
+ok(['LF', 'u', 'lfpr', 'epr'].map(k => part(fx('ex1-labor'), k)).join() === [150e6, 20, 75, 60].join(), 'Exam 1 Q25: labor');
+const b27 = [10*3 + 6*2, 10*3.75 + 6*2.5]; const c27 = b27[0] / b27[1] * 100;
+ok(['cost2024', 'cost2025', 'cpi2024', 'cpi2025', 'inf'].map(k => part(fx('ex1-basket'), k)).join() === [b27[0], b27[1], c27, 100, (100 - c27) / c27 * 100].join(), 'Exam 1 Q27: notebooks and tea');
+ok(['E', 'u'].map(k => part(fx('ex1-fairmont'), k)).join() === [0.75 * 20e6, 5 / 20 * 100].join(), 'Exam 1 Q37: Fairmont');
+const exQ = A.QB.filter(q => q.ex);
+ok(exQ.length === 35 && exQ.filter(q => q.m === 3).length === 10, 'every Exam 1 multiple-choice question is in, ten misses marked', exQ.length + ' / ' + exQ.filter(q => q.m === 3).length);
+exQ.filter(q => q.m === 3).forEach(q => ok(/Exam 1/.test(q.e), 'an Exam 1 miss says so', q.q));
+ok(A.exam1Questions().length === 35, 'Exam 1 again draws them all');
 ok(['nom2023', 'nom2024', 'nom2025', 'real2023', 'real2024', 'real2025'].map(k => part(fx('class-gdp'), k)).join() === '200,600,1200,200,350,500', 'class exercise: nominal and real GDP (hot dogs and hamburgers)');
 ok(part(fx('class-growth'), 'mexico') === 2.46 && part(fx('class-growth'), 'china') === 5.31, 'class exercise: Mexico 2.46%, China 5.31%');
 ok(part(fx('class-labor'), 'LF') === 1800 && part(fx('class-labor'), 'u') === 11.11 && part(fx('class-labor'), 'lfpr') === 56.25 && part(fx('class-labor'), 'epr') === 50, 'class exercise: 1,800, 11.11%, 56.25%, 50%');
@@ -331,7 +345,9 @@ for (let r = 0; r < 30; r++) {
   ok(A.practiceQuestions({topic: 'all', format: 'mc', n: 20}).every(q => ['mc', 'tf', 'setup', 'choice'].includes(q.fmt)), 'tap-an-answer sets have only tapped answers');
   ok(A.practiceQuestions({topic: 'all', source: 'fresh', n: 20}).every(q => !q.fixed), 'new numbers only when asked');
   const cls = A.practiceQuestions({topic: 'all', source: 'class', n: 40});
-  ok(cls.length === A.FIXED.length && cls.every(q => q.fixed && q.src), 'every class and problem-set problem, once each', cls.length);
+  ok(cls.length === A.FIXED.filter(f => !/^Exam 1/.test(f.src)).length && cls.every(q => q.fixed && q.src && !/^Exam 1/.test(q.src)), 'every class and problem-set problem, once each', cls.length);
+  const ex1 = A.practiceQuestions({topic: 'all', source: 'exam', n: 40});
+  ok(ex1.length === 7 && ex1.every(q => /^Exam 1/.test(q.src)), 'the seven Exam 1 calculations, once each', ex1.length);
   const one = A.practiceQuestions({gen: 'sol-atk', n: 10});
   ok(one.length === 10 && one.every(q => q.gen === 'sol-atk'), 'one formula only');
 }

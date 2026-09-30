@@ -796,11 +796,11 @@ function practiceQuestions(cfg, stats){
   var used = {}, bag = [], last = null, guard = 0;
   if(!pool.length) return out;
   while(out.length < n && guard++ < n * 30){
-    var useFixed = cfg.source === "class" ? true : (cfg.source === "fresh" ? false : Math.random() < 0.25), q = null;
+    var useFixed = (cfg.source === "class" || cfg.source === "exam") ? true : (cfg.source === "fresh" ? false : Math.random() < 0.25), q = null;
     if(useFixed){
-      var left = fixed.filter(function(f){ return !used[f.id]; });
+      var left = fixed.filter(function(f){ return !used[f.id] && (cfg.source === "exam" ? /^Exam 1/.test(f.src) : cfg.source === "class" ? !/^Exam 1/.test(f.src) : true); });
       if(left.length){ var f = rp(left); used[f.id] = 1; q = formatProblem(GEN_BY_ID[f.gen], baseOf(null, 0, f.id), cfg.format); }
-      else if(cfg.source === "class") break;
+      else if(cfg.source === "class" || cfg.source === "exam") break;
     }
     if(!q){
       if(!bag.length) bag = bagOf(pool, stats);

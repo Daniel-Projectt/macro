@@ -2,12 +2,14 @@
    The First Exam in Principles of Macroeconomics: everything through Sep 24,
    built from Problem Sets 1–4 and the two Solow documents. Nineteen sections. */
 var COURSE = {
- code:"Principles of Macroeconomics", term:"First Exam",
- exam:"First Exam — Tuesday, September 29",
- scope:"Opens 12:30 pm, closes 1:45 pm · <b>38 questions, 60 points, 75 minutes</b> · everything through September 24: Problem Sets 1–4, <i>Brief Summary of the Solow Growth Model</i>, <i>Mathematical Example of the Solow Model</i>, <i>Pitfalls in GDP Accounting</i>",
+ code:"Principles of Macroeconomics", term:"The whole course",
+ exam:"The whole course — the final is cumulative",
+ scope:"<b>Exam 1 (Sep 29): 47.07 of 60</b> · course grade 82 · every Exam 1 question is here, your misses marked first · Unit 1 below covers everything through September 24: Problem Sets 1–4, <i>Brief Summary of the Solow Growth Model</i>, <i>Mathematical Example of the Solow Model</i>, <i>Pitfalls in GDP Accounting</i>. New chapters are added as the readings come in.",
  rules:[
-  "Type calculations exactly as asked — dollar signs, commas and percent signs.",
-  "Review your problem-set misses first — every question they touch is marked.",
+  "Fill-ins: include the $ sign for money (also per capita), the % sign for rates, and commas. Exam 1 lost points on a missing $.",
+  "True, false or uncertain: start with one of those three words, then explain.",
+  "Inflation = (new index − old index) ÷ old index — from the CPI or the deflator, never from GDP. Add each basket twice.",
+  "Review your misses first — Exam 1, then the problem sets. Every question they touch is marked.",
   "Know the formulas cold: the Formulas tab drills what divides by what and the steps of every calculation.",
   "Bring a real calculator — phone calculators are banned. Expect fill-in calculations plus concept multiple choice."],
  about:"Each heading below is one section of the exam's material. Every question and flashcard is tagged with its section and with where it comes from — a problem-set question you missed, a problem-set-style question, or a concept from the readings."

@@ -93,6 +93,10 @@ function startFifty(){
   engines.mock = makeQuiz($("#mockExam"), function(){ return finalFifty(38); }, {showTopic:true, showTier:true, againLabel:"Another thirty-eight", onSetup:renderMockSetup});
   engines.mock.start(null);
 }
+function startExam1(){
+  engines.mock = makeQuiz($("#mockExam"), exam1Questions, {showTopic:true, showTier:true, againLabel:"Exam 1 again", onSetup:renderMockSetup});
+  engines.mock.start(null);
+}
 function renderMockSetup(){
   var root = $("#mockExam");
   function seg(id, attr, val, list){
@@ -101,13 +105,15 @@ function renderMockSetup(){
   root.innerHTML = '<div class="quizWrap"><div class="qcard card-corners">'+CORNERS+
     '<div class="qnum">Practice exam</div><p class="qtext">Set it up, then answer across the topics. Each run is drawn fresh.</p>'+
     '<div class="fifty"><button class="btn primary" type="button" id="mxFifty">The 38 &mdash; the exam&rsquo;s length, every section</button>'+
-      '<p>Thirty-eight questions &mdash; the exam&rsquo;s length &mdash; at least one from each of the 24 sections, your problem-set misses first. Drawn fresh each time.</p></div>'+
+      '<p>Thirty-eight questions &mdash; the exam&rsquo;s length &mdash; at least one from each of the 24 sections, your misses first. Drawn fresh each time.</p></div>'+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxExam1">Exam 1 again &mdash; the real questions</button>'+
+      '<p>Every multiple-choice question from the first exam, with your '+QB.filter(function(b){ return b.ex && b.m === 3; }).length+' misses marked. The fill-in calculations are in Math Practice &rarr; Numbers &rarr; <b>Exam 1 problems</b>.</p></div>'+
     '<div class="setup">'+
       '<p class="orline">or set one up yourself</p>'+
       '<div class="row"><span class="label">Length</span><br>'+seg("mxN","data-n",mockCfg.n,[[15,"15"],[25,"25"],[40,"40"],[60,"60"]])+'</div>'+
       '<div class="row"><span class="label">Question types</span><br>'+seg("mxT","data-t",mockCfg.types,[["all","Everything"],["mc","Multiple choice"],["tf","True / false"],["ap","Application"]])+'</div>'+
       '<div class="row"><span class="label">Topics</span><br>'+seg("mxP","data-p",mockCfg.topic,[["all","All six"]].concat(CHAPTERS.map(function(tp){ return [tp, CH[tp].short]; })))+'</div>'+
-      '<div class="row"><span class="label">Where it comes from</span><br>'+seg("mxF","data-f",mockCfg.focus,[["all","Everything"],["misses","My misses"],["ps","Problem-set style"],["rest","The readings"]])+'</div>'+
+      '<div class="row"><span class="label">Where it comes from</span><br>'+seg("mxF","data-f",mockCfg.focus,[["all","Everything"],["exam1","Missed on Exam 1"],["misses","Missed on problem sets"],["ps","Problem-set and exam style"],["rest","The readings"]])+'</div>'+
       '<p class="setnote">'+REVIEW_NOTE+'</p>'+
       '<div class="row" style="margin-top:22px"><button class="btn primary" type="button" id="mxStart">Start</button></div>'+
     '</div></div></div>';
@@ -117,6 +123,7 @@ function renderMockSetup(){
   segWire("#mxF","data-f",function(v){ mockCfg.focus = v; store.set("mockcfg", JSON.stringify(mockCfg)); });
   $("#mxStart").addEventListener("click", function(){ startMock(null); });
   $("#mxFifty").addEventListener("click", startFifty);
+  $("#mxExam1").addEventListener("click", startExam1);
   engines.mock = null;
 }
 
@@ -181,7 +188,7 @@ function renderPracticeSetup(){
       '<div class="row"><span class="label">One formula only</span><br><select id="pxG" class="pxsel" aria-label="One formula only"><option value="">All of them</option>'+
         gens.map(function(g){ return '<option value="'+g.id+'"'+(practiceCfg.gen === g.id ? ' selected' : '')+'>'+g.name+'</option>'; }).join("")+'</select></div>'+
       '<div class="row"><span class="label">How you answer</span><br>'+seg("pxF","data-f",practiceCfg.format,[["mixed","Mixed"],["type","Type the answer"],["mc","Tap an answer"]])+'</div>'+
-      '<div class="row"><span class="label">Numbers</span><br>'+seg("pxS","data-s",practiceCfg.source,[["mixed","Mixed"],["fresh","New numbers"],["class","Class and problem-set problems"]])+'</div>'+
+      '<div class="row"><span class="label">Numbers</span><br>'+seg("pxS","data-s",practiceCfg.source,[["mixed","Mixed"],["fresh","New numbers"],["class","Class and problem-set problems"],["exam","Exam 1 problems"]])+'</div>'+
       '<div class="row"><span class="label">How many</span><br>'+seg("pxN","data-n",practiceCfg.n,[[10,"10"],[20,"20"],[40,"40"]])+'</div>'+
       '<div class="row" style="margin-top:22px"><button class="btn primary" type="button" id="pxStart">Start</button></div>'+
     '</div></div></div>';

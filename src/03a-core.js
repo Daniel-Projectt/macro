@@ -159,7 +159,13 @@ function questionsByKeys(keys){
 /* The practice exam: every chapter, reshuffled.
    types  — all / mc / tf / ap
    focus  — all, or one source tier: misses / ps / rest                        */
-var FOCUS_HOT = {misses:2, ps:1, rest:0};
+var FOCUS_HOT = {exam1:3, misses:2, ps:1, rest:0};
+/* Exam 1 again: every multiple-choice and true/false question from the real exam */
+function exam1Questions(){
+  var out = [];
+  QB.forEach(function(b, i){ if(b.ex && !b.off) out.push(fromBank(b, i)); });
+  return shuffle(out);
+}
 function mockQuestions(cfg){
   var tps = cfg.topics && cfg.topics.length ? cfg.topics : CHAPTERS.slice();
   var n = cfg.n || 25;

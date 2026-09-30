@@ -752,12 +752,14 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
    The First Exam in Principles of Macroeconomics: everything through Sep 24,
    built from Problem Sets 1–4 and the two Solow documents. Nineteen sections. */
 var COURSE = {
- code:"Principles of Macroeconomics", term:"First Exam",
- exam:"First Exam — Tuesday, September 29",
- scope:"Opens 12:30 pm, closes 1:45 pm · <b>38 questions, 60 points, 75 minutes</b> · everything through September 24: Problem Sets 1–4, <i>Brief Summary of the Solow Growth Model</i>, <i>Mathematical Example of the Solow Model</i>, <i>Pitfalls in GDP Accounting</i>",
+ code:"Principles of Macroeconomics", term:"The whole course",
+ exam:"The whole course — the final is cumulative",
+ scope:"<b>Exam 1 (Sep 29): 47.07 of 60</b> · course grade 82 · every Exam 1 question is here, your misses marked first · Unit 1 below covers everything through September 24: Problem Sets 1–4, <i>Brief Summary of the Solow Growth Model</i>, <i>Mathematical Example of the Solow Model</i>, <i>Pitfalls in GDP Accounting</i>. New chapters are added as the readings come in.",
  rules:[
-  "Type calculations exactly as asked — dollar signs, commas and percent signs.",
-  "Review your problem-set misses first — every question they touch is marked.",
+  "Fill-ins: include the $ sign for money (also per capita), the % sign for rates, and commas. Exam 1 lost points on a missing $.",
+  "True, false or uncertain: start with one of those three words, then explain.",
+  "Inflation = (new index − old index) ÷ old index — from the CPI or the deflator, never from GDP. Add each basket twice.",
+  "Review your misses first — Exam 1, then the problem sets. Every question they touch is marked.",
   "Know the formulas cold: the Formulas tab drills what divides by what and the steps of every calculation.",
   "Bring a real calculator — phone calculators are banned. Expect fill-in calculations plus concept multiple choice."],
  about:"Each heading below is one section of the exam's material. Every question and flashcard is tagged with its section and with where it comes from — a problem-set question you missed, a problem-set-style question, or a concept from the readings."
@@ -1762,14 +1764,15 @@ QB = QB.concat([
      m:1  a problem-set-style question (the worked examples and their concepts)
      (none) a concept from the readings and documents
    The engine copies m into hot, and the practice exam can drill any of the three. */
-var REVIEW_NOTE = "Every question is tagged with where it comes from: a problem-set question you missed, a problem-set-style question, or a concept from the readings. Drill the misses first, then the problem-set style — the exam is built from the same material.";
+var REVIEW_NOTE = "Every question is tagged with where it comes from: a question you missed on Exam 1, a problem-set question you missed, a problem-set-style question, or a concept from the readings. Drill the misses first, then the problem-set style — the exam is built from the same material.";
 
 /* kept for the engine's identification questions (generated from flashcards), which have no source tag */
 var CONFIRMED = [];
 
 var TIERS = [
+ {w:3, t:"You missed this on Exam 1",        s:"Points you lost on the first exam — the final is cumulative, so fix these first."},
  {w:2, t:"You missed this on a problem set", s:"Review these first — the exam is built from the same material."},
- {w:1, t:"Problem-set style",                s:"The kind of question the problem sets asked."},
+ {w:1, t:"Problem-set and exam style",       s:"The kind of question the problem sets and Exam 1 asked."},
  {w:0, t:"From the readings",                s:"Concepts from the class notes and the course documents."}
 ];
 
@@ -2712,11 +2715,11 @@ function practiceQuestions(cfg, stats){
   var used = {}, bag = [], last = null, guard = 0;
   if(!pool.length) return out;
   while(out.length < n && guard++ < n * 30){
-    var useFixed = cfg.source === "class" ? true : (cfg.source === "fresh" ? false : Math.random() < 0.25), q = null;
+    var useFixed = (cfg.source === "class" || cfg.source === "exam") ? true : (cfg.source === "fresh" ? false : Math.random() < 0.25), q = null;
     if(useFixed){
-      var left = fixed.filter(function(f){ return !used[f.id]; });
+      var left = fixed.filter(function(f){ return !used[f.id] && (cfg.source === "exam" ? /^Exam 1/.test(f.src) : cfg.source === "class" ? !/^Exam 1/.test(f.src) : true); });
       if(left.length){ var f = rp(left); used[f.id] = 1; q = formatProblem(GEN_BY_ID[f.gen], baseOf(null, 0, f.id), cfg.format); }
-      else if(cfg.source === "class") break;
+      else if(cfg.source === "class" || cfg.source === "exam") break;
     }
     if(!q){
       if(!bag.length) bag = bagOf(pool, stats);
@@ -2729,6 +2732,101 @@ function practiceQuestions(cfg, stats){
   }
   return out;
 }
+
+/* ================================================================ Exam 1, as it was given
+   Every question from the First Exam (Sep 29), tagged ex:1. The ones he lost
+   points on carry m:3 ("You missed this on Exam 1"); the ones he got right are
+   m:1, exam style. The fill-in calculations are also practice problems with
+   their exact numbers (FIXED, src "Exam 1") so they can be redone.           */
+QB = QB.concat([
+ /* ---- the ones he missed ---- */
+ {tp:"prices",sec:"g-pri-concepts",ex:1,m:3,t:"mc",q:"Which of the following aggregate price indices is most likely to show a lower rate of inflation in an economy with significant changes in consumer spending patterns?",a:"The Personal Consumption Expenditures Price Index, because it adjusts for changes in consumer spending patterns by following actual consumer purchases",w:["The Consumer Price Index, because it does not account for changes in the composition of consumption","The GDP Deflator, because it includes only the change in prices of capital goods and ignores prices of consumption goods","All three aggregate price indices will show the same rate of inflation regardless of changes in consumer spending patterns"],e:"You missed this on Exam 1. The PCE follows what people actually buy, so when they switch to cheaper goods it catches the switch and shows less inflation. The CPI keeps a fixed basket, so it shows more."},
+ {tp:"labor",sec:"g-lab-types",ex:1,m:3,t:"mc",q:"Both efficiency wages and minimum wages help explain",a:"structural unemployment",w:["frictional unemployment","seasonal unemployment","cyclical unemployment"],e:"You missed this on Exam 1. Both keep the wage above the market-clearing level, so more people want jobs than there are jobs. That lasting mismatch is structural unemployment."},
+ {tp:"saving",sec:"g-sav-identity",ex:1,m:3,ap:true,t:"mc",q:"Assume a closed economy. GDP is $2,000, consumption is $1,200, government purchases are $500, and the government is running a budget surplus of $200. Private saving, public saving and national investment are:",a:"$100, $200 and $300",w:["$500, $300 and −$200","$800, $200 and $300","$300, $200 and $500"],e:"You missed this on Exam 1. The surplus IS public saving: T − G = $200, so T = $700. Private = Y − T − C = 2,000 − 700 − 1,200 = $100. National saving = 100 + 200 = $300, and in a closed economy investment = saving = $300."},
+ {tp:"prices",sec:"g-pri-index",ex:1,m:3,t:"mc",q:"Changes in the GDP deflator reflect",a:"only changes in prices",w:["only changes in the amounts produced","both changes in prices and changes in the amounts produced","neither changes in prices nor changes in the amounts produced"],e:"You missed this on Exam 1. Deflator = nominal ÷ real × 100. Real GDP holds prices fixed, so dividing takes the quantities out and leaves only the prices."},
+ {tp:"saving",sec:"g-sav-identity",ex:1,m:3,t:"mc",q:"Which of the following statements about saving and investment is true?",a:"In an open economy, a country can invest more than it saves",w:["In a closed economy, if national saving is greater than zero, public saving must be positive","In an open economy, national saving must equal national investment","In a closed economy, if national saving is greater than zero, private saving must be positive"],e:"You missed this on Exam 1. Open economy: I = S + (M − X), so foreign saving can pay for the gap. National saving can be positive with either private or public saving negative, as long as the other part is bigger."},
+ {tp:"prices",sec:"g-pri-index",ex:1,m:3,ap:true,t:"mc",q:"Nominal GDP is $800 in 2024 and $1,150 in 2025. Real GDP is $800 in 2024 and $920 in 2025. The GDP deflators and the inflation rate are:",a:"100, 125 and 25%",w:["100, 125 and 15%","100, 80 and 20%","100, 143.75 and 43.75%"],e:"You missed this on Exam 1 (you wrote 15%, which is how much real GDP grew). Deflator 2025 = 1,150 ÷ 920 × 100 = 125. Inflation comes from the price index: (125 − 100) ÷ 100 = 25%."},
+ {tp:"prices",sec:"g-pri-index",ex:1,m:3,ap:true,t:"mc",q:"The basket is 10 notebooks and 6 cups of tea; the base year is 2025. Notebooks cost $3 in 2024 and $3.75 in 2025; tea costs $2 in 2024 and $2.50 in 2025. The CPI in 2024 and the inflation rate are:",a:"80 and 25%",w:["79.8 and 20.2%","125 and 25%","80 and 20%"],e:"You missed this on Exam 1. Basket 2024 = 10 × 3 + 6 × 2 = $42. Basket 2025 = 10 × 3.75 + 6 × 2.50 = 37.50 + 15 = $52.50 (not 52.6). CPI 2024 = 42 ÷ 52.50 × 100 = 80. Inflation = (100 − 80) ÷ 80 = 25%. Divide by the earlier year."},
+ {tp:"prices",sec:"g-pri-concepts",ex:1,m:3,t:"mc",q:"Which is a problem with the CPI when new goods are introduced?",a:"It misses variety gains, overstating inflation",w:["It underestimates substitution","It undervalues quality improvements","It excludes imports"],e:"You missed this on Exam 1. A new good gives people more choice, which makes them better off, but the fixed basket does not include it. So the CPI says living costs rose more than they really did."},
+ {tp:"labor",sec:"g-lab-rates",ex:1,m:3,ap:true,t:"mc",q:"Fairmont has an adult population of 20 million, an employment-population ratio of 75%, and 5 million people unemployed. The number employed and the unemployment rate are:",a:"15,000,000 and 25%",w:["10,000,000 and 33.3%","15,000,000 and 33.3%","20,000,000 and 20%"],e:"You missed this on Exam 1. The EPR gives the employed directly: 75% × 20 million = 15 million. Labor force = 15 + 5 = 20 million. Unemployment rate = 5 ÷ 20 = 25%."},
+ {tp:"labor",sec:"g-lab-moves",ex:1,m:3,t:"tf",q:"A falling unemployment rate must mean that more people are employed than before.",a:false,e:"False. You lost a point on Exam 1 for writing “not necessarily” — start with True, False or Uncertain. The rate also falls when discouraged workers stop looking: they leave the labor force, so the unemployed shrink while nobody new is employed."},
+
+ /* ---- the ones he got right ---- */
+ {tp:"growth",sec:"g-gro-terms",ex:1,m:1,t:"mc",q:"Which of the following is true regarding long-run growth?",a:"Factors of production are a necessary ingredient for growth in output but will not create sustainable growth through time on their own",w:["An increase in technology increases the steady state level of capital, but not output","Factors of production are a necessary and sufficient ingredient for sustainable growth in output","An increase in technology increases output and investment but will decrease consumption"],e:"Adding capital runs into diminishing returns, so growth from factors alone fades. Only better ideas (technology) keep it going."},
+ {tp:"growth",sec:"g-gro-policy",ex:1,m:1,t:"mc",q:"Which of the following best describes the role of institutions in long-run economic growth?",a:"Institutions shape the incentives for investment and innovation, which can influence long-run economic growth",w:["Institutions only affect economic growth when they are informal","Institutions only affect economic growth when they are formal","Good institutions increase transaction costs while bad institutions lower transaction costs"],e:"Rules like property rights and contracts decide whether it pays to invest and invent. Both formal and informal rules matter, and good ones lower transaction costs."},
+ {tp:"prices",sec:"g-pri-concepts",ex:1,m:1,t:"mc",q:"How does the “basket of goods” used to calculate the Consumer Price Index (CPI) affect the measurement of inflation?",a:"It represents a fixed set of items that consumers buy, which may not reflect changes in consumption patterns over time",w:["It ensures that changes in prices reflect the consumption patterns of the entire population","It adjusts for differences in income levels among different population groups","It allows for the comparison of price changes across different geographic regions, including changes in the price of capital goods"],e:"The basket is fixed, so when people switch what they buy, the CPI does not follow them. That is its substitution bias."},
+ {tp:"gdp",sec:"g-gdp-def",ex:1,m:1,t:"mc",q:"If a U.S. citizen purchases a passenger vehicle in the United States that was made in South Korea by a Japanese firm, then",a:"U.S. net exports decrease, consumption increases, and U.S. GDP is unaffected",w:["U.S. net exports are unaffected, consumption increases, and U.S. GDP is unaffected","U.S. net exports are unaffected, consumption increases, and U.S. GDP decreases","U.S. net exports decrease, consumption decreases, and U.S. GDP decreases"],e:"C goes up by the car’s price and imports go up by the same amount, so net exports fall and GDP does not change. It was made in South Korea, not the U.S."},
+ {tp:"growth",sec:"g-gro-shifts",ex:1,m:1,t:"mc",q:"When a country saves a larger portion of its GDP than it did before, it will have",a:"more investment, a larger future capital stock, and greater future output",w:["less investment, a larger future capital stock, and lower future output","more investment, a smaller future capital stock, and greater future output","less investment, a smaller future capital stock, and lower future output"],e:"Saving pays for investment, investment builds capital, and more capital produces more output."},
+ {tp:"labor",sec:"g-lab-types",ex:1,m:1,t:"mc",q:"The natural rate of unemployment is best described as:",a:"The unemployment rate that exists when the labor market is in equilibrium, accounting for frictional and structural unemployment",w:["The unemployment rate that occurs when the economy is in a recession","The rate of unemployment that results from cyclical fluctuations in the economy","The unemployment rate that is always equal to zero in a well-functioning economy"],e:"Natural rate = frictional + structural. Cyclical unemployment is left out."},
+ {tp:"gdp",sec:"g-gdp-real",ex:1,m:1,t:"mc",q:"Which of the following statements about nominal and real GDP is correct?",a:"A rise in nominal GDP always results in a higher real GDP, assuming prices do not change",w:["An increase in the consumer price index (CPI) can indicate higher levels of real GDP","A rise in nominal GDP always results in a higher real GDP, assuming quantities do not change","An increase in real GDP can occur due to a rise in the general price level"],e:"If prices stay the same, the only way nominal GDP can rise is if quantities rose, and that is exactly what real GDP measures."},
+ {tp:"gdp",sec:"g-gdp-limits",ex:1,m:1,t:"mc",q:"How does GDP fail to measure the overall quality of life in an economy?",a:"GDP does not account for changes in leisure time and personal well-being",w:["GDP includes all forms of environmental pollution and degradation","GDP measures the distribution of income among different population groups","GDP reflects the value of all government and private sector investments"],e:"GDP counts production only. Free time, well-being, pollution and how income is shared are left out."},
+ {tp:"growth",sec:"g-gro-shifts",ex:1,m:1,t:"mc",q:"In the Solow growth model, an increase in the savings rate will typically lead to:",a:"An increase in the long-run sustainable level of output per capita",w:["A permanent increase in the long-run growth rate of output per capita","A decrease in the level of capital per worker in the long run","No change in the sustainable long-run level of output per capita but a temporary increase in growth"],e:"More saving raises the steady state, so the LEVEL of output is higher. Growth speeds up only until the new steady state is reached."},
+ {tp:"labor",sec:"g-lab-moves",ex:1,m:1,t:"mc",q:"If a currently unemployed person cannot find a job and stops looking for work, and the adult population and number employed stay the same, the unemployment rate",a:"and the labor force participation rate both decrease",w:["and the labor force participation rate are unaffected","is unaffected and the labor force participation rate decreases","decreases, and the labor force participation rate is unaffected"],e:"The person leaves the labor force. Fewer unemployed means a lower unemployment rate, and a smaller labor force means a lower participation rate."},
+ {tp:"labor",sec:"g-lab-rates",ex:1,m:1,t:"mc",q:"If the employment-population ratio increases, this indicates:",a:"An increase in the proportion of the adult population who are employed",w:["An increase in the number of people actively seeking work","A decrease in the number of people employed due to more people leaving the labor force","A higher rate of unemployment due to an increase in discouraged workers"],e:"EPR = employed ÷ adult population, so a higher EPR means a bigger share of adults have jobs."},
+ {tp:"growth",sec:"g-gro-policy",ex:1,m:1,t:"mc",q:"Which of the following statements is false?",a:"Poorly enforced contracts can lead to increased economic cooperation and growth",w:["Strong property rights encourage investment and innovation, promoting long-run economic growth","Political stability reduces uncertainty and encourages long-term capital formation","Corruption can hinder sustainable long-run growth by misallocating resources"],e:"Contracts that are not enforced make people distrust deals, so there is less cooperation and less growth. The other three are true."},
+ {tp:"growth",sec:"g-gro-policy",ex:1,m:1,t:"mc",q:"In the Solow model, which factor is most critical for achieving long-term, sustained economic growth?",a:"Enhancing productivity through technological innovation and improved human capital",w:["Increasing the population size","Accumulating physical capital indefinitely","Maintaining a high savings rate without investing in technology"],e:"Capital runs into diminishing returns, so only rising productivity keeps growth going for good."},
+ {tp:"prices",sec:"g-pri-concepts",ex:1,m:1,t:"mc",q:"Which of the following statements about the price level is true?",a:"A period of inflation without subsequent deflation leaves the overall price level permanently higher",w:["Inflation and deflation always occur together, resulting in no long-term change in the price level","A period of inflation, even if followed by deflation, will always permanently lower the price level","Inflation raises prices, but they will return to their original level once inflation stops"],e:"When inflation stops, prices stop rising, but they do not come back down. Only deflation lowers them."},
+ {tp:"prices",sec:"g-pri-concepts",ex:1,m:1,t:"mc",q:"Which statement explains how inflation, deflation, and disinflation compare?",a:"Inflation involves an increase in the aggregate price level, deflation involves a decrease in the aggregate price level, and disinflation involves a reduction in the rate of inflation",w:["Inflation and deflation both refer to changes in relative prices, while disinflation measures changes in the aggregate price level","Inflation means prices are stable, deflation means prices are volatile, and disinflation means prices are increasing","Inflation occurs when the economy grows rapidly, deflation occurs during economic recessions, and disinflation happens when there is a surge in production"],e:"Inflation: prices rise. Deflation: prices fall. Disinflation: prices still rise, but more slowly."},
+ {tp:"labor",sec:"g-lab-types",ex:1,m:1,t:"mc",q:"During a severe economic recession, many businesses reduce their workforce due to declining demand for goods and services. What type of unemployment is primarily associated with this scenario?",a:"Cyclical unemployment",w:["Frictional unemployment","Structural unemployment","Natural unemployment"],e:"Jobs lost because of a recession are cyclical unemployment."},
+ {tp:"gdp",sec:"g-gdp-basics",ex:1,m:1,t:"mc",q:"Which of the following statements best distinguishes microeconomics from macroeconomics?",a:"Microeconomics studies the behavior of individual consumers and firms, while macroeconomics focuses on the economy as a whole, including aggregate variables such as national income and inflation",w:["Microeconomics examines the overall economic growth rate, while macroeconomics analyzes supply and demand in specific markets","Microeconomics is concerned with government policies and their effects on the economy, whereas macroeconomics deals with individual financial decisions and firm-level operations","Microeconomics primarily involves international trade and exchange rates, while macroeconomics focuses on the analysis of local markets and consumer behavior"],e:"Micro studies one market or firm. Macro studies the whole economy: GDP, inflation, unemployment."},
+ {tp:"saving",sec:"g-sav-identity",ex:1,m:1,t:"mc",q:"In a closed economy, which of the following statements is correct?",a:"Savings must always equal investment",w:["Savings can exceed investment, and the difference is equal to net exports","Investment can exceed savings if the government runs a surplus","A closed economy borrows from abroad whenever investment is high"],e:"With no trade there is no foreign saving, so S = I every time."},
+ {tp:"growth",sec:"g-gro-policy",ex:1,m:1,t:"mc",q:"Milton Friedman’s view of economic development emphasizes",a:"Maximizing individuals’ private spheres of action through economic and political freedoms",w:["Expanding GDP and government planning","Reducing freedoms in order to enhance collective welfare","Eliminating markets in favor of state-driven growth"],e:"For Friedman, development means more freedom for individuals, economic and political."},
+ {tp:"growth",sec:"g-gro-shifts",ex:1,m:1,t:"mc",q:"In the Solow model, a country increases its savings rate. What happens?",a:"The production curve does not shift, the investment curve shifts up, and steady-state capital and output both increase",w:["Both the production and investment curves shift up, and steady-state capital increases","The investment curve shifts down, and steady-state capital and output decrease","Nothing shifts, but steady-state output increases"],e:"The savings rate is in I = s × Y only, not in Y = A√K, so only the investment curve moves up. Where it meets depreciation moves right, so capital and output rise."},
+ {tp:"growth",sec:"g-gro-facts",ex:1,m:1,t:"mc",q:"Which of the following is true about the history of economic growth?",a:"Every country was once poor",w:["Some countries have always been rich","Poor countries cannot catch up with rich countries","Rich countries have always grown at the same rate"],e:"Before modern growth began, every country was poor. Some have caught up since, and growth rates differ a lot."},
+ {tp:"growth",sec:"g-gro-policy",ex:1,m:1,t:"mc",q:"As exchange becomes more complex and impersonal, the role of institutions:",a:"Becomes more important",w:["Becomes less important","Stays the same","Is replaced by monetary policy"],e:"When you trade with strangers you cannot rely on trust, so rules like contracts and courts matter more."},
+ {tp:"growth",sec:"g-gro-policy",ex:1,m:1,t:"mc",q:"Historical population growth (from 10 million in 6500 BC to 8.5 billion today) suggests that:",a:"Human societies adapt and can turn more people into a source of innovation",w:["Rising population always lowers GDP per capita","More people reduce the scope for specialization","Population size has no relation to technological progress"],e:"More people means more minds and more specialization, so more ideas."},
+ {tp:"gdp",sec:"g-gdp-counts",ex:1,m:1,t:"mc",q:"Why are intermediate goods excluded from GDP?",a:"To prevent double-counting",w:["They are not part of consumption","They are included only in government spending","They are always imported"],e:"Their value is already inside the final good’s price, so counting them again would count it twice."},
+ {tp:"prices",sec:"g-pri-concepts",ex:1,m:1,ap:true,t:"mc",q:"Suppose the CPI shows prices have risen 5% in a year, while real incomes have risen 8%. What happens?",a:"The cost of living has risen, but the standard of living has also risen",w:["The cost of living has risen, but the standard of living has fallen","The cost of living has fallen, but the standard of living has risen","Both cost of living and standard of living have fallen"],e:"Prices up 5% means the cost of living rose. Real income up 8% means people can buy more, so the standard of living rose too."}
+]);
+
+/* ---- the fill-in calculations, with the exam's own numbers ---- */
+var EXAM1_FIXED = [
+ {id:"ex1-saving", gen:"sav-three", src:"Exam 1 — you missed this", make:function(){
+   return {text:"Assume a closed economy. GDP is $2,000, consumption is $1,200, government purchases are $500, and the government is running a budget surplus of $200.",
+    parts:[P("pri", "private saving", 100, 0, "$", "The surplus is public saving: T − G = 200, so T = 700. Y − T − C = 2,000 − 700 − 1,200 = $100.", {signed:true, wrong:[500, 300, 800, -100]}),
+           P("pub", "public saving", 200, 0, "$", "A surplus of $200 is public saving of $200 (T − G).", {signed:true, wrong:[300, -200, 500, 700]}),
+           P("inv", "national investment", 300, 0, "$", "Closed economy: I = national saving = 100 + 200 = $300 (or Y − C − G = 2,000 − 1,200 − 500).", {signed:true, wrong:[-200, 500, 200, 100]})]};
+  }},
+ {id:"ex1-leaf", gen:"gdp-real", src:"Exam 1", make:function(){
+   return {text:tbl(["Year", "Price of Longbottom Leaf", "Quantity of Longbottom Leaf", "Price of Green Dragon Ale", "Quantity of Green Dragon Ale", "Population"], [[2024, "$10", 150, "$3", "1,000", 100], [2025, "$9", 175, "$3.50", "1,200", 110]]) + "The base year is 2025. Include the $ signs.",
+    parts:[P("nom2024", "nominal GDP in 2024", 4500, 0, "$", "10 × 150 + 3 × 1,000 = $4,500.", {wrong:[4850, 5775, 4200, 5000]}),
+           P("nom2025", "nominal GDP in 2025", 5775, 0, "$", "9 × 175 + 3.50 × 1,200 = 1,575 + 4,200 = $5,775.", {wrong:[5100, 4850, 4500, 6000]}),
+           P("real2024", "real GDP in 2024", 4850, 0, "$", "2025 prices × 2024 quantities: 9 × 150 + 3.50 × 1,000 = $4,850.", {wrong:[4500, 5775, 5100, 4200]}),
+           P("real2025", "real GDP in 2025", 5775, 0, "$", "2025 is the base year, so real = nominal: $5,775.", {wrong:[5100, 4850, 4500, 6000]}),
+           P("pc2024", "real GDP per capita in 2024", 48.5, 2, "$", "4,850 ÷ 100 = $48.50. On the exam you left off the $ sign.", {wrong:[45, 57.75, 44.09, 52.5]}),
+           P("pc2025", "real GDP per capita in 2025", 52.5, 2, "$", "5,775 ÷ 110 = $52.50. On the exam you left off the $ sign.", {wrong:[57.75, 48.5, 44.09, 46.36]})]};
+  }},
+ {id:"ex1-deflator", gen:"gdp-deflator", src:"Exam 1 — you missed this", make:function(){
+   return {text:tbl(["Year", "Nominal GDP", "Real GDP"], [[2024, "$800", "$800"], [2025, "$1,150", "$920"]]),
+    parts:[P("d2024", "the GDP deflator in 2024", 100, 2, "", "800 ÷ 800 × 100 = 100.", {wrong:[80, 125, 143.75]}),
+           P("d2025", "the GDP deflator in 2025", 125, 2, "", "1,150 ÷ 920 × 100 = 125.", {wrong:[80, 143.75, 115]}),
+           P("inf", "the inflation rate", 25, 2, "%", "(125 − 100) ÷ 100 × 100 = 25%. Use the deflators, not real GDP (920 ÷ 800 = 15% is real growth).", {signed:true, wrong:[15, 43.75, 20, 125]})]};
+  }},
+ {id:"ex1-hogsville", gen:"gro-70", src:"Exam 1", make:function(){
+   return {text:"The land of Hogsville grows at a steady annual real GDP rate of 1.4%.", parts:[P("yrs", "the doubling time", 50, 2, "yr", "70 ÷ 1.4 = 50 years.", {ask:"In how many years will real GDP double?", claim:"Real GDP doubles in", wrong:[98, 5, 71.43, 35]})]};
+  }},
+ {id:"ex1-labor", gen:"lab-stats", src:"Exam 1", make:function(){
+   return {text:"Not in the labor force: 50 million. Employed: 120 million. Unemployed: 30 million.",
+    parts:[P("LF", "the labor force", 150000000, 0, "", "120,000,000 + 30,000,000 = 150,000,000.", {ask:"What is the size of the labor force?", wrong:[200000000, 120000000, 170000000, 90000000]}),
+           P("u", "the unemployment rate", 20, 2, "%", "30 ÷ 150 × 100 = 20%.", {wrong:[25, 15, 60, 75]}),
+           P("lfpr", "the labor-force participation rate", 75, 2, "%", "Adults = 50 + 150 = 200 million. 150 ÷ 200 × 100 = 75%.", {wrong:[60, 80, 25, 100]}),
+           P("epr", "the employment-population ratio", 60, 2, "%", "120 ÷ 200 × 100 = 60%.", {wrong:[80, 75, 20, 70.59]})]};
+  }},
+ {id:"ex1-basket", gen:"pri-basket", src:"Exam 1 — you missed this", make:function(){
+   return {text:"The basket is 10 notebooks and 6 cups of tea. The base year is 2025." + tbl(["Year", "Price of notebooks", "Price of a cup of tea"], [[2024, "$3", "$2"], [2025, "$3.75", "$2.50"]]),
+    parts:[P("cost2024", "the cost of the basket in 2024", 42, 2, "$", "10 × 3 + 6 × 2 = $42.", {wrong:[52.5, 36, 50]}),
+           P("cost2025", "the cost of the basket in 2025", 52.5, 2, "$", "10 × 3.75 + 6 × 2.50 = 37.50 + 15 = $52.50. On the exam you wrote 52.6 — add it twice.", {wrong:[52.6, 42, 45, 62.5]}),
+           P("cpi2024", "the CPI in 2024", 80, 2, "", "42 ÷ 52.50 × 100 = 80. The base year (2025) goes on the bottom.", {wrong:[79.8, 125, 100, 42]}),
+           P("cpi2025", "the CPI in 2025", 100, 2, "", "2025 is the base year, so the CPI is 100.", {wrong:[125, 80, 52.5]}),
+           P("inf", "the inflation rate", 25, 2, "%", "(100 − 80) ÷ 80 × 100 = 25%. Divide by 80, the earlier year.", {signed:true, wrong:[20, 20.2, -20, 125]})]};
+  }},
+ {id:"ex1-fairmont", gen:"lab-dale", src:"Exam 1 — you missed this", make:function(){
+   return {text:"Fairmont has an adult population of 20 million, an employment-population ratio of 75%, and 5 million people unemployed.",
+    parts:[P("E", "the number employed", 15000000, 0, "", "The EPR gives the employed directly: 20,000,000 × 75 ÷ 100 = 15,000,000.", {ask:"How many people are employed?", wrong:[10000000, 20000000, 5000000, 11250000]}),
+           P("u", "the unemployment rate", 25, 1, "%", "Labor force = 15 + 5 = 20 million. 5 ÷ 20 × 100 = 25%.", {wrong:[33.3, 20, 75, 50]})]};
+  }}
+];
+EXAM1_FIXED.forEach(function(f){ f.topic = GEN_BY_ID[f.gen].topic; FIXED.push(f); FIXED_BY_ID[f.id] = f; });
 
 /* ================================================================ helpers */
 function $(s,r){ return (r||document).querySelector(s); }
@@ -2891,7 +2989,13 @@ function questionsByKeys(keys){
 /* The practice exam: every chapter, reshuffled.
    types  — all / mc / tf / ap
    focus  — all, or one source tier: misses / ps / rest                        */
-var FOCUS_HOT = {misses:2, ps:1, rest:0};
+var FOCUS_HOT = {exam1:3, misses:2, ps:1, rest:0};
+/* Exam 1 again: every multiple-choice and true/false question from the real exam */
+function exam1Questions(){
+  var out = [];
+  QB.forEach(function(b, i){ if(b.ex && !b.off) out.push(fromBank(b, i)); });
+  return shuffle(out);
+}
 function mockQuestions(cfg){
   var tps = cfg.topics && cfg.topics.length ? cfg.topics : CHAPTERS.slice();
   var n = cfg.n || 25;
@@ -3055,7 +3159,7 @@ function matchRound(tp, n){
 
 /* ---- the pure parts can be tested outside a browser ---- */
 if(typeof window === "undefined"){
-  module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE,
+  module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
     CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,
@@ -3531,6 +3635,10 @@ function startFifty(){
   engines.mock = makeQuiz($("#mockExam"), function(){ return finalFifty(38); }, {showTopic:true, showTier:true, againLabel:"Another thirty-eight", onSetup:renderMockSetup});
   engines.mock.start(null);
 }
+function startExam1(){
+  engines.mock = makeQuiz($("#mockExam"), exam1Questions, {showTopic:true, showTier:true, againLabel:"Exam 1 again", onSetup:renderMockSetup});
+  engines.mock.start(null);
+}
 function renderMockSetup(){
   var root = $("#mockExam");
   function seg(id, attr, val, list){
@@ -3539,13 +3647,15 @@ function renderMockSetup(){
   root.innerHTML = '<div class="quizWrap"><div class="qcard card-corners">'+CORNERS+
     '<div class="qnum">Practice exam</div><p class="qtext">Set it up, then answer across the topics. Each run is drawn fresh.</p>'+
     '<div class="fifty"><button class="btn primary" type="button" id="mxFifty">The 38 &mdash; the exam&rsquo;s length, every section</button>'+
-      '<p>Thirty-eight questions &mdash; the exam&rsquo;s length &mdash; at least one from each of the 24 sections, your problem-set misses first. Drawn fresh each time.</p></div>'+
+      '<p>Thirty-eight questions &mdash; the exam&rsquo;s length &mdash; at least one from each of the 24 sections, your misses first. Drawn fresh each time.</p></div>'+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxExam1">Exam 1 again &mdash; the real questions</button>'+
+      '<p>Every multiple-choice question from the first exam, with your '+QB.filter(function(b){ return b.ex && b.m === 3; }).length+' misses marked. The fill-in calculations are in Math Practice &rarr; Numbers &rarr; <b>Exam 1 problems</b>.</p></div>'+
     '<div class="setup">'+
       '<p class="orline">or set one up yourself</p>'+
       '<div class="row"><span class="label">Length</span><br>'+seg("mxN","data-n",mockCfg.n,[[15,"15"],[25,"25"],[40,"40"],[60,"60"]])+'</div>'+
       '<div class="row"><span class="label">Question types</span><br>'+seg("mxT","data-t",mockCfg.types,[["all","Everything"],["mc","Multiple choice"],["tf","True / false"],["ap","Application"]])+'</div>'+
       '<div class="row"><span class="label">Topics</span><br>'+seg("mxP","data-p",mockCfg.topic,[["all","All six"]].concat(CHAPTERS.map(function(tp){ return [tp, CH[tp].short]; })))+'</div>'+
-      '<div class="row"><span class="label">Where it comes from</span><br>'+seg("mxF","data-f",mockCfg.focus,[["all","Everything"],["misses","My misses"],["ps","Problem-set style"],["rest","The readings"]])+'</div>'+
+      '<div class="row"><span class="label">Where it comes from</span><br>'+seg("mxF","data-f",mockCfg.focus,[["all","Everything"],["exam1","Missed on Exam 1"],["misses","Missed on problem sets"],["ps","Problem-set and exam style"],["rest","The readings"]])+'</div>'+
       '<p class="setnote">'+REVIEW_NOTE+'</p>'+
       '<div class="row" style="margin-top:22px"><button class="btn primary" type="button" id="mxStart">Start</button></div>'+
     '</div></div></div>';
@@ -3555,6 +3665,7 @@ function renderMockSetup(){
   segWire("#mxF","data-f",function(v){ mockCfg.focus = v; store.set("mockcfg", JSON.stringify(mockCfg)); });
   $("#mxStart").addEventListener("click", function(){ startMock(null); });
   $("#mxFifty").addEventListener("click", startFifty);
+  $("#mxExam1").addEventListener("click", startExam1);
   engines.mock = null;
 }
 
@@ -3619,7 +3730,7 @@ function renderPracticeSetup(){
       '<div class="row"><span class="label">One formula only</span><br><select id="pxG" class="pxsel" aria-label="One formula only"><option value="">All of them</option>'+
         gens.map(function(g){ return '<option value="'+g.id+'"'+(practiceCfg.gen === g.id ? ' selected' : '')+'>'+g.name+'</option>'; }).join("")+'</select></div>'+
       '<div class="row"><span class="label">How you answer</span><br>'+seg("pxF","data-f",practiceCfg.format,[["mixed","Mixed"],["type","Type the answer"],["mc","Tap an answer"]])+'</div>'+
-      '<div class="row"><span class="label">Numbers</span><br>'+seg("pxS","data-s",practiceCfg.source,[["mixed","Mixed"],["fresh","New numbers"],["class","Class and problem-set problems"]])+'</div>'+
+      '<div class="row"><span class="label">Numbers</span><br>'+seg("pxS","data-s",practiceCfg.source,[["mixed","Mixed"],["fresh","New numbers"],["class","Class and problem-set problems"],["exam","Exam 1 problems"]])+'</div>'+
       '<div class="row"><span class="label">How many</span><br>'+seg("pxN","data-n",practiceCfg.n,[[10,"10"],[20,"20"],[40,"40"]])+'</div>'+
       '<div class="row" style="margin-top:22px"><button class="btn primary" type="button" id="pxStart">Start</button></div>'+
     '</div></div></div>';

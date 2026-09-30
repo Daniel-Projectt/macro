@@ -20,6 +20,10 @@
     <button class="topic-btn" role="tab" data-topic="prices"   aria-selected="false">Prices</button>
     <button class="topic-btn" role="tab" data-topic="saving"   aria-selected="false">Saving</button>
     <button class="topic-btn" role="tab" data-topic="lf"       aria-selected="false">Loanable Funds</button>
+    <button class="topic-btn" role="tab" data-topic="money" aria-selected="false">Money</button>
+    <button class="topic-btn" role="tab" data-topic="tvm" aria-selected="false">Time Value</button>
+    <button class="topic-btn" role="tab" data-topic="bank" aria-selected="false">Banking</button>
+    <button class="topic-btn" role="tab" data-topic="fed" aria-selected="false">The Fed</button>
     <button class="topic-btn" role="tab" data-topic="guide"    aria-selected="false">Outline</button>
   </nav>
 
@@ -166,6 +170,74 @@
       </div>
       <div class="panel" data-panel="lf/match" hidden><div id="lfMatch"></div></div>
       <div class="panel" data-panel="lf/quiz" hidden><p class="hint">Definitions, the graph shifts and real-rate calculations.</p><div id="lfQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-money" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 6.</b> What money is (four attributes, four functions), commodity and fiat, the money supply measures, money demand, the liquidity preference model, and why more money lowers rates now and raises them later.</p>
+      <div class="modes"><div class="seg" data-modes="money">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="money/notes"><div id="moneyNotes"></div></div>
+      <div class="panel" data-panel="money/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="money"></div><button class="btn" type="button" data-shuffle="money">Shuffle deck</button></div>
+        <div id="moneyCards"></div>
+      </div>
+      <div class="panel" data-panel="money/match" hidden><div id="moneyMatch"></div></div>
+      <div class="panel" data-panel="money/quiz" hidden><div id="moneyQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-tvm" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 8.</b> Present value and discounting, future value and compounding (including continuous), several cash flows, depreciation, and simple vs compound interest &mdash; with fresh-number practice in Math Practice.</p>
+      <div class="modes"><div class="seg" data-modes="tvm">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="tvm/notes"><div id="tvmNotes"></div></div>
+      <div class="panel" data-panel="tvm/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="tvm"></div><button class="btn" type="button" data-shuffle="tvm">Shuffle deck</button></div>
+        <div id="tvmCards"></div>
+      </div>
+      <div class="panel" data-panel="tvm/match" hidden><div id="tvmMatch"></div></div>
+      <div class="panel" data-panel="tvm/quiz" hidden><div id="tvmQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-bank" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 13.</b> Fractional reserve banking, the bank T-account, the reserve ratio, how lending creates money, the money multiplier, and the class exercise.</p>
+      <div class="modes"><div class="seg" data-modes="bank">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="bank/notes"><div id="bankNotes"></div></div>
+      <div class="panel" data-panel="bank/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="bank"></div><button class="btn" type="button" data-shuffle="bank">Shuffle deck</button></div>
+        <div id="bankCards"></div>
+      </div>
+      <div class="panel" data-panel="bank/match" hidden><div id="bankMatch"></div></div>
+      <div class="panel" data-panel="bank/quiz" hidden><div id="bankQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-fed" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 20&ndash;27.</b> The dual mandate, the Fed&rsquo;s structure and five functions, the six tools, the market for reserves (scarce and abundant), the three difficulties, and rules vs discretion.</p>
+      <div class="modes"><div class="seg" data-modes="fed">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="fed/notes"><div id="fedNotes"></div></div>
+      <div class="panel" data-panel="fed/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="fed"></div><button class="btn" type="button" data-shuffle="fed">Shuffle deck</button></div>
+        <div id="fedCards"></div>
+      </div>
+      <div class="panel" data-panel="fed/match" hidden><div id="fedMatch"></div></div>
+      <div class="panel" data-panel="fed/quiz" hidden><div id="fedQuiz"></div></div>
     </section>
 
     <!-- ================= FORMULAS ================= -->

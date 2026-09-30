@@ -268,3 +268,6 @@
 .lfg figcaption{font-size:14px;line-height:1.5;color:var(--ink-soft);margin-top:4px}
 .lfgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 18px;margin:10px 0 18px}
 .lfgrid .lfg{margin:6px auto}
+.lfg .band{fill:var(--gold-soft);opacity:.18}
+.lfg .cv.dash{stroke-dasharray:5 4}
+.lfg .cl.sm{font-family:var(--sans);font-size:9px;letter-spacing:.04em}

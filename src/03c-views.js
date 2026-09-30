@@ -97,6 +97,10 @@ function startExam1(){
   engines.mock = makeQuiz($("#mockExam"), exam1Questions, {showTopic:true, showTier:true, againLabel:"Exam 1 again", onSetup:renderMockSetup});
   engines.mock.start(null);
 }
+function startExam2(){
+  engines.mock = makeQuiz($("#mockExam"), function(){ return finalFifty(33, UNIT2); }, {showTopic:true, showTier:true, againLabel:"Another thirty-three", onSetup:renderMockSetup});
+  engines.mock.start(null);
+}
 function renderMockSetup(){
   var root = $("#mockExam");
   function seg(id, attr, val, list){
@@ -104,8 +108,10 @@ function renderMockSetup(){
   }
   root.innerHTML = '<div class="quizWrap"><div class="qcard card-corners">'+CORNERS+
     '<div class="qnum">Practice exam</div><p class="qtext">Set it up, then answer across the topics. Each run is drawn fresh.</p>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxFifty">The 38 &mdash; the exam&rsquo;s length, every section</button>'+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxFifty">The 38 &mdash; Exam 1&rsquo;s length, every Unit 1 section</button>'+
       '<p>Thirty-eight questions &mdash; the exam&rsquo;s length &mdash; at least one from each of the 24 sections, your misses first. Drawn fresh each time.</p></div>'+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxExam2">Exam 2 set &mdash; 33 questions, Unit 2</button>'+
+      '<p>Exam 2&rsquo;s length (Tue Nov 10): loanable funds, money, time value, banking and the Fed, every section covered. Drawn fresh each time.</p></div>'+
     '<div class="fifty"><button class="btn primary" type="button" id="mxExam1">Exam 1 again &mdash; the real questions</button>'+
       '<p>Every multiple-choice question from the first exam, with your '+QB.filter(function(b){ return b.ex && b.m === 3; }).length+' misses marked. The fill-in calculations are in Math Practice &rarr; Numbers &rarr; <b>Exam 1 problems</b>.</p></div>'+
     '<div class="setup">'+
@@ -124,6 +130,7 @@ function renderMockSetup(){
   $("#mxStart").addEventListener("click", function(){ startMock(null); });
   $("#mxFifty").addEventListener("click", startFifty);
   $("#mxExam1").addEventListener("click", startExam1);
+  $("#mxExam2").addEventListener("click", startExam2);
   engines.mock = null;
 }
 
@@ -219,8 +226,8 @@ CHAPTERS.forEach(function(tp){
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","guide"];
-var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", formulas:"notes", exam:"mock", readings:"page"};
+var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","guide"];
+var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", money:"notes", tvm:"notes", bank:"notes", fed:"notes", formulas:"notes", exam:"mock", readings:"page"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });

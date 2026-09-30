@@ -10,7 +10,8 @@ var store = {
   set:function(k,v){ try{ localStorage.setItem("macro."+k, v); }catch(e){} }
 };
 var CORNERS = ['tl','tr','bl','br'].map(function(c){ return '<svg class="c '+c+'" aria-hidden="true"><use href="#corner"/></svg>'; }).join('');
-var CHAPTERS = ["gdp","growth","labor","prices","saving","lf","formulas"];
+var CHAPTERS = ["gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","formulas"];
+var UNIT1 = ["gdp","growth","labor","prices","saving","formulas"], UNIT2 = ["lf","money","tvm","bank","fed"];
 var TOPIC_NAMES = {};
 CHAPTERS.forEach(function(tp){ TOPIC_NAMES[tp] = CH[tp].short; });
 /* Every question and card carries the id of the study-guide section it belongs to */
@@ -226,10 +227,10 @@ function mockQuestions(cfg){
 /* The 38 for the exam — its real length. Every section of the outline is
    represented, two questions each, leaning towards the problem-set questions
    he missed without shutting out the readings.                              */
-function finalFifty(n){
-  n = n || 50;
+function finalFifty(n, unit){
+  n = n || 50; unit = unit || UNIT1;
   var secs = [], bySec = {};
-  GUIDE.sections.forEach(function(s){ s.items.forEach(function(it){ secs.push(it.id); bySec[it.id] = []; }); });
+  GUIDE.sections.forEach(function(s){ if(unit.indexOf(s.tp) < 0) return; s.items.forEach(function(it){ secs.push(it.id); bySec[it.id] = []; }); });
   QB.forEach(function(b, i){ if(!b.off && bySec[b.sec]) bySec[b.sec].push(fromBank(b, i)); });
   secs.forEach(function(id){
     bySec[id] = bySec[id].map(function(q){ return {q:q, r:(q.hot || 0) + Math.random()*1.8}; })

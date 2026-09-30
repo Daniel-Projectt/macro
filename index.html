@@ -554,6 +554,9 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
 .lfg figcaption{font-size:14px;line-height:1.5;color:var(--ink-soft);margin-top:4px}
 .lfgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 18px;margin:10px 0 18px}
 .lfgrid .lfg{margin:6px auto}
+.lfg .band{fill:var(--gold-soft);opacity:.18}
+.lfg .cv.dash{stroke-dasharray:5 4}
+.lfg .cl.sm{font-family:var(--sans);font-size:9px;letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -628,6 +631,10 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
     <button class="topic-btn" role="tab" data-topic="prices"   aria-selected="false">Prices</button>
     <button class="topic-btn" role="tab" data-topic="saving"   aria-selected="false">Saving</button>
     <button class="topic-btn" role="tab" data-topic="lf"       aria-selected="false">Loanable Funds</button>
+    <button class="topic-btn" role="tab" data-topic="money" aria-selected="false">Money</button>
+    <button class="topic-btn" role="tab" data-topic="tvm" aria-selected="false">Time Value</button>
+    <button class="topic-btn" role="tab" data-topic="bank" aria-selected="false">Banking</button>
+    <button class="topic-btn" role="tab" data-topic="fed" aria-selected="false">The Fed</button>
     <button class="topic-btn" role="tab" data-topic="guide"    aria-selected="false">Outline</button>
   </nav>
 
@@ -774,6 +781,74 @@ kbd{font-family:var(--sans);font-size:10px;border:1px solid var(--line-strong);b
       </div>
       <div class="panel" data-panel="lf/match" hidden><div id="lfMatch"></div></div>
       <div class="panel" data-panel="lf/quiz" hidden><p class="hint">Definitions, the graph shifts and real-rate calculations.</p><div id="lfQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-money" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 6.</b> What money is (four attributes, four functions), commodity and fiat, the money supply measures, money demand, the liquidity preference model, and why more money lowers rates now and raises them later.</p>
+      <div class="modes"><div class="seg" data-modes="money">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="money/notes"><div id="moneyNotes"></div></div>
+      <div class="panel" data-panel="money/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="money"></div><button class="btn" type="button" data-shuffle="money">Shuffle deck</button></div>
+        <div id="moneyCards"></div>
+      </div>
+      <div class="panel" data-panel="money/match" hidden><div id="moneyMatch"></div></div>
+      <div class="panel" data-panel="money/quiz" hidden><div id="moneyQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-tvm" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 8.</b> Present value and discounting, future value and compounding (including continuous), several cash flows, depreciation, and simple vs compound interest &mdash; with fresh-number practice in Math Practice.</p>
+      <div class="modes"><div class="seg" data-modes="tvm">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="tvm/notes"><div id="tvmNotes"></div></div>
+      <div class="panel" data-panel="tvm/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="tvm"></div><button class="btn" type="button" data-shuffle="tvm">Shuffle deck</button></div>
+        <div id="tvmCards"></div>
+      </div>
+      <div class="panel" data-panel="tvm/match" hidden><div id="tvmMatch"></div></div>
+      <div class="panel" data-panel="tvm/quiz" hidden><div id="tvmQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-bank" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 13.</b> Fractional reserve banking, the bank T-account, the reserve ratio, how lending creates money, the money multiplier, and the class exercise.</p>
+      <div class="modes"><div class="seg" data-modes="bank">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="bank/notes"><div id="bankNotes"></div></div>
+      <div class="panel" data-panel="bank/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="bank"></div><button class="btn" type="button" data-shuffle="bank">Shuffle deck</button></div>
+        <div id="bankCards"></div>
+      </div>
+      <div class="panel" data-panel="bank/match" hidden><div id="bankMatch"></div></div>
+      <div class="panel" data-panel="bank/quiz" hidden><div id="bankQuiz"></div></div>
+    </section>
+
+    <section class="topic" id="topic-fed" hidden>
+      <p class="intro"><b>Unit 2 &middot; Oct 20&ndash;27.</b> The dual mandate, the Fed&rsquo;s structure and five functions, the six tools, the market for reserves (scarce and abundant), the three difficulties, and rules vs discretion.</p>
+      <div class="modes"><div class="seg" data-modes="fed">
+        <button type="button" data-mode="notes" aria-pressed="true">Notes</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Flashcards</button>
+        <button type="button" data-mode="match" aria-pressed="false">Match</button>
+        <button type="button" data-mode="quiz" aria-pressed="false">Quiz</button>
+      </div></div>
+      <div class="panel" data-panel="fed/notes"><div id="fedNotes"></div></div>
+      <div class="panel" data-panel="fed/cards" hidden>
+        <div class="toolbar"><span class="label">Deck</span><div class="seg" data-decks="fed"></div><button class="btn" type="button" data-shuffle="fed">Shuffle deck</button></div>
+        <div id="fedCards"></div>
+      </div>
+      <div class="panel" data-panel="fed/match" hidden><div id="fedMatch"></div></div>
+      <div class="panel" data-panel="fed/quiz" hidden><div id="fedQuiz"></div></div>
     </section>
 
     <!-- ================= FORMULAS ================= -->
@@ -3420,6 +3495,894 @@ GEN_BY_ID["lf-fisher"] = GENS[GENS.length - 2]; GEN_BY_ID["lf-shift"] = GENS[GEN
            P("b", "the real rate if inflation is 6%", -1, 1, "%", "5 − 6 = −1%. Purchasing power is lost.", {signed:true, wrong:[1, 11, 0]})]};
   }}].forEach(function(f){ f.topic = GEN_BY_ID[f.gen].topic; FIXED.push(f); FIXED_BY_ID[f.id] = f; });
 
+/* ================================================================ money and liquidity preference (Unit 2)
+   Lecture, Oct 6: "The Liquidity Preference Model and the Nominal Interest Rate" (1:01:30).
+   Barter and Menger, what money is, its four attributes and four functions,
+   commodity vs fiat, the four measures, money demand, the model, and the four
+   effects of more money (short run down, long run up).                      */
+
+/* liquidity preference: a vertical money supply (shifted by dS) and a falling money demand (shifted by dD) */
+function lpGraph(caption, dS, dD){
+  var k = 140 / 180, L = 46, R = 256, T = 22, B = 188;
+  function dY(x, d){ return 40 + k * (x - 60 - d); }
+  function ln(x1, y1, x2, y2, cls){ return '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" class="' + cls + '"/>'; }
+  function dLine(d, cls){ var x1 = Math.max(L + 4, 60 + d), x2 = Math.min(R - 2, 240 + d); return ln(x1, dY(x1, d), x2, dY(x2, d), cls); }
+  function drops(x, y, lab, cls){
+    return ln(L, y, x, y, "drop " + cls) + ln(x, y, x, B, "drop " + cls) + '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3.2" class="dot ' + cls + '"/>' +
+      '<text x="' + (L - 5) + '" y="' + (y + 4).toFixed(1) + '" class="lab ' + cls + '" text-anchor="end">n' + lab + '</text>' +
+      '<text x="' + x.toFixed(1) + '" y="' + (B + 13) + '" class="lab ' + cls + '" text-anchor="middle">M' + lab + '</text>';
+  }
+  var x0 = 150, svg = ln(L, T, L, B, "ax") + ln(L, B, R + 6, B, "ax");
+  svg += ln(x0, T + 6, x0, B, "cv") + '<text x="' + (x0 + 4) + '" y="' + (T + 10) + '" class="cl">MS</text>';
+  svg += dLine(0, "cv") + '<text x="' + (240 + 2) + '" y="' + (dY(240, 0) - 2).toFixed(1) + '" class="cl">MD</text>';
+  if(dS || dD){
+    var x1 = x0 + dS;
+    if(dS) svg += ln(x1, T + 6, x1, B, "cv new") + '<text x="' + (x1 + 4) + '" y="' + (T + 22) + '" class="cl new">MS₂</text>';
+    if(dD) svg += dLine(dD, "cv new") + '<text x="' + Math.min(R - 20, 240 + dD + 2) + '" y="' + (dY(Math.min(R - 20, 240 + dD), dD) - 4).toFixed(1) + '" class="cl new">MD₂</text>';
+    svg += drops(x0, dY(x0, 0), "₁", "old") + drops(x1, dY(x1, dD), "₂", "new");
+    if(!dS) svg = svg.replace(/<text[^>]*class="lab new"[^>]*text-anchor="middle">M₂<\/text>/, "").replace(/(text-anchor="middle">)M₁</, "$1M₁ = M₂<");
+  } else svg += drops(x0, dY(x0, 0), "*", "old");
+  svg += '<text x="' + (L - 30) + '" y="' + ((T + B) / 2) + '" class="axl" transform="rotate(-90 ' + (L - 30) + ' ' + ((T + B) / 2) + ')" text-anchor="middle">Nominal interest rate</text>';
+  svg += '<text x="' + ((L + R) / 2) + '" y="' + (B + 30) + '" class="axl" text-anchor="middle">Quantity of money</text>';
+  return '<figure class="lfg"><svg viewBox="0 0 280 226" role="img" aria-label="' + strip(caption) + '">' + svg + '</svg><figcaption>' + caption + '</figcaption></figure>';
+}
+
+CH.money = {n:7, title:"Money and the Liquidity Preference Model", short:"Money",
+ notes:[
+  {id:"mon-what", h:"What Money Is", body:
+   '<div class="point"><b>The point</b><p><b>Money</b> is anything <b>generally accepted</b> in payment for goods and services and in the repayment of debt. It grew <b>spontaneously out of barter</b> (Menger), because it removes the need for a <b>double coincidence of wants</b> and lowers transaction costs. Money is <b>not income and not wealth</b>.</p><p class="able"><b>Be able to</b> define barter and the double coincidence of wants, give the four attributes of good money and the four functions (medium of exchange is the most important), and tell commodity from fiat money.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 6 &middot; Problem Set 6</span></p>'+
+   '<h3 class="sub" id="mon-barter">Barter, and where money comes from</h3>'+
+   '<ul><li><b>Barter:</b> exchanging one good or service for another directly (an accountant trades for a haircut).</li>'+
+   '<li><b>Double coincidence of wants:</b> each person has what the other wants. It rarely happens, and every trade needs its own deal.</li>'+
+   '<li><b>Carl Menger:</b> traders swap for goods <b>more likely to be wanted</b>; the most salable goods win a &ldquo;horse race&rdquo; and become money. It happens <b>spontaneously</b>, without needing government.</li>'+
+   '<li>Money matters because it <b>lowers transaction costs</b>, so there is more exchange.</li>'+
+   '<li><b>Money is not income</b> (payment through time) <b>and not wealth</b> (your stock of assets). Bitcoin? &ldquo;Not really, at this point&rdquo;: not generally accepted.</li></ul>'+
+   '<h3 class="sub" id="mon-attr">Four attributes of good money</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c2"><tbody>'+
+   '<tr><td class="head">Divisible</td><td class="sm">Splits easily for trade. Livestock fails (&ldquo;worth a hoof&rdquo;).</td></tr>'+
+   '<tr><td class="head">Durable</td><td class="sm">Not easily damaged. Bread fails; metals pass.</td></tr>'+
+   '<tr><td class="head">Scarce</td><td class="sm">Not easily reproduced. Leaves and grass clippings fail.</td></tr>'+
+   '<tr><td class="head">Transportable</td><td class="sm">Easy to carry over distance: coins, then paper, now electronic.</td></tr></tbody></table></div>'+
+   '<p>Good money needs <b>all four</b>. Hook: <b>D-D-S-T</b> &mdash; &ldquo;Divide, Don&rsquo;t Spoil, Scarce, Take it with you.&rdquo;</p>'+
+   '<h3 class="sub" id="mon-func">Four functions of money</h3>'+
+   '<ol><li><b>Medium of exchange</b> &mdash; a mutually acceptable means of transaction. <b>The most important function</b>: &ldquo;if something is not a medium of exchange we won&rsquo;t call it money.&rdquo;</li>'+
+   '<li><b>Unit of account</b> &mdash; how prices are posted and debts recorded ($5 vs $3 at a glance).</li>'+
+   '<li><b>Store of value</b> &mdash; transfers purchasing power through time. Not unique to money; lost under hyperinflation.</li>'+
+   '<li><b>Standard of deferred payment</b> &mdash; future payments (a mortgage, wages) are owed in money, not marbles or fruitcakes.</li></ol>'+
+   '<h3 class="sub" id="mon-kinds">Commodity and fiat money</h3>'+
+   '<ul><li><b>Commodity money</b> has <b>intrinsic value</b>, value apart from being money: gold, silver, copper coins, and <b>cigarettes in WWII POW camps</b> (they could be smoked).</li>'+
+   '<li><b>Fiat money</b> has <b>no intrinsic value</b>: the dollar, euro, yen. It is valuable only because it is generally accepted and because taxes and debts to the government must be paid in it.</li></ul>'},
+
+  {id:"mon-measure", h:"Measuring the Money Supply", body:
+   '<div class="point"><b>The point</b><p>The Fed defines the money supply as &ldquo;the group of <b>safe assets</b> that households and businesses can use to make payments or hold as short-term investments.&rdquo; It is <b>not just currency</b>. Four measures, narrow to broad: currency, the <b>monetary base</b>, <b>M1</b>, <b>M2</b>.</p><p class="able"><b>Be able to</b> list what is in each measure, and never confuse the monetary base with M1.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 6 &middot; &ldquo;please don&rsquo;t confuse M1 and the monetary base&rdquo;</span></p>'+
+   '<h3 class="sub" id="mon-m">The four measures</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c2"><tbody>'+
+   '<tr><td class="head">Currency</td><td class="sm">Paper bills (Federal Reserve notes) and coins.</td></tr>'+
+   '<tr><td class="head">Monetary base</td><td class="sm"><b>Currency + bank reserves.</b></td></tr>'+
+   '<tr><td class="head">M1</td><td class="sm"><b>Currency + checking (demand deposits) + savings accounts</b> &mdash; savings added in <b>February 2021</b>; the Fed&rsquo;s weekly <b>H.6</b> report.</td></tr>'+
+   '<tr><td class="head">M2</td><td class="sm"><b>M1 + small time deposits</b> (CDs under $100,000) <b>+ retail money market funds.</b></td></tr></tbody></table></div>'+
+   '<ul><li><b>The trap:</b> M1 does <b>not</b> include bank reserves, and the monetary base does <b>not</b> include checking or savings. They share only currency.</li>'+
+   '<li><b>MZM</b> (money of zero maturity) is broader still, but beyond this course.</li></ul>'},
+
+  {id:"mon-lp", h:"Money Demand and the Liquidity Preference Model", body:
+   '<div class="point"><b>The point</b><p>The liquidity preference model is a supply and demand model that sets a representative <b>nominal</b> interest rate in the <b>short run</b>. <b>Money supply is vertical</b> (the Fed controls it); <b>money demand slopes down</b> (a higher rate raises the opportunity cost of holding money). &ldquo;The biggest mistake I see is they combine or confuse the two models.&rdquo;</p><p class="able"><b>Be able to</b> draw it with the right axes, give the three reasons to hold money and the four money-demand shifters, and find the new rate and quantity after any shift.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 6 &middot; on the Exam 2 and Final graph lists</span></p>'+
+   '<h3 class="sub" id="mon-demand">Money demand</h3>'+
+   '<ul><li><b>Money demand</b> = &ldquo;the desired holdings of your financial assets in the form of money.&rdquo; It is a <b>choice</b>.</li>'+
+   '<li><b>Three reasons to hold money:</b> <b>transactions</b> (rent, groceries, gas), <b>precaution</b> (a leaky pipe, a breakdown), <b>speculation</b> (waiting to buy a stock or bond when it dips).</li>'+
+   '<li><b>Slopes down:</b> a higher nominal rate means you give up more bond interest by holding money, so you hold less &mdash; a move <b>along</b> the curve.</li>'+
+   '<li><b>Four shifters:</b> (1) <b>income</b> (more transactions, more saving); (2) the <b>aggregate price level</b> (higher prices need more money &ldquo;to keep consumption constant&rdquo;); (3) <b>preferences</b> (skeptics of stocks hold more money); (4) <b>policy</b>.</li></ul>'+
+   '<h3 class="sub" id="mon-model">The model</h3>'+
+   lpGraph("Money supply is vertical at the amount the Fed sets; money demand slopes down. They meet at n*.", 0, 0)+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th></th><th>Loanable funds</th><th>Liquidity preference</th></tr></thead><tbody>'+
+   '<tr><td class="head">Vertical axis</td><td class="sm"><b>Real</b> interest rate</td><td class="sm"><b>Nominal</b> interest rate</td></tr>'+
+   '<tr><td class="head">Horizontal axis</td><td class="sm">Loanable funds</td><td class="sm">Quantity of money</td></tr>'+
+   '<tr><td class="head">Supply</td><td class="sm">Saving (slopes up)</td><td class="sm">Money supply (vertical)</td></tr>'+
+   '<tr><td class="head">Demand</td><td class="sm">Investment</td><td class="sm">Money demand</td></tr>'+
+   '<tr><td class="head">Time frame</td><td class="sm">Long run</td><td class="sm">Short run</td></tr></tbody></table></div>'+
+   '<ul><li><b>Money supply shifts right</b> when the central bank increases it, or when money substitutes grow (Bitcoin becoming accepted); <b>left</b> for the opposite.</li></ul>'+
+   '<h3 class="sub" id="mon-shifts">The shifts</h3>'+
+   '<div class="lfgrid">'+
+   lpGraph("<b>Income &uarr;</b>: MD shifts right. <b>n rises; quantity of money unchanged.</b>", 0, 45)+
+   lpGraph("<b>Fed increases MS</b>: MS shifts right. <b>n falls; quantity of money rises.</b>", 45, 0)+
+   '</div>'+
+   '<p><b>Memory hook:</b> money <b>demand</b> moves only the <b>rate</b> (the supply line is vertical); money <b>supply</b> moves the rate the <b>opposite</b> way and moves the quantity.</p>'},
+
+  {id:"mon-effects", h:"More Money: Short Run Down, Long Run Up", body:
+   '<div class="point"><b>The point</b><p>Does more money raise or lower nominal interest rates? <b>Both.</b> In the <b>short run</b> the <b>liquidity effect</b> lowers the rate. In the <b>long run</b> three effects raise it: the <b>income</b>, <b>price level</b> and <b>expected inflation</b> effects.</p><p class="able"><b>Be able to</b> name all four effects, say which way each pushes the rate and why, and connect the last one to the Fisher identity.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 6 &middot; his closing point</span></p>'+
+   '<h3 class="sub" id="mon-four">The four effects</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>Effect</th><th>When</th><th>Why</th></tr></thead><tbody>'+
+   '<tr><td class="head">Liquidity (Friedman)</td><td class="sm"><b>Short run: n falls</b></td><td class="sm">More money, each unit worth less; the graph above.</td></tr>'+
+   '<tr><td class="head">Income</td><td class="sm">Long run: n rises</td><td class="sm">More money stimulates the economy, incomes rise, MD shifts right.</td></tr>'+
+   '<tr><td class="head">Price level</td><td class="sm">Long run: n rises</td><td class="sm">Prices rise (quantity theory); more money needed, MD shifts right.</td></tr>'+
+   '<tr><td class="head">Expected inflation</td><td class="sm">Long run: n rises</td><td class="sm">r = n &minus; &pi;<sup>e</sup>: if &pi;<sup>e</sup> rises, lenders demand a higher n to keep r.</td></tr></tbody></table></div>'+
+   '<p><b>Hook:</b> <b>L</b>ower first, then <b>I-P-E</b> push it back up &mdash; &ldquo;<b>L</b>ater, <b>I P E</b> rise.&rdquo;</p>'}
+ ],
+ decks:[
+  {id:"terms", label:"Key terms", cards:[
+   ["Barter","Exchanging one good or service for another directly","g-mon-what"],
+   ["Double coincidence of wants","When two people each have a good or service the other wants","g-mon-what"],
+   ["Carl Menger","Money emerges spontaneously out of barter as the most salable goods win out","g-mon-what"],
+   ["Money","Anything generally accepted in payment for goods and services and the repayment of debt","g-mon-what"],
+   ["Commodity money","Money with intrinsic value — gold, silver, cigarettes in POW camps","g-mon-what"],
+   ["Fiat money","Money with no intrinsic value — the dollar, euro, yen","g-mon-what"],
+   ["Monetary base","Currency + bank reserves","g-mon-measure"],
+   ["M1","Currency + checking deposits + savings accounts (savings since Feb 2021)","g-mon-measure"],
+   ["M2","M1 + small time deposits (CDs under $100,000) + retail money market funds","g-mon-measure"],
+   ["Money supply (Fed definition)","The group of safe assets households and businesses can use to make payments or hold as short-term investments","g-mon-measure"],
+   ["Money demand","The desired holdings of your financial assets in the form of money","g-mon-lp"],
+   ["Liquidity preference model","A supply and demand model that sets a representative nominal interest rate in the short run","g-mon-lp"],
+   ["Liquidity effect","Short run: more money lowers the nominal interest rate (Friedman)","g-mon-effects"],
+   ["Expected inflation effect","Long run: more money raises expected inflation, so lenders demand a higher nominal rate","g-mon-effects"]]},
+  {id:"lists", label:"Lists and shifts", cards:[
+   ["Four attributes of good money","Divisible, durable, scarce, transportable","g-mon-what"],
+   ["Four functions of money","Medium of exchange, unit of account, store of value, standard of deferred payment","g-mon-what"],
+   ["The most important function","Medium of exchange","g-mon-what"],
+   ["Three reasons to hold money","Transactions, precaution, speculation","g-mon-lp"],
+   ["Four money-demand shifters","Income, the aggregate price level, preferences, policy","g-mon-lp"],
+   ["Money supply curve shape","Vertical — the Fed controls the amount","g-mon-lp"],
+   ["Money demand slopes down because","A higher nominal rate raises the opportunity cost of holding money","g-mon-lp"],
+   ["Income rises","MD shifts right: n rises, quantity of money unchanged","g-mon-lp"],
+   ["Fed increases the money supply","MS shifts right: n falls, quantity of money rises","g-mon-lp"],
+   ["The three long-run effects","Income, price level and expected inflation effects — all raise n","g-mon-effects"],
+   ["Is Bitcoin money?","“Not really, at this point” — not generally accepted","g-mon-what"],
+   ["Money is not","Income (payment through time) or wealth (a stock of assets)","g-mon-what"]]}
+ ]
+};
+
+GUIDE.sections.splice(GUIDE.sections.length - 1, 0, {h:"Money and the Liquidity Preference Model", tp:"money", items:[
+ {id:"g-mon-what", t:"What Money Is", a:"mon-what",
+  short:"Money = anything generally accepted in payment and repayment of debt; it grew out of barter (Menger) and ends the double coincidence of wants. Four attributes: divisible, durable, scarce, transportable. Four functions: medium of exchange (most important), unit of account, store of value, standard of deferred payment. Commodity (intrinsic value) vs fiat.",
+  subs:[["Barter and Menger","mon-barter"],["Four attributes","mon-attr"],["Four functions","mon-func"],["Commodity and fiat","mon-kinds"]]},
+ {id:"g-mon-measure", t:"Measuring the Money Supply", a:"mon-measure",
+  short:"Currency; monetary base = currency + reserves; M1 = currency + checking + savings (since Feb 2021); M2 = M1 + small CDs + retail money market funds. M1 has no reserves; the base has no deposits.",
+  subs:[["The four measures","mon-m"]]},
+ {id:"g-mon-lp", t:"Money Demand and the Liquidity Preference Model", a:"mon-lp",
+  short:"Nominal rate, short run. MS vertical (Fed); MD slopes down (opportunity cost). Reasons to hold money: transactions, precaution, speculation. MD shifters: income, price level, preferences, policy. Income up: n up, Q same. MS up: n down, Q up.",
+  subs:[["Money demand","mon-demand"],["The model","mon-model"],["The shifts","mon-shifts"]]},
+ {id:"g-mon-effects", t:"More Money: Short Run Down, Long Run Up", a:"mon-effects",
+  short:"Liquidity effect: n falls in the short run. Income, price level and expected inflation effects: n rises in the long run.",
+  subs:[["The four effects","mon-four"]]}]});
+
+QB = QB.concat([
+ {tp:"money",sec:"g-mon-what",t:"mc",q:"A double coincidence of wants occurs when:",a:"two people each have a good or service that the other wants",w:["two people both want to hold money instead of goods","a buyer and seller agree on the price and on the currency","two goods are wanted by everyone in an economy at once"],e:"The accountant must want the haircut and the barber must want accounting. It rarely happens, which is why barter is costly."},
+ {tp:"money",sec:"g-mon-what",t:"mc",q:"According to Carl Menger, money:",a:"emerges spontaneously out of barter as the most salable goods become media of exchange",w:["must be created and declared legal tender by a government before it can exist","was invented by banks so that they could lend and earn interest","appears only once an economy has a central bank to issue it"],e:"A “horse race” among goods; government could be involved but isn’t needed."},
+ {tp:"money",sec:"g-mon-what",t:"mc",q:"Money is best defined as:",a:"anything generally accepted in payment for goods and services and in the repayment of debt",w:["the total value of a person’s assets minus their debts","the income a person earns over a period of time","only the paper currency and coins issued by a government"],e:"His definition. Money is not wealth (a stock of assets) and not income (payment through time)."},
+ {tp:"money",sec:"g-mon-what",t:"mc",q:"Which is NOT one of the four attributes of good money?",a:"Intrinsic value",w:["Divisible","Durable","Transportable"],e:"The four are divisible, durable, scarce and transportable. Intrinsic value is what makes money commodity money; fiat money has none."},
+ {tp:"money",sec:"g-mon-what",t:"mc",q:"Which function of money did the lecture call the most important?",a:"Medium of exchange",w:["Unit of account","Store of value","Standard of deferred payment"],e:"“If something is not a medium of exchange we won’t call it money.”"},
+ {tp:"money",sec:"g-mon-what",t:"mc",q:"Posting prices as $5 and $3 so buyers can compare them instantly shows money working as a:",a:"unit of account",w:["medium of exchange","store of value","standard of deferred payment"],e:"The unit of account is how prices are posted and debts recorded."},
+ {tp:"money",sec:"g-mon-what",t:"mc",q:"A mortgage payment due next year must be paid in dollars, not in marbles. That is money as a:",a:"standard of deferred payment",w:["unit of account","medium of exchange","store of value"],e:"Future payments are expected in money."},
+ {tp:"money",sec:"g-mon-what",ap:true,t:"mc",q:"In WWII prisoner-of-war camps, cigarettes from Red Cross packages became money. They were:",a:"commodity money, because they had value apart from being money",w:["fiat money, because the guards declared them legal tender","fiat money, because they had no intrinsic value","not money, because a government did not issue them"],e:"They could be smoked: intrinsic value, so commodity money. And general acceptance, not government, made them money."},
+ {tp:"money",sec:"g-mon-what",ap:true,t:"mc",q:"Bread could in principle be money, but it fails as good money mainly because it is not:",a:"durable",w:["divisible","transportable","a medium of exchange by law"],e:"It goes stale and moldy in days. Metals pass the durability test."},
+ {tp:"money",sec:"g-mon-what",t:"tf",q:"The U.S. dollar is fiat money: it has value only because it is generally accepted and taxes and debts to the government must be paid in it.",a:true,e:"True. The paper and ink are nearly worthless; if everyone stopped accepting it, it would be worthless."},
+ {tp:"money",sec:"g-mon-what",t:"tf",q:"Money and wealth are the same thing.",a:false,e:"False. Wealth is your stock of assets (a house, stocks); income is payment through time; money is the intermediary in exchange. He stressed not using them interchangeably."},
+
+ {tp:"money",sec:"g-mon-measure",t:"mc",q:"The monetary base is:",a:"currency plus bank reserves",w:["currency plus checking and savings accounts","M1 plus small time deposits","currency only"],e:"Currency + reserves. Don’t confuse it with M1."},
+ {tp:"money",sec:"g-mon-measure",t:"mc",q:"M1 includes:",a:"currency, checking deposits and savings accounts",w:["currency and bank reserves","currency, checking deposits and bank reserves","small CDs and retail money market funds"],e:"Savings accounts were added in February 2021. M1 has no bank reserves."},
+ {tp:"money",sec:"g-mon-measure",t:"mc",q:"M2 equals:",a:"M1 plus small time deposits and retail money market funds",w:["M1 plus bank reserves","the monetary base plus checking deposits","currency plus all government bonds"],e:"Small time deposits are CDs under $100,000."},
+ {tp:"money",sec:"g-mon-measure",t:"mc",q:"What do M1 and the monetary base have in common?",a:"Only currency",w:["Currency and bank reserves","Currency and checking deposits","Nothing at all"],e:"The base adds reserves; M1 adds checking and savings deposits. “Please don’t confuse M1 and the monetary base.”"},
+ {tp:"money",sec:"g-mon-measure",ap:true,t:"mc",q:"A bank adds $1 million to its reserves at the Fed, with nothing else changing. Which measure goes up?",a:"The monetary base",w:["M1","M2","All three: the base, M1 and M2"],e:"Reserves are in the monetary base but not in M1 or M2."},
+ {tp:"money",sec:"g-mon-measure",t:"mc",q:"In February 2021 the Fed changed M1 by:",a:"adding savings accounts",w:["removing checking accounts","adding bank reserves","adding retail money market funds"],e:"Savings accounts moved into M1 (reported weekly in the H.6)."},
+ {tp:"money",sec:"g-mon-measure",t:"tf",q:"The money supply is just the currency in circulation.",a:false,e:"False. He stressed it: the money supply is a group of safe assets — the base, M1 and M2 go well beyond currency."},
+
+ {tp:"money",sec:"g-mon-lp",t:"mc",q:"The liquidity preference model determines:",a:"a representative nominal interest rate in the short run",w:["a representative real interest rate in the long run","the federal funds rate in an abundant reserve regime","the long-run growth rate of real GDP"],e:"Loanable funds is real and long run; liquidity preference is nominal and short run."},
+ {tp:"money",sec:"g-mon-lp",t:"mc",q:"In the liquidity preference model, the money supply curve is:",a:"vertical, because the central bank controls the amount",w:["upward sloping, because higher rates raise saving","downward sloping, because of the opportunity cost of money","horizontal, at the rate the central bank sets"],e:"Perfectly inelastic: the Fed sets the quantity."},
+ {tp:"money",sec:"g-mon-lp",t:"mc",q:"Money demand slopes down because a higher nominal interest rate:",a:"raises the opportunity cost of holding money",w:["raises the amount of money the Fed supplies","lowers the price level","makes bonds less attractive to hold"],e:"You give up more bond interest by holding money, so you hold less — a move along the curve."},
+ {tp:"money",sec:"g-mon-lp",t:"mc",q:"Which are the three reasons people hold money?",a:"Transactions, precaution and speculation",w:["Saving, investment and consumption","Income, prices and preferences","Divisibility, durability and scarcity"],e:"Paying rent and groceries, a leaky pipe, and waiting to buy a stock when it dips."},
+ {tp:"money",sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"Incomes rise across the economy. In the liquidity preference model:",a:"money demand shifts right: the nominal rate rises and the quantity of money is unchanged",w:["money supply shifts right: the nominal rate falls and the quantity of money rises","money demand shifts right: the nominal rate rises and the quantity of money rises","money demand shifts left: the nominal rate falls and the quantity of money is unchanged"],e:"With a vertical money supply, only the rate moves when demand shifts."},
+ {tp:"money",sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"The Fed increases the money supply. In the liquidity preference model:",a:"the nominal rate falls and the quantity of money rises",w:["the nominal rate rises and the quantity of money rises","the nominal rate falls and the quantity of money is unchanged","the real rate falls and the quantity of loanable funds rises"],e:"MS shifts right along the money demand curve: point A to B."},
+ {tp:"money",sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"The aggregate price level rises, holding consumption constant. In the liquidity preference model:",a:"money demand shifts right and the nominal rate rises",w:["money supply shifts left and the nominal rate rises","money demand shifts left and the nominal rate falls","nothing changes, since prices are not in the model"],e:"More money is needed “just to keep consumption constant.”"},
+ {tp:"money",sec:"g-mon-lp",ap:true,t:"mc",q:"Bitcoin becomes a generally accepted substitute for money. In the liquidity preference model, the money supply:",a:"shifts right, lowering the nominal rate",w:["shifts left, raising the nominal rate","does not change, since only the Fed can shift it","becomes upward sloping"],e:"More money substitutes shift money supply right, his own example."},
+ {tp:"money",sec:"g-mon-lp",t:"mc",q:"What did he call the biggest mistake students make in this section?",a:"Combining or confusing the loanable funds and liquidity preference models",w:["Drawing the money supply curve upward sloping","Forgetting that money demand has four shifters","Using the real rate for loanable funds"],e:"Keep them apart: real, long run, saving and investment vs nominal, short run, money supply and demand."},
+ {tp:"money",sec:"g-mon-lp",t:"tf",q:"In the liquidity preference model, the vertical axis is the real interest rate.",a:false,e:"False. It is the nominal interest rate; the horizontal axis is the quantity of money. The real rate is loanable funds."},
+ {tp:"money",sec:"g-mon-lp",t:"tf",q:"A rise in money demand, with the money supply unchanged, raises the nominal interest rate but leaves the quantity of money the same.",a:true,e:"True — the money supply line is vertical, so only the rate moves."},
+
+ {tp:"money",sec:"g-mon-effects",t:"mc",q:"When the money supply increases, nominal interest rates:",a:"fall in the short run and rise in the long run",w:["rise in the short run and fall in the long run","fall in both the short run and the long run","rise in both the short run and the long run"],e:"Liquidity effect first; then income, price level and expected inflation effects push it up."},
+ {tp:"money",sec:"g-mon-effects",t:"mc",q:"The liquidity effect, from Milton Friedman, says that more money:",a:"lowers the nominal interest rate in the short run",w:["raises the nominal interest rate in the long run","raises incomes and so money demand","raises expected inflation"],e:"It is the graph: MS shifts right, n falls. Each unit of money is worth less (“if the number of apples doubled…”)."},
+ {tp:"money",sec:"g-mon-effects",t:"mc",q:"Which is NOT one of the effects that raise nominal rates in the long run after the money supply increases?",a:"The liquidity effect",w:["The income effect","The price level effect","The expected inflation effect"],e:"The liquidity effect is the short-run one that lowers the rate."},
+ {tp:"money",sec:"g-mon-effects",t:"mc",q:"The expected inflation effect works through:",a:"the Fisher identity: if expected inflation rises, lenders demand a higher nominal rate to keep the real rate",w:["the quantity theory: more money raises prices, so the price level rises","the income effect: more money raises incomes, so money demand rises","the liquidity effect: more money makes each unit of money worth less"],e:"r = n − πᵉ. A bank making home loans or a saver for retirement wants n to rise with πᵉ."},
+ {tp:"money",sec:"g-mon-effects",ap:true,t:"mc",q:"After the money supply rises, prices climb over time, so people need more money to buy the same things. This is the:",a:"price level effect, which raises the nominal rate",w:["liquidity effect, which lowers the nominal rate","income effect, which lowers the nominal rate","expected inflation effect, which lowers the real rate"],e:"Higher prices shift money demand right “just to keep consumption constant.”"},
+ {tp:"money",sec:"g-mon-effects",ap:true,t:"mc",q:"More money stimulates the economy and incomes rise, so households demand more money. This is the:",a:"income effect",w:["liquidity effect","price level effect","expected inflation effect"],e:"Higher income shifts money demand right, raising n in the long run."},
+ {tp:"money",sec:"g-mon-effects",t:"tf",q:"Increasing the money supply always lowers nominal interest rates.",a:false,e:"False. Only in the short run (the liquidity effect). In the long run the income, price level and expected inflation effects raise them."},
+ {tp:"money",sec:"g-mon-effects",t:"tf",q:"Three of the four effects of a bigger money supply push nominal interest rates up in the long run.",a:true,e:"True: income, price level and expected inflation. Only the liquidity effect pushes the rate down, and only in the short run."}
+]);
+
+var LP_SHOCKS = [
+ ["Incomes rise across the economy.", 0, "Higher income raises money demand."],
+ ["The aggregate price level rises, and households want to keep their consumption the same.", 0, "Higher prices raise money demand."],
+ ["Households grow wary of stocks and bonds and prefer to keep more money on hand.", 0, "Preferences shift toward money: money demand rises."],
+ ["A recession lowers incomes.", 1, "Lower income lowers money demand."],
+ ["The aggregate price level falls.", 1, "Lower prices mean less money is needed: money demand falls."],
+ ["The Federal Reserve increases the money supply.", 2, "The central bank moves the vertical money supply to the right."],
+ ["A digital currency becomes generally accepted as a substitute for money.", 2, "More money substitutes shift the money supply right."],
+ ["The Federal Reserve decreases the money supply.", 3, "The central bank moves the vertical money supply to the left."]];
+var LP_OUTCOMES = ["Money demand shifts right: the nominal rate rises, the quantity of money is unchanged", "Money demand shifts left: the nominal rate falls, the quantity of money is unchanged", "Money supply shifts right: the nominal rate falls, the quantity of money rises", "Money supply shifts left: the nominal rate rises, the quantity of money falls"];
+GENS.push({id:"lp-shift", topic:"interest", name:"Liquidity preference: which curve shifts?",
+ remind:"Money supply is vertical: a demand shift moves only the rate. A supply shift moves the rate the opposite way and moves the quantity.",
+ make:function(){
+  var s = rp(LP_SHOCKS);
+  return {vals:{}, text:s[0], choice:{q:"What happens in the liquidity preference model?", opts:LP_OUTCOMES.slice(), right:s[1], work:s[2] + " " + LP_OUTCOMES[s[1]] + "."}};
+ }});
+GEN_BY_ID["lp-shift"] = GENS[GENS.length - 1];
+
+/* ================================================================ time value of money (Unit 2)
+   Lecture, Oct 8: "Time Value of Money" (1:08:38). Discounting and present
+   value, compounding and future value, continuous compounding with e,
+   multiple cash flows, depreciation, simple vs compound interest, and his
+   takeaways. Every worked number below was recomputed from his inputs.      */
+function pvOf(fv, i, n, t){ return n === "c" ? fv / Math.exp(i * t) : fv / Math.pow(1 + i / n, n * t); }
+function fvOf(pv, i, n, t){ return n === "c" ? pv * Math.exp(i * t) : pv * Math.pow(1 + i / n, n * t); }
+var COMP_NAME = {1:"annually", 4:"quarterly", 12:"monthly", c:"continuously"};
+
+CH.tvm = {n:8, title:"Time Value of Money", short:"Time Value",
+ notes:[
+  {id:"tvm-pv", h:"Discounting and Present Value", body:
+   '<div class="point"><b>The point</b><p><b>Discounting</b> converts future cash into <b>present value</b>: what a future sum is worth today, given an interest rate. <b>A dollar today is worth more than a dollar later.</b> The central principle: <b>the higher the interest rate, the lower the present value.</b></p><p class="able"><b>Be able to</b> compute PV with annual, quarterly, monthly and continuous compounding, add up several cash flows, and decide whether to take money now or later.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 8 &middot; Problem Set 7</span></p>'+
+   '<h3 class="sub" id="tvm-why">Why a dollar today is worth more</h3>'+
+   '<ol><li><b>Bias toward present consumption</b> &mdash; the concert is today; &ldquo;tomorrow is inherently risky.&rdquo;</li>'+
+   '<li><b>You could invest it today</b> and earn interest.</li>'+
+   '<li><b>Inflation erodes value</b> if your savings earn less than inflation.</li></ol>'+
+   '<h3 class="sub" id="tvm-pvf">The formulas</h3>'+
+   '<div class="formula">PV = FV &divide; (1 + i/n)<sup>n&middot;t</sup><small>i = rate <b>as a decimal</b> (3% = 0.03) &middot; n = times compounded a year (1, 4, 12) &middot; t = years</small></div>'+
+   '<div class="formula">PV = FV &divide; e<sup>i&middot;t</sup> &nbsp;(continuous)<small>e &asymp; 2.71828, Euler&rsquo;s number, &ldquo;the mathematical limit of continuous compounding&rdquo;</small></div>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>$1,100 received later</th><th>Working</th><th>PV</th></tr></thead><tbody>'+
+   '<tr><td class="head">1 yr, 3%, annual</td><td class="sm">1,100 &divide; 1.03</td><td class="sm"><b>$1,067.96</b> &rarr; wait for the $1,100</td></tr>'+
+   '<tr><td class="head">1 yr, 11%, annual</td><td class="sm">1,100 &divide; 1.11</td><td class="sm"><b>$990.99</b> &rarr; take $1,000 now</td></tr>'+
+   '<tr><td class="head">2 yrs, 3%, quarterly</td><td class="sm">1,100 &divide; 1.0075<sup>8</sup></td><td class="sm"><b>$1,036.17</b></td></tr>'+
+   '<tr><td class="head">2 yrs, 3%, monthly</td><td class="sm">1,100 &divide; 1.0025<sup>24</sup></td><td class="sm"><b>$1,036.02</b></td></tr>'+
+   '<tr><td class="head">2 yrs, 3%, continuous</td><td class="sm">1,100 &divide; e<sup>0.06</sup></td><td class="sm"><b>$1,035.94</b> (the lower limit)</td></tr></tbody></table></div>'+
+   '<p>More frequent compounding means <b>more discounting</b>, so a <b>lower</b> PV.</p>'+
+   '<h3 class="sub" id="tvm-multi">Several cash flows</h3>'+
+   '<div class="formula">PV = &Sigma; CF<sub>t</sub> &divide; (1 + i/n)<sup>n&middot;t</sup><small>discount each payment on its own, then add them up</small></div>'+
+   '<ul><li>$1,000 a year for 3 years at 8% (annual): 925.93 + 857.34 + 793.83 = <b>$2,577.10</b>.</li>'+
+   '<li>Same at 5% (monthly): 951.33 + 905.03 + 860.98 = <b>$2,717.34</b>.</li>'+
+   '<li><b>Lesson 1:</b> the sum of the present values is <b>less than</b> the total paid ($3,000) &mdash; time preference and opportunity cost.</li>'+
+   '<li><b>Lesson 2:</b> as interest rates <b>fall</b>, the value of investments <b>rises</b>. Rates and asset values move <b>inversely</b>.</li></ul>'},
+
+  {id:"tvm-fv", h:"Compounding and Future Value", body:
+   '<div class="point"><b>The point</b><p><b>Compounding</b> converts today&rsquo;s dollars into <b>future value</b>: what a sum today will be worth later if it earns interest. A <b>higher rate</b> and <b>more frequent compounding</b> both raise FV. It is the PV formula turned around.</p><p class="able"><b>Be able to</b> compute FV with any compounding, including continuous, and connect it to the rule of 70.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 8 &middot; Problem Set 7</span></p>'+
+   '<h3 class="sub" id="tvm-fvf">The formulas</h3>'+
+   '<div class="formula">FV = PV &times; (1 + i/n)<sup>n&middot;t</sup> &nbsp;&middot;&nbsp; FV = PV &times; e<sup>i&middot;t</sup><small>the same letters as present value</small></div>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>$1,000 for 4 years</th><th>Compounding</th><th>FV</th></tr></thead><tbody>'+
+   '<tr><td class="head">3%</td><td class="sm">annual</td><td class="sm"><b>$1,125.51</b></td></tr>'+
+   '<tr><td class="head">11%</td><td class="sm">annual</td><td class="sm"><b>$1,518.07</b></td></tr>'+
+   '<tr><td class="head">3%</td><td class="sm">quarterly</td><td class="sm"><b>$1,126.99</b></td></tr>'+
+   '<tr><td class="head">3%</td><td class="sm">monthly</td><td class="sm"><b>$1,127.33</b></td></tr>'+
+   '<tr><td class="head">3%</td><td class="sm">continuous</td><td class="sm"><b>$1,127.50</b></td></tr></tbody></table></div>'+
+   '<h3 class="sub" id="tvm-70">The link to the rule of 70</h3>'+
+   '<ul><li>Years to double &asymp; 70 &divide; growth rate: 70 years at 1%, 35 at 2%. &ldquo;Small changes in the growth rate make a large difference over time&rdquo; &mdash; because of compounding.</li>'+
+   '<li><b>Memory hook:</b> PV <b>divides</b> (bring money back to today, it shrinks); FV <b>multiplies</b> (send it forward, it grows).</li></ul>'},
+
+  {id:"tvm-dep", h:"Depreciation", body:
+   '<div class="point"><b>The point</b><p><b>Depreciation</b> is &ldquo;the accounting process of allocating cost to the time period when an asset is consumed.&rdquo; More broadly (as in Solow), capital loses value through wear and tear, obsolescence, and changes in human capital and institutions. Two forms: <b>straight-line</b> and <b>accelerated</b>.</p><p class="able"><b>Be able to</b> compute straight-line depreciation per year and give an example of each form.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 8 &middot; use his wording</span></p>'+
+   '<h3 class="sub" id="tvm-depf">Straight-line and accelerated</h3>'+
+   '<ul><li><b>Straight-line:</b> the same amount each year (a tractor; used cars lose value about in line with miles).</li>'+
+   '<li><b>Accelerated:</b> faster at the start than the end (a computer loses most of its value in year one).</li></ul>'+
+   '<div class="formula">Yearly depreciation = (cost &minus; sale value at the end) &divide; years<small>his example: ($50,000 &minus; $10,000) &divide; 10 = <b>$4,000 a year</b></small></div>'+
+   '<ul><li>A mass spectrometer costs <b>$50,000</b>, is used <b>10 years</b>, and sells for <b>$10,000</b>. He calls the <b>$40,000</b> difference the &ldquo;residual value.&rdquo;</li>'+
+   '<li>Accounting classes call the $10,000 the residual or salvage value and the $40,000 the depreciable amount. <b>For this course, use his wording.</b></li></ul>'},
+
+  {id:"tvm-risk", h:"Risk, Simple vs Compound Interest, and the Takeaways", body:
+   '<div class="point"><b>The point</b><p>&ldquo;<b>The greater the risk, the greater the potential gain.</b>&rdquo; <b>Simple interest</b> is paid on the principal only; <b>compound interest</b> is paid on principal <b>plus</b> interest already earned, and over long periods the gap is dramatic. The big takeaway: <b>higher rates &rarr; lower PV &rarr; less investment &rarr; slower growth</b> &mdash; but the rate change is an <b>effect</b>, not a cause.</p><p class="able"><b>Be able to</b> compute simple and compound interest, rank stocks, corporate and government bonds by risk, and give his three investment takeaways.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 8 &middot; his wrap-up</span></p>'+
+   '<h3 class="sub" id="tvm-simple">Simple and compound interest</h3>'+
+   '<div class="formula">Simple = P &times; i &times; t &nbsp;&middot;&nbsp; Compound earned = P(1 + i)<sup>t</sup> &minus; P<small>P = principal &middot; i as a decimal (write .05, not 5)</small></div>'+
+   '<ul><li>$100 for 3 years at 5%: simple <b>$15.00</b>, compound <b>$15.76</b>.</li>'+
+   '<li>$100 for 40 years at 5% (age 25 to 65): simple <b>$200</b>, compound <b>$604.00</b>.</li>'+
+   '<li><b>Risk ladder</b> (safest first): government bonds &rarr; corporate bonds &rarr; stocks. In a bankruptcy, stockholders are wiped out and bondholders are first in line. Stocks out-earn bonds over the long run.</li></ul>'+
+   '<h3 class="sub" id="tvm-take">His takeaways</h3>'+
+   '<ol><li>&ldquo;The fundamental value of an asset is equal to the present discounted value of its cash flows.&rdquo;</li>'+
+   '<li>&ldquo;The value of any asset is <b>inversely</b> related to the expected interest rate.&rdquo;</li>'+
+   '<li>&ldquo;Investors will be willing to take risk at <b>lower</b> interest rates rather than higher&rdquo; &mdash; failure costs less.</li></ol>'+
+   '<ul><li><b>Macro:</b> higher rate &rarr; lower PV &rarr; fewer investments &rarr; slower GDP growth (back to Solow).</li>'+
+   '<li>&ldquo;We don&rsquo;t want to fall into this idea that low interest rates are always good&hellip; <b>The change in the interest rate is the effect, it&rsquo;s not the cause.</b>&rdquo; Ask what moved.</li>'+
+   '<li>U.S. debt (about $37 trillion at recording) is far more manageable at 1% than at 2&ndash;3%.</li>'+
+   '<li><b>Three concepts:</b> present value (which investments are worth making), future value (how resources grow or shrink), depreciation (how much capital must be replaced).</li></ul>'}
+ ],
+ decks:[
+  {id:"terms", label:"Key terms", cards:[
+   ["Time value of money","How time, interest rates and growth affect the value of financial resources","g-tvm-pv"],
+   ["Discounting","Converting future cash flows into present value","g-tvm-pv"],
+   ["Present value","The current value of a future sum, given a rate of return","g-tvm-pv"],
+   ["Compounding","Converting current dollars into future value","g-tvm-fv"],
+   ["Future value","How much a sum today will be worth in the future","g-tvm-fv"],
+   ["e","≈ 2.71828, Euler’s number — the limit of continuous compounding","g-tvm-pv"],
+   ["Depreciation","The accounting process of allocating cost to the time period when an asset is consumed","g-tvm-dep"],
+   ["Straight-line depreciation","The same amount every year — a tractor","g-tvm-dep"],
+   ["Accelerated depreciation","Faster at the start than the end — a computer","g-tvm-dep"],
+   ["Simple interest","Interest on the principal only: P × i × t","g-tvm-risk"],
+   ["Compound interest","Interest on principal plus interest already earned: P(1 + i)ᵗ − P","g-tvm-risk"],
+   ["The central principle","The higher the interest rate, the lower the present value","g-tvm-pv"]]},
+  {id:"nums", label:"Formulas & his numbers", cards:[
+   ["PV formula","PV = FV ÷ (1 + i/n)^(n·t)","g-tvm-pv"],
+   ["Continuous PV","PV = FV ÷ e^(i·t)","g-tvm-pv"],
+   ["FV formula","FV = PV × (1 + i/n)^(n·t)","g-tvm-fv"],
+   ["$1,100 in 1 year at 3%","PV $1,067.96 — wait for the $1,100","g-tvm-pv"],
+   ["$1,100 in 1 year at 11%","PV $990.99 — take $1,000 now","g-tvm-pv"],
+   ["$1,000 a year for 3 years at 8%","PV $2,577.10 — less than the $3,000 paid","g-tvm-pv"],
+   ["$1,000 for 4 years at 3%, annual","FV $1,125.51","g-tvm-fv"],
+   ["Mass spectrometer: $50,000, 10 years, sells for $10,000","$4,000 of depreciation a year","g-tvm-dep"],
+   ["$100 for 40 years at 5%","Simple $200; compound $604.00","g-tvm-risk"],
+   ["Three reasons a dollar today is worth more","Bias toward the present, you could invest it, inflation erodes it","g-tvm-pv"],
+   ["Rates and asset values","Move inversely: rates down, values up","g-tvm-pv"],
+   ["Rate changes are","The effect, not the cause — ask what moved","g-tvm-risk"]]}
+ ]
+};
+
+GUIDE.sections.splice(GUIDE.sections.length - 1, 0, {h:"Time Value of Money", tp:"tvm", items:[
+ {id:"g-tvm-pv", t:"Discounting and Present Value", a:"tvm-pv",
+  short:"PV = FV ÷ (1 + i/n)^(n·t), or ÷ e^(i·t) continuous. A dollar today is worth more (present bias, could invest it, inflation). Higher rate → lower PV; more frequent compounding → lower PV. $1,100: $1,067.96 at 3%, $990.99 at 11%. Several cash flows: discount each and add.",
+  subs:[["Why a dollar today is worth more","tvm-why"],["The formulas","tvm-pvf"],["Several cash flows","tvm-multi"]]},
+ {id:"g-tvm-fv", t:"Compounding and Future Value", a:"tvm-fv",
+  short:"FV = PV × (1 + i/n)^(n·t), or × e^(i·t). Higher rate and more frequent compounding raise FV. $1,000 for 4 years at 3%: $1,125.51 annual → $1,127.50 continuous. Rule of 70.",
+  subs:[["The formulas","tvm-fvf"],["The rule of 70","tvm-70"]]},
+ {id:"g-tvm-dep", t:"Depreciation", a:"tvm-dep",
+  short:"Allocating cost to the period an asset is consumed. Straight-line (tractor) vs accelerated (computer). ($50,000 − $10,000) ÷ 10 = $4,000 a year.",
+  subs:[["Straight-line and accelerated","tvm-depf"]]},
+ {id:"g-tvm-risk", t:"Risk, Simple vs Compound Interest, and the Takeaways", a:"tvm-risk",
+  short:"Greater risk, greater potential gain. Simple P·i·t vs compound P(1+i)ᵗ − P: $15.00 vs $15.76; over 40 years $200 vs $604.00. Asset value = PV of its cash flows; values move inversely with rates; the rate change is the effect, not the cause.",
+  subs:[["Simple and compound interest","tvm-simple"],["His takeaways","tvm-take"]]}]});
+
+QB = QB.concat([
+ {tp:"tvm",sec:"g-tvm-pv",t:"mc",q:"Present value is:",a:"the current value of a future sum of money, given a rate of return",w:["what a sum today will be worth in the future","the interest earned on the principal only","the total of all future payments added together"],e:"Discounting converts future cash into present value."},
+ {tp:"tvm",sec:"g-tvm-pv",t:"mc",q:"Which is NOT one of his three reasons a dollar today is worth more than a dollar in the future?",a:"Future dollars are taxed at a higher rate",w:["People have a bias toward present consumption","Money today can be invested to earn interest","Inflation erodes the value of money over time"],e:"His three: present bias, you could invest it, and inflation."},
+ {tp:"tvm",sec:"g-tvm-pv",m:1,ap:true,t:"mc",q:"You are offered $1,000 today or $1,100 in one year. The interest rate is 3%, compounded annually. The present value of the $1,100 and the better choice are:",a:"$1,067.96, so wait for the $1,100",w:["$1,133.00, so wait for the $1,100","$1,067.96, so take the $1,000 today","$990.99, so take the $1,000 today"],e:"1,100 ÷ 1.03 = $1,067.96, which is more than $1,000."},
+ {tp:"tvm",sec:"g-tvm-pv",m:1,ap:true,t:"mc",q:"You are offered $1,000 today or $1,100 in one year, and the interest rate is 11%, compounded annually. The present value of the $1,100 is:",a:"$990.99, so take the $1,000 today",w:["$1,221.00, so wait for the $1,100","$1,067.96, so wait for the $1,100","$1,089.00, so wait for the $1,100"],e:"1,100 ÷ 1.11 = $990.99 — the central principle: a higher rate, a lower PV."},
+ {tp:"tvm",sec:"g-tvm-pv",t:"mc",q:"Holding the rate and the time the same, compounding more often (annual → monthly → continuous) makes the present value:",a:"smaller, since there is more discounting",w:["larger, since there is more interest","the same, since the rate did not change","smaller only when the rate is above 10%"],e:"$1,100 in 2 years at 3%: $1,036.17 quarterly, $1,036.02 monthly, $1,035.94 continuous."},
+ {tp:"tvm",sec:"g-tvm-pv",t:"mc",q:"In the continuous-compounding formula PV = FV ÷ e^(i·t), e is:",a:"about 2.71828, the mathematical limit of continuous compounding",w:["the expected rate of inflation","the number of times interest is compounded each year","about 3.14159, the ratio of a circle’s circumference to its diameter"],e:"Euler’s number, found by people studying the upper limit of compound interest."},
+ {tp:"tvm",sec:"g-tvm-pv",m:1,ap:true,t:"mc",q:"A pension pays $1,000 at the end of each of the next 3 years. The interest rate is 8%, compounded annually. Its present value is about:",a:"$2,577.10",w:["$3,000.00","$2,760.00","$3,240.00"],e:"925.93 + 857.34 + 793.83 = $2,577.10 — less than the $3,000 paid, lesson 1."},
+ {tp:"tvm",sec:"g-tvm-pv",t:"mc",q:"According to the lecture, as interest rates fall, the value of investments:",a:"rises, because future cash flows are discounted less",w:["falls, because future cash flows are discounted more","stays the same, since cash flows don’t change","rises only if inflation also falls"],e:"Rates and asset values move inversely — “a fundamental concept.”"},
+ {tp:"tvm",sec:"g-tvm-pv",t:"tf",q:"The sum of the present values of several cash flows is always less than the simple total of those cash flows (at a positive interest rate).",a:true,e:"True — his first lesson from discounting: $3,000 paid over three years is worth less than $3,000 today."},
+ {tp:"tvm",sec:"g-tvm-pv",t:"tf",q:"In the present value formula, a 3% interest rate is entered as 3.",a:false,e:"False. The rate goes in as a decimal: 3% = 0.03. Entering 3 is the mistake he warned about."},
+
+ {tp:"tvm",sec:"g-tvm-fv",t:"mc",q:"Compounding is:",a:"converting current dollars into future value",w:["converting future cash flows into present value","allocating an asset’s cost over its life","paying interest on the principal only"],e:"The opposite direction from discounting."},
+ {tp:"tvm",sec:"g-tvm-fv",m:1,ap:true,t:"mc",q:"You invest $1,000 today at 3%, compounded annually, for 4 years. The future value is:",a:"$1,125.51",w:["$1,120.00","$888.49","$1,127.50"],e:"1,000 × 1.03⁴ = $1,125.51. ($1,120 is simple interest; $1,127.50 is continuous.)"},
+ {tp:"tvm",sec:"g-tvm-fv",m:1,ap:true,t:"mc",q:"You invest $1,000 today at 3% for 4 years, compounded continuously. The future value is:",a:"$1,127.50",w:["$1,125.51","$1,127.33","$1,120.00"],e:"1,000 × e^(0.12) = $1,127.50 — the most any 3% compounding can give."},
+ {tp:"tvm",sec:"g-tvm-fv",t:"mc",q:"Which change raises future value the most, holding everything else equal?",a:"A higher interest rate",w:["Switching from monthly to continuous compounding","Switching from quarterly to monthly compounding","Switching from annual to quarterly compounding"],e:"At 3% for 4 years, compounding changes FV by cents to a couple of dollars; 11% instead of 3% raises it from $1,125.51 to $1,518.07."},
+ {tp:"tvm",sec:"g-tvm-fv",t:"mc",q:"The FV formula FV = PV × (1 + i/n)^(n·t) is:",a:"the present value formula rearranged",w:["the simple interest formula written another way","unrelated to the present value formula","the rule of 70 in exact form"],e:"Multiply both sides of PV = FV ÷ (1 + i/n)^(n·t) by the discount factor."},
+ {tp:"tvm",sec:"g-tvm-fv",ap:true,t:"mc",q:"Using the rule of 70, money growing at 2% a year doubles in about:",a:"35 years",w:["70 years","140 years","20 years"],e:"70 ÷ 2 = 35. At 1% it takes 70 — small differences in growth compound into big ones."},
+ {tp:"tvm",sec:"g-tvm-fv",t:"tf",q:"Holding the rate constant, compounding more often raises future value.",a:true,e:"True: $1,125.51 annual, $1,126.99 quarterly, $1,127.33 monthly, $1,127.50 continuous."},
+ {tp:"tvm",sec:"g-tvm-fv",t:"tf",q:"Future value divides by (1 + i/n)^(n·t).",a:false,e:"False. Future value multiplies; present value divides. Send money forward and it grows."},
+
+ {tp:"tvm",sec:"g-tvm-dep",t:"mc",q:"His official definition of depreciation is:",a:"the accounting process of allocating cost to the time period when an asset is consumed",w:["the fall in the value of money caused by inflation","the interest paid on a loan used to buy capital","the difference between the present and future value of an asset"],e:"More broadly, capital loses value through wear, obsolescence, and changes in human capital and institutions."},
+ {tp:"tvm",sec:"g-tvm-dep",m:1,ap:true,t:"mc",q:"A mass spectrometer costs $50,000, is used for 10 years, and is then sold for $10,000. Straight-line depreciation is:",a:"$4,000 a year",w:["$5,000 a year","$6,000 a year","$1,000 a year"],e:"($50,000 − $10,000) ÷ 10 = $4,000. ($5,000 forgets the $10,000 sale.)"},
+ {tp:"tvm",sec:"g-tvm-dep",t:"mc",q:"A new computer loses most of its value in its first year as faster processors arrive. This is:",a:"accelerated depreciation",w:["straight-line depreciation","appreciation","compounding"],e:"Faster at the start than the end."},
+ {tp:"tvm",sec:"g-tvm-dep",t:"mc",q:"A used car’s price falls roughly in proportion to its miles, the same amount each year. This is:",a:"straight-line depreciation",w:["accelerated depreciation","continuous compounding","discounting"],e:"A constant rate each year, like his tractor."},
+ {tp:"tvm",sec:"g-tvm-dep",t:"mc",q:"In his mass spectrometer example, what does he call the $40,000 difference between cost and sale price?",a:"The residual value",w:["The salvage value","The present value","The book value"],e:"Accounting classes call it the depreciable amount — but for this course, use his wording."},
+ {tp:"tvm",sec:"g-tvm-dep",ap:true,t:"mc",q:"A tractor costs $80,000, lasts 8 years and sells for $16,000 at the end. Straight-line depreciation is:",a:"$8,000 a year",w:["$10,000 a year","$12,000 a year","$2,000 a year"],e:"($80,000 − $16,000) ÷ 8 = $8,000."},
+ {tp:"tvm",sec:"g-tvm-dep",t:"tf",q:"Depreciation links the physical and financial economy: capital wears out, so investment is needed just to replace it.",a:true,e:"True — one of his takeaways, back to the depreciation line in Solow."},
+
+ {tp:"tvm",sec:"g-tvm-risk",m:1,ap:true,t:"mc",q:"$100 is invested for 3 years at 5%. Simple and compound interest earned are:",a:"$15.00 and $15.76",w:["$15.00 and $15.00","$15.76 and $15.00","$1,500 and $1,576"],e:"Simple: 100 × .05 × 3 = 15. Compound: 100 × 1.05³ − 100 = 15.76. ($1,500 comes from writing 5 instead of .05.)"},
+ {tp:"tvm",sec:"g-tvm-risk",m:1,ap:true,t:"mc",q:"$100 is invested for 40 years (age 25 to 65) at 5%. Simple and compound interest earned are:",a:"$200 and $604.00",w:["$200 and $200","$604.00 and $200","$2,000 and $6,040"],e:"100 × .05 × 40 = 200; 100 × 1.05⁴⁰ − 100 = 604.00. Over long periods the gap is dramatic."},
+ {tp:"tvm",sec:"g-tvm-risk",t:"mc",q:"Compound interest is interest paid on:",a:"the principal plus any interest already earned",w:["the principal only","the interest only, not the principal","the principal minus inflation"],e:"Simple interest is on the principal only."},
+ {tp:"tvm",sec:"g-tvm-risk",t:"mc",q:"Which ranks these from safest to riskiest, as in the lecture?",a:"Government bonds, corporate bonds, stocks",w:["Stocks, corporate bonds, government bonds","Corporate bonds, government bonds, stocks","Government bonds, stocks, corporate bonds"],e:"In a bankruptcy, stockholders are wiped out and bondholders are first in line."},
+ {tp:"tvm",sec:"g-tvm-risk",t:"mc",q:"Which is one of his three investment takeaways?",a:"The value of any asset is inversely related to the expected interest rate",w:["The value of any asset rises one-for-one with the interest rate","Low interest rates are always good for the economy","Investors take more risk when interest rates are high"],e:"The other two: an asset’s value is the PV of its cash flows, and investors take risk more readily at lower rates."},
+ {tp:"tvm",sec:"g-tvm-risk",t:"mc",q:"What does he mean by “the change in the interest rate is the effect, it’s not the cause”?",a:"Ask what moved the rate before judging whether it is good or bad",w:["Interest rates cause all changes in investment","Low interest rates are always good for growth","Only the central bank can change interest rates"],e:"A lower rate from more money supply means more investment; from less money demand, a very different outcome."},
+ {tp:"tvm",sec:"g-tvm-risk",ap:true,t:"mc",q:"If interest rates rise, the lecture predicts:",a:"lower present values, fewer investments and slower GDP growth",w:["higher present values, more investments and faster GDP growth","no change in investment, since only prices matter","higher asset prices and more risk-taking"],e:"Higher rate → lower PV → fewer investments worth making → slower growth."},
+ {tp:"tvm",sec:"g-tvm-risk",t:"tf",q:"Investors are more willing to take risk when interest rates are low.",a:true,e:"True — failing costs less when rates are low (losing $10 instead of $30)."},
+ {tp:"tvm",sec:"g-tvm-risk",t:"tf",q:"Simple interest grows faster than compound interest over long periods.",a:false,e:"False. Over 40 years at 5%, $100 earns $200 simple but $604.00 compound."}
+]);
+
+/* ---- math practice with new numbers ---- */
+PRACTICE_TOPICS.push(["tvm","Time Value"]);
+TOPIC_LABEL.tvm = "Time Value";
+var TVM_REMIND = "PV = FV ÷ (1 + i/n)^(n·t); FV = PV × (1 + i/n)^(n·t); continuous uses e^(i·t). The rate goes in as a decimal.";
+function compWork(i, n, t){ return n === "c" ? "e^(" + num(i, 3) + " × " + t + ")" : "(1 + " + num(i, 3) + (n === 1 ? "" : "/" + n) + ")^" + (n === 1 ? t : "(" + n + " × " + t + ")"); }
+GENS.push(
+ {id:"tvm-pv", topic:"tvm", name:"Present value", variants:3, remind:TVM_REMIND,
+  make:function(v){
+   v = v || ri(1, 3);
+   var fv = ri(8, 60) * 100, rate = rp([2, 3, 4, 5, 6, 8, 10, 12]), i = rate / 100, t = ri(1, 5), n = v === 1 ? 1 : (v === 2 ? rp([4, 12]) : "c");
+   var pv = pvOf(fv, i, n, t);
+   return {v:v, vals:{fv:fv, rate:rate, t:t, n:n}, text:"You will receive " + usd(fv) + " in " + t + (t === 1 ? " year" : " years") + ". The interest rate is " + rate + "%, compounded " + COMP_NAME[n] + ".",
+    parts:[P("pv", "the present value", pv, 2, "$", "PV = " + num(fv) + " ÷ " + compWork(i, n, t) + " = " + usd2(rnd(pv, 2)) + ".",
+      {wrong:[fvOf(fv, i, n, t), fv / (1 + rate * t), fv - fv * i * t, n === 1 ? pvOf(fv, i, 12, t) : pvOf(fv, i, 1, t)],
+       setup:setupOf(num(fv) + " ÷ " + compWork(i, n, t), pv, [[num(fv) + " × " + compWork(i, n, t), fvOf(fv, i, n, t)], [num(fv) + " − " + num(fv) + " × " + num(i, 3) + " × " + t, fv - fv * i * t], [num(fv) + " ÷ (1 + " + rate + ")^" + t, fv / Math.pow(1 + rate, t)]])})]};
+  }},
+ {id:"tvm-fv", topic:"tvm", name:"Future value", variants:3, remind:TVM_REMIND,
+  make:function(v){
+   v = v || ri(1, 3);
+   var pv = ri(5, 50) * 100, rate = rp([2, 3, 4, 5, 6, 8, 10, 11]), i = rate / 100, t = ri(2, 10), n = v === 1 ? 1 : (v === 2 ? rp([4, 12]) : "c");
+   var fv = fvOf(pv, i, n, t);
+   return {v:v, vals:{pv:pv, rate:rate, t:t, n:n}, text:"You invest " + usd(pv) + " today at " + rate + "%, compounded " + COMP_NAME[n] + ", for " + t + " years.",
+    parts:[P("fv", "the future value", fv, 2, "$", "FV = " + num(pv) + " × " + compWork(i, n, t) + " = " + usd2(rnd(fv, 2)) + ".",
+      {wrong:[pvOf(pv, i, n, t), pv + pv * i * t, n === 1 ? fvOf(pv, i, 12, t) : fvOf(pv, i, 1, t), pv * (1 + i * t) * 1.02],
+       setup:setupOf(num(pv) + " × " + compWork(i, n, t), fv, [[num(pv) + " ÷ " + compWork(i, n, t), pvOf(pv, i, n, t)], [num(pv) + " + " + num(pv) + " × " + num(i, 3) + " × " + t, pv + pv * i * t], [num(pv) + " × (1 + " + rate + ")^" + t, pv * Math.pow(1 + rate, t)]])})]};
+  }},
+ {id:"tvm-flows", topic:"tvm", name:"Present value of several payments", remind:"Discount each payment on its own, then add them up.",
+  make:function(){
+   var c = ri(5, 30) * 100, rate = rp([3, 4, 5, 6, 8, 10]), i = rate / 100, k = ri(2, 4), sum = 0, work = [];
+   for(var t = 1; t <= k; t++){ var d = c / Math.pow(1 + i, t); sum += d; work.push(num(c) + " ÷ " + num(1 + i, 2) + (t > 1 ? "^" + t : "") + " = " + usd2(rnd(d, 2))); }
+   return {vals:{c:c, rate:rate, k:k}, text:"A contract pays " + usd(c) + " at the end of each of the next " + k + " years. The interest rate is " + rate + "%, compounded annually.",
+    parts:[P("pv", "the present value of all the payments", sum, 2, "$", work.join("; ") + ". Total = " + usd2(rnd(sum, 2)) + ", less than the " + usd(c * k) + " paid.",
+      {wrong:[c * k, c * k / (1 + i), c * k / Math.pow(1 + i, k), sum * (1 + i)]})]};
+  }},
+ {id:"tvm-simple", topic:"tvm", name:"Simple and compound interest", variants:2, remind:"Simple = P × i × t. Compound earned = P(1 + i)^t − P. The rate is a decimal.",
+  make:function(v){
+   v = v || ri(1, 2);
+   var p = ri(1, 20) * 100, rate = rp([2, 3, 4, 5, 6, 8]), i = rate / 100, t = ri(2, 40), s = p * i * t, c = p * Math.pow(1 + i, t) - p;
+   return {v:v, vals:{p:p, rate:rate, t:t}, text:usd(p) + " is invested for " + t + " years at " + rate + "% a year.",
+    parts:[P("s", "the simple interest earned", s, 2, "$", num(p) + " × " + num(i, 2) + " × " + t + " = " + usd2(s) + ".", {wrong:[c, p * rate * t, s + p, p * i]}),
+           P("c", "the compound interest earned", c, 2, "$", num(p) + " × " + num(1 + i, 2) + "^" + t + " − " + num(p) + " = " + usd2(rnd(c, 2)) + ".", {wrong:[s, c + p, p * Math.pow(1 + i, t - 1) - p, c * 1.1]})]};
+  }},
+ {id:"tvm-dep", topic:"tvm", name:"Straight-line depreciation", remind:"Yearly depreciation = (cost − sale value at the end) ÷ years.",
+  make:function(){
+   var y = rp([4, 5, 8, 10, 20]), per = ri(2, 12) * 500, sale = ri(1, 10) * 1000, cost = sale + per * y;
+   return {vals:{cost:cost, sale:sale, y:y}, text:"A machine costs " + usd(cost) + ", is used for " + y + " years, and is then sold for " + usd(sale) + ".",
+    parts:[P("d", "the straight-line depreciation each year", per, 0, "$", "(" + num(cost) + " − " + num(sale) + ") ÷ " + y + " = " + usd(per) + ".",
+      {ask:"How much does it depreciate each year?", wrong:[cost / y, (cost + sale) / y, cost - sale, per * 2],
+       setup:setupOf("(" + num(cost) + " − " + num(sale) + ") ÷ " + y, per, [[num(cost) + " ÷ " + y, cost / y], ["(" + num(cost) + " + " + num(sale) + ") ÷ " + y, (cost + sale) / y], [num(cost) + " − " + num(sale), cost - sale]])})]};
+  }});
+["tvm-pv","tvm-fv","tvm-flows","tvm-simple","tvm-dep"].forEach(function(id){ GENS.forEach(function(g){ if(g.id === id) GEN_BY_ID[id] = g; }); });
+[{id:"lec-pv", gen:"tvm-pv", src:"Lecture example", make:function(){
+   return {text:"You will receive $1,100 in the future. Find its present value in each case.",
+    parts:[P("a", "PV: 1 year at 3%, annual", pvOf(1100, .03, 1, 1), 2, "$", "1,100 ÷ 1.03 = $1,067.96 — more than $1,000, so wait.", {wrong:[1133, 990.99, 1067]}),
+           P("b", "PV: 1 year at 11%, annual", pvOf(1100, .11, 1, 1), 2, "$", "1,100 ÷ 1.11 = $990.99 — less than $1,000, so take the money now.", {wrong:[1221, 1067.96, 979]}),
+           P("c", "PV: 2 years at 3%, quarterly", pvOf(1100, .03, 4, 2), 2, "$", "1,100 ÷ 1.0075⁸ = $1,036.17.", {wrong:[1036.02, 1035.94, 1067.96]}),
+           P("d", "PV: 2 years at 3%, continuous", pvOf(1100, .03, "c", 2), 2, "$", "1,100 ÷ e^0.06 = $1,035.94 — the lower limit.", {wrong:[1036.17, 1036.02, 1033.02]})]};
+  }},
+ {id:"lec-fv", gen:"tvm-fv", src:"Lecture example", make:function(){
+   return {text:"You invest $1,000 today for 4 years. Find the future value in each case.",
+    parts:[P("a", "FV at 3%, annual", fvOf(1000, .03, 1, 4), 2, "$", "1,000 × 1.03⁴ = $1,125.51.", {wrong:[1120, 1127.5, 888.49]}),
+           P("b", "FV at 11%, annual", fvOf(1000, .11, 1, 4), 2, "$", "1,000 × 1.11⁴ = $1,518.07.", {wrong:[1440, 1125.51, 658.73]}),
+           P("c", "FV at 3%, monthly", fvOf(1000, .03, 12, 4), 2, "$", "1,000 × 1.0025⁴⁸ = $1,127.33.", {wrong:[1125.51, 1126.99, 1120]}),
+           P("d", "FV at 3%, continuous", fvOf(1000, .03, "c", 4), 2, "$", "1,000 × e^0.12 = $1,127.50 — the most 3% can give.", {wrong:[1125.51, 1127.33, 1120]})]};
+  }},
+ {id:"lec-flows", gen:"tvm-flows", src:"Lecture example", make:function(){
+   var s = 1000 / 1.08 + 1000 / Math.pow(1.08, 2) + 1000 / Math.pow(1.08, 3);
+   return {text:"A pension pays $1,000 at the end of each of the next 3 years. The interest rate is 8%, compounded annually.",
+    parts:[P("pv", "the present value of the three payments", s, 2, "$", "925.93 + 857.34 + 793.83 = $2,577.10 — less than the $3,000 paid.", {wrong:[3000, 2777.78, 2381.50]})]};
+  }},
+ {id:"lec-dep", gen:"tvm-dep", src:"Lecture example", make:function(){
+   return {text:"A mass spectrometer costs $50,000, is used for 10 years, and is then sold for $10,000.",
+    parts:[P("d", "the straight-line depreciation each year", 4000, 0, "$", "($50,000 − $10,000) ÷ 10 = $4,000.", {ask:"How much does it depreciate each year?", wrong:[5000, 6000, 40000]})]};
+  }},
+ {id:"lec-simple", gen:"tvm-simple", src:"Lecture example", make:function(){
+   return {text:"$100 is invested at 5% a year.",
+    parts:[P("s3", "the simple interest over 3 years", 15, 2, "$", "100 × .05 × 3 = $15.00.", {wrong:[15.76, 1500, 5]}),
+           P("c3", "the compound interest over 3 years", 100 * Math.pow(1.05, 3) - 100, 2, "$", "100 × 1.05³ − 100 = $15.76.", {wrong:[15, 115.76, 1576]}),
+           P("s40", "the simple interest over 40 years", 200, 2, "$", "100 × .05 × 40 = $200.", {wrong:[604, 2000, 300]}),
+           P("c40", "the compound interest over 40 years", 100 * Math.pow(1.05, 40) - 100, 2, "$", "100 × 1.05⁴⁰ − 100 = $604.00.", {wrong:[200, 704, 540]})]};
+  }}].forEach(function(f){ f.topic = GEN_BY_ID[f.gen].topic; FIXED.push(f); FIXED_BY_ID[f.id] = f; });
+
+/* ================================================================ banking and money creation (Unit 2)
+   Lecture, Oct 13: "The Banking System and Money Creation" (23:41), and the class
+   exercise "Money Multiplier and the Reserve Ratio" (7:43).                    */
+CH.bank = {n:9, title:"Banking and Money Creation", short:"Banking",
+ notes:[
+  {id:"bank-frac", h:"Fractional Reserve Banking and the T-Account", body:
+   '<div class="point"><b>The point</b><p>In a <b>fractional reserve</b> system, banks keep a fraction of deposits as <b>reserves</b> and lend the rest. <b>Lending is how banks earn income</b>, and it is how the banking system <b>creates money</b>: M1 and M2 grow, but currency and the monetary base do not. <b>Deposits = reserves + loans.</b></p><p class="able"><b>Be able to</b> read and fill in a bank T-account, compute the reserve ratio, and give the reserve-requirement history and why banks still hold reserves.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 13 &middot; Problem Set 8</span></p>'+
+   '<h3 class="sub" id="bank-defs">The words</h3>'+
+   '<ul><li><b>Deposits:</b> money placed in a bank account. <b>Reserves:</b> deposits the bank does not lend.</li>'+
+   '<li><b>Bank T-account:</b> an accounting statement of a bank&rsquo;s <b>assets</b> and <b>liabilities</b>.</li>'+
+   '<li><b>Deposits are liabilities</b> (your claim on the bank). <b>Loans and reserves are assets</b> (the bank&rsquo;s claims).</li>'+
+   '<li>Commercial banks change <b>M1 and M2</b>; currency and the <b>monetary base</b> are &ldquo;not impacted at all by commercial banking.&rdquo;</li></ul>'+
+   '<div class="formula">Reserve ratio = reserves &divide; deposits &times; 100 &nbsp;&middot;&nbsp; Deposits = reserves + loans</div>'+
+   '<h3 class="sub" id="bank-req">Reserve requirements</h3>'+
+   '<ul><li><b>Before March 26, 2020:</b> the Fed required most banks to hold a minimum, <b>10%</b> for most.</li>'+
+   '<li><b>Since March 26, 2020: no reserve requirement.</b> Banks choose.</li>'+
+   '<li><b>Banks still hold reserves because of:</b> (1) daily business and withdrawals; (2) preventing <b>bank runs</b>; (3) loans that go <b>non-performing</b> or default.</li></ul>'},
+
+  {id:"bank-mult", h:"Money Creation and the Money Multiplier", body:
+   '<div class="point"><b>The point</b><p>A deposit alone does <b>not</b> change the money supply &mdash; it only changes its form. <b>Lending</b> does: each loan is re-deposited and lent again. With a 10% reserve ratio, <b>$100 of reserves becomes $1,000 of money</b>. The <b>money multiplier = 1 &divide; reserve ratio</b> (as a decimal).</p><p class="able"><b>Be able to</b> trace the chain of banks, and compute reserves, loans, the ratio, the multiplier and the maximum money created.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture and class exercise &middot; Oct 13</span></p>'+
+   '<h3 class="sub" id="bank-chain">The chain of banks (10% ratio)</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c4"><thead><tr><th>Bank</th><th>Deposit</th><th>Reserves</th><th>Loans</th></tr></thead><tbody>'+
+   '<tr><td class="head">First National</td><td class="sm">$100</td><td class="sm">$10</td><td class="sm">$90</td></tr>'+
+   '<tr><td class="head">Second National</td><td class="sm">$90</td><td class="sm">$9</td><td class="sm">$81</td></tr>'+
+   '<tr><td class="head">Third National</td><td class="sm">$81</td><td class="sm">$8.10</td><td class="sm">$72.90</td></tr>'+
+   '<tr><td class="head">&hellip;and on</td><td class="sm" colspan="3">$100 of reserves ends up as <b>$1,000</b> of money</td></tr></tbody></table></div>'+
+   '<ul><li>After the first loan: money = $100 deposits + $90 currency = <b>$190</b>. &ldquo;The act of lending is increasing the money supply.&rdquo;</li>'+
+   '<li>&ldquo;Money is not income, money is not wealth.&rdquo;</li></ul>'+
+   '<h3 class="sub" id="bank-mm">The money multiplier</h3>'+
+   '<div class="formula">Money multiplier = 1 &divide; reserve ratio &nbsp;&middot;&nbsp; Money created = multiplier &times; reserves<small>ratio as a decimal (10% &rarr; 0.1); the multiplier has <b>no $ and no %</b></small></div>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>Reserve ratio</th><th>Multiplier</th><th>From $100</th></tr></thead><tbody>'+
+   '<tr><td class="head">10%</td><td class="sm">10</td><td class="sm">$1,000</td></tr>'+
+   '<tr><td class="head">20%</td><td class="sm">5</td><td class="sm">$500</td></tr>'+
+   '<tr><td class="head">40%</td><td class="sm">2.5</td><td class="sm">$250</td></tr></tbody></table></div>'+
+   '<p><b>A higher reserve ratio &rarr; fewer loans &rarr; less money created.</b></p>'+
+   '<h3 class="sub" id="bank-ex">The class exercise</h3>'+
+   '<ol><li>10% reserves, $5,000 deposits &rarr; reserves <b>$500</b>, loans <b>$4,500</b>.</li>'+
+   '<li>$10,000 deposits, $8,000 loans &rarr; reserves $2,000 &rarr; ratio <b>20%</b>.</li>'+
+   '<li>Deposits $25,000, reserves $10,000, loans $15,000 &rarr; ratio <b>40%</b>; multiplier <b>2.5</b>; from $10,000 of new reserves, at most <b>$25,000</b>.</li></ol>'+
+   '<p><b>The chain:</b> ratio = reserves &divide; deposits &rarr; multiplier = 1 &divide; ratio &rarr; money = multiplier &times; new reserves.</p>'}
+ ],
+ decks:[
+  {id:"terms", label:"Key terms", cards:[
+   ["Fractional reserve banking","Banks keep a fraction of deposits as reserves and lend the rest","g-bank-frac"],
+   ["Deposits","Money placed in a bank account — a liability of the bank","g-bank-frac"],
+   ["Reserves","Bank deposits that the bank does not lend — an asset","g-bank-frac"],
+   ["Loans","The bank’s claims on its borrowers — an asset","g-bank-frac"],
+   ["Bank T-account","An accounting statement of a bank’s assets and liabilities","g-bank-frac"],
+   ["Reserve ratio","Reserves ÷ deposits × 100","g-bank-frac"],
+   ["How banks earn income","Lending","g-bank-frac"],
+   ["Reserve requirement","10% for most banks before March 26, 2020; none since","g-bank-frac"],
+   ["Bank run","A quick and sudden withdrawal of money from the banking system","g-bank-frac"],
+   ["Money multiplier","The money the banking system can create with each dollar of reserves: 1 ÷ reserve ratio","g-bank-mult"]]},
+  {id:"nums", label:"Numbers and rules", cards:[
+   ["Deposits =","Reserves + loans","g-bank-frac"],
+   ["Three reasons banks still hold reserves","Daily business and withdrawals, preventing bank runs, loans that default","g-bank-frac"],
+   ["What commercial banks change","M1 and M2 — not currency or the monetary base","g-bank-frac"],
+   ["A deposit on its own","Doesn’t change the money supply — only its form","g-bank-mult"],
+   ["10% ratio: $100 of reserves","Multiplier 10, $1,000 of money","g-bank-mult"],
+   ["20% ratio","Multiplier 5, $500 from $100","g-bank-mult"],
+   ["40% ratio","Multiplier 2.5","g-bank-mult"],
+   ["After First National’s $90 loan","Money = $100 deposits + $90 currency = $190","g-bank-mult"],
+   ["Higher reserve ratio","Fewer loans, less money created","g-bank-mult"],
+   ["Units of the multiplier","None — no $ and no %","g-bank-mult"]]}
+ ]
+};
+
+GUIDE.sections.splice(GUIDE.sections.length - 1, 0, {h:"Banking and Money Creation", tp:"bank", items:[
+ {id:"g-bank-frac", t:"Fractional Reserve Banking and the T-Account", a:"bank-frac",
+  short:"Banks keep reserves and lend the rest; lending is their income and it creates money (M1, M2 — not the base). Deposits are liabilities; loans and reserves are assets. Deposits = reserves + loans. Ratio = reserves ÷ deposits × 100. 10% requirement until March 26, 2020; none since.",
+  subs:[["The words","bank-defs"],["Reserve requirements","bank-req"]]},
+ {id:"g-bank-mult", t:"Money Creation and the Money Multiplier", a:"bank-mult",
+  short:"A deposit alone changes only the form of money; lending creates it. $100 → $90 → $81 → $72.90… → $1,000 at 10%. Multiplier = 1 ÷ ratio (decimal, unitless); money = multiplier × reserves. Exercise: $500/$4,500; 20%; 40%, 2.5, $25,000.",
+  subs:[["The chain of banks","bank-chain"],["The money multiplier","bank-mm"],["The class exercise","bank-ex"]]}]});
+
+QB = QB.concat([
+ {tp:"bank",sec:"g-bank-frac",t:"mc",q:"In a fractional reserve banking system, banks:",a:"keep a fraction of deposits as reserves and lend the rest",w:["keep all deposits as reserves and lend nothing","lend all deposits and keep nothing","lend only the money the central bank gives them"],e:"That is the modern U.S. system."},
+ {tp:"bank",sec:"g-bank-frac",t:"mc",q:"On a bank’s T-account, deposits are:",a:"liabilities, because they are the depositors’ claims on the bank",w:["assets, because the bank holds the money","assets, because they earn the bank interest","neither assets nor liabilities"],e:"You can withdraw them: they are claims on the bank. Loans and reserves are the bank’s assets."},
+ {tp:"bank",sec:"g-bank-frac",t:"mc",q:"Which are both assets on a bank’s T-account?",a:"Loans and reserves",w:["Deposits and loans","Deposits and reserves","Deposits only"],e:"Loans are the bank’s claims on borrowers; reserves can be lent or earn interest at the Fed."},
+ {tp:"bank",sec:"g-bank-frac",t:"mc",q:"What is the primary way banks make an income?",a:"Lending",w:["Holding reserves","Charging for deposits","Printing currency"],e:"“Lending is the primary way that banks make an income.”"},
+ {tp:"bank",sec:"g-bank-frac",t:"mc",q:"Which measures of money are NOT affected by commercial bank lending?",a:"Currency and the monetary base",w:["M1 and M2","M2 only","All of them are affected"],e:"Banks change M1 and M2; currency and the base (currency + reserves) are “not impacted at all.”"},
+ {tp:"bank",sec:"g-bank-frac",t:"mc",q:"Since March 26, 2020, the U.S. reserve requirement has been:",a:"zero — there is no requirement",w:["10% for most banks","20% for all banks","set separately by each regional Fed"],e:"Before then it was 10% for most banks."},
+ {tp:"bank",sec:"g-bank-frac",t:"mc",q:"Which is NOT one of the reasons banks still hold reserves without a requirement?",a:"The law still requires a 10% minimum",w:["To handle daily business and withdrawal requests","To prevent bank runs","Because some loans become non-performing or default"],e:"There has been no requirement since March 2020."},
+ {tp:"bank",sec:"g-bank-frac",m:1,ap:true,t:"mc",q:"A bank keeps 10% of its deposits as reserves and has $5,000 in deposits. Its reserves and loans are:",a:"$500 in reserves and $4,500 in loans",w:["$4,500 in reserves and $500 in loans","$500 in reserves and $5,000 in loans","$50 in reserves and $4,950 in loans"],e:"5,000 × 0.10 = 500; 5,000 − 500 = 4,500. Deposits = reserves + loans."},
+ {tp:"bank",sec:"g-bank-frac",m:1,ap:true,t:"mc",q:"A bank has $10,000 in deposits and makes $8,000 in loans. Its reserve ratio is:",a:"20%",w:["80%","25%","12.5%"],e:"Reserves = 10,000 − 8,000 = 2,000; 2,000 ÷ 10,000 × 100 = 20%."},
+ {tp:"bank",sec:"g-bank-frac",t:"tf",q:"Deposits always equal reserves plus loans.",a:true,e:"True — a deposit can only be kept as reserves or lent."},
+ {tp:"bank",sec:"g-bank-frac",t:"tf",q:"Before March 2020, most U.S. banks had to hold at least 10% of deposits as reserves.",a:true,e:"True. Since March 26, 2020 there is no requirement."},
+
+ {tp:"bank",sec:"g-bank-mult",t:"mc",q:"You deposit $100 of cash in your checking account. Before the bank lends any of it, the money supply:",a:"does not change — only the form of money changes",w:["rises by $100","rises by $1,000","falls by $100"],e:"Currency becomes a checking deposit. Lending is what creates money."},
+ {tp:"bank",sec:"g-bank-mult",m:1,ap:true,t:"mc",q:"First National keeps 10% of a $100 deposit and lends $90, which the borrower holds as cash. The money supply is now:",a:"$190",w:["$100","$90","$1,000"],e:"$100 of deposits + $90 of currency. “The act of lending is increasing the money supply.”"},
+ {tp:"bank",sec:"g-bank-mult",m:1,ap:true,t:"mc",q:"The $90 is deposited at Second National, which keeps 10%. It lends:",a:"$81",w:["$90","$9","$72.90"],e:"It keeps $9 and lends $81; Third National then keeps $8.10 and lends $72.90."},
+ {tp:"bank",sec:"g-bank-mult",t:"mc",q:"The money multiplier is:",a:"1 ÷ the reserve ratio, written as a decimal",w:["the reserve ratio ÷ 1, written as a percent","reserves ÷ deposits × 100","deposits ÷ loans"],e:"10% → 1 ÷ 0.1 = 10. Reserves ÷ deposits × 100 is the reserve ratio itself."},
+ {tp:"bank",sec:"g-bank-mult",m:1,ap:true,t:"mc",q:"With a 20% reserve ratio, the money multiplier and the money created from $100 of reserves are:",a:"5 and $500",w:["20 and $2,000","0.2 and $20","5% and $500"],e:"1 ÷ 0.2 = 5; 5 × 100 = $500. The multiplier has no units."},
+ {tp:"bank",sec:"g-bank-mult",m:1,ap:true,t:"mc",q:"A bank has $25,000 in deposits, $10,000 in reserves and $15,000 in loans. Its reserve ratio and money multiplier are:",a:"40% and 2.5",w:["60% and 1.67","40% and 4","25% and 2.5"],e:"10,000 ÷ 25,000 × 100 = 40%; 1 ÷ 0.4 = 2.5 (the class exercise)."},
+ {tp:"bank",sec:"g-bank-mult",m:1,ap:true,t:"mc",q:"With a multiplier of 2.5, $10,000 of new reserves can create at most:",a:"$25,000 of money",w:["$4,000 of money","$10,000 of money","$250,000 of money"],e:"2.5 × 10,000 = $25,000."},
+ {tp:"bank",sec:"g-bank-mult",t:"mc",q:"If banks raise their reserve ratio, the money multiplier:",a:"falls, and less money is created",w:["rises, and more money is created","stays the same","rises, but less money is created"],e:"A higher ratio means fewer loans: 10% gives 10, 20% gives 5."},
+ {tp:"bank",sec:"g-bank-mult",t:"tf",q:"The money multiplier should be written with a percent sign, like 10%.",a:false,e:"False. It is unitless: “for every $1 of reserves we can create $10 of money.”"},
+ {tp:"bank",sec:"g-bank-mult",t:"tf",q:"With a 10% reserve ratio, $100 of reserves can generate $1,000 of money.",a:true,e:"True. The multiplier is 1 ÷ 0.1 = 10, so $100 of reserves can support at most 10 × $100 = $1,000 of money."}
+]);
+
+PRACTICE_TOPICS.push(["banking","Banking"]);
+TOPIC_LABEL.banking = "Banking";
+GENS.push({id:"bank-calc", topic:"banking", name:"Reserves, loans and the money multiplier", variants:4,
+ remind:"Deposits = reserves + loans. Ratio = reserves ÷ deposits × 100. Multiplier = 1 ÷ ratio (decimal). Money = multiplier × reserves.",
+ make:function(v){
+  v = v || ri(1, 4);
+  var ratio = rp([5, 10, 12.5, 20, 25, 40, 50]), dep = ri(4, 60) * 1000, res = dep * ratio / 100, loans = dep - res, mult = 100 / ratio, nr = ri(1, 20) * 1000, b = {v:v, vals:{}};
+  if(v === 1){
+   b.text = "A bank keeps " + num(ratio, 1) + "% of its deposits as reserves and has " + usd(dep) + " in deposits.";
+   b.parts = [P("res", "its reserves", res, 2, "$", num(dep) + " × " + num(ratio / 100, 3) + " = " + usd(res) + ".", {are:true, wrong:[loans, dep * ratio, dep / ratio]}),
+              P("loans", "its loans", loans, 2, "$", num(dep) + " − " + num(res) + " = " + usd(loans) + ".", {are:true, wrong:[res, dep, dep + res]})];
+  } else if(v === 2){
+   b.text = "A bank has " + usd(dep) + " in deposits and makes " + usd(loans) + " in loans.";
+   b.parts = [P("ratio", "its reserve ratio", ratio, 2, "%", "Reserves = " + num(dep) + " − " + num(loans) + " = " + num(res) + "; " + num(res) + " ÷ " + num(dep) + " × 100 = " + num(ratio, 1) + "%.",
+     {wrong:[100 - ratio, loans / dep * 100, res / loans * 100], setup:setupOf("(" + num(dep) + " − " + num(loans) + ") ÷ " + num(dep) + " × 100", ratio, [[num(loans) + " ÷ " + num(dep) + " × 100", 100 - ratio], ["(" + num(dep) + " − " + num(loans) + ") ÷ " + num(loans) + " × 100", res / loans * 100], [num(dep) + " ÷ " + num(loans), dep / loans]])})];
+  } else if(v === 3){
+   b.text = "A bank has " + usd(dep) + " in deposits, " + usd(res) + " in reserves and " + usd(loans) + " in loans.";
+   b.parts = [P("ratio", "the reserve ratio", ratio, 2, "%", num(res) + " ÷ " + num(dep) + " × 100 = " + num(ratio, 1) + "%.", {wrong:[100 - ratio, res / loans * 100, mult]}),
+              P("mult", "the money multiplier", mult, 2, "", "1 ÷ " + num(ratio / 100, 3) + " = " + num(mult, 2) + ". No $ or % sign.", {wrong:[ratio, 1 / ratio, mult * 2]})];
+  } else {
+   b.text = "The reserve ratio is " + num(ratio, 1) + "%. The banking system receives " + usd(nr) + " of new reserves.";
+   b.parts = [P("mult", "the money multiplier", mult, 2, "", "1 ÷ " + num(ratio / 100, 3) + " = " + num(mult, 2) + ".", {wrong:[ratio, 1 / ratio, 100 - ratio]}),
+              P("money", "the most money that can be created", mult * nr, 2, "$", num(mult, 2) + " × " + num(nr) + " = " + usd(mult * nr) + ".", {wrong:[nr * ratio / 100, nr, nr * ratio]})];
+  }
+  return b;
+ }});
+GEN_BY_ID["bank-calc"] = GENS[GENS.length - 1];
+[{id:"ex-bank", gen:"bank-calc", src:"Class exercise", make:function(){
+   return {text:"Three banks. (1) Keeps 10% of $5,000 in deposits. (2) Has $10,000 in deposits and $8,000 in loans. (3) Has $25,000 in deposits, $10,000 in reserves and $15,000 in loans, then receives $10,000 of new reserves.",
+    parts:[P("r1", "bank 1’s reserves", 500, 2, "$", "5,000 × 0.10 = $500.", {wrong:[4500, 50, 5000]}),
+           P("l1", "bank 1’s loans", 4500, 2, "$", "5,000 − 500 = $4,500.", {wrong:[500, 5000, 4950]}),
+           P("q2", "bank 2’s reserve ratio", 20, 2, "%", "(10,000 − 8,000) ÷ 10,000 × 100 = 20%.", {wrong:[80, 25, 12.5]}),
+           P("q3", "bank 3’s reserve ratio", 40, 2, "%", "10,000 ÷ 25,000 × 100 = 40%.", {wrong:[60, 66.67, 25]}),
+           P("m3", "the money multiplier", 2.5, 2, "", "1 ÷ 0.4 = 2.5.", {wrong:[40, 0.4, 4]}),
+           P("c3", "the most money created from $10,000 of new reserves", 25000, 2, "$", "2.5 × 10,000 = $25,000.", {wrong:[4000, 10000, 250000]})]};
+  }}].forEach(function(f){ f.topic = GEN_BY_ID[f.gen].topic; FIXED.push(f); FIXED_BY_ID[f.id] = f; });
+
+/* ================================================================ the Federal Reserve and monetary policy (Unit 2)
+   Lectures, Oct 20, 22, 27: "The Federal Reserve and Monetary Policy" Parts I–III
+   (37:52, 54:54, 53:49). Mandate, structure and functions; the six tools; the
+   market for reserves (scarce and abundant); difficulties; rules vs discretion.
+   Recorded several years ago: names and frameworks are "at recording".     */
+
+/* the market for reserves: scarce (supply meets the sloped part) or abundant (supply on the flat part) */
+function rsvGraph(caption, abundant){
+  var L = 46, R = 262, T = 18, B = 188, yDR = 52, yI = 92, yRP = 128;
+  function ln(x1, y1, x2, y2, cls){ return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" class="' + cls + '"/>'; }
+  function tx(x, y, s, cls, a){ return '<text x="' + x + '" y="' + y + '" class="' + cls + '"' + (a ? ' text-anchor="' + a + '"' : '') + '>' + s + '</text>'; }
+  var svg = ln(L, T, L, B, "ax") + ln(L, B, R + 4, B, "ax");
+  /* demand: slopes down to the IORB level, flat there (banks paid IOR); a lower flat line at the reverse-repo rate */
+  svg += ln(62, 30, 150, yI, "cv") + ln(150, yI, R - 4, yI, "cv") + tx(R - 4, yI - 5, "D (IORB)", "cl sm", "end");
+  svg += '<rect x="150" y="' + yI + '" width="' + (R - 154) + '" height="' + (yRP - yI) + '" class="band"/>';
+  svg += ln(150, yRP, R - 4, yRP, "cv dash") + tx(R - 4, yRP + 13, "IRRP floor", "cl sm", "end");
+  /* supply: vertical non-borrowed reserves, then flat at the discount rate */
+  var xs = abundant ? 205 : 105, ys = abundant ? yI : 30 + (xs - 62) * (yI - 30) / (150 - 62);
+  svg += ln(xs, B, xs, yDR, "cv new") + ln(xs, yDR, R - 4, yDR, "cv new") + tx(xs + 4, yDR - 5, "S · discount rate", "cl new sm");
+  svg += ln(L, ys, xs, ys, "drop old") + '<circle cx="' + xs + '" cy="' + ys + '" r="3.2" class="dot old"/>' + tx(L - 5, ys + 4, "FFR", "lab old", "end");
+  svg += tx(L - 5, yI + 4, abundant ? "" : "", "lab", "end");
+  svg += tx(L - 30, (T + B) / 2, "Federal funds rate", "axl", "middle").replace('<text', '<text transform="rotate(-90 ' + (L - 30) + ' ' + ((T + B) / 2) + ')"');
+  svg += tx((L + R) / 2, B + 26, "Quantity of reserves", "axl", "middle");
+  return '<figure class="lfg"><svg viewBox="0 0 280 222" role="img" aria-label="' + strip(caption) + '">' + svg + '</svg><figcaption>' + caption + '</figcaption></figure>';
+}
+
+CH.fed = {n:10, title:"The Federal Reserve and Monetary Policy", short:"The Fed",
+ notes:[
+  {id:"fed-mandate", h:"Monetary Policy and the Dual Mandate", body:
+   '<div class="point"><b>The point</b><p>A <b>central bank</b> oversees the banking system and conducts <b>monetary policy</b> &mdash; it is <b>not a commercial bank</b>; it is &ldquo;the bankers&rsquo; bank.&rdquo; Congress (1977) gave the Fed a <b>dual mandate</b>: <b>stable prices</b> and <b>maximum employment</b> (plus moderate long-term rates). <b>Expansionary</b> policy lowers rates and raises money; <b>contractionary</b> does the opposite.</p><p class="able"><b>Be able to</b> define both kinds of policy, state the 2% PCE target and why 2%, explain the 2020 framework and its three problems, and pick the policy when the goals agree or conflict.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 20 &middot; Problem Set 9</span></p>'+
+   '<h3 class="sub" id="fed-policy">Expansionary and contractionary</h3>'+
+   '<ul><li><b>Monetary policy:</b> &ldquo;the actions of central banks to achieve their macroeconomic policy objectives.&rdquo;</li>'+
+   '<li><b>Expansionary:</b> <b>lower interest rates, increase the money supply</b> to stimulate growth and employment. Side effect: a higher price level.</li>'+
+   '<li><b>Contractionary:</b> <b>raise interest rates, decrease the money supply</b> (usually just slow its growth, e.g. 5% &rarr; 3%) to slow the economy and lower inflation.</li>'+
+   '<li>The Fed targets the <b>federal funds rate</b> and sets the <b>discount rate</b> &mdash; both <b>nominal</b>.</li></ul>'+
+   '<h3 class="sub" id="fed-dual">The dual mandate (really three parts)</h3>'+
+   '<ol><li><b>Stable prices</b> &mdash; since <b>2012</b>, <b>2% inflation a year on the PCE index</b>. Why 2%: higher would hurt long-term decisions; lower risks <b>deflation</b>.</li>'+
+   '<li><b>Maximum employment</b> &mdash; no number; the Fed estimates a <b>long-run normal unemployment rate</b>, the one consistent with stable inflation.</li>'+
+   '<li><b>Moderate long-term interest rates</b> &mdash; assumed to follow if 1 and 2 are met, so it&rsquo;s called a <i>dual</i> mandate.</li></ol>'+
+   '<ul><li><b>August 2020: flexible average inflation targeting</b> &mdash; an <b>average</b> of 2% over time; <b>asymmetric</b> (after undershooting, run &ldquo;moderately above 2%&rdquo;).</li>'+
+   '<li><b>His three problems with it:</b> (1) <b>vague</b> &mdash; how long, how far above? (2) <b>expectations</b> of higher inflation become hard to undo; (3) <b>asymmetric</b> &mdash; biases policy toward inflation.</li>'+
+   '<li>&#9888; The video is a few years old. The module pairs the 2020 statement with a newer one; for anything &ldquo;current,&rdquo; go by the newer statement.</li></ul>'+
+   '<h3 class="sub" id="fed-conflict">When the goals agree, and when they conflict</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>Inflation</th><th>Unemployment</th><th>Policy</th></tr></thead><tbody>'+
+   '<tr><td class="head">Below 2%</td><td class="sm">Above normal</td><td class="sm"><b>Expansionary</b> fixes both</td></tr>'+
+   '<tr><td class="head">Above 2%</td><td class="sm">Below normal</td><td class="sm"><b>Contractionary</b> fixes both</td></tr>'+
+   '<tr><td class="head">Below 2%</td><td class="sm">Below normal</td><td class="sm">Conflict &mdash; balanced approach</td></tr>'+
+   '<tr><td class="head">Above 2%</td><td class="sm">Above normal</td><td class="sm">Conflict &mdash; balanced approach</td></tr></tbody></table></div>'+
+   '<p><b>Balanced approach:</b> prioritize whichever goal is <b>farther from its objective</b>.</p>'},
+
+  {id:"fed-struct", h:"Structure, Independence and the Five Functions", body:
+   '<div class="point"><b>The point</b><p>The Fed (founded <b>1913</b>) is a <b>system of 12 regional banks</b>, a <b>Board of Governors</b> (7, 14-year terms) and the <b>FOMC</b> (12 voters: 7 governors + 5 bank presidents). Congress created it and could change it, but lets it act <b>independently for credibility</b>. It has <b>five functions</b>.</p><p class="able"><b>Be able to</b> give the numbers (12, 7, 14, 12 = 7 + 5, 8 meetings, 4-year chair), the case for and against independence, and the five functions.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 20 &middot; &ldquo;know these&rdquo;</span></p>'+
+   '<h3 class="sub" id="fed-parts">The parts</h3>'+
+   '<ul><li><b>12 regional Federal Reserve Banks</b>: each tracks its district&rsquo;s economy, holds its banks&rsquo; reserves, and regulates them.</li>'+
+   '<li><b>Board of Governors</b>: <b>7</b> members, nominated by the President, confirmed by the Senate; <b>14-year</b> staggered terms (one ends <b>January 31 of each even year</b>); no reappointment after a full term, so at most just under <b>28 years</b>. <b>Two policy roles:</b> set the <b>discount rate</b> and the <b>interest rate on reserves</b>.</li>'+
+   '<li><b>FOMC</b>: <b>12 voters = 7 governors + 5 presidents</b>; the <b>New York Fed president always votes</b>, four others rotate yearly. Runs <b>open market operations</b>. <b>8</b> two-day meetings a year; a statement at the end, minutes weeks later.</li>'+
+   '<li><b>Chair</b>: 4-year term, nominated and confirmed. At recording, Jerome Powell (2018), after Janet Yellen.</li></ul>'+
+   '<h3 class="sub" id="fed-indep">Who controls the Fed, and independence</h3>'+
+   '<ul><li>Congress created it and can amend the Federal Reserve Act; the President nominates, the Senate confirms.</li>'+
+   '<li><b>Central bank independence:</b> a separation, often by statute, between what politicians want and the central bank&rsquo;s decisions. Without it, no one can tell economic from political motives, and <b>credibility</b> erodes (Turkey under Erdo&#287;an).</li>'+
+   '<li><b>Two arguments against:</b> (1) such powerful officials should be <b>accountable to voters</b>; (2) the Fed has made damaging mistakes &mdash; the <b>Great Depression</b>, the <b>Great Inflation</b> (late 1960s&ndash;early 1980s), arguably the <b>Great Recession</b>.</li></ul>'+
+   '<h3 class="sub" id="fed-five">The five functions</h3>'+
+   '<ol><li><b>Conduct monetary policy.</b></li>'+
+   '<li><b>Promote the stability of the financial system.</b></li>'+
+   '<li><b>Promote the solvency of individual institutions</b> &mdash; solvency is the ability to meet long-term debts; watch <b>leveraging</b> (buying assets with debt, not equity).</li>'+
+   '<li><b>Foster payments and settlements</b> &mdash; issue currency, clear checks, run the larger of the two <b>ACH</b> networks.</li>'+
+   '<li><b>Promote consumer protection and community development</b> &mdash; from the <b>2010 Dodd-Frank Act</b>.</li></ol>'},
+
+  {id:"fed-tools", h:"The Six Tools of Monetary Policy", body:
+   '<div class="point"><b>The point</b><p>The Fed&rsquo;s tools are <b>nominal</b>: it &ldquo;cannot directly change real variables like output and employment.&rdquo; It works through the <b>transmission mechanism</b>. For each of the <b>six tools</b>, know the expansionary move, whether it works on <b>supply or demand</b>, and <b>which rate</b> it targets.</p><p class="able"><b>Be able to</b> fill in the six-tool table, tell the fed funds rate from the discount rate, and explain QE, forward guidance, IOR and reverse repos.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 22 &middot; Problem Set 10</span></p>'+
+   '<h3 class="sub" id="fed-trans">The transmission mechanism</h3>'+
+   '<ol><li>The Fed sets a <b>target range</b> for the federal funds rate.</li><li><b>Short-term rates</b> change (fed funds is overnight).</li><li><b>Expectations and other rates</b> change &mdash; long rates follow short ones, not one-for-one.</li><li><b>Households and firms</b> change borrowing, buying and investing.</li><li>Progress on <b>maximum employment and stable prices</b>.</li></ol>'+
+   '<h3 class="sub" id="fed-six">The six tools</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c4"><thead><tr><th>Tool</th><th>Expansionary</th><th>Works on</th><th>Rate</th></tr></thead><tbody>'+
+   '<tr><td class="head">1. Open market operations</td><td class="sm"><b>Buy</b> short-term Treasuries</td><td class="sm">Supply of reserves (money base)</td><td class="sm">Fed funds</td></tr>'+
+   '<tr><td class="head">2. Discount rate</td><td class="sm"><b>Lower</b> it</td><td class="sm">Borrowing from the Fed</td><td class="sm">&asymp; top of fed funds + 0.5</td></tr>'+
+   '<tr><td class="head">3. QE / QT</td><td class="sm"><b>QE</b>: buy long-term Treasuries and MBS</td><td class="sm">Supply; asset prices</td><td class="sm">Long-term rates</td></tr>'+
+   '<tr><td class="head">4. Forward guidance</td><td class="sm">Signal <b>lower</b> future rates</td><td class="sm">Expectations</td><td class="sm">Expected path</td></tr>'+
+   '<tr><td class="head">5. Interest on reserves</td><td class="sm"><b>Lower</b> IOR</td><td class="sm"><b>Demand</b> for reserves</td><td class="sm"><b>Ceiling</b> of the range</td></tr>'+
+   '<tr><td class="head">6. Reverse repos</td><td class="sm"><b>Lower</b> the rate</td><td class="sm">Reserves, overnight</td><td class="sm"><b>Floor</b> of the range</td></tr></tbody></table></div>'+
+   '<ul><li><b>OMO:</b> &ldquo;buying and selling Treasury bonds and notes&rdquo; with about two dozen big firms. <b>Fed BUYS bonds &rarr; money UP</b> (paid with new reserves); <b>SELLS &rarr; money DOWN</b>. The main tool when reserves were <b>scarce</b>.</li>'+
+   '<li><b>Federal funds rate:</b> the rate on <b>bank-to-bank</b> overnight loans of reserves; since 2008 a <b>target range</b>. The Fed &ldquo;cannot just make up whatever interest rate they want&rdquo; &mdash; it must intervene.</li>'+
+   '<li><b>Discount rate:</b> the rate on loans of reserves <b>from the Fed to banks</b> &mdash; the Fed as <b>lender of last resort</b> (the 1913 idea). Kept about <b>0.5 above</b> the top of the fed funds range.</li>'+
+   '<li><b>QE:</b> buying <b>longer-term</b> securities of the government or <b>GSEs</b> (Fannie Mae, Freddie Mac, the Farm Credit System &mdash; chartered by Congress, <b>not</b> backed by its full faith and credit). Mortgage-backed securities pool mortgages like gumballs in one machine. QE <b>raises asset prices</b> (a wealth effect) and moves risk onto the Fed&rsquo;s balance sheet. <b>QT</b> sells or lets them mature: lower prices, higher rates.</li>'+
+   '<li><b>Forward guidance:</b> telling the public what the Fed intends, especially the future fed funds path, to shape expectations. (Greenspan was famously vague.)</li>'+
+   '<li><b>Interest on reserves:</b> paid since <b>October 2008</b>; on <b>all</b> reserves since March 2020. &ldquo;<b>The Fed&rsquo;s new tool of choice</b>&rdquo; in an <b>abundant</b> reserve regime. It works on <b>demand</b> and sets the <b>ceiling</b>: no bank lends reserves for less than the Fed pays. GSEs can&rsquo;t earn IOR, so they lend below it (arbitrage).</li>'+
+   '<li><b>Reverse repo:</b> the Fed sells a security and promises to buy it back the next day at a higher price &mdash; sets the <b>floor</b>.</li></ul>'},
+
+  {id:"fed-reserves", h:"The Market for Reserves", body:
+   '<div class="point"><b>The point</b><p>A supply and demand model of <b>reserves</b> and the <b>federal funds rate</b>. With <b>scarce</b> reserves, supply crosses the <b>sloped</b> part of demand, so <b>changing supply (OMO) moves the rate</b>. With <b>abundant</b> reserves, supply crosses the <b>flat</b> part, so <b>changing supply does not move the rate</b>; the Fed moves <b>demand</b> with <b>IOR (ceiling)</b> and <b>reverse repos (floor)</b>.</p><p class="able"><b>Be able to</b> draw both graphs and say what each tool does to the fed funds rate and the quantity of reserves in each regime.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 27 &middot; both graphs are on the Exam 2 and Final lists</span></p>'+
+   '<h3 class="sub" id="fed-curves">The curves</h3>'+
+   '<ul><li><b>Axes:</b> federal funds rate up the side, quantity of reserves along the bottom.</li>'+
+   '<li><b>Demand</b>: slopes <b>down</b> (a lower rate lowers the opportunity cost of holding reserves), then goes <b>flat at IORB</b> (banks paid interest add reserves indefinitely), with a lower flat line at the <b>reverse repo rate</b> (institutions not paid IOR, like GSEs).</li>'+
+   '<li><b>Supply</b>: <b>vertical</b> for non-borrowed reserves (set by OMO and QE/QT), then <b>flat at the discount rate</b> (borrowed reserves).</li>'+
+   '<li>The Fed controls <b>total</b> reserves and the monetary base. One bank lending more just moves reserves to another bank.</li></ul>'+
+   '<div class="lfgrid">'+
+   rsvGraph("<b>Scarce reserves:</b> supply meets the sloped part. Shift supply (OMO) and the fed funds rate moves.", false)+
+   rsvGraph("<b>Abundant reserves:</b> supply meets the flat part. The rate sits in the band between the IOR ceiling and the reverse-repo floor.", true)+
+   '</div>'+
+   '<h3 class="sub" id="fed-results">What each tool does</h3>'+
+   '<div class="tblwrap"><table class="tbl fit c3"><thead><tr><th>Tool</th><th>Scarce</th><th>Abundant</th></tr></thead><tbody>'+
+   '<tr><td class="head">Buy bonds (OMO), or QE</td><td class="sm">FFR <b>falls</b>, Q rises</td><td class="sm">FFR <b>unchanged</b>, Q rises</td></tr>'+
+   '<tr><td class="head">Sell bonds (OMO), or QT</td><td class="sm">FFR <b>rises</b>, Q falls</td><td class="sm">FFR <b>unchanged</b>, Q falls</td></tr>'+
+   '<tr><td class="head">Change the discount rate</td><td class="sm">No change</td><td class="sm">No change</td></tr>'+
+   '<tr><td class="head">Raise IOR</td><td class="sm">No change</td><td class="sm">FFR <b>rises</b> (ceiling up)</td></tr>'+
+   '<tr><td class="head">Raise the reverse-repo rate</td><td class="sm">No change</td><td class="sm">FFR <b>rises</b> (floor up)</td></tr></tbody></table></div>'+
+   '<ul><li><b>Scarce:</b> only <b>supply</b> moves the rate. <b>Abundant:</b> only <b>demand</b> (IOR and reverse repos) moves it.</li>'+
+   '<li>The discount rate never moves either, because it is kept <b>50 basis points</b> above the fed funds rate.</li>'+
+   '<li>QE and QT look like OMO on the graph; the difference is <b>which securities</b> (long-term and GSE vs short-term bills). <b>Bond prices and interest rates move inversely.</b></li></ul>'},
+
+  {id:"fed-limits", h:"Difficulties, and Rules versus Discretion", body:
+   '<div class="point"><b>The point</b><p>Monetary policy has <b>three difficulties</b>: <b>knowledge and timing</b>, <b>incomplete control and lags</b>, and <b>real shocks</b>. So the Fed can <b>overshoot</b> or <b>undershoot</b>. Today central banks use <b>discretion</b>; the alternative is a <b>rule</b>, such as a <b>nominal GDP target</b>.</p><p class="able"><b>Be able to</b> name and explain the three difficulties with an example each, and give the case for discretion and the two for rules.</p></div>'+
+   '<p class="knowline"><span class="know">Lecture &middot; Oct 27</span></p>'+
+   '<h3 class="sub" id="fed-three">The three difficulties</h3>'+
+   '<ol><li><b>Knowledge and timing:</b> the Fed acts in real time on projections; shocks like the <b>1998 Long-Term Capital Management</b> collapse or <b>COVID-19</b> (the Fed was leaning contractionary in early 2020, then reversed &ldquo;on the fly&rdquo;).</li>'+
+   '<li><b>Incomplete control and lags:</b> it fully controls <b>currency, non-borrowed reserves and the monetary base</b> &mdash; <b>not M1 or M2</b> (banks may not lend). Other rates follow the fed funds rate with a lag; <b>forward guidance shortens the lag</b>.</li>'+
+   '<li><b>Real shocks:</b> &ldquo;the Fed doesn&rsquo;t control productivity.&rdquo; Monetary policy works best when <b>spending</b> slows, less well when <b>productivity</b> falls.</li></ol>'+
+   '<ul><li>After 2009, PCE inflation stayed <b>below 2%</b> most months: the Fed <b>undershot</b>.</li></ul>'+
+   '<h3 class="sub" id="fed-rules">Rules versus discretion</h3>'+
+   '<ul><li><b>Discretionary:</b> no firm commitment; act in the moment &mdash; how modern central banks work. Forward guidance is <b>not</b> a commitment. Best argument: <b>flexibility</b>.</li>'+
+   '<li><b>Rules-based:</b> a policy known in advance, e.g. a <b>5% nominal GDP target</b> (below &rarr; expand, above &rarr; contract). Nominal, not real, because the Fed can&rsquo;t control productivity or &ldquo;how many babies people have.&rdquo;</li>'+
+   '<li><b>Two arguments for rules:</b> <b>credibility</b> (people can plan) and <b>accountability</b> (consequences for missing).</li>'+
+   '<li>Why discretion today: <b>no agreed-upon rule</b> yet; NGDP targeting is &ldquo;still a minor consensus.&rdquo;</li></ul>'}
+ ],
+ decks:[
+  {id:"terms", label:"Key terms", cards:[
+   ["Central bank","An institution that oversees the banking system and conducts monetary policy — the bankers’ bank","g-fed-mandate"],
+   ["Monetary policy","The actions of central banks to achieve their macroeconomic policy objectives","g-fed-mandate"],
+   ["Expansionary monetary policy","Lower interest rates and increase the money supply to stimulate the economy","g-fed-mandate"],
+   ["Contractionary monetary policy","Raise interest rates and decrease (or slow) the money supply to slow the economy","g-fed-mandate"],
+   ["Dual mandate","Stable prices and maximum employment (plus moderate long-term rates), 1977","g-fed-mandate"],
+   ["Inflation target","2% a year on the PCE index, since 2012","g-fed-mandate"],
+   ["Flexible average inflation targeting","August 2020: average 2% over time; after undershooting, run moderately above","g-fed-mandate"],
+   ["Central bank independence","Separation between what politicians want and the central bank’s decisions — for credibility","g-fed-struct"],
+   ["Solvency","The ability of a firm to meet its long-term debt obligations","g-fed-struct"],
+   ["Leveraging","Using debt rather than equity to buy an asset","g-fed-struct"],
+   ["Federal funds rate","The interest rate on overnight loans of reserves from one bank to another","g-fed-tools"],
+   ["Discount rate","The interest rate on loans of reserves from the Fed to banks — lender of last resort","g-fed-tools"],
+   ["Open market operations","Buying and selling Treasury bonds and notes to change the supply of reserves","g-fed-tools"],
+   ["Quantitative easing","Buying longer-term government or GSE securities, like 30-year Treasuries and MBS","g-fed-tools"],
+   ["Forward guidance","Telling the public what the Fed intends to do with policy","g-fed-tools"],
+   ["Reverse repo","The Fed sells a security and buys it back the next day at a higher price — the floor","g-fed-tools"],
+   ["Government-sponsored enterprise","Private company chartered by Congress, not backed by its full faith and credit — Fannie Mae","g-fed-tools"],
+   ["Market for reserves","Supply and demand of reserves that sets the federal funds rate","g-fed-reserves"],
+   ["Discretionary policy","No firm commitment — the central bank acts in the moment","g-fed-limits"],
+   ["Rules-based policy","A specific policy known in advance, e.g. a nominal GDP target","g-fed-limits"]]},
+  {id:"nums", label:"Numbers, lists and graphs", cards:[
+   ["Year the Fed was founded","1913","g-fed-struct"],
+   ["Regional Federal Reserve Banks","12","g-fed-struct"],
+   ["Board of Governors","7 members, 14-year staggered terms","g-fed-struct"],
+   ["FOMC voters","12 = 7 governors + 5 bank presidents (New York always votes)","g-fed-struct"],
+   ["FOMC meetings a year","8 scheduled, two days each","g-fed-struct"],
+   ["The Board’s two policy roles","Set the discount rate and the interest rate on reserves","g-fed-struct"],
+   ["The five functions","Monetary policy · financial stability · solvency of institutions · payments and settlements · consumer protection and community development","g-fed-struct"],
+   ["Two arguments against independence","Accountability to voters; the Fed’s past mistakes (Depression, Great Inflation, Great Recession)","g-fed-struct"],
+   ["The six tools","OMO · discount rate · QE/QT · forward guidance · interest on reserves · reverse repos","g-fed-tools"],
+   ["Fed buys bonds","Money supply up — expansionary","g-fed-tools"],
+   ["Interest on reserves works on","The demand for reserves — the ceiling of the range","g-fed-tools"],
+   ["Scarce reserves: what moves the rate","Changing supply (OMO)","g-fed-reserves"],
+   ["Abundant reserves: what moves the rate","Changing demand — IOR (ceiling) and reverse repos (floor)","g-fed-reserves"],
+   ["Discount rate on the graph","Never moves the rate or quantity — kept 50 basis points above","g-fed-reserves"],
+   ["Three difficulties","Knowledge and timing · incomplete control and lags · real shocks","g-fed-limits"],
+   ["Two arguments for rules","Credibility and accountability","g-fed-limits"]]}
+ ]
+};
+
+GUIDE.sections.splice(GUIDE.sections.length - 1, 0, {h:"The Federal Reserve and Monetary Policy", tp:"fed", items:[
+ {id:"g-fed-mandate", t:"Monetary Policy and the Dual Mandate", a:"fed-mandate",
+  short:"Central bank ≠ commercial bank. Expansionary: lower rates, more money; contractionary: the reverse. Dual mandate (1977): stable prices (2% PCE since 2012) and maximum employment (+ moderate long rates). 2020 average inflation targeting: vague, expectations, asymmetric. Conflicts: prioritize the goal farther from target.",
+  subs:[["Expansionary and contractionary","fed-policy"],["The dual mandate","fed-dual"],["When goals conflict","fed-conflict"]]},
+ {id:"g-fed-struct", t:"Structure, Independence and the Five Functions", a:"fed-struct",
+  short:"1913; 12 regional banks; Board of 7 (14-year terms; sets discount rate and IOR); FOMC 12 = 7 + 5, NY always votes, 8 meetings, runs OMO; chair 4 years. Independence for credibility; against: accountability and past mistakes. Five functions.",
+  subs:[["The parts","fed-parts"],["Independence","fed-indep"],["The five functions","fed-five"]]},
+ {id:"g-fed-tools", t:"The Six Tools of Monetary Policy", a:"fed-tools",
+  short:"Transmission: FFR target → short rates → other rates and expectations → spending → the mandate. Tools: OMO (buy = expand), discount rate (Fed to banks, +0.5), QE/QT, forward guidance, IOR (demand; ceiling), reverse repos (floor).",
+  subs:[["The transmission mechanism","fed-trans"],["The six tools","fed-six"]]},
+ {id:"g-fed-reserves", t:"The Market for Reserves", a:"fed-reserves",
+  short:"Demand slopes down then goes flat at IORB (and IRRP below); supply vertical then flat at the discount rate. Scarce: supply moves the FFR. Abundant: supply moves only quantity; IOR and reverse repos move the FFR. Discount rate: no change.",
+  subs:[["The curves","fed-curves"],["What each tool does","fed-results"]]},
+ {id:"g-fed-limits", t:"Difficulties, and Rules versus Discretion", a:"fed-limits",
+  short:"Knowledge and timing (LTCM, COVID); incomplete control and lags (not M1/M2; forward guidance shortens lags); real shocks (productivity). Discretion = flexibility; rules (NGDP target) = credibility and accountability.",
+  subs:[["The three difficulties","fed-three"],["Rules versus discretion","fed-rules"]]}]});
+
+QB = QB.concat([
+ {tp:"fed",sec:"g-fed-mandate",t:"mc",q:"How does a central bank differ from a commercial bank?",a:"It oversees the banking system and conducts monetary policy, rather than serving households and businesses",w:["It takes deposits from households and lends to businesses at a profit","It is a private bank that competes with Bank of America and Wells Fargo","It only prints currency and has no role in the banking system"],e:"It is “the bankers’ bank.” A common mistake is to think of the Fed as a normal commercial bank."},
+ {tp:"fed",sec:"g-fed-mandate",t:"mc",q:"Expansionary monetary policy means the central bank:",a:"lowers interest rates and increases the money supply",w:["raises interest rates and decreases the money supply","raises taxes and cuts government spending","lowers interest rates and decreases the money supply"],e:"To raise growth and employment, with a higher price level as a side effect."},
+ {tp:"fed",sec:"g-fed-mandate",t:"mc",q:"Since 2012 the Fed’s price-stability goal has been:",a:"2% inflation a year, measured by the PCE price index",w:["0% inflation a year, measured by the CPI","2% inflation a year, measured by the CPI","between 3% and 5% inflation, measured by the GDP deflator"],e:"The personal consumption expenditures index, year over year."},
+ {tp:"fed",sec:"g-fed-mandate",t:"mc",q:"Why did the Fed choose 2% rather than 0%?",a:"A lower rate would raise the chance of falling into deflation",w:["A lower rate would make the dollar too valuable abroad","Zero inflation is impossible to measure","Congress required exactly 2% in 1913"],e:"Higher would hurt long-term decisions; lower would risk deflation — prices, perhaps wages, falling."},
+ {tp:"fed",sec:"g-fed-mandate",t:"mc",q:"Which is NOT one of his three problems with the 2020 flexible average inflation targeting framework?",a:"It forbids the Fed from ever letting inflation exceed 2%",w:["It is vague about how far and how long inflation may exceed 2%","It raises expectations of future inflation","It is asymmetric, dealing only with undershooting"],e:"It does the opposite: after undershooting it lets inflation run moderately above 2%."},
+ {tp:"fed",sec:"g-fed-mandate",m:1,ap:true,t:"mc",q:"Inflation is 1.2% and unemployment is well above its long-run normal level. The Fed should use:",a:"expansionary policy, which moves both goals the right way",w:["contractionary policy, which moves both goals the right way","a balanced approach, since the goals conflict","no policy, since inflation is positive"],e:"Low inflation and high unemployment are complementary: expansion raises inflation and lowers unemployment."},
+ {tp:"fed",sec:"g-fed-mandate",m:1,ap:true,t:"mc",q:"Inflation is 4% and unemployment is also above its long-run normal level. What does the Fed do?",a:"The goals conflict, so it prioritizes whichever is farther from its objective",w:["Expansionary policy, which fixes both problems at once","Contractionary policy, which fixes both problems at once","Nothing, since the dual mandate forbids acting when goals conflict"],e:"Contraction helps inflation but worsens unemployment — a balanced approach."},
+ {tp:"fed",sec:"g-fed-mandate",t:"mc",q:"The “dual” mandate actually has three parts. The third, which the Fed rarely mentions, is:",a:"moderate long-term interest rates",w:["a balanced federal budget","a stable exchange rate for the dollar","zero unemployment"],e:"The Fed believes it follows automatically if stable prices and maximum employment are met."},
+ {tp:"fed",sec:"g-fed-mandate",t:"tf",q:"Contractionary policy usually means the Fed slows the growth of the money supply rather than shrinking it outright.",a:true,e:"True — e.g. from 5% a year to 3%. An outright fall has happened (early in 2007–09) but is unusual."},
+ {tp:"fed",sec:"g-fed-mandate",t:"tf",q:"Maximum employment has a specific numerical target set by Congress.",a:false,e:"False. There is no number; the Fed estimates a long-run normal unemployment rate consistent with stable inflation."},
+
+ {tp:"fed",sec:"g-fed-struct",t:"mc",q:"The Federal Reserve is best described as:",a:"a system of 12 regional Federal Reserve Banks with a Board of Governors, founded in 1913",w:["a single bank in Washington, founded in 1977","a department of the U.S. Treasury, founded in 1913","a commercial bank owned by the largest private banks"],e:"12 regional banks (with an East Coast bias on the map)."},
+ {tp:"fed",sec:"g-fed-struct",t:"mc",q:"The Board of Governors has:",a:"7 members serving staggered 14-year terms",w:["12 members serving 4-year terms","5 members serving life terms","7 members serving 4-year terms"],e:"Nominated by the President, confirmed by the Senate; one term ends January 31 of each even year."},
+ {tp:"fed",sec:"g-fed-struct",t:"mc",q:"The FOMC’s 12 voting members are:",a:"the 7 governors plus 5 regional bank presidents, with New York always voting",w:["the presidents of all 12 regional banks","the 7 governors plus 5 members of Congress","12 governors appointed by the President"],e:"Four seats rotate yearly among the other 11 presidents."},
+ {tp:"fed",sec:"g-fed-struct",t:"mc",q:"The Board of Governors’ two monetary policy roles are:",a:"setting the discount rate and the interest rate on reserves",w:["running open market operations and setting tax rates","printing currency and setting the federal funds rate by decree","setting the inflation target and the unemployment target"],e:"Open market operations belong to the FOMC."},
+ {tp:"fed",sec:"g-fed-struct",t:"mc",q:"Why do Congress and the President let the Fed operate independently?",a:"For credibility: without it, people can’t tell economic decisions from political ones",w:["Because the Constitution forbids Congress from changing the Fed","Because the Fed is owned by private banks","Because independence guarantees the Fed never makes mistakes"],e:"Turkey under Erdoğan shows how interference erodes trust."},
+ {tp:"fed",sec:"g-fed-struct",t:"mc",q:"Which is one of the arguments AGAINST an independent Fed?",a:"The Fed has made damaging mistakes, like the Great Depression and the Great Inflation",w:["An independent Fed always lets inflation run too low","Independence makes the Fed’s decisions easier to predict","The Fed has never been accountable to Congress in any way"],e:"The other: such powerful officials should be accountable to voters."},
+ {tp:"fed",sec:"g-fed-struct",t:"mc",q:"Which is NOT one of the Fed’s five functions?",a:"Set income tax rates",w:["Promote the stability of the financial system","Foster payments and settlements","Promote consumer protection and community development"],e:"The five: monetary policy, financial stability, solvency of institutions, payments and settlements, consumer protection and community development."},
+ {tp:"fed",sec:"g-fed-struct",ap:true,t:"mc",q:"The Fed limits how much a hedge fund can borrow to buy assets. This serves which function?",a:"Promoting the solvency of individual financial institutions",w:["Conducting monetary policy","Fostering payments and settlements","Promoting consumer protection and community development"],e:"Solvency is the ability to meet long-term debts; leveraging (debt, not equity) adds risk."},
+ {tp:"fed",sec:"g-fed-struct",t:"mc",q:"The Fed’s consumer protection and community development function comes from:",a:"the 2010 Dodd-Frank Act",w:["the 1913 Federal Reserve Act","the 1977 amendment that set the dual mandate","the 2020 flexible average inflation targeting framework"],e:"Dodd-Frank Wall Street Reform and Consumer Protection Act."},
+ {tp:"fed",sec:"g-fed-struct",t:"tf",q:"The FOMC holds 8 scheduled meetings a year and releases a statement at the end of each.",a:true,e:"True — two-day meetings; the minutes follow a few weeks later."},
+ {tp:"fed",sec:"g-fed-struct",t:"tf",q:"A governor who serves a full 14-year term can be reappointed for another full term.",a:false,e:"False. No reappointment after a full term — but filling an unexpired term first allows just under 28 years."},
+
+ {tp:"fed",sec:"g-fed-tools",t:"mc",q:"The federal funds rate is:",a:"the interest rate on overnight loans of reserves from one bank to another",w:["the interest rate on loans of reserves from the Fed to banks","the interest rate the Fed pays on reserves","the rate on 30-year Treasury bonds"],e:"Bank-to-bank. The discount rate is bank-to-Fed."},
+ {tp:"fed",sec:"g-fed-tools",t:"mc",q:"The discount rate is:",a:"the interest rate on loans of reserves that the Fed makes to banks",w:["the interest rate banks charge each other overnight","the rate the Fed pays on reserve balances","the rate on reverse repurchase agreements"],e:"It makes the Fed the lender of last resort; kept about 0.5 above the top of the fed funds range."},
+ {tp:"fed",sec:"g-fed-tools",m:1,ap:true,t:"mc",q:"The FOMC buys $10 billion of short-term Treasuries from banks. This is:",a:"an expansionary open market operation that adds reserves",w:["a contractionary open market operation that removes reserves","quantitative tightening","a change in the discount rate"],e:"Fed buys bonds → pays with new reserves → money supply up."},
+ {tp:"fed",sec:"g-fed-tools",m:1,ap:true,t:"mc",q:"The Fed buys 30-year Treasuries and mortgage-backed securities. This is:",a:"quantitative easing",w:["an ordinary open market operation","quantitative tightening","forward guidance"],e:"QE extends expansionary OMO to long-term and GSE securities, raising their prices."},
+ {tp:"fed",sec:"g-fed-tools",t:"mc",q:"Which two effects does quantitative easing have?",a:"Higher asset prices (a wealth effect) and risk moved onto the Fed’s balance sheet",w:["Lower asset prices and higher long-term interest rates","A higher reserve requirement and a lower discount rate","Higher taxes and lower government spending"],e:"Those are QE’s effects; lower asset prices and higher rates are QT’s."},
+ {tp:"fed",sec:"g-fed-tools",t:"mc",q:"Which statement about government-sponsored enterprises (GSEs) is correct?",a:"They are chartered by Congress but not backed by the full faith and credit of the government",w:["They are federal agencies fully backed by the government’s power to tax","They earn interest on the reserves they hold at the Fed","They are commercial banks regulated by the FOMC"],e:"Fannie Mae, Freddie Mac, the Farm Credit System. They can hold reserves at the Fed but can’t earn IOR."},
+ {tp:"fed",sec:"g-fed-tools",t:"mc",q:"In an abundant reserve regime, the Fed’s “tool of choice” is:",a:"interest on reserves",w:["open market operations","the reserve requirement","the discount window"],e:"Paying interest on reserves is “the Fed’s new monetary policy tool of choice.”"},
+ {tp:"fed",sec:"g-fed-tools",t:"mc",q:"Interest on reserves affects:",a:"the demand for reserves, and sets the ceiling of the fed funds range",w:["the supply of reserves, and sets the floor of the fed funds range","the supply of currency, and sets the discount rate","the demand for loanable funds, and sets the real rate"],e:"Like a subsidy: pay banks to hold reserves and they hold more; none lends for less."},
+ {tp:"fed",sec:"g-fed-tools",t:"mc",q:"A reverse repurchase agreement:",a:"sets the floor of the fed funds range: the Fed sells a security and buys it back the next day at a higher price",w:["sets the ceiling of the fed funds range: the Fed pays interest on all reserves","lends reserves to banks at the discount rate","buys long-term mortgage-backed securities"],e:"No institution lends reserves overnight for less than the Fed pays on a reverse repo."},
+ {tp:"fed",sec:"g-fed-tools",ap:true,t:"mc",q:"The Fed announces that it expects to keep rates low for the next two years. This tool is:",a:"forward guidance, and it is expansionary",w:["forward guidance, and it is contractionary","quantitative easing","an open market purchase"],e:"Signaling lower future rates shapes expectations in an expansionary direction."},
+ {tp:"fed",sec:"g-fed-tools",t:"mc",q:"Which is the correct order of the monetary transmission mechanism?",a:"Fed sets the rate target → short-term rates → other rates and expectations → spending → the mandate",w:["Spending → short-term rates → the Fed sets the rate target → the mandate","The Fed sets output → prices → interest rates → the mandate","Other rates → the Fed sets the rate target → spending → short-term rates"],e:"The Fed’s tools are nominal; it can’t directly change output or employment."},
+ {tp:"fed",sec:"g-fed-tools",t:"tf",q:"When the Fed sells Treasury bonds to banks, the money supply rises.",a:false,e:"False. Selling bonds takes reserves out — contractionary. Buying bonds is expansionary."},
+ {tp:"fed",sec:"g-fed-tools",t:"tf",q:"The Fed has paid interest on reserves since October 2008.",a:true,e:"True — on required and excess reserves until March 2020, on all reserves since."},
+
+ {tp:"fed",sec:"g-fed-reserves",t:"mc",q:"In the market for reserves, the axes are:",a:"the federal funds rate and the quantity of reserves",w:["the real interest rate and loanable funds","the nominal interest rate and the quantity of money","the discount rate and the money multiplier"],e:"Three different models, three different axes — keep them apart."},
+ {tp:"fed",sec:"g-fed-reserves",t:"mc",q:"The supply of reserves is:",a:"vertical for non-borrowed reserves, then flat at the discount rate",w:["upward sloping, like the supply of loanable funds","flat at the interest rate on reserves","downward sloping, then flat at the reverse-repo rate"],e:"The Fed sets non-borrowed reserves (OMO, QE/QT); above the discount rate, banks would borrow from the Fed."},
+ {tp:"fed",sec:"g-fed-reserves",m:1,ap:true,t:"mc",q:"Reserves are scarce and the Fed buys bonds in the open market. The federal funds rate and the quantity of reserves:",a:"the rate falls and the quantity rises",w:["the rate stays the same and the quantity rises","the rate rises and the quantity falls","both stay the same"],e:"Supply shifts right along the sloped part of demand."},
+ {tp:"fed",sec:"g-fed-reserves",m:1,ap:true,t:"mc",q:"Reserves are abundant and the Fed buys bonds (or does QE). The federal funds rate and the quantity of reserves:",a:"the rate stays the same and the quantity rises",w:["the rate falls and the quantity rises","the rate rises and the quantity rises","both stay the same"],e:"Supply shifts along the flat part of demand, so the rate stays in its range."},
+ {tp:"fed",sec:"g-fed-reserves",m:1,ap:true,t:"mc",q:"Reserves are abundant and the Fed raises the interest rate on reserves. The federal funds rate:",a:"rises, because the ceiling moves up, while the quantity of reserves is unchanged",w:["is unchanged, while the quantity of reserves rises","falls, because banks lend out their reserves","is unchanged, because only supply matters"],e:"IOR shifts demand: the top of the range rises."},
+ {tp:"fed",sec:"g-fed-reserves",t:"mc",q:"The Fed lowers the discount rate. In either regime, the federal funds rate and quantity of reserves:",a:"do not change",w:["both fall","the rate falls and the quantity rises","the rate rises and the quantity falls"],e:"It is kept 50 basis points above the fed funds rate, so the flat part of supply sits above the action."},
+ {tp:"fed",sec:"g-fed-reserves",t:"mc",q:"Why is demand for reserves flat at the interest rate on reserves?",a:"Banks paid IOR won’t lend for less, and holding reserves at the Fed is risk-free",w:["The Fed forbids trading below that rate","Reserves pay nothing below that rate","Banks are required to hold that many reserves"],e:"At that rate, banks add reserves indefinitely."},
+ {tp:"fed",sec:"g-fed-reserves",t:"mc",q:"With scarce reserves, what does the Fed change to move the federal funds rate?",a:"The supply of reserves, through open market operations",w:["The demand for reserves, through interest on reserves","The discount rate","The reserve requirement"],e:"Scarce: supply. Abundant: demand (IOR and reverse repos)."},
+ {tp:"fed",sec:"g-fed-reserves",t:"mc",q:"One bank makes more loans and holds fewer reserves. Total reserves in the banking system:",a:"don’t change — the reserves just move to another bank",w:["fall by the amount of the new loans","rise by the amount of the new loans","fall to zero"],e:"The Fed controls total reserves; the loans are deposited elsewhere."},
+ {tp:"fed",sec:"g-fed-reserves",t:"tf",q:"With abundant reserves, open market operations move the federal funds rate.",a:false,e:"False. They change only the quantity of reserves; the rate stays in the IOR–reverse-repo range."},
+ {tp:"fed",sec:"g-fed-reserves",t:"tf",q:"When bond prices rise, their interest rates fall.",a:true,e:"True — bond prices and interest rates move inversely. That is how QE lowers long-term rates."},
+
+ {tp:"fed",sec:"g-fed-limits",t:"mc",q:"Which is NOT one of the three difficulties of monetary policy?",a:"The Fed cannot change the federal funds rate",w:["The knowledge and timing problem","Incomplete control and lags","Real shocks such as a fall in productivity"],e:"It can change the fed funds rate almost instantly; the difficulties are knowledge/timing, control/lags, real shocks."},
+ {tp:"fed",sec:"g-fed-limits",ap:true,t:"mc",q:"In early 2020 the Fed was considering contractionary policy, then COVID-19 hit and it reversed within weeks. This illustrates:",a:"the knowledge and timing problem",w:["incomplete control of M1 and M2","a rules-based policy","the lender of last resort"],e:"The Fed acts in real time on projections; unforeseeable shocks can make policy suddenly wrong."},
+ {tp:"fed",sec:"g-fed-limits",t:"mc",q:"The Fed does NOT fully control:",a:"M1 and M2",w:["currency","non-borrowed reserves","the monetary base"],e:"If banks don’t lend the reserves, the broader aggregates don’t grow."},
+ {tp:"fed",sec:"g-fed-limits",t:"mc",q:"Monetary policy works best when the economy slows because:",a:"spending (consumption or investment) slows",w:["productivity falls","the population shrinks","the Fed runs out of reserves"],e:"“The Fed doesn’t control productivity.” Real shocks are the third difficulty."},
+ {tp:"fed",sec:"g-fed-limits",t:"mc",q:"Which tool shortens the lag between a fed funds change and other interest rates?",a:"Forward guidance",w:["The discount rate","Reverse repos","The reserve requirement"],e:"Telling people the future path lets other rates adjust sooner."},
+ {tp:"fed",sec:"g-fed-limits",t:"mc",q:"The strongest argument for discretionary policy is:",a:"flexibility",w:["credibility","accountability","guaranteed low inflation"],e:"Credibility and accountability are the two arguments for rules."},
+ {tp:"fed",sec:"g-fed-limits",ap:true,t:"mc",q:"A central bank commits to a 5% nominal GDP growth target: below 5% it expands, above it contracts. This is:",a:"rules-based policy",w:["discretionary policy","forward guidance only","quantitative easing"],e:"A specific policy known in advance. Nominal, because the Fed can’t control productivity."},
+ {tp:"fed",sec:"g-fed-limits",t:"tf",q:"Forward guidance is a firm commitment by the Fed, so it counts as rules-based policy.",a:false,e:"False. It is “what we think we’re going to do” — the FOMC can act at any time. Modern policy is discretionary."},
+ {tp:"fed",sec:"g-fed-limits",t:"tf",q:"After the 2009 recovery began, PCE inflation stayed below 2% most months, so the Fed undershot.",a:true,e:"True — the criticism he gives after 2007–09."}
+]);
+
+/* ---- practice: which tool, what it does on the graph, and the mandate ---- */
+PRACTICE_TOPICS.push(["fed","The Fed"]);
+TOPIC_LABEL.fed = "The Fed";
+var FED_ACTS = [
+ ["The FOMC buys short-term Treasury bills from banks.", 0],
+ ["The FOMC sells short-term Treasury bills to banks.", 1],
+ ["The Fed buys 30-year Treasuries and mortgage-backed securities.", 2],
+ ["The Fed lets its long-term bonds mature without reinvesting the proceeds.", 3],
+ ["The Fed tells the public it expects to keep rates low for two years.", 4],
+ ["The Fed lowers the interest rate it pays on reserves.", 5]];
+var FED_ACT_OPTS = ["Open market purchase — expansionary", "Open market sale — contractionary", "Quantitative easing — expansionary", "Quantitative tightening — contractionary", "Forward guidance — expansionary", "Lower interest on reserves — expansionary"];
+var RSV = [
+ ["Reserves are scarce. The Fed buys bonds in the open market.", 0, "Supply shifts right along the sloped part of demand."],
+ ["Reserves are scarce. The Fed sells bonds in the open market.", 1, "Supply shifts left along the sloped part of demand."],
+ ["Reserves are abundant. The Fed buys bonds (or does QE).", 2, "Supply shifts right along the flat part: only the quantity changes."],
+ ["Reserves are abundant. The Fed sells bonds (or does QT).", 3, "Supply shifts left along the flat part: only the quantity changes."],
+ ["Reserves are abundant. The Fed raises the interest rate on reserves.", 4, "Demand shifts: the ceiling rises."],
+ ["Reserves are abundant. The Fed raises the reverse-repo rate.", 4, "Demand shifts: the floor rises."],
+ ["Reserves are scarce. The Fed lowers the discount rate.", 5, "The discount rate sits 50 basis points above the action."],
+ ["Reserves are abundant. The Fed raises the discount rate.", 5, "The discount rate never moves the rate or the quantity."],
+ ["Reserves are scarce. The Fed raises the interest rate on reserves.", 5, "With scarce reserves, only supply moves the rate."]];
+var RSV_OPTS = ["The fed funds rate falls; reserves rise", "The fed funds rate rises; reserves fall", "The fed funds rate is unchanged; reserves rise", "The fed funds rate is unchanged; reserves fall", "The fed funds rate rises; reserves are unchanged", "No change in either"];
+GENS.push(
+ {id:"fed-tool", topic:"fed", name:"Which tool is it?", remind:"Buy = expand, sell = contract. Short-term bills = OMO; long-term and MBS = QE/QT. Signals = forward guidance.",
+  make:function(){ var s = rp(FED_ACTS); return {vals:{}, text:s[0], choice:{q:"Which tool is this, and which direction?", opts:FED_ACT_OPTS.slice(), right:s[1], work:FED_ACT_OPTS[s[1]] + "."}}; }},
+ {id:"fed-rsv", topic:"fed", name:"Market for reserves: what happens?", remind:"Scarce: supply moves the rate. Abundant: supply moves only the quantity; IOR (ceiling) and reverse repos (floor) move the rate. The discount rate moves nothing.",
+  make:function(){ var s = rp(RSV); return {vals:{}, text:s[0], choice:{q:"What happens in the market for reserves?", opts:RSV_OPTS.slice(), right:s[1], work:s[2] + " " + RSV_OPTS[s[1]] + "."}}; }},
+ {id:"fed-mandate", topic:"fed", name:"The dual mandate: which policy?", remind:"Low inflation + high unemployment → expand. High inflation + low unemployment → contract. Otherwise the goals conflict: prioritize the one farther from its objective.",
+  make:function(){
+   var pi = ri(2, 12) / 2, un = ri(6, 16) / 2, nat = rp([4, 4.5, 5]);
+   if(pi === 2) pi = 2.5; if(un === nat) un += 1;
+   var lowP = pi < 2, highU = un > nat, right, work;
+   if(lowP && highU){ right = 0; work = "Inflation below 2% and unemployment above normal: expansionary policy fixes both."; }
+   else if(!lowP && !highU){ right = 1; work = "Inflation above 2% and unemployment below normal: contractionary policy fixes both."; }
+   else {
+    var dP = Math.abs(pi - 2), dU = Math.abs(un - nat);
+    if(dP === dU){ un += highU ? 0.5 : -0.5; dU = Math.abs(un - nat); }
+    right = dP > dU ? (lowP ? 2 : 3) : (highU ? 2 : 3);
+    work = "The goals conflict. Inflation is " + num(dP, 1) + " points from 2%; unemployment is " + num(dU, 1) + " points from " + num(nat, 1) + "%. Prioritize the farther one" + (dP > dU ? " — inflation." : " — unemployment.");
+   }
+   return {vals:{}, text:"Inflation (PCE) is " + num(pi, 1) + "% and unemployment is " + num(un, 1) + "%. The Fed estimates the long-run normal unemployment rate at " + num(nat, 1) + "%.",
+    choice:{q:"What should the Fed do?", opts:["Expansionary policy — both goals point the same way", "Contractionary policy — both goals point the same way", "The goals conflict; lean expansionary for the goal farther from target", "The goals conflict; lean contractionary for the goal farther from target"], right:right, work:work}};
+  }});
+["fed-tool","fed-rsv","fed-mandate"].forEach(function(id){ GENS.forEach(function(g){ if(g.id === id) GEN_BY_ID[id] = g; }); });
+
 /* ================================================================ helpers */
 function $(s,r){ return (r||document).querySelector(s); }
 function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
@@ -3432,7 +4395,8 @@ var store = {
   set:function(k,v){ try{ localStorage.setItem("macro."+k, v); }catch(e){} }
 };
 var CORNERS = ['tl','tr','bl','br'].map(function(c){ return '<svg class="c '+c+'" aria-hidden="true"><use href="#corner"/></svg>'; }).join('');
-var CHAPTERS = ["gdp","growth","labor","prices","saving","lf","formulas"];
+var CHAPTERS = ["gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","formulas"];
+var UNIT1 = ["gdp","growth","labor","prices","saving","formulas"], UNIT2 = ["lf","money","tvm","bank","fed"];
 var TOPIC_NAMES = {};
 CHAPTERS.forEach(function(tp){ TOPIC_NAMES[tp] = CH[tp].short; });
 /* Every question and card carries the id of the study-guide section it belongs to */
@@ -3648,10 +4612,10 @@ function mockQuestions(cfg){
 /* The 38 for the exam — its real length. Every section of the outline is
    represented, two questions each, leaning towards the problem-set questions
    he missed without shutting out the readings.                              */
-function finalFifty(n){
-  n = n || 50;
+function finalFifty(n, unit){
+  n = n || 50; unit = unit || UNIT1;
   var secs = [], bySec = {};
-  GUIDE.sections.forEach(function(s){ s.items.forEach(function(it){ secs.push(it.id); bySec[it.id] = []; }); });
+  GUIDE.sections.forEach(function(s){ if(unit.indexOf(s.tp) < 0) return; s.items.forEach(function(it){ secs.push(it.id); bySec[it.id] = []; }); });
   QB.forEach(function(b, i){ if(!b.off && bySec[b.sec]) bySec[b.sec].push(fromBank(b, i)); });
   secs.forEach(function(id){
     bySec[id] = bySec[id].map(function(q){ return {q:q, r:(q.hot || 0) + Math.random()*1.8}; })
@@ -3773,7 +4737,7 @@ function matchRound(tp, n){
 if(typeof window === "undefined"){
   module.exports = {CH:CH, COURSE:COURSE, GUIDE:GUIDE, exam1Questions:exam1Questions, READINGS:READINGS, readingQuestions:readingQuestions, questionsByKeys:questionsByKeys, PAST_RQ:PAST_RQ, pastStats:pastStats, pastQuestions:pastQuestions, rdQuestions:rdQuestions,
     QB:QB, PAIRSETS:PAIRSETS, VERDICTS:VERDICTS, CHAPTERS:CHAPTERS, TOPIC_NAMES:TOPIC_NAMES, SEC_TITLES:SEC_TITLES, SEC_CHAPTER:SEC_CHAPTER,
-    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
+    CONFIRMED:CONFIRMED, TIERS:TIERS, TIER_TITLES:TIER_TITLES, REVIEW_NOTE:REVIEW_NOTE, hotOf:hotOf, finalFifty:finalFifty, UNIT1:UNIT1, UNIT2:UNIT2, PRACTICE_TOPICS:PRACTICE_TOPICS, LIST:LIST, LISTQ:LISTQ, LIST_ROWS:LIST_ROWS, fromList:fromList, listQuestions:listQuestions, listDeck:listDeck, LIST_GENS:LIST_GENS, GENS:GENS, GEN_BY_ID:GEN_BY_ID, FIXED:FIXED, FIXED_BY_ID:FIXED_BY_ID, practiceQuestions:practiceQuestions, formatProblem:formatProblem, baseOf:baseOf, bagOf:bagOf, parseAnswer:parseAnswer, checkPart:checkPart, wrongFor:wrongFor, show:show, shown:shown, labelOf:labelOf, singleFormats:singleFormats, meaningOf:meaningOf, sameThing:sameThing,
     fromBank:fromBank, fromPair:fromPair, topicQuestions:topicQuestions, mockQuestions:mockQuestions, questionsByKeys:questionsByKeys,
     deckFor:deckFor, matchRound:matchRound, verdictFor:verdictFor};
   return;
@@ -4435,6 +5399,10 @@ function startExam1(){
   engines.mock = makeQuiz($("#mockExam"), exam1Questions, {showTopic:true, showTier:true, againLabel:"Exam 1 again", onSetup:renderMockSetup});
   engines.mock.start(null);
 }
+function startExam2(){
+  engines.mock = makeQuiz($("#mockExam"), function(){ return finalFifty(33, UNIT2); }, {showTopic:true, showTier:true, againLabel:"Another thirty-three", onSetup:renderMockSetup});
+  engines.mock.start(null);
+}
 function renderMockSetup(){
   var root = $("#mockExam");
   function seg(id, attr, val, list){
@@ -4442,8 +5410,10 @@ function renderMockSetup(){
   }
   root.innerHTML = '<div class="quizWrap"><div class="qcard card-corners">'+CORNERS+
     '<div class="qnum">Practice exam</div><p class="qtext">Set it up, then answer across the topics. Each run is drawn fresh.</p>'+
-    '<div class="fifty"><button class="btn primary" type="button" id="mxFifty">The 38 &mdash; the exam&rsquo;s length, every section</button>'+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxFifty">The 38 &mdash; Exam 1&rsquo;s length, every Unit 1 section</button>'+
       '<p>Thirty-eight questions &mdash; the exam&rsquo;s length &mdash; at least one from each of the 24 sections, your misses first. Drawn fresh each time.</p></div>'+
+    '<div class="fifty"><button class="btn primary" type="button" id="mxExam2">Exam 2 set &mdash; 33 questions, Unit 2</button>'+
+      '<p>Exam 2&rsquo;s length (Tue Nov 10): loanable funds, money, time value, banking and the Fed, every section covered. Drawn fresh each time.</p></div>'+
     '<div class="fifty"><button class="btn primary" type="button" id="mxExam1">Exam 1 again &mdash; the real questions</button>'+
       '<p>Every multiple-choice question from the first exam, with your '+QB.filter(function(b){ return b.ex && b.m === 3; }).length+' misses marked. The fill-in calculations are in Math Practice &rarr; Numbers &rarr; <b>Exam 1 problems</b>.</p></div>'+
     '<div class="setup">'+
@@ -4462,6 +5432,7 @@ function renderMockSetup(){
   $("#mxStart").addEventListener("click", function(){ startMock(null); });
   $("#mxFifty").addEventListener("click", startFifty);
   $("#mxExam1").addEventListener("click", startExam1);
+  $("#mxExam2").addEventListener("click", startExam2);
   engines.mock = null;
 }
 
@@ -4557,8 +5528,8 @@ CHAPTERS.forEach(function(tp){
   KEYS[tp+"/cards"] = function(e){ return engines[tp+"Cards"].keys(e); };
   KEYS[tp+"/quiz"]  = function(e){ return engines[tp+"Quiz"].keys(e); };
 });
-var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","guide"];
-var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", formulas:"notes", exam:"mock", readings:"page"};
+var TOPICS = ["list","practice","formulas","exam","readings","gdp","growth","labor","prices","saving","lf","money","tvm","bank","fed","guide"];
+var currentTopic = "list", currentMode = {list:"page", practice:"run", guide:"overview", gdp:"notes", growth:"notes", labor:"notes", prices:"notes", saving:"notes", lf:"notes", money:"notes", tvm:"notes", bank:"notes", fed:"notes", formulas:"notes", exam:"mock", readings:"page"};
 function showMode(topic, mode){
   currentMode[topic] = mode;
   $$('.seg[data-modes="'+topic+'"] button').forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });

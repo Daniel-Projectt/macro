@@ -5,6 +5,13 @@
    the thesis, and "which does NOT align". Built from the reading itself.       */
 var READINGS = [
  {id:"rq10", n:10, date:"Thu Oct 1", title:"A Christian Approach to Interest", who:"Stein", year:2021,
+  plain:
+   '<div class="plain"><b>In plain words</b>'+
+   '<p class="pq"><span>The question he&rsquo;s answering</span>Is it OK for Christians to charge interest on a loan?</p>'+
+   '<p class="pa"><span>His answer, in one sentence</span>It&rsquo;s not simply right or wrong: interest-free banking has good points but doesn&rsquo;t fit beside normal banks, so Christians shouldn&rsquo;t wait for a perfect system &mdash; they should help the poor in whatever practical way works.</p>'+
+   '<p class="pp"><span>Picture it like this</span>A family argument that has gone on for 2,500 years. Each generation (Greeks, Moses, the church, Calvin) drew the line in a different place. Stein&rsquo;s point: the <b>goal</b> (protect the poor) matters more than the <b>rule</b> (ban interest).</p>'+
+   '<div class="p5"><span>If you remember only five things</span><ol><li><b>Aristotle:</b> interest is unnatural &mdash; money breeding money.</li><li><b>Old Testament:</b> no interest to the poor or a fellow Israelite. <b>New Testament:</b> almost silent.</li><li><b>Aquinas:</b> banned it &mdash; time is God&rsquo;s gift. Exceptions: <b>cessant gain</b> (profit you give up) and <b>emergent loss</b> (risk, a late fee &mdash; the credit card).</li><li><b>Calvin:</b> allowed it, left it to conscience &rarr; modern banking.</li><li><b>Today:</b> it&rsquo;s wise vs foolish, not right vs wrong; people sin, so any system can be abused; fix the system from inside; help the poor now (Wesley&rsquo;s insurance, Duncan&rsquo;s savings bank).</li></ol></div>'+
+   '<p class="ps"><span>How to spot the right answer</span>Pick the <b>calm, middle</b> option &mdash; &ldquo;it depends,&rdquo; &ldquo;both systems can be abused,&rdquo; &ldquo;help the poor practically.&rdquo; The wrong ones are <b>extreme</b>: &ldquo;the Bible forbids all interest,&rdquo; &ldquo;interest is morally neutral,&rdquo; &ldquo;ban it everywhere.&rdquo;</p></div>',
   start:
    '<div class="point"><b>The thesis in one line</b><p>Stein (2021) looks at interest through history and Christian ethics and concludes that there are <b>good moral and practical reasons for interest-free banking</b>, but it <b>cannot easily co-exist</b> with conventional banking. So Christians care about the <b>spirit and purpose, not the letter</b>, of the law: help the poor by whatever means work, and treat interest as a question of <b>wise or foolish</b> more than simply right or wrong.</p></div>'+
    '<h3 class="sub">The history (seven snapshots)</h3><ul>'+
@@ -120,6 +127,13 @@ var READINGS = [
    {t:"tf",q:"According to Stein (2021), attempts to prohibit interest in an economy that is not state-controlled have usually led to ways of evading or disguising it.",a:true,e:"True. That is one of his main practical doubts about simply banning interest."}
   ]},
  {id:"rq11", n:11, date:"Tue Oct 6", title:"From Usury to Interest", who:"Persky", year:2007,
+  plain:
+   '<div class="plain"><b>In plain words</b>'+
+   '<p class="pq"><span>The question he&rsquo;s answering</span>How did charging interest go from a sin (&ldquo;usury&rdquo;) to something normal (&ldquo;interest&rdquo;)?</p>'+
+   '<p class="pa"><span>His answer, in one sentence</span>Over centuries people stopped seeing interest as sinful, and the turning point was Bentham telling Adam Smith that capping interest rates makes no sense &mdash; which Chesterton called the start of the modern world.</p>'+
+   '<p class="pp"><span>Picture it like this</span>A <b>rent cap on money</b>. Smith wanted a cap (about 5%) so reckless borrowers couldn&rsquo;t grab the money. Locke and Bentham said caps backfire: lenders stop lending, and the people the cap was meant to protect lose out.</p>'+
+   '<div class="p5"><span>If you remember only five things</span><ol><li><b>Interest</b> today = the rental price of money. The word started as a <b>late-payment penalty</b> &mdash; a loophole around usury bans.</li><li><b>Locke:</b> a low cap backfires &mdash; the clever dodge it, widows and orphans lose.</li><li><b>Smith:</b> wanted a cap so <b>prodigals and projectors</b> (spenders and shady promoters) couldn&rsquo;t outbid sober borrowers.</li><li><b>Bentham:</b> let rates be free &mdash; &ldquo;why control <b>this one price</b> and no other?&rdquo; Projectors are <b>inventors</b>; high rates just pay for risk.</li><li><b>Chesterton:</b> Bentham&rsquo;s essay began the <b>modern world</b> &mdash; the old sin became self-interest.</li></ol></div>'+
+   '<p class="ps"><span>How to spot the right answer</span>Match the <b>name</b> to the idea: Smith = cap, Bentham = free rates, Locke = caps backfire, Chesterton = modern world. Most questions are &ldquo;who said what.&rdquo;</p></div>',
   start:
    '<div class="point"><b>The thesis in one line</b><p>Persky (2007) traces how <b>usury</b> (once any payment on a loan) became <b>interest</b> (a legitimate payment), and argues the debate peaked when <b>Jeremy Bentham</b>&rsquo;s <i>Defence of Usury</i> (1787) challenged <b>Adam Smith</b>&rsquo;s support for a legal cap on interest. He agrees with <b>Chesterton</b> that Bentham&rsquo;s essay marks the <b>beginning of the modern world</b>: the old sin of usury became the engine of self-interest.</p></div>'+
    '<h3 class="sub">The words</h3><ul>'+
@@ -199,6 +213,13 @@ var READINGS = [
   ]},
  {id:"rq12", n:12, date:"Tue Oct 13", title:"The Morality of Fractional Reserve Banking"},
  {id:"rq13", n:13, date:"Thu Oct 29", title:"Inflation is the Enemy of Justice", who:"Steen", year:2022,
+  plain:
+   '<div class="plain"><b>In plain words</b>'+
+   '<p class="pq"><span>The question he&rsquo;s answering</span>Is inflation a justice issue, or just an economics issue?</p>'+
+   '<p class="pa"><span>His answer, in one sentence</span>It&rsquo;s a justice issue: inflation hurts the poor the most, so Christians should be wary of policies that cause it &mdash; especially big government spending when the economy is already at full employment.</p>'+
+   '<p class="pp"><span>Picture it like this</span>Inflation is a <b>tax everyone pays without a vote</b> &mdash; but it takes a bigger bite out of someone who spends their whole paycheck on groceries and gas than out of someone with savings and a house that goes up in value.</p>'+
+   '<div class="p5"><span>If you remember only five things</span><ol><li>2021 inflation was <b>7%</b> (CPI), the highest in ~40 years.</li><li>Inflation is bad because it <b>hits everyone</b>, <b>lasts</b> (the wage-price spiral) and is <b>hard to stop</b> (early 1980s: 18% mortgages, ~11% unemployment).</li><li>The poor are hit hardest: they spend <b>more of their income</b>, mostly on <b>necessities</b>, have <b>no savings or property</b> to cushion it, and often work <b>informal jobs</b> where raises are hard to get.</li><li>Bible: <b>Matthew 25:40</b> (&ldquo;the least of these&rdquo;) and <b>Proverbs 14:31</b>.</li><li>Policy: too much spending near <b>full employment</b> causes inflation; be wary of &ldquo;<b>fully paid for</b>.&rdquo;</li></ol></div>'+
+   '<p class="ps"><span>How to spot the right answer</span>The right answer always comes back to <b>the poor being hurt most</b>. Wrong answers say inflation helps the poor, is harmless, or has nothing to do with justice.</p></div>',
   start:
    '<div class="point"><b>The thesis in one line</b><p>Steen (2022) argues that <b>inflation is an enemy of economic justice</b> because it hits <b>the poor hardest</b>, and that since God cares especially for the poor, Christians should be wary of <b>inflationary policy</b> &mdash; especially heavy government spending near <b>full employment</b>.</p></div>'+
    '<h3 class="sub">The setting</h3><ul>'+

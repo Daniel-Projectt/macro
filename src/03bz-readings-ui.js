@@ -128,7 +128,7 @@ function renderRdMode(mode){
     if(!built){ $("#rdPage").innerHTML = rdNotBuilt(r); return; }
     if(r.start){
       $("#rdPage").innerHTML = '<div class="note-sec rdpage">' + rdHead(r) +
-        '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + ' &middot; 5 questions, 4 minutes, in class</span></p>' + r.start +
+        '<p class="knowline"><span class="know">Reading Quiz #' + r.n + ' &middot; ' + r.date + ' &middot; 5 questions, 4 minutes, in class</span></p>' + (r.plain || '') + (r.plain ? '<h3 class="sub" style="margin-top:26px">The details</h3>' : '') + r.start +
         '<div class="toolbar" style="justify-content:center;margin-top:18px"><button class="btn primary" type="button" data-go-rd="quiz">Practice (' + r.q.length + ' questions)</button><button class="btn" type="button" data-go-rd="real">The real thing: 5 in 4 minutes</button></div></div>';
     } else {
       $("#rdPage").innerHTML = '<div class="note-sec rdpage">' + rdHead(r) +

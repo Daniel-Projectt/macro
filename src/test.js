@@ -558,5 +558,31 @@ ok(!/The 50 |Another fifty|sixteen sections/.test(src), 'the exam button is the 
 ok(!/�/.test(html), 'no broken characters');
 console.log('  file size: ' + (fs.statSync(path.join(ROOT, 'index.html')).size / 1024).toFixed(1) + ' KB');
 
+head('problem-set rehearsals');
+const psStrip = s => String(s).replace(/<[^>]+>/g, '');
+{
+  const sets = A.SCHEDULE.filter(s => s.k === 'Problem set');
+  ok(sets.length === 12 && sets.every(s => s.ps && s.n >= 3 && s.min >= 30 && s.pts >= 15 && s.ch), 'every problem set left carries its real size: questions, minutes, points', sets.map(s => s.ps + ':' + s.n + '/' + s.min + '/' + s.pts).join(' '));
+  const ps5 = sets.filter(s => s.ps === 5)[0];
+  ok(ps5.n === 11 && ps5.min === 30 && ps5.pts === 25 && ps5.ch === 'lf', 'Problem Set 5: 11 questions, 30 minutes, 25 points, loanable funds');
+  ok(A.psGens(ps5).map(g => g.id).sort().join() === 'lf-fisher,lf-shift', 'its calculations are the Fisher identity and the loanable-funds shifts (not liquidity preference)', A.psGens(ps5).map(g => g.id).join());
+  ok(A.PS_KNOW[5].length === 10 && /crowding out/.test(A.PS_KNOW[5][0]) && /supply shifts left/.test(A.PS_KNOW[5][0]), 'the prep sheet opens with the deficit: supply shifts left, crowding out');
+  ok(/n − π/.test(A.PS_KNOW[5].join(' ')) && /along/.test(A.PS_KNOW[5].join(' ')) && /% sign/.test(A.PS_KNOW[5].join(' ')), 'and covers the Fisher identity, movement along a curve, and how to type answers');
+  const texts = new Set();
+  for (let r = 0; r < 20; r++) {
+    const q = A.psRehearsal(ps5);
+    ok(q.length === 11, 'a rehearsal of eleven', q.length);
+    ok(new Set(q.map(x => x.key)).size === 11, 'no question twice');
+    const calc = q.filter(x => /^ps:/.test(x.key));
+    ok(calc.length >= 3 && calc.length <= 5, 'three to five calculation or shift problems', calc.length);
+    ok(calc.some(x => /^ps:lf-fisher/.test(x.key)) && calc.some(x => /^ps:lf-shift/.test(x.key)), 'both kinds: real/nominal rates and curve shifts');
+    ok(q.every(x => x.tp === 'lf'), 'everything is on loanable funds', [...new Set(q.map(x => x.tp))].join());
+    ok(q.every(x => x.opts && x.opts.length >= 2 && x.opts.filter(o => o.ok).length === 1 && x.text && x.explain), 'each has options, exactly one right answer, and an explanation');
+    q.forEach(x => texts.add(psStrip(x.text)));
+  }
+  ok(texts.size >= 45, 'twenty rehearsals draw many different questions', texts.size);
+  sets.forEach(s => { const q = A.psRehearsal(s); ok(q.length === s.n && q.every(x => x.tp === s.ch), 'rehearsal for problem set ' + s.ps + ' matches its size and chapter', q.length + ' of ' + s.n); });
+}
+
 console.log('\n' + (fails === 0 ? 'ALL ' + checks + ' CHECKS PASSED' : fails + ' FAILURES out of ' + checks + ' checks'));
 process.exit(fails ? 1 : 0);

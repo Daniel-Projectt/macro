@@ -3,25 +3,25 @@
    the lectures), the seven exam graphs, and two more graph drills.            */
 var SCHEDULE = [
  {d:"2026-10-01T12:30", k:"Reading quiz", t:"#10 · A Christian Approach to Interest", rd:"rq10"},
- {d:"2026-10-03T17:00", k:"Problem set", t:"Problem Set 5 · Loanable funds", ch:"lf", px:"interest"},
+ {d:"2026-10-03T17:00", k:"Problem set", t:"Problem Set 5 · Loanable funds", ch:"lf", px:"interest", ps:5, n:11, min:30, pts:25, gens:["lf-fisher","lf-shift"]},
  {d:"2026-10-06T12:30", k:"Reading quiz", t:"#11 · From Usury to Interest", rd:"rq11"},
- {d:"2026-10-08T17:00", k:"Problem set", t:"Problem Set 6 · Liquidity preference", ch:"money", px:"interest"},
- {d:"2026-10-10T17:00", k:"Problem set", t:"Problem Set 7 · Time value of money", ch:"tvm", px:"tvm"},
+ {d:"2026-10-08T17:00", k:"Problem set", t:"Problem Set 6 · Liquidity preference", ch:"money", px:"interest", ps:6, n:10, min:30, pts:20, gens:["lp-shift"]},
+ {d:"2026-10-10T17:00", k:"Problem set", t:"Problem Set 7 · Time value of money", ch:"tvm", px:"tvm", ps:7, n:17, min:30, pts:20},
  {d:"2026-10-13T12:30", k:"Reading quiz", t:"#12 · The Morality of Fractional Reserve Banking", rd:"rq12"},
- {d:"2026-10-15T17:00", k:"Problem set", t:"Problem Set 8 · Banking and the money multiplier", ch:"bank", px:"banking"},
- {d:"2026-10-22T17:00", k:"Problem set", t:"Problem Set 9 · The Fed I (mandate, structure)", ch:"fed", px:"fed"},
+ {d:"2026-10-15T17:00", k:"Problem set", t:"Problem Set 8 · Banking and the money multiplier", ch:"bank", px:"banking", ps:8, n:11, min:30, pts:20},
+ {d:"2026-10-22T17:00", k:"Problem set", t:"Problem Set 9 · The Fed I (mandate, structure)", ch:"fed", px:"fed", ps:9, n:11, min:30, pts:15},
  {d:"2026-10-29T12:30", k:"Reading quiz", t:"#13 · Inflation is the Enemy of Justice", rd:"rq13"},
- {d:"2026-10-29T17:00", k:"Problem set", t:"Problem Set 10 · The Fed II–III (tools, reserves)", ch:"fed", px:"fed"},
+ {d:"2026-10-29T17:00", k:"Problem set", t:"Problem Set 10 · The Fed II–III (tools, reserves)", ch:"fed", px:"fed", ps:10, n:17, min:30, pts:25},
  {d:"2026-11-05T12:30", k:"Reading quiz", t:"#14 · Is Inflation Too Low?", rd:"rq14"},
- {d:"2026-11-05T17:00", k:"Problem set", t:"Problem Set 11 · Money growth and inflation", ch:"qtm", px:"qtm"},
- {d:"2026-11-07T17:00", k:"Problem set", t:"Problem Set 12 · Inflation and deflation", ch:"infl", px:"infl"},
+ {d:"2026-11-05T17:00", k:"Problem set", t:"Problem Set 11 · Money growth and inflation", ch:"qtm", px:"qtm", ps:11, n:10, min:30, pts:20},
+ {d:"2026-11-07T17:00", k:"Problem set", t:"Problem Set 12 · Inflation and deflation", ch:"infl", px:"infl", ps:12, n:11, min:30, pts:20},
  {d:"2026-11-10T12:30", k:"Exam", t:"Exam 2 · Oct 1 – Nov 5 · 33 questions, 75 minutes", exam:"exam2"},
  {d:"2026-11-12T12:30", k:"Reading quiz", t:"#15 · The Dynamic and Righteous Use of Wealth in James 5", rd:"rq15"},
- {d:"2026-11-14T17:00", k:"Problem set", t:"Problem Set 13 · Fiscal policy", ch:"fiscal", px:"fiscal"},
+ {d:"2026-11-14T17:00", k:"Problem set", t:"Problem Set 13 · Fiscal policy", ch:"fiscal", px:"fiscal", ps:13, n:11, min:30, pts:15},
  {d:"2026-11-19T12:30", k:"Reading quiz", t:"#16 · “Christian” Economics", rd:"rq16"},
- {d:"2026-11-19T17:00", k:"Problem set", t:"Problem Set 14 · Phillips curve (answers hidden)", ch:"phillips", px:"phillips"},
- {d:"2026-11-26T17:00", k:"Problem set", t:"Problem Set 15 · Business cycles and AD–AS", ch:"adas", px:"adas"},
- {d:"2026-12-05T17:00", k:"Problem set", t:"Problem Set 16 · 3 questions, 60 minutes", ch:"adas", px:"adas"},
+ {d:"2026-11-19T17:00", k:"Problem set", t:"Problem Set 14 · Phillips curve (answers hidden)", ch:"phillips", px:"phillips", ps:14, n:9, min:30, pts:22},
+ {d:"2026-11-26T17:00", k:"Problem set", t:"Problem Set 15 · Business cycles and AD–AS", ch:"adas", px:"adas", ps:15, n:12, min:30, pts:30},
+ {d:"2026-12-05T17:00", k:"Problem set", t:"Problem Set 16 · 3 questions, 60 minutes", ch:"adas", px:"adas", ps:16, n:3, min:60, pts:40},
  {d:"2026-12-08T10:30", k:"Exam", t:"Final · cumulative · 40 questions, 120 minutes", exam:"final"}];
 
 var MISTAKES = [
@@ -88,3 +88,19 @@ GENS.push(
   make:function(){ var s = rp(VOM_EVENTS); return {vals:{}, text:s[0], choice:{q:"What happens in the money supply–money demand graph?", opts:VOM_OPTS.slice(), right:s[1], work:VOM_OPTS[s[1]] + "."}}; }});
 GEN_BY_ID["sol-shift"] = GENS[GENS.length - 2]; GEN_BY_ID["vom-shift"] = GENS[GENS.length - 1];
 ["lf-shift","lp-shift","fed-rsv","pc-shift","adas-sr","adas-lr"].forEach(function(id){ if(GEN_BY_ID[id]) GEN_BY_ID[id].graph = true; });
+
+/* What to have cold before a problem set opens. One list per set, in his words where he gave them. */
+var PS_KNOW = {
+ 5:[
+  "<b>Budget deficit</b> = less public saving, so <b>supply shifts left</b>: the real rate rises and private investment falls. That is <b>crowding out</b>.",
+  "<b>Real = nominal − inflation</b> (r = n − π). <b>Ex ante</b> uses <i>expected</i> inflation; <b>ex post</b> uses the actual. The real rate can be negative.",
+  "The graph: <b>real interest rate</b> up the side, <b>quantity of loanable funds</b> along the bottom. <b>Supply = saving</b> (slopes up). <b>Demand = borrowing for investment</b> (slopes down).",
+  "A change in the <b>interest rate</b> moves you <b>along</b> a curve. It never shifts one.",
+  "<b>Supply shifters</b>: private saving (income, confidence, patience, demographics, tax rules on saving) and public saving (surplus up, deficit down).",
+  "<b>Demand shifters</b>: expected profits, new technology, policy (R&amp;D credit up, profit tax down), government borrowing.",
+  "<b>Saving moves supply</b>: r and investment go <b>opposite</b> ways. <b>Borrowing moves demand</b>: r and investment go the <b>same</b> way.",
+  "Rate <b>below</b> equilibrium = <b>shortage</b>, the rate rises. Rate <b>above</b> = <b>surplus</b>, the rate falls.",
+  "“If the interest rate falls, will investment rise?” <b>It depends</b> on what caused it: never reason from a price change.",
+  "Typing answers: put the <b>% sign</b> (or <b>$</b>), keep a <b>minus sign</b> when it is negative, and round the way the question says."
+ ]
+};

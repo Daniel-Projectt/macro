@@ -106,6 +106,7 @@ function startExam2(){
   engines.mock.start(null);
 }
 function renderMockSetup(){
+  if(typeof psStop === "function"){ psStop(); var pt = $("#psTimer"); if(pt) pt.innerHTML = ""; }
   var root = $("#mockExam");
   function seg(id, attr, val, list){
     return '<div class="seg" id="'+id+'">'+list.map(function(o){ return '<button type="button" '+attr+'="'+o[0]+'" aria-pressed="'+(String(o[0]) === String(val))+'">'+o[1]+'</button>'; }).join("")+'</div>';

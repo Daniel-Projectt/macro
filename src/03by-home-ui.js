@@ -8,7 +8,7 @@
 /* ---- the saved misses ---- */
 function missBank(){ try{ var v = store.get("missbank"); return v ? JSON.parse(v) : {}; }catch(e){ return {}; } }
 function missNote(q, ok){
-  if(!q || !q.key || /^(lgen|lid):/.test(q.key)) return;
+  if(!q || !q.key || /^(lgen|lid|ps):/.test(q.key)) return;
   var b = missBank(), e = b[q.key];
   if(ok){ if(e){ e.s = (e.s || 0) + 1; if(e.s >= 2) delete b[q.key]; } }
   else b[q.key] = {m:(e ? e.m : 0) + 1, s:0};
@@ -23,6 +23,53 @@ function startMisses(){
 
 /* ---- dates ---- */
 var WEEKDAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+/* ---------- problem-set rehearsal: the real size, on the real clock ---------- */
+var psClock = null;
+function psStop(){ if(psClock){ clearInterval(psClock); psClock = null; } }
+function psTimerBox(){
+  var t = $("#psTimer");
+  if(!t){ $("#mockExam").insertAdjacentHTML("beforebegin", '<div id="psTimer"></div>'); t = $("#psTimer"); }
+  return t;
+}
+function psItem(n){ return SCHEDULE.filter(function(s){ return s.ps === n; })[0]; }
+function openRehearsal(n){
+  var s = psItem(n); if(!s) return;
+  psStop(); goTo("exam/mock");
+  var know = PS_KNOW[n] || [], root = $("#mockExam");
+  psTimerBox().innerHTML = "";
+  root.innerHTML = '<div class="quizWrap"><div class="qcard card-corners psintro">' + CORNERS +
+    '<div class="qnum">Rehearsal &middot; ' + s.t + '</div>' +
+    '<p class="qtext">The real one is <b>' + s.n + ' questions</b>, <b>' + s.min + ' minutes</b>, <b>' + s.pts + ' points</b>, and the clock runs once you open it. This rehearsal is the same size, drawn fresh every time.</p>' +
+    (know.length ? '<h3 class="psh">Know this cold first</h3><ol class="psknow">' + know.map(function(k){ return '<li>' + k + '</li>'; }).join("") + '</ol>' : '') +
+    '<p class="hint">The syllabus does not allow AI help on the problem set itself: practice here first, then do the real one on your own.</p>' +
+    '<div class="toolbar" style="justify-content:center;margin-top:18px"><button class="btn primary" type="button" id="psGo">Start the ' + s.min + '-minute clock</button>' +
+    '<button class="btn" type="button" data-go2="' + s.ch + '/notes">Read the chapter</button></div></div></div>';
+  engines.mock = {keys:function(){ return false; }};
+  $("#psGo").addEventListener("click", function(){ startRehearsal(n); });
+  $("[data-go2]", root).addEventListener("click", function(){ engines.mock = null; goTo(s.ch + "/notes"); });
+}
+function startRehearsal(n){
+  var s = psItem(n), box = $("#mockExam"), t = psTimerBox(), left = s.min * 60;
+  psStop();
+  var mine = makeQuiz(box, function(){ return psRehearsal(s); }, {showTopic:false, againLabel:"Another rehearsal", onSetup:renderMockSetup});
+  engines.mock = mine; mine.start(null);
+  function clock(x){ return Math.floor(x / 60) + ":" + ("0" + x % 60).slice(-2); }
+  function tick(){
+    if(engines.mock !== mine || !$("#mockExam .quizWrap")){ psStop(); t.innerHTML = ""; return; }
+    var res = $(".result .big", box);
+    if(res){
+      psStop();
+      var m = /(\d+)\s*\/\s*(\d+)/.exec(res.textContent), pts = m ? Math.round(+m[1] / +m[2] * s.pts * 10) / 10 : null;
+      t.innerHTML = '<p class="rdclock done">Finished with ' + clock(Math.max(0, left)) + ' to spare' + (pts !== null ? ' &middot; about <b>' + pts + ' of ' + s.pts + '</b> points' : '') + '.</p>';
+      return;
+    }
+    if(left <= 0){ psStop(); t.innerHTML = '<p class="rdclock over">Time&rsquo;s up &mdash; Canvas would submit now. Finish to see how you would have done.</p>'; return; }
+    t.innerHTML = '<p class="rdclock' + (left <= 300 ? ' low' : '') + '">' + clock(left) + ' left</p>';
+    left--;
+  }
+  tick(); psClock = setInterval(tick, 1000);
+}
+
 function schedDate(s){ var m = /^(\d+)-(\d+)-(\d+)T(\d+):(\d+)$/.exec(s); return new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]); }
 function dayLabel(d){ var h = d.getHours(), mm = ("0" + d.getMinutes()).slice(-2); return WEEKDAY[d.getDay()] + " " + MONTH[d.getMonth()] + " " + d.getDate() + " · " + (h > 12 ? h - 12 : h) + ":" + mm + (h >= 12 ? " pm" : " am"); }
 function daysUntil(d, now){ var a = new Date(now.getFullYear(), now.getMonth(), now.getDate()), b = new Date(d.getFullYear(), d.getMonth(), d.getDate()); return Math.round((b - a) / 86400000); }
@@ -42,7 +89,7 @@ function renderHome(now){
     (ahead.length ? '<ul class="dues">' + ahead.slice(0, 6).map(function(x){
       var s = x.s, n = daysUntil(x.d, now), btn;
       if(s.rd) btn = '<button class="btn" type="button" data-rdgo="' + s.rd + '">Study the reading</button>';
-      else if(s.ch) btn = '<button class="btn" type="button" data-go="' + s.ch + '/notes">Chapter</button><button class="btn" type="button" data-px="' + s.px + '">Math practice</button>';
+      else if(s.ch) btn = (s.n ? '<button class="btn primary" type="button" data-ps="' + s.ps + '">Rehearse it</button>' : '') + '<button class="btn" type="button" data-go="' + s.ch + '/notes">Chapter</button><button class="btn" type="button" data-px="' + s.px + '">Math practice</button>';
       else btn = '<button class="btn" type="button" data-set="' + s.exam + '">Practice set</button>';
       return '<li class="due k-' + s.k.split(" ")[0].toLowerCase() + '"><span class="rdn">' + s.k + ' &middot; ' + dayLabel(x.d) + ' &middot; <b>' + whenWord(n) + '</b></span><span class="dt">' + s.t + '</span><span class="db">' + btn + '</span></li>';
     }).join("") + '</ul>' : '<p>The semester is over.</p>') + '</div>';
@@ -60,6 +107,7 @@ function renderHome(now){
   html += '<details class="note-sec rdpage mistakes"><summary><h2 class="rdtitle">His ' + MISTAKES.length + ' common mistakes</h2></summary>' + divider() + '<ol>' + MISTAKES.map(li).join("") + '</ol></details>';
   $("#homeRoot").innerHTML = html;
   $$("#homeRoot [data-go]").forEach(function(b){ b.addEventListener("click", function(){ goTo(b.getAttribute("data-go")); }); });
+  $$("#homeRoot [data-ps]").forEach(function(b){ b.addEventListener("click", function(){ openRehearsal(+b.getAttribute("data-ps")); }); });
   $$("#homeRoot [data-rdgo]").forEach(function(b){ b.addEventListener("click", function(){ rdState.cur = b.getAttribute("data-rdgo"); store.set("reading", rdState.cur); renderRdPick(); goTo("readings/page"); }); });
   $$("#homeRoot [data-px]").forEach(function(b){ b.addEventListener("click", function(){ practiceCfg.topic = b.getAttribute("data-px"); practiceCfg.gen = ""; store.set("practicecfg", JSON.stringify(practiceCfg)); engines.practice = null; goTo("practice/run"); renderPracticeSetup(); }); });
   $$("#homeRoot [data-set]").forEach(function(b){ b.addEventListener("click", function(){ goTo("exam/mock"); (b.getAttribute("data-set") === "final" ? startFinal : startExam2)(); }); });

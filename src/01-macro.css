@@ -317,3 +317,9 @@
 .plain ol{margin:4px 0 0;padding-left:1.2em}
 .plain li{margin:0 0 6px}
 .plain .ps{margin-bottom:0;border-top:1px solid var(--line);padding-top:12px}
+
+/* problem-set rehearsal */
+.psintro .psh{font-family:var(--sans);font-weight:400;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-align:center;margin:20px 0 8px}
+.psknow{text-align:left;max-width:600px;margin:0 auto;padding-left:22px;font-size:15px;line-height:1.55}
+.psknow li{margin:7px 0}
+.dues .db .btn.primary{margin-right:2px}

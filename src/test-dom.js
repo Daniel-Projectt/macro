@@ -356,6 +356,32 @@ dom2.window.close();
 
 head('errors');
 ok(errors.length === 0, 'no runtime errors anywhere', errors.join(' || '));
+head('problem-set rehearsal');
+topic('home');
+{
+  const btn = $('#homeRoot [data-ps]');
+  ok(!!btn && /Rehearse it/.test(btn.textContent), 'Home: the next problem set has a Rehearse button');
+  if (btn) {
+    const n = +btn.getAttribute('data-ps');
+    click(btn);
+    ok(!$('#topic-exam').hidden && !!$('#mockExam .psintro'), 'it opens the rehearsal card');
+    ok(/questions/.test($('#mockExam').textContent) && /minutes/.test($('#mockExam').textContent) && /points/.test($('#mockExam').textContent), 'which states the real size');
+    if (n === 5) ok($$('#mockExam .psknow li').length === 10 && /crowding out/.test($('#mockExam .psknow').textContent), 'Problem Set 5 shows its ten things to know');
+    ok(/does not allow AI help/.test($('#mockExam').textContent), 'and reminds him the real one is done alone');
+    click($('#psGo'));
+    const total = +(/of (\d+)/.exec($('#mockExam .qnum').textContent) || [])[1];
+    ok(/Question 1 of/.test($('#mockExam .qnum').textContent) && total >= 3, 'Start begins the quiz', $('#mockExam .qnum').textContent);
+    ok(/^\d+:00 left$/.test($('#psTimer').textContent.trim()), 'with the clock at the full time', $('#psTimer').textContent);
+    let guard = 0;
+    while ($('#mockExam .opt') && guard++ < 80) {
+      const o = $$('#mockExam .opt').filter(b => !b.disabled)[0]; if (o) click(o);
+      const nx = $('#mockExam .next'); if (nx && !nx.hidden) click(nx); else if (!o) break;
+    }
+    ok(!!$('#mockExam .result'), 'the rehearsal can be finished', guard);
+    topic('home'); topic('exam');
+  }
+}
+
 console.log('\n' + (fails === 0 ? 'ALL ' + checks + ' DOM CHECKS PASSED' : fails + ' FAILURES out of ' + checks + ' DOM checks'));
 w.close();
 process.exit(fails ? 1 : 0);

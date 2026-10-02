@@ -137,6 +137,29 @@ function topicQuestions(tp, keys, n){
   if(out.length < n) out = drawDistinct(out.concat(bank, gen), n);
   return shuffle(out);
 }
+/* A rehearsal for one problem set: as many questions as the real one, about a third of them
+   calculations and shift problems with fresh numbers, the rest written questions on its chapter. */
+var PS_SEQ = 0;
+function psGens(s){
+  return GENS.filter(function(g){ return s.gens ? s.gens.indexOf(g.id) >= 0 : g.topic === s.px; });
+}
+function psFromGen(s, g, sec){
+  var pq = formatProblem(g, g.make(), "mc", {});
+  if(!pq || !pq.opts || pq.opts.filter(function(o){ return o.ok; }).length !== 1) return null;
+  return {key:"ps:" + g.id + ":" + (++PS_SEQ), tp:s.ch, sec:sec, hot:0, ap:true, kind:pq.fmt === "tf" ? "tf" : "mc",
+    text:pq.text, opts:pq.opts, explain:"The answer is <b>" + pq.right + "</b>. " + pq.work + (pq.remind ? ' <span class="listline">Remember: ' + pq.remind + '</span>' : ""),
+    miss:strip(pq.text).slice(0, 160) + " — <b>" + pq.right + "</b>"};
+}
+function psRehearsal(s){
+  var n = s.n || 10, gens = psGens(s), out = [], seen = {}, guard = 0;
+  var sec = null; for(var k in SEC_CHAPTER) if(SEC_CHAPTER[k] === s.ch){ sec = k; break; }
+  var nCalc = gens.length ? Math.min(n - 1, Math.max(2, Math.round(n * 0.36))) : 0;
+  while(out.length < nCalc && guard++ < nCalc * 25){
+    var q = psFromGen(s, gens[guard % gens.length], sec), t = q && strip(q.text);
+    if(q && !seen[t]){ seen[t] = 1; out.push(q); }
+  }
+  return shuffle(out.concat(topicQuestions(s.ch, null, n - out.length)));
+}
 /* Rebuild exact questions from their keys ("tp:i" bank, "tp:pN" / "tp:pNr" pairs); anything malformed is dropped */
 /* a reading's practice quiz: its questions, shuffled, wrong answers reshuffled each time */
 function fromReading(r, i){

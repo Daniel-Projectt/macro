@@ -577,6 +577,7 @@ const psStrip = s => String(s).replace(/<[^>]+>/g, '');
     ok(calc.length >= 3 && calc.length <= 5, 'three to five calculation or shift problems', calc.length);
     ok(calc.some(x => /^ps:lf-fisher/.test(x.key)) && calc.some(x => /^ps:lf-shift/.test(x.key)), 'both kinds: real/nominal rates and curve shifts');
     ok(q.every(x => x.tp === 'lf'), 'everything is on loanable funds', [...new Set(q.map(x => x.tp))].join());
+    ok(calc.every(x => /^ps:lf-fisher/.test(x.key) ? x.sec === 'g-lf-rates' : x.sec === 'g-lf-shifts'), 'each problem carries its own section label (shifts are not labelled as interest rates)', calc.map(x => x.key + '=' + x.sec).join(' '));
     ok(q.every(x => x.opts && x.opts.length >= 2 && x.opts.filter(o => o.ok).length === 1 && x.text && x.explain), 'each has options, exactly one right answer, and an explanation');
     q.forEach(x => texts.add(psStrip(x.text)));
   }

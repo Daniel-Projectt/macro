@@ -247,7 +247,7 @@ var LF_SHOCKS = [
  ["Firms expect profits to fall and cancel plans for new factories.", 3, "Lower expected profitability: demand shifts left."]];
 var LF_OUTCOMES = ["Supply shifts right: the real rate falls and investment rises", "Supply shifts left: the real rate rises and investment falls", "Demand shifts right: the real rate rises and investment rises", "Demand shifts left: the real rate falls and investment falls"];
 GENS.push(
- {id:"lf-fisher", topic:"interest", name:"Real and nominal interest rates", variants:4,
+ {id:"lf-fisher", topic:"interest", sec:"g-lf-rates", name:"Real and nominal interest rates", variants:4,
   remind:"Real = nominal − inflation. Ex ante uses expected inflation, ex post the actual. It can be negative.",
   make:function(v){
    v = v || ri(1, 4);
@@ -269,7 +269,7 @@ GENS.push(
    }
    return b;
   }},
- {id:"lf-shift", topic:"interest", name:"Loanable funds: which curve shifts?",
+ {id:"lf-shift", topic:"interest", sec:"g-lf-shifts", name:"Loanable funds: which curve shifts?",
   remind:"Saving moves supply: r and investment go opposite ways. Borrowing moves demand: r and investment go the same way.",
   make:function(){
    var s = rp(LF_SHOCKS);

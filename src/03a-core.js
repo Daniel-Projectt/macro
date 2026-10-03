@@ -146,6 +146,9 @@ function psGens(s){
 function psFromGen(s, g, sec){
   var pq = formatProblem(g, g.make(), "mc", {});
   if(!pq || !pq.opts || pq.opts.filter(function(o){ return o.ok; }).length !== 1) return null;
+  /* label it with its own section: the generator's, else one whose title fits (a shift problem → the shifts section) */
+  if(g.sec && SEC_CHAPTER[g.sec] === s.ch) sec = g.sec;
+  else if(/shift/.test(g.id)) for(var k in SEC_TITLES) if(SEC_CHAPTER[k] === s.ch && /shift/i.test(SEC_TITLES[k])){ sec = k; break; }
   return {key:"ps:" + g.id + ":" + (++PS_SEQ), tp:s.ch, sec:sec, hot:0, ap:true, kind:pq.fmt === "tf" ? "tf" : "mc",
     text:pq.text, opts:pq.opts, explain:"The answer is <b>" + pq.right + "</b>. " + pq.work + (pq.remind ? ' <span class="listline">Remember: ' + pq.remind + '</span>' : ""),
     miss:strip(pq.text).slice(0, 160) + " — <b>" + pq.right + "</b>"};

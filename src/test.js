@@ -100,7 +100,7 @@ tps.forEach(tp => A.CH[tp].notes.forEach(n => {
 ok((allBodies.match(/You missed this one/g) || []).length >= 4, 'the notes call out the misses', (allBodies.match(/You missed this one/g) || []).length);
 const misses = A.QB.filter(q => q.m === 2);
 ok(misses.length >= 13, 'every problem-set miss has a question', misses.length);
-misses.forEach((q, i) => ok(/You missed this on Problem Set [1-4]/.test(q.e), 'miss #' + i + ' says which problem set', q.q));
+misses.forEach((q, i) => ok(/You missed this on Problem Set \d+/.test(q.e), 'miss #' + i + ' says which problem set', q.q));
 const MISS_ANSWERS = ['$6,200', 'I rises, net exports fall', '$56,100', 'accounting tautology', 'larger, because sales include intermediate goods', 'A firm’s purchase of new machinery', 'Y = $8.94, I = $0.89, C = $8.05, D = $0.80', 'K* = 121, Y* = $12.10, C* = $10.89', 'not necessarily become rich', 'A new production method that reduces waste', 'only the investment curve up', '42,300,000', '2%', '33.33%'];
 MISS_ANSWERS.forEach(a => ok(misses.some(q => String(q.a).includes(a)), 'the miss list is covered: ' + a));
 // the stems never mention the sets or the page
@@ -519,22 +519,55 @@ built.forEach(r => {
   ok(A.questionsByKeys(qs.map(q => q.key)).length === qs.length, r.id + ': misses can be practiced again by key');
 });
 // the reading quizzes already taken: word for word, scores must match the picks
-ok(A.PAST_RQ.length === 9 && A.PAST_RQ.every((p, i) => p.n === i + 1 && p.qs.length === 5), 'reading quizzes 1-9, five questions each');
+ok(A.PAST_RQ.length === 10 && A.PAST_RQ.every((p, i) => p.n === i + 1 && p.qs.length === 5), 'reading quizzes 1-10, five questions each');
 A.PAST_RQ.forEach(p => {
   ok(p.qs.filter(b => b.mine === b.right).length === p.score, 'quiz #' + p.n + ': the score matches the picks', p.score);
   p.qs.forEach((b, i) => {
-    ok(b.o.length === 4 && b.mine >= 0 && b.mine < 4 && b.right >= 0 && b.right < 4, 'quiz #' + p.n + ' q' + (i + 1) + ': four options, valid picks');
+    ok(b.o.length === 4 && b.mine >= -1 && b.mine < 4 && b.right >= 0 && b.right < 4 && (b.mine >= 0 || (p.n === 10 && b.likely)), 'quiz #' + p.n + ' q' + (i + 1) + ': four options, valid picks');
     ok(!b.likely || b.mine !== b.right, 'quiz #' + p.n + ' q' + (i + 1) + ': "most likely" only on a miss');
     if (b.mine !== b.right) ok(b.why && b.why.length > 25, 'quiz #' + p.n + ' q' + (i + 1) + ': a miss explains the answer');
   });
 });
+const pastQ10 = A.PAST_RQ[9];
+ok(/Stein/.test(pastQ10.who) && pastQ10.score === 3 && pastQ10.qs.filter(q => q.mine === q.right).length === 3 && pastQ10.qs.filter(q => q.mine === -1 && q.likely && q.why).length === 2, 'Reading Quiz 10: three right, two misses with an unknown pick and a reasoned answer');
+ok(/shared religious and moral consensus/.test(pastQ10.qs[3].o[pastQ10.qs[3].right]) && /foreigners/.test(pastQ10.qs[0].o[pastQ10.qs[0].right]) && /shared-risk/.test(pastQ10.qs[4].o[pastQ10.qs[4].right]), 'Reading Quiz 10 answers');
+// ---------- the Loanable Funds problem set (22 of 25) ----------
+head('loanable funds problem set');
+const psq = re => A.QB.find(q => re.test(q.q));
+ok(psq(/Households become more optimistic and spend more/).a === 'the real rate rises; the quantity is ambiguous' && psq(/Households become more optimistic and spend more/).m === 2, 'Question 9: the rate rises, only the quantity is ambiguous — marked as a miss');
+ok(psq(/can both be ambiguous/).a === false && psq(/can both be ambiguous/).m === 2, 'both can never be ambiguous');
+ok(psq(/less profitable for firms\. The demand for loanable funds/).a === 'shifts down and to the left' && psq(/less patient and more present-oriented/).a === 'the quantity falls; the real rate is ambiguous', 'Question 11: demand shifts left, so the quantity falls');
+ok(psq(/deflation of 1 percent/).a === '3 percent' && 4 + (-1) === 3, 'real 4, deflation 1 → nominal 3');
+ok(psq(/retirees is growing more slowly/).a === 'supply shifts right; the real rate falls and the quantity rises', 'Question 1: more workers, more saving');
+ok(psq(/Crowding out occurs when/).a === 'a budget deficit makes interest rates rise' && psq(/surplus of loanable funds, then/).m === 1, 'the questions he got right are kept as problem-set style');
+ok(psq(/Steady-state capital, investment and output/).tp === 'growth' && psq(/Steady-state capital, investment and output/).a === 'all decrease', 'the Solow half of Question 11 sits in the growth chapter');
+ok(A.QB.filter(q => q.tp === 'lf' && q.m === 2).length >= 4, 'four or more questions built on his two misses');
+// ---------- Problem Set 6: liquidity preference, in the real format ----------
+const ps6 = A.QB.filter(q => q.ps === 6);
+ok(ps6.length === 11 && ps6.every(q => q.tp === 'money' && q.sec === 'g-mon-lp' && q.m === 1), 'eleven questions written for Problem Set 6');
+ok(A.QB.filter(q => q.ps === 5).length === 15, 'fifteen from Problem Set 5');
+// money supply is vertical: the quantity follows supply alone, and only the rate can be ambiguous
+const lp = (md, ms) => ({ rate: (md > 0 ? 1 : md < 0 ? -1 : 0) + (ms > 0 ? -1 : ms < 0 ? 1 : 0), qty: ms });
+const say = (md, ms) => { const r = lp(md, ms), rate = md && ms && r.rate === 0 ? 'the nominal rate is ambiguous' : 'the nominal rate ' + (r.rate > 0 ? 'rises' : 'falls'), qty = 'the quantity of money ' + (r.qty > 0 ? 'rises' : 'falls'); return [rate, qty]; };
+[[/Incomes rise across the economy, and at the same time the Federal Reserve increases/, 1, 1], [/Incomes rise across the economy, and at the same time the Federal Reserve decreases/, 1, -1], [/A recession lowers incomes, and the Federal Reserve responds/, -1, 1], [/price level falls, and at the same time the Federal Reserve decreases/, -1, -1]].forEach(([re, md, ms]) => {
+  const q = ps6.find(x => re.test(x.q)), a = q.a.toLowerCase(), want = say(md, ms);
+  ok(want.every(w => a.includes(w)), 'double shift worked out again: ' + want.join('; '), q.a);
+  ok(q.w.every(w => !want.every(x => w.toLowerCase().includes(x))), 'no wrong choice says the same thing');
+});
+ok(ps6.find(q => /quantity of money can be ambiguous/.test(q.q)).a === false, 'in liquidity preference the quantity is never ambiguous');
+for (let r = 0; r < 40; r++) {
+  const s6 = A.SCHEDULE.find(s => s.ps === 6), q = A.psRehearsal(s6);
+  ok(q.length === 10 && new Set(q.map(x => x.key)).size === 10, 'the Problem Set 6 rehearsal: ten different questions', q.length);
+  ok(q.filter(x => /^Model: liquidity preference|Which model shows|Which pair correctly matches|quantity of money can be ambiguous|Which result is certain|What happens to money demand/.test(x.text)).length >= 4, 'at least four are in the real problem-set format');
+  ok(q.every(x => x.tp === 'money'), 'all on its chapter');
+}
 const ps = A.pastStats();
-ok(ps.n === 45 && ps.missed === 7 && ps.sure === 39, 'past quizzes: 45 questions, 7 misses, 39 answers known', JSON.stringify(ps));
-ok(ps.longest === 32, 'past quizzes: the right answer was the longest 32 of 39 times (quoted in How he asks)', ps.longest);
+ok(ps.n === 50 && ps.missed === 9 && ps.sure === 42, 'past quizzes: 50 questions, 9 misses, 42 answers known', JSON.stringify(ps));
+ok(ps.longest === 35, 'past quizzes: the right answer was the longest 35 of 42 times (shown in How he asks)', ps.longest);
 const allPast = A.pastQuestions(), missPast = A.pastQuestions(b => b.mine !== b.right);
-ok(allPast.length === 45 && missPast.length === 7, 'past quiz runs: all 45, or the 7 misses');
+ok(allPast.length === 50 && missPast.length === 9, 'past quiz runs: all 50, or the 9 misses');
 ok(allPast.every(q => q.opts.filter(o => o.ok).length === 1), 'every past question has exactly one right answer');
-ok(A.questionsByKeys(missPast.map(q => q.key)).length === 7, 'past misses can be practiced again by key');
+ok(A.questionsByKeys(missPast.map(q => q.key)).length === 9, 'past misses can be practiced again by key');
 ok(A.rdQuestions('past3', 5).length === 5 && A.rdQuestions('rq10', 5).length === 5, 'the real thing draws five');
 const rq10 = A.READINGS.find(r => r.id === 'rq10');
 ok(rq10.q.length >= 30 && rq10.cards.length >= 25 && rq10.match.length >= 10, 'Stein: 30+ questions, 25+ flashcards, 10+ who-said-what pairs', rq10.q.length + '/' + rq10.cards.length + '/' + rq10.match.length);

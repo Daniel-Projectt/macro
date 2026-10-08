@@ -281,7 +281,7 @@ ok(visible($('#topic-exam')) && $$('#mockExam .dots i').length === 2, 'practicin
 head('readings');
 topic('readings');
 const rmode = m => click($('.seg[data-modes="readings"] button[data-mode="' + m + '"]'));
-ok($$('#rdPick .rdbtn').length === 16, 'sixteen readings listed: seven coming up, nine taken');
+ok($$('#rdPick .rdbtn').length === 17, 'seventeen listed: seven study kits, ten quizzes already taken');
 click($('#rdPick .rdbtn[data-rd="rq10"]'));
 rmode('page');
 ok(/Christian Approach to Interest/.test($('#rdPage .rdtitle').textContent) && /thesis/i.test($('#rdPage').textContent), 'Start here opens with the thesis');
@@ -299,12 +299,13 @@ ok($$('#rdRealBox .dots i').length === 5, 'the real thing is five questions', $$
 const rr = answerQuiz($('#rdRealBox'), 'the real thing');
 ok(!!rr, 'the real thing reaches results');
 rmode('how');
-ok(/32 times/.test($('#rdHow').textContent) && $$('#rdHow .missl li').length === 7, 'How he asks: the longest-answer count and all 7 misses');
+ok(/35 times/.test($('#rdHow').textContent) && $$('#rdHow .missl li').length === 9 && !/undefined/.test($('#rdHow').textContent), 'How he asks: the longest-answer count and all 9 misses');
 rmode('past');
-ok($$('#rdPastBox .pqi').length === 45, 'Past quizzes: every question listed', $$('#rdPastBox .pqi').length);
-ok($$('#rdPastBox .pqo li.right').length === 45 && $$('#rdPastBox .pqo li.mine').length === 7, 'each shows the answer, and the 7 wrong picks');
+ok($$('#rdPastBox .pqi').length === 50, 'Past quizzes: every question listed', $$('#rdPastBox .pqi').length);
+ok($$('#rdPastBox .pqo li.right').length === 50 && $$('#rdPastBox .pqo li.mine').length === 7, 'each shows the answer, and the 7 wrong picks that Canvas showed');
+ok(!/undefined/.test($('#rdPastBox').textContent), 'a miss with an unknown pick never prints “undefined”');
 click($('#rdPastBar [data-pq="miss"]'));
-ok($$('#rdPastBox .dots i').length === 7, 'Only my 7 misses runs seven questions');
+ok($$('#rdPastBox .dots i').length === 9, 'Only my misses runs nine questions');
 answerQuiz($('#rdPastBox'), 'past misses');
 click($('#rdPick .rdbtn[data-rd="past4"]'));
 rmode('page');

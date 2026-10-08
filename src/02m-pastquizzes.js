@@ -1,5 +1,6 @@
 /* ================================================================ the reading quizzes already taken
-   Reading Quizzes 1–9, word for word from Canvas, with the answer he chose.
+   Reading Quizzes 1–10, word for word from Canvas, with the answer he chose
+   (mine:-1 = a miss where Canvas did not show which option he picked).
    Canvas hides the key on reading quizzes, so:
      his answer scored 1/1  → it is the right answer (sure)
      his answer scored 0/1  → "right" is the most likely answer (likely:true),
@@ -59,13 +60,19 @@ var PAST_RQ = [
   {q:"According to Porter and Steen (2003), what should be the primary goal of investments?",o:["Building earthly treasure","Beating the stock market","Supporting God's kingdom and glorifying Him","Achieving financial independence"],mine:2,right:2},
   {q:"According to Porter and Steen (2003), what responsibility comes with owning stock?",o:["Avoiding all risk","Participating in corporate decision-making","Maximizing personal wealth","Paying corporate taxes"],mine:1,right:1},
   {q:"What is the central thesis of Porter and Steen (2003)?",o:["Christians should completely withdraw from modern financial markets.","Christians should thoughtfully consider how biblical principles shape their investment decisions.","The stock market is inherently immoral and incompatible with Christianity.","Ethical investing is impossible because no company is fully moral."],mine:1,right:1},
-  {q:"What overall conclusion do Porter and Steen (2003) reach about Christian investing?",o:["All Christians should avoid the stock market","Investing is morally neutral","Ethical investing guarantees better returns","Christians must recognize that all resources belong to God"],mine:3,right:3}]}
+  {q:"What overall conclusion do Porter and Steen (2003) reach about Christian investing?",o:["All Christians should avoid the stock market","Investing is morally neutral","Ethical investing guarantees better returns","Christians must recognize that all resources belong to God"],mine:3,right:3}]},
+ {n:10, date:"Thu Oct 1", title:"A Christian Approach to Interest", who:"Stein", year:2021, score:3, qs:[
+  {q:"What exception regarding interest does the Old Testament allow?",o:["The poor could charge interest to the wealthy.","Israelites could charge interest to foreigners outside their community.","Priests were required to collect interest for temple upkeep.","Kings could set state-wide interest rates."],mine:1,right:1},
+  {q:"How does Stein (2021) suggest Christians should approach the issue of interest today?",o:["By accepting modern economic models without question.","By treating it as an absolute moral evil that must be abolished.","By using scripture and reason to consider whether it is wise or foolish in practice.","By relying strictly on Old Testament law to regulate banking."],mine:2,right:2},
+  {q:"Stein (2021) concludes that Christians should view interest primarily as",o:["a neutral tool, judged by whether it serves justice and the common good.","a tool that does not easily co-exists with a conventional banking system.","inherently sinful and to be abolished.","irrelevant to ethics in a secular economy."],mine:-1,right:0,likely:true,why:"Not certain. Stein says interest is a matter of wise or foolish, not right or wrong, which fits “judged by whether it serves justice.” The “does not easily co-exist” line is in his conclusion too, but there it describes interest-FREE banking, not interest. If you picked the first option and it was marked wrong, the answer is the second one."},
+  {q:"Stein (2021) concludes that for a democratic society to reject interest-based exchange, it would need",o:["global economic reform led by international banks.","government subsidies to replace all personal loans.","a shared religious and moral consensus that interest is wrong.","an entirely cashless economy."],mine:-1,right:2,likely:true,why:"Stein’s own sentence: it “would require a consensus that interest was wrong, and such a consensus could only come from a shared allegiance to the Bible or the Qur’an.”"},
+  {q:"What distinction did Thomas Aquinas draw about interest?",o:["It was moral only if the lender was poor.","It was always immoral, even in partnership.","It was unjust for pure money loans but allowed for shared-risk investment.","It was acceptable as payment for time, which belongs to God."],mine:2,right:2}]}
 ];
 
 var PAST_BY_ID = {};
 PAST_RQ.forEach(function(p){ p.id = "past" + p.n; PAST_BY_ID[p.id] = p; });
 
-/* the patterns in how he writes them, counted from the 45 real questions above */
+/* the patterns in how he writes them, counted from the real questions above */
 function pastStats(){
   var all = [], s = {n:0, according:0, thesis:0, not:0, irony:0, longest:0, sure:0, missed:0, extremeWrong:0};
   PAST_RQ.forEach(function(r){ r.qs.forEach(function(q){ all.push(q); }); });
@@ -82,7 +89,7 @@ function pastStats(){
       var L = q.o.map(function(o){ return o.length; }), mx = Math.max.apply(null, L);
       if(L[q.right] === mx && L.filter(function(x){ return x === mx; }).length === 1) s.longest++;
     }
-    if(q.mine !== q.right && ABS.test(q.o[q.mine])) s.extremeWrong++;
+    if(q.mine !== q.right && q.mine >= 0 && ABS.test(q.o[q.mine])) s.extremeWrong++;
   });
   return s;
 }

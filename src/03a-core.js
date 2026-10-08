@@ -161,7 +161,12 @@ function psRehearsal(s){
     var q = psFromGen(s, gens[guard % gens.length], sec), t = q && strip(q.text);
     if(q && !seen[t]){ seen[t] = 1; out.push(q); }
   }
-  return shuffle(out.concat(topicQuestions(s.ch, null, n - out.length)));
+  /* then up to four written for this very problem set, in its real format */
+  var own = shuffle(bankFor(s.ch).filter(function(x){ return x.b.ps === s.ps; })).slice(0, Math.min(4, n - out.length)).map(function(x){ return fromBank(x.b, x.i); });
+  out = out.concat(own);
+  var have = {}; out.forEach(function(q){ have[q.key] = 1; });
+  var rest = topicQuestions(s.ch, null, n).filter(function(q){ return !have[q.key]; }).slice(0, n - out.length);
+  return shuffle(out.concat(rest));
 }
 /* Rebuild exact questions from their keys ("tp:i" bank, "tp:pN" / "tp:pNr" pairs); anything malformed is dropped */
 /* a reading's practice quiz: its questions, shuffled, wrong answers reshuffled each time */

@@ -10,6 +10,7 @@ function rdBuilt(r){ return !!(r && (r.q || r.qs)); }
 /* a question from a quiz already taken, with what he picked */
 function pastExplain(b){
   if(b.mine === b.right) return "You got this one on the quiz." + (b.why ? " " + b.why : "");
+  if(b.mine < 0) return "You missed this one on the quiz. " + (b.likely ? "Canvas hides the key; the most likely answer is the one above. " : "") + (b.why || "");
   return "On the quiz you picked “" + b.o[b.mine] + ".” " + (b.likely ? "Canvas hides the key; the most likely answer is the one above. " : "") + (b.why || "");
 }
 function fromPast(p, i){
@@ -85,7 +86,7 @@ function renderRdHow(){
   PAST_RQ.forEach(function(p){ p.qs.forEach(function(b){ if(b.mine !== b.right) misses.push({p:p, b:b}); }); });
   $("#rdHow").innerHTML = '<div class="note-sec rdpage">' +
     '<h2 class="rdtitle">How he writes reading quizzes</h2>' + divider() +
-    '<p class="knowline"><span class="know">Counted from your 45 real questions, Reading Quizzes 1&ndash;9</span></p>' +
+    '<p class="knowline"><span class="know">Counted from your ' + s.n + ' real questions, Reading Quizzes 1&ndash;' + PAST_RQ.length + '</span></p>' +
     '<div class="point"><b>The quiz</b><p><b>5 questions, 4 minutes</b>, on Canvas at 12:30 at the start of class. That is under a minute each. Canvas never shows you the answers afterwards.</p></div>' +
     '<h3 class="sub">The question types</h3><ul>' +
     '<li><b>&ldquo;According to [Author] ([year]), &hellip;&rdquo;</b> &mdash; ' + s.according + ' of ' + s.n + ' questions name the author and year. Know the author&rsquo;s name and year cold, and what they personally argue.</li>' +
@@ -99,7 +100,7 @@ function renderRdHow(){
     '<li><b>Tiebreaker:</b> on the ' + s.sure + ' questions where the answer is known, the right answer was the <b>longest option ' + s.longest + ' times (' + pct(s.longest, s.sure) + '%)</b>. Know the reading first; use this only when you are stuck between two.</li>' +
     '<li><b>Wrong answers</b> are usually extreme (&ldquo;only,&rdquo; &ldquo;always,&rdquo; &ldquo;pointless,&rdquo; &ldquo;commands&rdquo;), the opposite of the thesis, or a view the author argues <i>against</i>.</li></ul>' +
     '<h3 class="sub">Your ' + misses.length + ' misses, and the trap in each</h3><ul class="missl">' +
-    misses.map(function(m){ return '<li><span class="rdn">Quiz #' + m.p.n + ' &middot; ' + rdLabel(m.p) + '</span>You picked <i>&ldquo;' + m.b.o[m.b.mine] + '&rdquo;</i><br>Answer' + (m.b.likely ? ' (most likely)' : '') + ': <b>' + m.b.o[m.b.right] + '</b>' + (m.b.why ? '<br><span class="pqwhy">' + m.b.why + '</span>' : '') + '</li>'; }).join("") + '</ul>' +
+    misses.map(function(m){ return '<li><span class="rdn">Quiz #' + m.p.n + ' &middot; ' + rdLabel(m.p) + '</span>' + (m.b.mine < 0 ? 'You missed this one' : 'You picked <i>&ldquo;' + m.b.o[m.b.mine] + '&rdquo;</i>') + '<br>Answer' + (m.b.likely ? ' (most likely)' : '') + ': <b>' + m.b.o[m.b.right] + '</b>' + (m.b.why ? '<br><span class="pqwhy">' + m.b.why + '</span>' : '') + '</li>'; }).join("") + '</ul>' +
     '<p class="tip"><b>The pattern in your misses:</b> each time you chose an answer that sounds pious or reasonable on its own but is <b>not what this author argues</b> &mdash; punishment for sin, commanded redistribution, giving by need, &ldquo;hidden spiritual decay.&rdquo; Ask: <i>would this author write that sentence?</i></p>' +
     '<h3 class="sub">The night before</h3><ol>' +
     '<li>Read <b>Start here</b> once, slowly.</li><li>Flashcards until you can say each back.</li><li><b>Who said what</b> until it&rsquo;s clean (history readings mix up names on purpose).</li><li>Practice until you pass twice in a row.</li><li>Finish with <b>The real thing</b>: 5 questions, 4 minutes.</li></ol>' +
@@ -114,7 +115,7 @@ function renderRdMode(mode){
   if(mode === "how"){ renderRdHow(); return; }
   if(mode === "past"){
     var box = $("#rdPastBox");
-    $("#rdPastBar").innerHTML = '<div class="toolbar" style="justify-content:center"><button class="btn primary" type="button" data-pq="all">Quiz me on all 45</button><button class="btn" type="button" data-pq="miss">Only my 7 misses</button><button class="btn" type="button" data-pq="list">See every question</button></div>';
+    $("#rdPastBar").innerHTML = '<div class="toolbar" style="justify-content:center"><button class="btn primary" type="button" data-pq="all">Quiz me on all ' + pastStats().n + '</button><button class="btn" type="button" data-pq="miss">Only my ' + pastStats().missed + ' misses</button><button class="btn" type="button" data-pq="list">See every question</button></div>';
     function run(kind){
       if(kind === "list"){ rdState.eng.past = null; box.innerHTML = pastReview(PAST_RQ); return; }
       rdState.eng.past = makeQuiz(box, function(){ return pastQuestions(kind === "miss" ? function(b){ return b.mine !== b.right; } : null); }, {againLabel:"Again, reshuffled"});

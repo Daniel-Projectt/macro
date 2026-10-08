@@ -3164,7 +3164,7 @@ var READINGS = [
    '<p class="pa"><span>His answer, in one sentence</span>It&rsquo;s not simply right or wrong: interest-free banking has good points but doesn&rsquo;t fit beside normal banks, so Christians shouldn&rsquo;t wait for a perfect system &mdash; they should help the poor in whatever practical way works.</p>'+
    '<p class="pp"><span>Picture it like this</span>A family argument that has gone on for 2,500 years. Each generation (Greeks, Moses, the church, Calvin) drew the line in a different place. Stein&rsquo;s point: the <b>goal</b> (protect the poor) matters more than the <b>rule</b> (ban interest).</p>'+
    '<div class="p5"><span>If you remember only five things</span><ol><li><b>Aristotle:</b> interest is unnatural &mdash; money breeding money.</li><li><b>Old Testament:</b> no interest to the poor or a fellow Israelite. <b>New Testament:</b> almost silent.</li><li><b>Aquinas:</b> banned it &mdash; time is God&rsquo;s gift. Exceptions: <b>cessant gain</b> (profit you give up) and <b>emergent loss</b> (risk, a late fee &mdash; the credit card).</li><li><b>Calvin:</b> allowed it, left it to conscience &rarr; modern banking.</li><li><b>Today:</b> it&rsquo;s wise vs foolish, not right vs wrong; people sin, so any system can be abused; fix the system from inside; help the poor now (Wesley&rsquo;s insurance, Duncan&rsquo;s savings bank).</li></ol></div>'+
-   '<p class="ps"><span>How to spot the right answer</span>Pick the <b>calm, middle</b> option &mdash; &ldquo;it depends,&rdquo; &ldquo;both systems can be abused,&rdquo; &ldquo;help the poor practically.&rdquo; The wrong ones are <b>extreme</b>: &ldquo;the Bible forbids all interest,&rdquo; &ldquo;interest is morally neutral,&rdquo; &ldquo;ban it everywhere.&rdquo;</p></div>',
+   '<p class="ps"><span>How to spot the right answer</span>Pick the <b>calm, middle</b> option &mdash; &ldquo;it depends,&rdquo; &ldquo;both systems can be abused,&rdquo; &ldquo;help the poor practically.&rdquo; The wrong ones are <b>extreme</b>: &ldquo;the Bible forbids all interest,&rdquo; &ldquo;ban it everywhere.&rdquo;</p></div>',
   start:
    '<div class="point"><b>The thesis in one line</b><p>Stein (2021) looks at interest through history and Christian ethics and concludes that there are <b>good moral and practical reasons for interest-free banking</b>, but it <b>cannot easily co-exist</b> with conventional banking. So Christians care about the <b>spirit and purpose, not the letter</b>, of the law: help the poor by whatever means work, and treat interest as a question of <b>wise or foolish</b> more than simply right or wrong.</p></div>'+
    '<h3 class="sub">The history (seven snapshots)</h3><ul>'+
@@ -3434,7 +3434,8 @@ var READING_BY_ID = {};
 READINGS.forEach(function(r){ READING_BY_ID[r.id] = r; });
 
 /* ================================================================ the reading quizzes already taken
-   Reading Quizzes 1–9, word for word from Canvas, with the answer he chose.
+   Reading Quizzes 1–10, word for word from Canvas, with the answer he chose
+   (mine:-1 = a miss where Canvas did not show which option he picked).
    Canvas hides the key on reading quizzes, so:
      his answer scored 1/1  → it is the right answer (sure)
      his answer scored 0/1  → "right" is the most likely answer (likely:true),
@@ -3494,13 +3495,19 @@ var PAST_RQ = [
   {q:"According to Porter and Steen (2003), what should be the primary goal of investments?",o:["Building earthly treasure","Beating the stock market","Supporting God's kingdom and glorifying Him","Achieving financial independence"],mine:2,right:2},
   {q:"According to Porter and Steen (2003), what responsibility comes with owning stock?",o:["Avoiding all risk","Participating in corporate decision-making","Maximizing personal wealth","Paying corporate taxes"],mine:1,right:1},
   {q:"What is the central thesis of Porter and Steen (2003)?",o:["Christians should completely withdraw from modern financial markets.","Christians should thoughtfully consider how biblical principles shape their investment decisions.","The stock market is inherently immoral and incompatible with Christianity.","Ethical investing is impossible because no company is fully moral."],mine:1,right:1},
-  {q:"What overall conclusion do Porter and Steen (2003) reach about Christian investing?",o:["All Christians should avoid the stock market","Investing is morally neutral","Ethical investing guarantees better returns","Christians must recognize that all resources belong to God"],mine:3,right:3}]}
+  {q:"What overall conclusion do Porter and Steen (2003) reach about Christian investing?",o:["All Christians should avoid the stock market","Investing is morally neutral","Ethical investing guarantees better returns","Christians must recognize that all resources belong to God"],mine:3,right:3}]},
+ {n:10, date:"Thu Oct 1", title:"A Christian Approach to Interest", who:"Stein", year:2021, score:3, qs:[
+  {q:"What exception regarding interest does the Old Testament allow?",o:["The poor could charge interest to the wealthy.","Israelites could charge interest to foreigners outside their community.","Priests were required to collect interest for temple upkeep.","Kings could set state-wide interest rates."],mine:1,right:1},
+  {q:"How does Stein (2021) suggest Christians should approach the issue of interest today?",o:["By accepting modern economic models without question.","By treating it as an absolute moral evil that must be abolished.","By using scripture and reason to consider whether it is wise or foolish in practice.","By relying strictly on Old Testament law to regulate banking."],mine:2,right:2},
+  {q:"Stein (2021) concludes that Christians should view interest primarily as",o:["a neutral tool, judged by whether it serves justice and the common good.","a tool that does not easily co-exists with a conventional banking system.","inherently sinful and to be abolished.","irrelevant to ethics in a secular economy."],mine:-1,right:0,likely:true,why:"Not certain. Stein says interest is a matter of wise or foolish, not right or wrong, which fits “judged by whether it serves justice.” The “does not easily co-exist” line is in his conclusion too, but there it describes interest-FREE banking, not interest. If you picked the first option and it was marked wrong, the answer is the second one."},
+  {q:"Stein (2021) concludes that for a democratic society to reject interest-based exchange, it would need",o:["global economic reform led by international banks.","government subsidies to replace all personal loans.","a shared religious and moral consensus that interest is wrong.","an entirely cashless economy."],mine:-1,right:2,likely:true,why:"Stein’s own sentence: it “would require a consensus that interest was wrong, and such a consensus could only come from a shared allegiance to the Bible or the Qur’an.”"},
+  {q:"What distinction did Thomas Aquinas draw about interest?",o:["It was moral only if the lender was poor.","It was always immoral, even in partnership.","It was unjust for pure money loans but allowed for shared-risk investment.","It was acceptable as payment for time, which belongs to God."],mine:2,right:2}]}
 ];
 
 var PAST_BY_ID = {};
 PAST_RQ.forEach(function(p){ p.id = "past" + p.n; PAST_BY_ID[p.id] = p; });
 
-/* the patterns in how he writes them, counted from the 45 real questions above */
+/* the patterns in how he writes them, counted from the real questions above */
 function pastStats(){
   var all = [], s = {n:0, according:0, thesis:0, not:0, irony:0, longest:0, sure:0, missed:0, extremeWrong:0};
   PAST_RQ.forEach(function(r){ r.qs.forEach(function(q){ all.push(q); }); });
@@ -3517,7 +3524,7 @@ function pastStats(){
       var L = q.o.map(function(o){ return o.length; }), mx = Math.max.apply(null, L);
       if(L[q.right] === mx && L.filter(function(x){ return x === mx; }).length === 1) s.longest++;
     }
-    if(q.mine !== q.right && ABS.test(q.o[q.mine])) s.extremeWrong++;
+    if(q.mine !== q.right && q.mine >= 0 && ABS.test(q.o[q.mine])) s.extremeWrong++;
   });
   return s;
 }
@@ -5661,6 +5668,50 @@ var PS_KNOW = {
  ]
 };
 
+/* ================================================================ the Loanable Funds problem set (graded Oct 3: 22 of 25)
+   His real questions, reworded only where a fill-in had to become multiple choice.
+     m:2  the two he lost points on (Questions 9 and 11)
+     m:1  the ones he got right — problem-set style                                    */
+QB = QB.concat([
+ {tp:"lf",ps:5,sec:"g-lf-model",m:1,t:"mc",q:"According to the loanable funds model, there is:",a:"one financial market in which all savers and borrowers interact",w:["a separate financial market for every type of borrower","a nominal interest rate that adjusts to equate saving and borrowing","no relationship at all between saving and investment"],e:"One market for everyone — and it is the real rate, not the nominal one, that adjusts."},
+ {tp:"lf",ps:5,sec:"g-lf-model",m:1,t:"mc",q:"If there is a surplus of loanable funds, then:",a:"neither curve shifts; quantity supplied falls and quantity demanded rises as the rate falls to equilibrium",w:["neither curve shifts; quantity supplied rises and quantity demanded falls as the rate rises to equilibrium","the supply of loanable funds shifts left and the demand shifts right until they meet","the supply of loanable funds shifts right and the demand shifts left until they meet"],e:"A surplus means the rate is too high. It falls, and you move along both curves; nothing shifts."},
+ {tp:"lf",ps:5,sec:"g-lf-model",m:1,t:"mc",q:"“If the real interest rate declines, investment increases.” This statement is:",a:"true if the rate fell because supply increased",w:["true if the rate fell because demand decreased","true in all circumstances","false in all circumstances"],e:"More saving lowers the rate and raises the quantity invested. If demand fell instead, the rate falls and investment falls with it."},
+ {tp:"lf",ps:5,sec:"g-lf-model",m:1,t:"mc",q:"According to the Solow model, why does the loanable funds market matter for long-run growth?",a:"Saving and investment finance the physical capital used in production",w:["The real interest rate permanently sets the unemployment rate","Household borrowing is the main source of technological progress","The loanable funds market sets the long-run inflation rate"],e:"Saving becomes investment, and investment builds the capital stock in the Solow model."},
+ {tp:"lf",ps:5,sec:"g-lf-rates",m:1,t:"mc",q:"Which statement correctly distinguishes the nominal and real interest rates?",a:"The nominal rate is how fast a deposit’s dollar value grows; the real rate is how fast its purchasing power grows",w:["The nominal rate adjusts for inflation, while the real interest rate does not adjust for it","Both the nominal and the real interest rates measure changes in the purchasing power of money","The real rate measures price changes, while the nominal rate measures inflation expectations"],e:"Dollars versus purchasing power. The real rate is the one adjusted for inflation."},
+ {tp:"lf",ps:5,sec:"g-lf-rates",m:1,ap:true,t:"mc",q:"The real interest rate is 4 percent and there is deflation of 1 percent. The nominal interest rate is:",a:"3 percent",w:["5 percent","6 percent","2 percent"],e:"Nominal = real + inflation = 4 + (−1) = 3. Deflation is negative inflation, so you subtract."},
+ {tp:"lf",ps:5,sec:"g-lf-rates",m:1,t:"mc",q:"Which statement about ex-ante and ex-post real interest rates is true?",a:"The ex-post real rate reflects actual changes in purchasing power",w:["The ex-ante real rate can only be known after inflation occurs","The ex-ante and ex-post real rates are always identical in the long run","The ex-post real rate is based on inflation expectations set by the government"],e:"Ex-ante uses expected inflation, before the fact; ex-post uses the inflation that actually happened."},
+ {tp:"lf",ps:5,sec:"g-lf-crowd",m:1,t:"mc",q:"Crowding out occurs when private investment spending declines because:",a:"a budget deficit makes interest rates rise",w:["a budget deficit makes interest rates fall","a budget surplus makes interest rates rise","a budget surplus makes interest rates fall"],e:"The government borrows, the real rate rises, and private borrowers are priced out."},
+
+ {tp:"lf",ps:5,sec:"g-lf-shifts",m:1,ap:true,t:"mc",q:"The number of retirees is growing more slowly than the number of people joining the workforce. In the loanable funds market:",a:"supply shifts right; the real rate falls and the quantity rises",w:["supply shifts left; the real rate rises and the quantity falls","demand shifts right; the real rate rises and the quantity rises","demand shifts left; the real rate falls and the quantity falls"],e:"Workers save and retirees draw savings down, so more workers means more saving: one shift, of supply, down and to the right."},
+ {tp:"lf",ps:5,sec:"g-lf-shifts",m:2,ap:true,t:"mc",q:"Households become more optimistic and spend more, and businesses become more optimistic about future profits. In the loanable funds market:",a:"the real rate rises; the quantity is ambiguous",w:["the real rate is ambiguous; the quantity rises","the real rate and the quantity are both ambiguous","the real rate falls; the quantity is ambiguous"],e:"You missed this on Problem Set 5 (Question 9). Households spend more, so they save less: supply shifts left. Businesses borrow more: demand shifts right. Both shifts push the rate up; they pull the quantity in opposite directions."},
+ {tp:"lf",ps:5,sec:"g-lf-shifts",m:2,t:"tf",q:"When both loanable funds curves shift, the real interest rate and the quantity of loanable funds can both be ambiguous.",a:false,e:"You missed this on Problem Set 5 (Question 9). False — Canvas’s own comment: “Both variables cannot be ambiguous.” Two shifts always agree on one of the two and disagree on the other, so exactly one is ambiguous."},
+ {tp:"lf",ps:5,sec:"g-lf-shifts",m:2,ap:true,t:"mc",q:"A technology shock raises production costs and makes new investment projects less profitable for firms. The demand for loanable funds:",a:"shifts down and to the left",w:["shifts up and to the right","does not shift; only the supply curve moves","does not shift; firms move along the curve"],e:"You missed this on Problem Set 5 (Question 11). Less profitable projects mean firms want to borrow less at every rate. “Less profitable” is the clue for a leftward shift of demand."},
+ {tp:"lf",ps:5,sec:"g-lf-shifts",m:2,ap:true,t:"mc",q:"Households become less patient and more present-oriented. At the same time, new investment projects become less profitable for firms. In the loanable funds market:",a:"the quantity falls; the real rate is ambiguous",w:["the quantity is ambiguous; the real rate rises","the quantity and the real rate are both ambiguous","the quantity rises; the real rate is ambiguous"],e:"You missed this on Problem Set 5 (Question 11). Less patient households save less: supply shifts left. Less profitable projects: demand shifts left. Both shifts cut the quantity; they push the rate in opposite directions."},
+ {tp:"lf",ps:5,sec:"g-lf-shifts",m:1,t:"mc",q:"Supply shifts left and demand shifts right. Which result is certain?",a:"The real interest rate rises",w:["The real interest rate falls","The quantity of loanable funds rises","The quantity of loanable funds falls"],e:"Both shifts raise the rate. The quantity depends on which curve moves further."},
+ {tp:"lf",ps:5,sec:"g-lf-shifts",m:1,t:"mc",q:"Supply and demand for loanable funds both shift left. Which result is certain?",a:"The quantity of loanable funds falls",w:["The quantity of loanable funds rises","The real interest rate rises","The real interest rate falls"],e:"Both shifts cut the quantity. The rate depends on which curve moves further."},
+
+ {tp:"growth",sec:"g-gro-shifts",m:1,ap:true,t:"mc",q:"Households become less patient and save less, and a technology shock raises production costs. In the Solow model the production function and the investment curve both shift down. Steady-state capital, investment and output:",a:"all decrease",w:["all increase","capital falls, but output rises","do not change; only the rate moves"],e:"A lower production function and a lower investment curve meet depreciation at a lower capital stock, so investment and output are lower too."}
+]);
+
+/* ================================================================ Problem Set 6 · liquidity preference (due Oct 8)
+   Written in the format the real Problem Set 5 used: a scenario, then what each curve does,
+   the rate and the quantity. The lesson from his two misses carries over, with one twist:
+   money supply is VERTICAL, so the quantity of money follows the supply curve alone and is
+   never ambiguous. Only the nominal rate can be.                                             */
+QB = QB.concat([
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"Model: liquidity preference. Incomes rise across the economy, and at the same time the Federal Reserve increases the money supply. What happens?",a:"The quantity of money rises; the nominal rate is ambiguous",w:["The nominal rate rises; the quantity of money is ambiguous","The nominal rate and the quantity of money are both ambiguous","The quantity of money rises; the nominal rate rises"],e:"Money demand shifts right (rate up); money supply shifts right (rate down, quantity up). The rate is pulled both ways. The quantity follows the vertical supply curve, so it rises."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"Model: liquidity preference. Incomes rise across the economy, and at the same time the Federal Reserve decreases the money supply. What happens?",a:"The nominal rate rises; the quantity of money falls",w:["The nominal rate rises; the quantity of money is ambiguous","The nominal rate is ambiguous; the quantity of money falls","The nominal rate falls; the quantity of money rises"],e:"Money demand right and money supply left both push the rate up. The quantity follows supply, so it falls. Nothing is ambiguous here."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"Model: liquidity preference. A recession lowers incomes, and the Federal Reserve responds by increasing the money supply. What happens?",a:"The nominal rate falls; the quantity of money rises",w:["The nominal rate is ambiguous; the quantity of money rises","The nominal rate falls; the quantity of money is ambiguous","The nominal rate rises; the quantity of money falls"],e:"Money demand left and money supply right both push the rate down. The quantity follows supply, so it rises."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"Model: liquidity preference. The aggregate price level falls, and at the same time the Federal Reserve decreases the money supply. What happens?",a:"The quantity of money falls; the nominal rate is ambiguous",w:["The nominal rate falls; the quantity of money is ambiguous","The quantity of money falls; the nominal rate falls","The nominal rate and the quantity of money are both ambiguous"],e:"Money demand left (rate down); money supply left (rate up, quantity down). The rate is pulled both ways; the quantity follows supply and falls."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,t:"tf",q:"In the liquidity preference model, when both curves shift, the quantity of money can be ambiguous.",a:false,e:"False. Money supply is vertical, so the quantity of money is wherever the Fed puts the supply curve. Only the nominal rate can be ambiguous."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"Model: liquidity preference. Households grow wary of stocks and prefer to keep more money on hand. Nothing else changes. What happens?",a:"Demand shifts right; supply does not shift; the rate rises; the quantity is unchanged",w:["Demand shifts right; supply does not shift; the rate rises; the quantity rises","Demand does not shift; supply shifts left; the rate rises; the quantity falls","Demand shifts left; supply does not shift; the rate falls; the quantity is unchanged"],e:"A change in preferences shifts money demand right. With a vertical supply curve, only the rate moves."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,t:"mc",q:"The nominal interest rate falls and nothing else changes. What happens to money demand?",a:"No shift: the quantity of money demanded rises along the curve",w:["It shifts right, because money is cheaper to hold","It shifts left, because bonds now pay less","No shift: the quantity of money demanded falls along the curve"],e:"A change in the rate itself is a move along the curve. Only income, the price level, preferences or policy shift it."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,t:"mc",q:"Which pair correctly matches each model with the rate it sets?",a:"Loanable funds: real, long run. Liquidity preference: nominal, short run",w:["Loanable funds: nominal, long run. Liquidity preference: real, short run","Loanable funds: real, short run. Liquidity preference: nominal, long run","Loanable funds: nominal, short run. Liquidity preference: real, long run"],e:"His warning: the biggest mistake is combining or confusing the two models."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"Households become less patient and save less. Which model shows this, and what shifts?",a:"Loanable funds: supply shifts left",w:["Liquidity preference: money demand shifts left","Liquidity preference: money supply shifts left","Loanable funds: demand shifts right"],e:"Saving is the supply of loanable funds. The liquidity preference model is about holding money, not about saving."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,ap:true,t:"mc",q:"The Federal Reserve increases the money supply. Which model shows this first, and what happens?",a:"Liquidity preference: supply shifts right and the nominal rate falls",w:["Loanable funds: supply shifts right and the real rate falls","Liquidity preference: demand shifts right and the nominal rate rises","Loanable funds: demand shifts left and the real rate falls"],e:"The Fed controls the vertical money supply curve. In the short run the nominal rate falls: the liquidity effect."},
+ {tp:"money",ps:6,sec:"g-mon-lp",m:1,t:"mc",q:"Money demand shifts right and money supply shifts right. Which result is certain?",a:"The quantity of money rises",w:["The quantity of money falls","The nominal interest rate rises","The nominal interest rate falls"],e:"The quantity follows supply. The rate depends on which curve moves further."}
+]);
+
 /* ================================================================ helpers */
 function $(s,r){ return (r||document).querySelector(s); }
 function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
@@ -5824,7 +5875,12 @@ function psRehearsal(s){
     var q = psFromGen(s, gens[guard % gens.length], sec), t = q && strip(q.text);
     if(q && !seen[t]){ seen[t] = 1; out.push(q); }
   }
-  return shuffle(out.concat(topicQuestions(s.ch, null, n - out.length)));
+  /* then up to four written for this very problem set, in its real format */
+  var own = shuffle(bankFor(s.ch).filter(function(x){ return x.b.ps === s.ps; })).slice(0, Math.min(4, n - out.length)).map(function(x){ return fromBank(x.b, x.i); });
+  out = out.concat(own);
+  var have = {}; out.forEach(function(q){ have[q.key] = 1; });
+  var rest = topicQuestions(s.ch, null, n).filter(function(q){ return !have[q.key]; }).slice(0, n - out.length);
+  return shuffle(out.concat(rest));
 }
 /* Rebuild exact questions from their keys ("tp:i" bank, "tp:pN" / "tp:pNr" pairs); anything malformed is dropped */
 /* a reading's practice quiz: its questions, shuffled, wrong answers reshuffled each time */
@@ -6573,6 +6629,7 @@ function rdBuilt(r){ return !!(r && (r.q || r.qs)); }
 /* a question from a quiz already taken, with what he picked */
 function pastExplain(b){
   if(b.mine === b.right) return "You got this one on the quiz." + (b.why ? " " + b.why : "");
+  if(b.mine < 0) return "You missed this one on the quiz. " + (b.likely ? "Canvas hides the key; the most likely answer is the one above. " : "") + (b.why || "");
   return "On the quiz you picked “" + b.o[b.mine] + ".” " + (b.likely ? "Canvas hides the key; the most likely answer is the one above. " : "") + (b.why || "");
 }
 function fromPast(p, i){
@@ -6648,7 +6705,7 @@ function renderRdHow(){
   PAST_RQ.forEach(function(p){ p.qs.forEach(function(b){ if(b.mine !== b.right) misses.push({p:p, b:b}); }); });
   $("#rdHow").innerHTML = '<div class="note-sec rdpage">' +
     '<h2 class="rdtitle">How he writes reading quizzes</h2>' + divider() +
-    '<p class="knowline"><span class="know">Counted from your 45 real questions, Reading Quizzes 1&ndash;9</span></p>' +
+    '<p class="knowline"><span class="know">Counted from your ' + s.n + ' real questions, Reading Quizzes 1&ndash;' + PAST_RQ.length + '</span></p>' +
     '<div class="point"><b>The quiz</b><p><b>5 questions, 4 minutes</b>, on Canvas at 12:30 at the start of class. That is under a minute each. Canvas never shows you the answers afterwards.</p></div>' +
     '<h3 class="sub">The question types</h3><ul>' +
     '<li><b>&ldquo;According to [Author] ([year]), &hellip;&rdquo;</b> &mdash; ' + s.according + ' of ' + s.n + ' questions name the author and year. Know the author&rsquo;s name and year cold, and what they personally argue.</li>' +
@@ -6662,7 +6719,7 @@ function renderRdHow(){
     '<li><b>Tiebreaker:</b> on the ' + s.sure + ' questions where the answer is known, the right answer was the <b>longest option ' + s.longest + ' times (' + pct(s.longest, s.sure) + '%)</b>. Know the reading first; use this only when you are stuck between two.</li>' +
     '<li><b>Wrong answers</b> are usually extreme (&ldquo;only,&rdquo; &ldquo;always,&rdquo; &ldquo;pointless,&rdquo; &ldquo;commands&rdquo;), the opposite of the thesis, or a view the author argues <i>against</i>.</li></ul>' +
     '<h3 class="sub">Your ' + misses.length + ' misses, and the trap in each</h3><ul class="missl">' +
-    misses.map(function(m){ return '<li><span class="rdn">Quiz #' + m.p.n + ' &middot; ' + rdLabel(m.p) + '</span>You picked <i>&ldquo;' + m.b.o[m.b.mine] + '&rdquo;</i><br>Answer' + (m.b.likely ? ' (most likely)' : '') + ': <b>' + m.b.o[m.b.right] + '</b>' + (m.b.why ? '<br><span class="pqwhy">' + m.b.why + '</span>' : '') + '</li>'; }).join("") + '</ul>' +
+    misses.map(function(m){ return '<li><span class="rdn">Quiz #' + m.p.n + ' &middot; ' + rdLabel(m.p) + '</span>' + (m.b.mine < 0 ? 'You missed this one' : 'You picked <i>&ldquo;' + m.b.o[m.b.mine] + '&rdquo;</i>') + '<br>Answer' + (m.b.likely ? ' (most likely)' : '') + ': <b>' + m.b.o[m.b.right] + '</b>' + (m.b.why ? '<br><span class="pqwhy">' + m.b.why + '</span>' : '') + '</li>'; }).join("") + '</ul>' +
     '<p class="tip"><b>The pattern in your misses:</b> each time you chose an answer that sounds pious or reasonable on its own but is <b>not what this author argues</b> &mdash; punishment for sin, commanded redistribution, giving by need, &ldquo;hidden spiritual decay.&rdquo; Ask: <i>would this author write that sentence?</i></p>' +
     '<h3 class="sub">The night before</h3><ol>' +
     '<li>Read <b>Start here</b> once, slowly.</li><li>Flashcards until you can say each back.</li><li><b>Who said what</b> until it&rsquo;s clean (history readings mix up names on purpose).</li><li>Practice until you pass twice in a row.</li><li>Finish with <b>The real thing</b>: 5 questions, 4 minutes.</li></ol>' +
@@ -6677,7 +6734,7 @@ function renderRdMode(mode){
   if(mode === "how"){ renderRdHow(); return; }
   if(mode === "past"){
     var box = $("#rdPastBox");
-    $("#rdPastBar").innerHTML = '<div class="toolbar" style="justify-content:center"><button class="btn primary" type="button" data-pq="all">Quiz me on all 45</button><button class="btn" type="button" data-pq="miss">Only my 7 misses</button><button class="btn" type="button" data-pq="list">See every question</button></div>';
+    $("#rdPastBar").innerHTML = '<div class="toolbar" style="justify-content:center"><button class="btn primary" type="button" data-pq="all">Quiz me on all ' + pastStats().n + '</button><button class="btn" type="button" data-pq="miss">Only my ' + pastStats().missed + ' misses</button><button class="btn" type="button" data-pq="list">See every question</button></div>';
     function run(kind){
       if(kind === "list"){ rdState.eng.past = null; box.innerHTML = pastReview(PAST_RQ); return; }
       rdState.eng.past = makeQuiz(box, function(){ return pastQuestions(kind === "miss" ? function(b){ return b.mine !== b.right; } : null); }, {againLabel:"Again, reshuffled"});

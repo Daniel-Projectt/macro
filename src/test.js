@@ -569,6 +569,18 @@ ok(allPast.length === 50 && missPast.length === 9, 'past quiz runs: all 50, or t
 ok(allPast.every(q => q.opts.filter(o => o.ok).length === 1), 'every past question has exactly one right answer');
 ok(A.questionsByKeys(missPast.map(q => q.key)).length === 9, 'past misses can be practiced again by key');
 ok(A.rdQuestions('past3', 5).length === 5 && A.rdQuestions('rq10', 5).length === 5, 'the real thing draws five');
+{
+  const r12 = A.READINGS.find(r => r.id === 'rq12'), ans = re => { const q = r12.q.find(q => re.test(q.q)); return q ? q.a : undefined; };
+  ok(/Haymond/.test(r12.who) && r12.year === 2020 && r12.q.length >= 35 && r12.cards.length >= 30 && r12.match.length >= 12 && /In plain words/.test(r12.plain), 'Reading 12: 35+ questions, 30+ flashcards, 12+ who-said-what, plain words', r12.q.length + '/' + r12.cards.length + '/' + r12.match.length);
+  ok(new Set(r12.match.map(m => m[0])).size === r12.match.length && new Set(r12.match.map(m => m[1])).size === r12.match.length && new Set(r12.cards.map(c => c[0])).size === r12.cards.length, 'Reading 12: no duplicate names, sayings or cards');
+  ok(/not necessarily immoral when not combined with central banking and legal tender laws/.test(ans(/best captures the conclusion/)) && ans(/how much may the bank lend/) === '$90' && ans(/exclusive owner/) === 'Hoppe'
+    && /debt, not a bailment/.test(ans(/Carr v\. Carr/)) && ans(/silver that has become dross/) === 'Ezekiel 22:18–21' && /North/.test(ans(/only biblically valid/)) && ans(/comparison do Haymond/) === 'Insurance plans'
+    && ans(/NOT part of free banking/) === 'A lender of last resort' && /100 percent reserve/.test(ans(/Cochrane and Wolf/)) && ans(/inherently fraudulent\.$/) === false && ans(/North grounds his criticism/) === false, 'Reading 12: the answer key matches the article');
+  const mc = r12.q.filter(q => q.t === 'mc'), lg = mc.filter(q => q.a.length > Math.max(...q.w.map(w => w.length))).length, tf = r12.q.filter(q => q.t === 'tf');
+  ok(lg / mc.length <= 0.35, 'Reading 12: the right answer is rarely the longest', lg + ' of ' + mc.length);
+  ok(tf.filter(q => q.a).length === 3 && tf.filter(q => !q.a).length === 3, 'Reading 12: true/false is balanced');
+  ok(mc.every(q => /Haymond and Beach \(2020\)|Carr v\. Carr|North|Rothbard|Dowd|free banking|bailment|article|NOT/.test(q.q)), 'Reading 12: questions are asked the way he asks');
+}
 const rq10 = A.READINGS.find(r => r.id === 'rq10');
 ok(rq10.q.length >= 30 && rq10.cards.length >= 25 && rq10.match.length >= 10, 'Stein: 30+ questions, 25+ flashcards, 10+ who-said-what pairs', rq10.q.length + '/' + rq10.cards.length + '/' + rq10.match.length);
 ok(new Set(rq10.match.map(m => m[0])).size === rq10.match.length && new Set(rq10.match.map(m => m[1])).size === rq10.match.length, 'Stein: who-said-what has no duplicate names or sayings');

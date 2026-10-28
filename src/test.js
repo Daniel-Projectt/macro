@@ -563,8 +563,9 @@ for (let r = 0; r < 40; r++) {
 }
 // ---------- Problem Set 10: the Fed's tools and the market for reserves ----------
 const ps10 = A.QB.filter(q => q.ps === 10);
-ok(ps10.length >= 25 && ps10.every(q => q.tp === 'fed' && q.m === 1), 'Problem Set 10 rehearsal questions on the Fed chapter', ps10.length);
-ok(A.PS_KNOW[10].length === 10 && /Scarce/.test(A.PS_KNOW[10][0]) && /Abundant/.test(A.PS_KNOW[10][0]) && /discount rate never moves/.test(A.PS_KNOW[10].join(' ')), 'the PS10 sheet: two regimes, and the discount rate moves nothing');
+ok(A.QB.some(q => q.ps === 9 && q.m === 2 && q.a === 'BOG; discount rate'), 'his Problem Set 9 miss: the Board sets the discount rate');
+ok(ps10.length >= 25 && ps10.every(q => q.tp === 'fed' && q.m >= 1), 'Problem Set 10 rehearsal questions on the Fed chapter', ps10.length);
+ok(A.PS_KNOW[10].length === 11 && /Board of Governors/.test(A.PS_KNOW[10].join(' ')) && /Scarce/.test(A.PS_KNOW[10][0]) && /Abundant/.test(A.PS_KNOW[10][0]) && /discount rate never moves/.test(A.PS_KNOW[10].join(' ')), 'the PS10 sheet: two regimes, and the discount rate moves nothing');
 // the lecture's table: [regime, event] -> [rate, reserves]
 const RT = [[/abundant.*buys \$50 billion of short-term/, 'unchanged', 'rise'], [/abundant.*raises the interest rate it pays on reserve balances/, 'rises', 'unchanged'], [/abundant.*raises the rate it offers on overnight reverse/, 'rises', 'unchanged'],
   [/abundant.*mature without reinvesting/, 'unchanged', 'fall'], [/scarce.*sells Treasury bills/, 'rises', 'fall'], [/scarce.*buys Treasury bills/, 'falls', 'rise'], [/scarce.*raises the interest rate it pays on reserves/, 'none', 'none'],
@@ -577,7 +578,7 @@ RT.forEach(([re, rate, qty]) => {
 for (let r = 0; r < 30; r++) {
   const s10 = A.SCHEDULE.find(s => s.ps === 10), q = A.psRehearsal(s10);
   ok(q.length === 17 && new Set(q.map(x => x.key)).size === 17, 'the Problem Set 10 rehearsal: seventeen different questions', q.length);
-  ok(q.filter(x => /^Model: market for reserves|ceiling|floor|discount rate|T-account|Forward guidance|three difficulties/.test(x.text)).length >= 4, 'several in the real problem-set format');
+  ok(q.filter(x => /market for reserves|ceiling|floor|discount rate|T-account|forward guidance|three difficulties|which tool|interest on reserves|FOMC|Board/i.test(x.text)).length >= 4, 'several in the real problem-set format');
 }
 const ps = A.pastStats();
 ok(ps.n === 50 && ps.missed === 9 && ps.sure === 42, 'past quizzes: 50 questions, 9 misses, 42 answers known', JSON.stringify(ps));

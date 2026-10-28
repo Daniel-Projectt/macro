@@ -561,6 +561,24 @@ for (let r = 0; r < 40; r++) {
   ok(q.filter(x => /^Model: liquidity preference|Which model shows|Which pair correctly matches|quantity of money can be ambiguous|Which result is certain|What happens to money demand/.test(x.text)).length >= 4, 'at least four are in the real problem-set format');
   ok(q.every(x => x.tp === 'money'), 'all on its chapter');
 }
+// ---------- Problem Set 10: the Fed's tools and the market for reserves ----------
+const ps10 = A.QB.filter(q => q.ps === 10);
+ok(ps10.length >= 25 && ps10.every(q => q.tp === 'fed' && q.m === 1), 'Problem Set 10 rehearsal questions on the Fed chapter', ps10.length);
+ok(A.PS_KNOW[10].length === 10 && /Scarce/.test(A.PS_KNOW[10][0]) && /Abundant/.test(A.PS_KNOW[10][0]) && /discount rate never moves/.test(A.PS_KNOW[10].join(' ')), 'the PS10 sheet: two regimes, and the discount rate moves nothing');
+// the lecture's table: [regime, event] -> [rate, reserves]
+const RT = [[/abundant.*buys \$50 billion of short-term/, 'unchanged', 'rise'], [/abundant.*raises the interest rate it pays on reserve balances/, 'rises', 'unchanged'], [/abundant.*raises the rate it offers on overnight reverse/, 'rises', 'unchanged'],
+  [/abundant.*mature without reinvesting/, 'unchanged', 'fall'], [/scarce.*sells Treasury bills/, 'rises', 'fall'], [/scarce.*buys Treasury bills/, 'falls', 'rise'], [/scarce.*raises the interest rate it pays on reserves/, 'none', 'none'],
+  [/abundant.*lowers the discount rate/, 'none', 'none'], [/scarce.*raises the discount rate/, 'none', 'none'], [/abundant.*raises both/, 'rises', 'unchanged']];
+RT.forEach(([re, rate, qty]) => {
+  const q = ps10.find(x => re.test(x.q)); const a = q && q.a;
+  const want = rate === 'none' ? a === 'Neither changes' : a.includes('rate ' + (rate === 'unchanged' ? 'is unchanged' : rate)) && a.includes('reserves ' + (qty === 'unchanged' ? 'are unchanged' : qty));
+  ok(q && want, 'market for reserves, as in the lecture table: ' + re, a);
+});
+for (let r = 0; r < 30; r++) {
+  const s10 = A.SCHEDULE.find(s => s.ps === 10), q = A.psRehearsal(s10);
+  ok(q.length === 17 && new Set(q.map(x => x.key)).size === 17, 'the Problem Set 10 rehearsal: seventeen different questions', q.length);
+  ok(q.filter(x => /^Model: market for reserves|ceiling|floor|discount rate|T-account|Forward guidance|three difficulties/.test(x.text)).length >= 4, 'several in the real problem-set format');
+}
 const ps = A.pastStats();
 ok(ps.n === 50 && ps.missed === 9 && ps.sure === 42, 'past quizzes: 50 questions, 9 misses, 42 answers known', JSON.stringify(ps));
 ok(ps.longest === 35, 'past quizzes: the right answer was the longest 35 of 42 times (shown in How he asks)', ps.longest);

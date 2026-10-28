@@ -161,8 +161,8 @@ function psRehearsal(s){
     var q = psFromGen(s, gens[guard % gens.length], sec), t = q && strip(q.text);
     if(q && !seen[t]){ seen[t] = 1; out.push(q); }
   }
-  /* then up to four written for this very problem set, in its real format */
-  var own = shuffle(bankFor(s.ch).filter(function(x){ return x.b.ps === s.ps; })).slice(0, Math.min(4, n - out.length)).map(function(x){ return fromBank(x.b, x.i); });
+  /* then those written for this very problem set, in its real format: four, or about half of a long set */
+  var own = shuffle(bankFor(s.ch).filter(function(x){ return x.b.ps === s.ps; })).slice(0, Math.min(Math.max(4, Math.round(n * 0.45)), n - out.length)).map(function(x){ return fromBank(x.b, x.i); });
   out = out.concat(own);
   var have = {}; out.forEach(function(q){ have[q.key] = 1; });
   var rest = topicQuestions(s.ch, null, n).filter(function(q){ return !have[q.key]; }).slice(0, n - out.length);
